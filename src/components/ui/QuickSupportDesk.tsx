@@ -15,14 +15,18 @@ import {
 import confetti from "canvas-confetti";
 import { SCHOOL_INFO } from "@/data/schoolData";
 import { KidsGameArenaModal } from "@/components/ui/KidsGameArenaModal";
+import { useLanguage } from "@/context/LanguageContext";
 
 export const QuickSupportDesk: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isGameModalOpen, setIsGameModalOpen] = useState(false);
+  const { language, t } = useLanguage();
 
   const handleWhatsApp = () => {
     const text = encodeURIComponent(
-      "Hello Mrs. S Tharani / Dhivith Edu Care Support Desk! I would like to get instant information regarding preschool admissions and tuition classes."
+      language === "ta"
+        ? "வணக்கம் திருமதி. S. தாரணி / திவித் எடு கேர் உதவி மையம்! மழலையர் பள்ளி சேர்க்கை மற்றும் டியூஷன் வகுப்புகள் குறித்த தகவல்களை அறிய விரும்புகிறேன்."
+        : "Hello Mrs. S Tharani / Dhivith Edu Care Support Desk! I would like to get instant information regarding preschool admissions and tuition classes."
     );
     window.open(`https://wa.me/${SCHOOL_INFO.whatsapp}?text=${text}`, "_blank");
   };
@@ -43,12 +47,12 @@ export const QuickSupportDesk: React.FC = () => {
                   <span className="text-base font-bold">🏫</span>
                 </div>
                 <h4 className="font-display font-black text-sm text-[#121D28] uppercase tracking-wider">
-                  DHIVITH FAST DESK
+                  {language === "ta" ? "திவித் நேரடி உதவி" : "DHIVITH FAST DESK"}
                 </h4>
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className="p-1.5 rounded-full text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-colors focus:outline-none"
+                className="p-1.5 rounded-full text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-colors focus:outline-none cursor-pointer"
                 aria-label="Close"
               >
                 <X className="w-4 h-4" />
@@ -68,10 +72,10 @@ export const QuickSupportDesk: React.FC = () => {
                   </div>
                   <div>
                     <div className="font-display font-bold text-sm text-[#121D28]">
-                      WhatsApp Advisor
+                      {language === "ta" ? "வாட்ஸ்அப் உதவி" : "WhatsApp Advisor"}
                     </div>
                     <div className="text-xs font-semibold text-[#159447]">
-                      Instant 2-min response
+                      {language === "ta" ? "உடனடி பதில் 2 நிமிடங்களில்" : "Instant 2-min response"}
                     </div>
                   </div>
                 </div>
@@ -89,7 +93,7 @@ export const QuickSupportDesk: React.FC = () => {
                   </div>
                   <div>
                     <div className="font-display font-bold text-sm text-[#121D28]">
-                      Direct Helpline
+                      {t.support.directCall}
                     </div>
                     <div className="text-xs font-semibold text-[#5E6D7A]">
                       +91 {SCHOOL_INFO.phone}
@@ -114,14 +118,14 @@ export const QuickSupportDesk: React.FC = () => {
                   <div>
                     <div className="flex items-center gap-2">
                       <span className="font-display font-bold text-sm text-[#121D28]">
-                        Tower Builder Game
+                        {t.support.gameTitle}
                       </span>
                       <span className="px-1.5 py-0.5 rounded-md bg-[#F36B12] text-white text-[9px] font-black uppercase tracking-wider">
-                        PLAY
+                        {language === "ta" ? "விளையாடு" : "PLAY"}
                       </span>
                     </div>
                     <div className="text-xs font-semibold text-[#F36B12]">
-                      Stack floors <span className="text-gray-400 font-normal">• Works Offline</span>
+                      {t.support.gameSub}
                     </div>
                   </div>
                 </div>
@@ -141,7 +145,9 @@ export const QuickSupportDesk: React.FC = () => {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75" />
             <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-white" />
           </span>
-          <span className="tracking-wide">QUICK SUPPORT DESK</span>
+          <span className="tracking-wide">
+            {language === "ta" ? "உடனடி உதவி மையம்" : "QUICK SUPPORT DESK"}
+          </span>
           <Phone className="w-4 h-4" />
         </button>
       </aside>

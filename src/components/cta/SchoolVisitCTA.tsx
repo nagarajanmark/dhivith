@@ -2,15 +2,18 @@
 import React from "react";
 import { Calendar, Phone, MessageSquare, Sparkles, ArrowRight } from "lucide-react";
 import { SCHOOL_INFO } from "@/data/schoolData";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface SchoolVisitCTAProps {
   onOpenTourModal: () => void;
 }
 
 export const SchoolVisitCTA: React.FC<SchoolVisitCTAProps> = ({ onOpenTourModal }) => {
+  const { t, language } = useLanguage();
+
   const handleWhatsApp = () => {
     const text = encodeURIComponent(
-      "Hello Dhivith Edu Care! I would like to inquire about admissions and schedule a campus tour for my child."
+      `Hello Mrs. S Tharani / Dhivith Edu Care team! I would like to inquire about admissions and schedule a campus tour.`
     );
     window.open(`https://wa.me/${SCHOOL_INFO.whatsapp.replace(/\+/g, "")}?text=${text}`, "_blank");
   };
@@ -29,15 +32,15 @@ export const SchoolVisitCTA: React.FC<SchoolVisitCTAProps> = ({ onOpenTourModal 
           <div className="relative z-10 max-w-xl text-left space-y-5">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/25 text-amber-300 text-xs font-bold uppercase tracking-wider backdrop-blur-md border border-white/30 shadow-sm">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>Admissions Open 2024 - 2025</span>
+              <span>{t.common.admissionsOpen}</span>
             </div>
 
             <h2 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl text-white tracking-tight leading-[1.15] drop-shadow-md">
-              Come Visit Our School in Kinathukadavu
+              {t.homeCta.title}
             </h2>
 
             <p className="text-white text-sm sm:text-base md:text-lg font-medium leading-relaxed drop-shadow max-w-lg">
-              Visit our classrooms, meet Mrs. S Tharani directly, and see how we care for every child with personal attention.
+              {t.homeCta.description}
             </p>
 
             <div className="flex flex-wrap items-center justify-start gap-4 pt-2">
@@ -46,7 +49,7 @@ export const SchoolVisitCTA: React.FC<SchoolVisitCTAProps> = ({ onOpenTourModal 
                 className="px-7 py-3.5 sm:px-8 sm:py-4 rounded-2xl bg-white text-[#0750B8] hover:bg-gray-50 font-bold text-sm sm:text-base shadow-xl hover:shadow-2xl hover:scale-[1.03] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2.5 group cursor-pointer"
               >
                 <Calendar className="w-5 h-5 text-[#F36B12]" />
-                <span>Book School Visit</span>
+                <span>{t.homeCta.btnTour}</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </button>
 
@@ -55,14 +58,14 @@ export const SchoolVisitCTA: React.FC<SchoolVisitCTAProps> = ({ onOpenTourModal 
                 className="px-6 py-3.5 sm:px-7 sm:py-4 rounded-2xl bg-[#0750B8]/60 hover:bg-[#0750B8]/80 text-white border border-white/40 font-bold text-sm sm:text-base backdrop-blur-md shadow-lg transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
               >
                 <MessageSquare className="w-5 h-5 text-amber-300" />
-                <span>Chat on WhatsApp</span>
+                <span>{language === "ta" ? "வாட்ஸ்அப் உதவி" : "Chat on WhatsApp"}</span>
               </button>
             </div>
 
             <div className="pt-2 flex flex-wrap items-center justify-start gap-5 text-xs text-white/90 font-semibold drop-shadow">
-              <span className="flex items-center gap-1.5">✓ Free School Visit</span>
-              <span className="flex items-center gap-1.5">✓ Meet Principal Directly</span>
-              <span className="flex items-center gap-1.5">✓ Pre-KG to 12th Std</span>
+              <span className="flex items-center gap-1.5">{language === "ta" ? "✓ இலவச வளாகப் பார்வை" : "✓ Free School Visit"}</span>
+              <span className="flex items-center gap-1.5">{language === "ta" ? "✓ கல்வி இயக்குநருடன் நேரடி சந்திப்பு" : "✓ Meet Principal Directly"}</span>
+              <span className="flex items-center gap-1.5">{language === "ta" ? "✓ Pre-KG முதல் 12-ஆம் வகுப்பு வரை" : "✓ Pre-KG to 12th Std"}</span>
             </div>
           </div>
         </div>

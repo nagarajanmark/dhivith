@@ -16,8 +16,10 @@ import {
 import confetti from "canvas-confetti";
 import { SectionHeading } from "../ui/SectionHeading";
 import { SCHOOL_INFO, PROGRAMS } from "@/data/schoolData";
+import { useLanguage } from "@/context/LanguageContext";
 
 export const ContactSection: React.FC = () => {
+  const { t, language } = useLanguage();
   const [parentName, setParentName] = useState("");
   const [childAge, setChildAge] = useState("");
   const [phone, setPhone] = useState("");
@@ -30,9 +32,9 @@ export const ContactSection: React.FC = () => {
 
   const validate = () => {
     const errs: Record<string, string> = {};
-    if (!parentName.trim()) errs.parentName = "Full name is required";
-    if (!childAge.trim()) errs.childAge = "Child's age / grade is required";
-    if (!phone.trim() || phone.length < 8) errs.phone = "Valid phone number is required";
+    if (!parentName.trim()) errs.parentName = language === "ta" ? "முழு பெயர் அவசியம்" : "Full name is required";
+    if (!childAge.trim()) errs.childAge = language === "ta" ? "குழந்தையின் வயது அல்லது வகுப்பு தேவை" : "Child's age / grade is required";
+    if (!phone.trim() || phone.length < 8) errs.phone = language === "ta" ? "சரியான தொலைபேசி எண் தேவை" : "Valid phone number is required";
     setErrors(errs);
     return Object.keys(errs).length === 0;
   };
@@ -73,10 +75,10 @@ export const ContactSection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
         <SectionHeading
-          badgeText="Admissions & Coaching Enquiries"
+          badgeText={t.contact.badge}
           badgeVariant="orange"
-          title="Contact Dhivith Edu Care"
-          subtitle="Every Child. Every Opportunity. Every Time. Located in S.K.Garden, Vadapudur, Kinathukadavu, Coimbatore. Connect directly with Mrs. S Tharani and our admissions educators."
+          title={t.contact.title}
+          subtitle={t.contact.desc}
           align="center"
           className="mb-16"
         />
@@ -98,7 +100,7 @@ export const ContactSection: React.FC = () => {
                     {SCHOOL_INFO.qualifications}
                   </p>
                   <p className="text-[11px] text-[#5E6D7A]">
-                    {SCHOOL_INFO.founderRole}
+                    {t.about.founderRole}
                   </p>
                 </div>
               </div>
@@ -110,7 +112,7 @@ export const ContactSection: React.FC = () => {
                 </div>
                 <div>
                   <div className="text-xs font-bold uppercase tracking-wider text-[#5E6D7A]">
-                    Campus Address
+                    {t.contact.campusAddress}
                   </div>
                   <div className="text-sm font-bold text-[#121D28] mt-0.5 leading-snug">
                     {SCHOOL_INFO.address}
@@ -128,7 +130,7 @@ export const ContactSection: React.FC = () => {
                 </div>
                 <div>
                   <div className="text-xs font-bold uppercase tracking-wider text-[#5E6D7A]">
-                    Direct Phone / WhatsApp
+                    {t.contact.directPhone}
                   </div>
                   <a
                     href={`tel:${SCHOOL_INFO.phoneRaw}`}
@@ -137,7 +139,7 @@ export const ContactSection: React.FC = () => {
                     {SCHOOL_INFO.phone}
                   </a>
                   <div className="text-xs text-[#159447] font-semibold">
-                    Available for Admissions & Parent Inquiries
+                    {t.contact.phoneAvailable}
                   </div>
                 </div>
               </div>
@@ -149,7 +151,7 @@ export const ContactSection: React.FC = () => {
                 </div>
                 <div>
                   <div className="text-xs font-bold uppercase tracking-wider text-[#5E6D7A]">
-                    Official Email
+                    {t.contact.officialEmail}
                   </div>
                   <a
                     href={`mailto:${SCHOOL_INFO.email}`}
@@ -167,13 +169,13 @@ export const ContactSection: React.FC = () => {
                 </div>
                 <div>
                   <div className="text-xs font-bold uppercase tracking-wider text-[#5E6D7A]">
-                    Timings
+                    {t.contact.timings}
                   </div>
                   <div className="text-xs font-bold text-[#121D28] mt-0.5">
-                    Pre-School: {SCHOOL_INFO.preschoolHours}
+                    {t.contact.preschoolHours}
                   </div>
                   <div className="text-xs font-bold text-[#0750B8]">
-                    Tuitions: {SCHOOL_INFO.tuitionHours}
+                    {t.contact.tuitionHours}
                   </div>
                 </div>
               </div>
@@ -188,10 +190,10 @@ export const ContactSection: React.FC = () => {
                   <CheckCircle2 className="w-10 h-10" />
                 </div>
                 <h4 className="font-display font-bold text-3xl text-[#121D28]">
-                  Enquiry Received!
+                  {t.contact.successTitle}
                 </h4>
                 <p className="text-[#5E6D7A] text-base mt-3 max-w-md mx-auto leading-relaxed">
-                  Thank you, <strong className="text-[#121D28]">{parentName}</strong>! Mrs. S Tharani and our admissions desk will connect with you at <strong className="text-[#0750B8]">{phone}</strong> within 24 hours.
+                  {t.contact.successDesc} <strong className="text-[#0750B8]">{phone}</strong>.
                 </p>
 
                 <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
@@ -204,16 +206,16 @@ export const ContactSection: React.FC = () => {
                       setEmail("");
                       setMessage("");
                     }}
-                    className="w-full sm:w-auto px-6 py-3 rounded-xl bg-[#0750B8] text-white font-bold text-sm hover:bg-[#063f91] transition-all shadow"
+                    className="w-full sm:w-auto px-6 py-3 rounded-xl bg-[#0750B8] text-white font-bold text-sm hover:bg-[#063f91] transition-all shadow cursor-pointer"
                   >
-                    Send Another Inquiry
+                    {t.contact.sendAnother}
                   </button>
                   <button
                     onClick={handleWhatsApp}
-                    className="w-full sm:w-auto px-6 py-3 rounded-xl bg-[#159447] text-white font-bold text-sm hover:bg-[#117a3a] transition-all shadow flex items-center justify-center gap-2"
+                    className="w-full sm:w-auto px-6 py-3 rounded-xl bg-[#159447] text-white font-bold text-sm hover:bg-[#117a3a] transition-all shadow flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <MessageSquare className="w-4 h-4" />
-                    <span>Instant WhatsApp: {SCHOOL_INFO.phone}</span>
+                    <span>{t.contact.chatWhatsapp}: {SCHOOL_INFO.phone}</span>
                   </button>
                 </div>
               </div>
@@ -221,23 +223,23 @@ export const ContactSection: React.FC = () => {
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="border-b border-gray-100 pb-4 mb-2">
                   <h3 className="font-display font-bold text-2xl text-[#121D28]">
-                    Admissions & Academic Enquiry Form
+                    {t.contact.formTitle}
                   </h3>
                   <p className="text-xs sm:text-sm text-[#5E6D7A] mt-1">
-                    Fill in your details below. We welcome inquiries for Preschool (Day Care, Play Group, Pre-KG, LKG, UKG) and Tuitions (LKG to Grade 12 / Engineering Maths).
+                    {t.contact.formSubtitle}
                   </p>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-bold text-[#121D28] uppercase tracking-wider mb-1.5">
-                      Parent / Student Full Name *
+                      {t.contact.parentNameLabel}
                     </label>
                     <input
                       type="text"
                       value={parentName}
                       onChange={(e) => setParentName(e.target.value)}
-                      placeholder="e.g. Senthil Kumar"
+                      placeholder={t.contact.parentNamePlaceholder}
                       className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[#0750B8] transition-all"
                     />
                     {errors.parentName && (
@@ -247,13 +249,13 @@ export const ContactSection: React.FC = () => {
 
                   <div>
                     <label className="block text-xs font-bold text-[#121D28] uppercase tracking-wider mb-1.5">
-                      Child&apos;s Age / Current Grade *
+                      {t.contact.childAgeLabel}
                     </label>
                     <input
                       type="text"
                       value={childAge}
                       onChange={(e) => setChildAge(e.target.value)}
-                      placeholder="e.g. 3.5 yrs (Pre-KG) / Grade 10"
+                      placeholder={t.contact.childAgePlaceholder}
                       className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[#0750B8] transition-all"
                     />
                     {errors.childAge && (
@@ -265,13 +267,13 @@ export const ContactSection: React.FC = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-bold text-[#121D28] uppercase tracking-wider mb-1.5">
-                      Phone / WhatsApp Number *
+                      {t.contact.phoneLabel}
                     </label>
                     <input
                       type="tel"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
-                      placeholder="744 898 1592"
+                      placeholder={t.contact.phonePlaceholder}
                       className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[#0750B8] transition-all"
                     />
                     {errors.phone && (
@@ -281,13 +283,13 @@ export const ContactSection: React.FC = () => {
 
                   <div>
                     <label className="block text-xs font-bold text-[#121D28] uppercase tracking-wider mb-1.5">
-                      Email Address (Optional)
+                      {t.contact.emailLabel}
                     </label>
                     <input
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      placeholder="parent@gmail.com"
+                      placeholder={t.contact.emailPlaceholder}
                       className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[#0750B8] transition-all"
                     />
                   </div>
@@ -295,40 +297,40 @@ export const ContactSection: React.FC = () => {
 
                 <div>
                   <label className="block text-xs font-bold text-[#121D28] uppercase tracking-wider mb-1.5">
-                    Program / Service of Interest
+                    {t.contact.serviceLabel}
                   </label>
                   <select
                     value={serviceChoice}
                     onChange={(e) => setServiceChoice(e.target.value)}
                     className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[#0750B8]"
                   >
-                    <optgroup label="Montessori Pre-School">
-                      <option value="day-care">Day Care (1.5 – 6 Years)</option>
-                      <option value="play-group">Play Group (2 – 3 Years)</option>
-                      <option value="pre-kg">Pre-KG (3 – 4 Years)</option>
-                      <option value="lkg">LKG (4 – 5 Years)</option>
-                      <option value="ukg">UKG (5 – 6 Years)</option>
+                    <optgroup label={language === "ta" ? "மாண்டிசோரி மழலையர் பள்ளி" : "Montessori Pre-School"}>
+                      <option value="day-care">{language === "ta" ? "டே கேர் (1.5 – 6 வயது)" : "Day Care (1.5 – 6 Years)"}</option>
+                      <option value="play-group">{language === "ta" ? "ப்ளே குரூப் (2 – 3 வயது)" : "Play Group (2 – 3 Years)"}</option>
+                      <option value="pre-kg">{language === "ta" ? "ப்ரீ-கேஜி (3 – 4 வயது)" : "Pre-KG (3 – 4 Years)"}</option>
+                      <option value="lkg">{language === "ta" ? "எல்கேஜி (4 – 5 வயது)" : "LKG (4 – 5 Years)"}</option>
+                      <option value="ukg">{language === "ta" ? "யூகேஜி (5 – 6 வயது)" : "UKG (5 – 6 Years)"}</option>
                     </optgroup>
-                    <optgroup label="Academic Tuition & Coaching">
-                      <option value="tuition-primary">Tuition Classes (LKG to Grade 5)</option>
-                      <option value="tuition-middle">Tuition Classes (Grade 6 to 10 - ICSE/CBSE/State)</option>
-                      <option value="tuition-higher">Tuition Classes (Grade 11 & 12)</option>
-                      <option value="engg-maths">Engineering Mathematics (Diploma/B.E./B.Tech)</option>
-                      <option value="hindi-basics">Hindi Basics & Spoken Hindi</option>
-                      <option value="after-school">After-School Care & Subject Support</option>
+                    <optgroup label={language === "ta" ? "டியூஷன் & சிறப்புக் கல்வி" : "Academic Tuition & Coaching"}>
+                      <option value="tuition-primary">{language === "ta" ? "ஆரம்பக் கல்வி டியூஷன் (LKG முதல் 5 வரை)" : "Tuition Classes (LKG to Grade 5)"}</option>
+                      <option value="tuition-middle">{language === "ta" ? "நடுநிலை & உயர்நிலை டியூஷன் (6 முதல் 10 வரை)" : "Tuition Classes (Grade 6 to 10 - ICSE/CBSE/State)"}</option>
+                      <option value="tuition-higher">{language === "ta" ? "மேல்நிலைக் கல்வி டியூஷன் (11 & 12 வரை)" : "Tuition Classes (Grade 11 & 12)"}</option>
+                      <option value="engg-maths">{language === "ta" ? "பொறியியல் கணிதம் (Engineering Maths - M1, M2)" : "Engineering Mathematics (Diploma/B.E./B.Tech)"}</option>
+                      <option value="hindi-basics">{language === "ta" ? "அடிப்படை ஹிந்தி & ஸ்போக்கன் ஹிந்தி" : "Hindi Basics & Spoken Hindi"}</option>
+                      <option value="after-school">{language === "ta" ? "பள்ளிக்குப் பிந்தைய மாலை நேரப் பராமரிப்பு" : "After-School Care & Subject Support"}</option>
                     </optgroup>
                   </select>
                 </div>
 
                 <div>
                   <label className="block text-xs font-bold text-[#121D28] uppercase tracking-wider mb-1.5">
-                    Your Message / Specific Questions
+                    {t.contact.messageLabel}
                   </label>
                   <textarea
                     rows={3}
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
-                    placeholder="Tell us about your requirements, preferred timing, or questions for Mrs. S Tharani..."
+                    placeholder={t.contact.messagePlaceholder}
                     className="w-full p-4 rounded-xl border border-gray-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[#0750B8]"
                   />
                 </div>
@@ -337,13 +339,13 @@ export const ContactSection: React.FC = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full sm:flex-1 py-4 rounded-2xl bg-[#0750B8] text-white font-bold text-sm sm:text-base hover:bg-[#063f91] transition-all shadow-lg hover:shadow-xl disabled:opacity-50 flex items-center justify-center gap-2 group"
+                    className="w-full sm:flex-1 py-4 rounded-2xl bg-[#0750B8] text-white font-bold text-sm sm:text-base hover:bg-[#063f91] transition-all shadow-lg hover:shadow-xl disabled:opacity-50 flex items-center justify-center gap-2 group cursor-pointer"
                   >
                     {isSubmitting ? (
                       <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
                     ) : (
                       <>
-                        <span>Submit Admission Enquiry</span>
+                        <span>{t.contact.submitBtn}</span>
                         <Send className="w-4 h-4 text-amber-300 group-hover:translate-x-1 transition-transform" />
                       </>
                     )}
@@ -352,10 +354,10 @@ export const ContactSection: React.FC = () => {
                   <button
                     type="button"
                     onClick={handleWhatsApp}
-                    className="w-full sm:w-auto px-6 py-4 rounded-2xl bg-[#EAF8EF] text-[#159447] border border-[#159447]/30 hover:bg-[#159447] hover:text-white transition-all text-sm font-bold flex items-center justify-center gap-2"
+                    className="w-full sm:w-auto px-6 py-4 rounded-2xl bg-[#EAF8EF] text-[#159447] border border-[#159447]/30 hover:bg-[#159447] hover:text-white transition-all text-sm font-bold flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <MessageSquare className="w-4 h-4" />
-                    <span>WhatsApp: {SCHOOL_INFO.phone}</span>
+                    <span>{t.contact.whatsappBtn}: {SCHOOL_INFO.phone}</span>
                   </button>
                 </div>
 

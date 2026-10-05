@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { X, Calendar, Clock, Sparkles, CheckCircle2, User, Phone, Mail, MessageSquare, Baby, HeartHandshake } from "lucide-react";
 import confetti from "canvas-confetti";
 import { SCHOOL_INFO, PROGRAMS } from "@/data/schoolData";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface TourBookingModalProps {
   isOpen: boolean;
@@ -15,6 +16,7 @@ export const TourBookingModal: React.FC<TourBookingModalProps> = ({
   onClose,
   defaultProgram = "",
 }) => {
+  const { t, language } = useLanguage();
   const [parentName, setParentName] = useState("");
   const [childAge, setChildAge] = useState("");
   const [phone, setPhone] = useState("");
@@ -31,10 +33,10 @@ export const TourBookingModal: React.FC<TourBookingModalProps> = ({
 
   const validate = () => {
     const errs: Record<string, string> = {};
-    if (!parentName.trim()) errs.parentName = "Please provide your full name";
-    if (!childAge.trim()) errs.childAge = "Child's age / grade is required";
-    if (!phone.trim() || phone.length < 8) errs.phone = "Valid phone number required";
-    if (!preferredDate) errs.preferredDate = "Please choose your preferred visit date";
+    if (!parentName.trim()) errs.parentName = language === "ta" ? "உங்கள் முழு பெயரை உள்ளிடவும்" : "Please provide your full name";
+    if (!childAge.trim()) errs.childAge = language === "ta" ? "குழந்தையின் வயது அல்லது வகுப்பு தேவை" : "Child's age / grade is required";
+    if (!phone.trim() || phone.length < 8) errs.phone = language === "ta" ? "சரியான தொலைபேசி எண் தேவை" : "Valid phone number required";
+    if (!preferredDate) errs.preferredDate = language === "ta" ? "பார்வையிடும் தேதியை தேர்வு செய்யவும்" : "Please choose your preferred visit date";
     setErrors(errs);
     return Object.keys(errs).length === 0;
   };
@@ -87,20 +89,20 @@ export const TourBookingModal: React.FC<TourBookingModalProps> = ({
         <div className="bg-gradient-to-r from-[#0750B8] via-[#0962dc] to-[#159447] p-6 text-white relative">
           <button
             onClick={onClose}
-            className="absolute top-5 right-5 p-2 rounded-full bg-white/15 hover:bg-white/25 text-white transition-all focus:outline-none focus:ring-2 focus:ring-white"
+            className="absolute top-5 right-5 p-2 rounded-full bg-white/15 hover:bg-white/25 text-white transition-all focus:outline-none focus:ring-2 focus:ring-white cursor-pointer"
             aria-label="Close modal"
           >
             <X className="w-5 h-5" />
           </button>
           <div className="flex items-center gap-2 text-amber-300 font-semibold text-xs uppercase tracking-wider mb-1.5">
             <Sparkles className="w-4 h-4" />
-            <span>Kinathukadavu, Coimbatore • Est. {SCHOOL_INFO.establishedDate}</span>
+            <span>{t.tourModal.badge}</span>
           </div>
           <h3 id="modal-tour-title" className="font-display font-bold text-2xl sm:text-3xl">
-            Book a School Visit
+            {t.tourModal.title}
           </h3>
           <p className="text-white/85 text-xs sm:text-sm mt-1">
-            Visit our campus and meet Mrs. S Tharani to know more about admissions.
+            {t.tourModal.subtitle}
           </p>
         </div>
 
@@ -112,36 +114,36 @@ export const TourBookingModal: React.FC<TourBookingModalProps> = ({
                 <CheckCircle2 className="w-10 h-10" />
               </div>
               <h4 className="font-display font-bold text-2xl text-[#121D28]">
-                Visit Booked Successfully!
+                {t.tourModal.successTitle}
               </h4>
               <p className="text-[#5E6D7A] text-sm mt-2 max-w-md mx-auto leading-relaxed">
-                Thank you, <strong className="text-[#121D28]">{parentName}</strong>! We will call you at <strong className="text-[#0750B8]">{phone}</strong> soon to confirm your visit for <strong className="text-[#0750B8]">{preferredDate}</strong> ({preferredTime}).
+                {t.tourModal.successDesc} <strong className="text-[#0750B8]">{phone}</strong>.
               </p>
 
               <div className="mt-6 p-4 rounded-2xl bg-gray-50 border border-gray-200 max-w-md mx-auto text-left text-xs space-y-2">
                 <div className="font-semibold text-[#121D28] flex items-center gap-2">
                   <HeartHandshake className="w-4 h-4 text-[#159447]" />
-                  School Address:
+                  {t.tourModal.addressLabel}
                 </div>
                 <p className="text-[#5E6D7A]">
                   {SCHOOL_INFO.address}<br />
-                  {SCHOOL_INFO.city} (Near Botanical Garden, Vadapudur)
+                  {SCHOOL_INFO.city}
                 </p>
               </div>
 
               <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
                 <button
                   onClick={handleResetAndClose}
-                  className="w-full sm:w-auto px-6 py-3 rounded-xl bg-[#0750B8] text-white font-semibold text-sm hover:bg-[#063f91] transition-colors shadow-md"
+                  className="w-full sm:w-auto px-6 py-3 rounded-xl bg-[#0750B8] text-white font-semibold text-sm hover:bg-[#063f91] transition-colors shadow-md cursor-pointer"
                 >
-                  Close
+                  {t.tourModal.closeBtn}
                 </button>
                 <button
                   onClick={handleWhatsAppDirect}
-                  className="w-full sm:w-auto px-6 py-3 rounded-xl bg-[#159447] text-white font-semibold text-sm hover:bg-[#117a3a] transition-colors shadow-md flex items-center justify-center gap-2"
+                  className="w-full sm:w-auto px-6 py-3 rounded-xl bg-[#159447] text-white font-semibold text-sm hover:bg-[#117a3a] transition-colors shadow-md flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <MessageSquare className="w-4 h-4" />
-                  Chat on WhatsApp
+                  {t.tourModal.whatsappBtn}
                 </button>
               </div>
             </div>
@@ -150,7 +152,7 @@ export const TourBookingModal: React.FC<TourBookingModalProps> = ({
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-bold text-[#121D28] uppercase tracking-wider mb-1">
-                    Parent&apos;s Name *
+                    {t.tourModal.parentName}
                   </label>
                   <div className="relative">
                     <User className="w-4 h-4 absolute left-3.5 top-3.5 text-[#5E6D7A]" />
@@ -158,7 +160,7 @@ export const TourBookingModal: React.FC<TourBookingModalProps> = ({
                       type="text"
                       value={parentName}
                       onChange={(e) => setParentName(e.target.value)}
-                      placeholder="e.g. Senthil Kumar"
+                      placeholder={language === "ta" ? "எ.கா. செந்தில் குமார்" : "e.g. Senthil Kumar"}
                       className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[#0750B8] transition-all"
                     />
                   </div>
@@ -169,7 +171,7 @@ export const TourBookingModal: React.FC<TourBookingModalProps> = ({
 
                 <div>
                   <label className="block text-xs font-bold text-[#121D28] uppercase tracking-wider mb-1">
-                    Child&apos;s Name & Age / Class *
+                    {t.tourModal.childNameAge}
                   </label>
                   <div className="relative">
                     <Baby className="w-4 h-4 absolute left-3.5 top-3.5 text-[#5E6D7A]" />
@@ -177,7 +179,7 @@ export const TourBookingModal: React.FC<TourBookingModalProps> = ({
                       type="text"
                       value={childAge}
                       onChange={(e) => setChildAge(e.target.value)}
-                      placeholder="e.g. Kavin, 3.5 Years (Pre-KG)"
+                      placeholder={language === "ta" ? "எ.கா. கவின், 3.5 வயது" : "e.g. Kavin, 3.5 Years (Pre-KG)"}
                       className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[#0750B8] transition-all"
                     />
                   </div>
@@ -190,7 +192,7 @@ export const TourBookingModal: React.FC<TourBookingModalProps> = ({
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-bold text-[#121D28] uppercase tracking-wider mb-1">
-                    Mobile / WhatsApp Number *
+                    {t.tourModal.phone}
                   </label>
                   <div className="relative">
                     <Phone className="w-4 h-4 absolute left-3.5 top-3.5 text-[#5E6D7A]" />
@@ -198,7 +200,7 @@ export const TourBookingModal: React.FC<TourBookingModalProps> = ({
                       type="tel"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
-                      placeholder="e.g. 7448981592"
+                      placeholder="744 898 1592"
                       className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[#0750B8] transition-all"
                     />
                   </div>
@@ -209,7 +211,7 @@ export const TourBookingModal: React.FC<TourBookingModalProps> = ({
 
                 <div>
                   <label className="block text-xs font-bold text-[#121D28] uppercase tracking-wider mb-1">
-                    Email ID (Optional)
+                    {t.tourModal.email}
                   </label>
                   <div className="relative">
                     <Mail className="w-4 h-4 absolute left-3.5 top-3.5 text-[#5E6D7A]" />
@@ -217,7 +219,7 @@ export const TourBookingModal: React.FC<TourBookingModalProps> = ({
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      placeholder="e.g. parent@gmail.com"
+                      placeholder="parent@gmail.com"
                       className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[#0750B8] transition-all"
                     />
                   </div>
@@ -227,26 +229,26 @@ export const TourBookingModal: React.FC<TourBookingModalProps> = ({
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div>
                   <label className="block text-xs font-bold text-[#121D28] uppercase tracking-wider mb-1">
-                    Select Class / Course
+                    {t.tourModal.programSelect}
                   </label>
                   <select
                     value={program}
                     onChange={(e) => setProgram(e.target.value)}
                     className="w-full px-3 py-2.5 rounded-xl border border-gray-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[#0750B8]"
                   >
-                    {PROGRAMS.map((p) => (
-                      <option key={p.id} value={p.id}>
-                        {p.name} ({p.ageRange})
-                      </option>
-                    ))}
-                    <option value="tuition-all">Tuition (LKG - 12th Std)</option>
-                    <option value="engg-maths">Engineering Maths</option>
+                    <option value="day-care">{language === "ta" ? "டே கேர் (Day Care)" : "Day Care (1.5 - 6 Yrs)"}</option>
+                    <option value="play-group">{language === "ta" ? "ப்ளே குரூப் (Play Group)" : "Play Group (2 - 3 Yrs)"}</option>
+                    <option value="pre-kg">{language === "ta" ? "ப்ரீ-கேஜி (Pre-KG)" : "Pre-KG (3 - 4 Yrs)"}</option>
+                    <option value="lkg">{language === "ta" ? "எல்கேஜி (LKG Montessori)" : "LKG (4 - 5 Yrs)"}</option>
+                    <option value="ukg">{language === "ta" ? "யூகேஜி (UKG Preparatory)" : "UKG (5 - 6 Yrs)"}</option>
+                    <option value="tuition-all">{language === "ta" ? "1-12 டியூஷன் (All Boards)" : "Tuition (LKG - 12th Std)"}</option>
+                    <option value="engg-maths">{language === "ta" ? "பொறியியல் கணிதம்" : "Engineering Maths"}</option>
                   </select>
                 </div>
 
                 <div>
                   <label className="block text-xs font-bold text-[#121D28] uppercase tracking-wider mb-1">
-                    Visit Date *
+                    {t.tourModal.visitDate}
                   </label>
                   <div className="relative">
                     <Calendar className="w-4 h-4 absolute left-3.5 top-3.5 text-[#5E6D7A]" />
@@ -265,7 +267,7 @@ export const TourBookingModal: React.FC<TourBookingModalProps> = ({
 
                 <div>
                   <label className="block text-xs font-bold text-[#121D28] uppercase tracking-wider mb-1">
-                    Preferred Time
+                    {t.tourModal.preferredTime}
                   </label>
                   <div className="relative">
                     <Clock className="w-4 h-4 absolute left-3.5 top-3.5 text-[#5E6D7A]" />
@@ -274,11 +276,11 @@ export const TourBookingModal: React.FC<TourBookingModalProps> = ({
                       onChange={(e) => setPreferredTime(e.target.value)}
                       className="w-full pl-10 pr-3 py-2.5 rounded-xl border border-gray-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[#0750B8]"
                     >
-                      <option value="09:00 AM">09:00 AM (Morning)</option>
-                      <option value="10:30 AM">10:30 AM (Morning)</option>
-                      <option value="12:00 PM">12:00 PM (Noon)</option>
-                      <option value="04:30 PM">04:30 PM (Evening)</option>
-                      <option value="06:00 PM">06:00 PM (Evening)</option>
+                      <option value="09:00 AM">09:00 AM ({language === "ta" ? "காலை" : "Morning"})</option>
+                      <option value="10:30 AM">10:30 AM ({language === "ta" ? "காலை" : "Morning"})</option>
+                      <option value="12:00 PM">12:00 PM ({language === "ta" ? "மதியம்" : "Noon"})</option>
+                      <option value="04:30 PM">04:30 PM ({language === "ta" ? "மாலை" : "Evening"})</option>
+                      <option value="06:00 PM">06:00 PM ({language === "ta" ? "மாலை" : "Evening"})</option>
                     </select>
                   </div>
                 </div>
@@ -286,13 +288,13 @@ export const TourBookingModal: React.FC<TourBookingModalProps> = ({
 
               <div>
                 <label className="block text-xs font-bold text-[#121D28] uppercase tracking-wider mb-1">
-                  Questions / Message (Optional)
+                  {t.tourModal.notes}
                 </label>
                 <textarea
                   rows={2}
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
-                  placeholder="Ask about admission, school timings, fees, or tuition details..."
+                  placeholder={t.tourModal.notesPlaceholder}
                   className="w-full p-3 rounded-xl border border-gray-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[#0750B8]"
                 />
               </div>
@@ -307,7 +309,7 @@ export const TourBookingModal: React.FC<TourBookingModalProps> = ({
                     <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
                   ) : (
                     <>
-                      <span>Book Visit</span>
+                      <span>{t.tourModal.bookBtn}</span>
                       <Sparkles className="w-4 h-4 text-amber-300 group-hover:scale-125 transition-transform" />
                     </>
                   )}
@@ -319,7 +321,7 @@ export const TourBookingModal: React.FC<TourBookingModalProps> = ({
                   className="w-full sm:w-auto px-5 py-3.5 rounded-xl bg-[#EAF8EF] text-[#159447] border border-[#159447]/30 hover:bg-[#159447] hover:text-white transition-all text-sm font-semibold flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <MessageSquare className="w-4 h-4" />
-                  <span>Chat on WhatsApp</span>
+                  <span>{t.tourModal.whatsappBtn}</span>
                 </button>
               </div>
 
@@ -333,4 +335,3 @@ export const TourBookingModal: React.FC<TourBookingModalProps> = ({
     </div>
   );
 };
-

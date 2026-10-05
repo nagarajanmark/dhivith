@@ -25,15 +25,17 @@ import { TeamMembersSection } from "@/components/about/TeamMembersSection";
 import { SchoolVisitCTA } from "@/components/cta/SchoolVisitCTA";
 import { TourBookingModal } from "@/components/modals/TourBookingModal";
 import { SCHOOL_INFO } from "@/data/schoolData";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function AboutPage() {
   const [isTourModalOpen, setIsTourModalOpen] = useState(false);
+  const { language, t } = useLanguage();
 
   return (
     <main className="min-h-screen flex flex-col bg-white text-[#121D28]">
       <Navbar onOpenTourModal={() => setIsTourModalOpen(true)} />
 
-      {/* 1. HERO / ABOUT BANNER SECTION WITH about-bg.webp (Clean, Reduced Height, Direct Canvas) */}
+      {/* 1. HERO / ABOUT BANNER SECTION WITH about-bg.webp */}
       <section className="relative pt-28 sm:pt-32 pb-12 sm:pb-16 overflow-hidden text-white min-h-[380px] sm:min-h-[420px] flex items-center bg-[#0750B8]">
         {/* Full-bleed background image */}
         <div
@@ -49,15 +51,15 @@ export default function AboutPage() {
           <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
             <nav className="inline-flex items-center gap-2 text-xs font-semibold text-white/90 bg-white/15 px-3.5 py-1.5 rounded-full border border-white/20 backdrop-blur-md shadow-xs">
               <Link href="/" className="hover:text-amber-300 transition-colors">
-                Home
+                {t.nav.home}
               </Link>
               <ChevronRight className="w-3.5 h-3.5 text-white/60" />
-              <span className="text-amber-300 font-bold">About Us</span>
+              <span className="text-amber-300 font-bold">{t.nav.about}</span>
             </nav>
 
             <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/20 text-white border border-white/25 backdrop-blur-md shadow-xs">
               <Sparkles className="w-3.5 h-3.5 text-amber-300" />
-              <span>Heritage & Philosophy</span>
+              <span>{language === "ta" ? "பாரம்பரியம் & தத்துவம்" : "Heritage & Philosophy"}</span>
             </span>
           </div>
 
@@ -65,14 +67,25 @@ export default function AboutPage() {
             {/* Left Column: Bold Headline & Story */}
             <div className="lg:col-span-7 space-y-4 text-left">
               <h1 className="font-display font-black text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-[1.15] drop-shadow-md">
-                Nurturing Curious Minds in{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-yellow-200 to-amber-400">
-                  Kinathukadavu
-                </span>
+                {language === "ta" ? (
+                  <>
+                    இளம் தளிர்களை செதுக்கும்{" "}
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-yellow-200 to-amber-400">
+                      மாண்டிசோரி கல்விச் சோலை
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    Nurturing Curious Minds in{" "}
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-yellow-200 to-amber-400">
+                      Kinathukadavu
+                    </span>
+                  </>
+                )}
               </h1>
 
               <p className="text-sm sm:text-base text-white/90 leading-relaxed font-normal max-w-xl drop-shadow-xs">
-                Founded on <strong>July 2, 2024</strong>, DHIVITH EDU CARE blends authentic Montessori early-learning with individualized coaching to inspire confidence, intellect, and lifelong success.
+                {t.about.bannerDesc}
               </p>
 
               {/* Interactive CTAs */}
@@ -82,7 +95,7 @@ export default function AboutPage() {
                   className="px-6 sm:px-7 py-3 sm:py-3.5 rounded-2xl bg-white text-[#0750B8] hover:bg-amber-300 hover:text-[#121D28] font-bold text-xs sm:text-sm shadow-xl hover:shadow-2xl hover:scale-105 active:scale-95 transition-all flex items-center gap-2 cursor-pointer"
                 >
                   <Calendar className="w-4 h-4 text-[#F36B12]" />
-                  <span>Book a Campus Tour</span>
+                  <span>{t.common.scheduleVisit}</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
 
@@ -91,7 +104,7 @@ export default function AboutPage() {
                   className="px-5 sm:px-6 py-3 sm:py-3.5 rounded-2xl bg-white/15 hover:bg-white/25 text-white font-bold text-xs sm:text-sm border border-white/30 backdrop-blur-md shadow-lg transition-all flex items-center gap-2 cursor-pointer"
                 >
                   <Phone className="w-4 h-4 text-amber-300" />
-                  <span>Call {SCHOOL_INFO.phone}</span>
+                  <span>{t.common.callNow}: {SCHOOL_INFO.phone}</span>
                 </a>
               </div>
             </div>
@@ -104,16 +117,16 @@ export default function AboutPage() {
                     100%
                   </div>
                   <div className="text-[11px] sm:text-xs font-semibold text-white/90">
-                    Montessori Method
+                    {language === "ta" ? "மாண்டிசோரி முறை" : "Montessori Method"}
                   </div>
                 </div>
 
                 <div className="bg-white/15 hover:bg-white/20 backdrop-blur-md rounded-2xl p-4 sm:p-5 border border-white/20 text-center shadow-md transition-all hover:scale-102">
                   <div className="font-display font-black text-2xl sm:text-3xl text-emerald-300 mb-0.5">
-                    1:10
+                    1:6
                   </div>
                   <div className="text-[11px] sm:text-xs font-semibold text-white/90">
-                    Teacher-Student Ratio
+                    {language === "ta" ? "தனிநபர் வழிகாட்டல்" : "Teacher-Student Ratio"}
                   </div>
                 </div>
 
@@ -122,7 +135,7 @@ export default function AboutPage() {
                     5+
                   </div>
                   <div className="text-[11px] sm:text-xs font-semibold text-white/90">
-                    Foundational Stages
+                    {language === "ta" ? "கல்வி நிலைகள்" : "Foundational Stages"}
                   </div>
                 </div>
 
@@ -131,7 +144,7 @@ export default function AboutPage() {
                     LKG–12
                   </div>
                   <div className="text-[11px] sm:text-xs font-semibold text-white/90">
-                    Tuitions & Engg Maths
+                    {language === "ta" ? "அனைத்து டியூஷன்கள்" : "Tuitions & Engg Maths"}
                   </div>
                 </div>
               </div>
@@ -143,18 +156,20 @@ export default function AboutPage() {
                     <Award className="w-3.5 h-3.5" />
                   </div>
                   <div>
-                    <div className="font-bold text-white text-xs">Mrs. S Tharani</div>
-                    <div className="text-[10px] text-white/75">M.Sc., PGDM, PGMTTC • Founder</div>
+                    <div className="font-bold text-white text-xs">{t.about.founderName}</div>
+                    <div className="text-[10px] text-white/75">{t.about.founderQual} • {t.about.founderTitle}</div>
                   </div>
                 </div>
                 <span className="text-[10px] font-bold text-emerald-300 bg-emerald-500/20 px-2 py-0.5 rounded-full border border-emerald-400/30">
-                  Certified
+                  {language === "ta" ? "சான்றிதழ் பெற்றவர்" : "Certified"}
                 </span>
               </div>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Founder & Leadership Spotlight Section - Seamless Open Premium Layout */}
 
       {/* Founder & Leadership Spotlight Section - Seamless Open Premium Layout */}
       <section className="py-20 lg:py-28 bg-white relative overflow-hidden border-b border-gray-100">
@@ -206,19 +221,21 @@ export default function AboutPage() {
             <div className="lg:col-span-7 space-y-6 text-left">
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#EBF3FF] text-[#0750B8] text-xs font-bold uppercase tracking-wider border border-[#0750B8]/15 shadow-xs">
                 <GraduationCap className="w-4 h-4 text-[#F36B12]" />
-                <span>Director&apos;s Message</span>
+                <span>{language === "ta" ? "இயக்குநரின் செய்தி" : "Director's Message"}</span>
               </div>
 
               <h2 className="font-display font-black text-3xl sm:text-4xl lg:text-5xl text-[#0F172A] tracking-tight leading-tight">
-                &ldquo;Every Child Has Limitless Inborn Potential.&rdquo;
+                {language === "ta"
+                  ? "“ஒவ்வொரு குழந்தையிடமும் எல்லையற்ற உள்ளார்ந்த திறன் உள்ளது.”"
+                  : "“Every Child Has Limitless Inborn Potential.”"}
               </h2>
 
               <p className="text-base sm:text-lg text-gray-600 leading-relaxed font-normal">
-                Welcome to <strong>DHIVITH EDU CARE</strong>. As an educator certified in Montessori Teacher Training (PGMTTC) and post-graduate management, my lifelong conviction is that true education does not force children into a rigid mold—it awakens their spontaneous joy of discovery.
+                {t.about.directorMessage}
               </p>
 
-              <p className="text-sm sm:text-base text-gray-600 leading-relaxed font-normal">
-                Since our inception on <strong>July 2, 2024</strong> in Kinathukadavu, Coimbatore, we have created an environment where toddlers, preschoolers, and school students receive genuine individual attention, self-correcting tactile learning tools, and stress-free academic coaching.
+              <p className="text-sm sm:text-base text-gray-600 leading-relaxed font-normal italic border-l-4 border-amber-400 pl-4 py-1 bg-amber-50/50 rounded-r-xl">
+                {t.about.founderQuote}
               </p>
 
               {/* Ultra-Premium 4 Feature Cards */}
@@ -230,10 +247,10 @@ export default function AboutPage() {
                   </div>
                   <div>
                     <h4 className="font-display font-bold text-sm text-[#0F172A] group-hover:text-[#159447] transition-colors">
-                      Student-Centred Care
+                      {t.about.pillar1Title}
                     </h4>
                     <p className="text-xs text-gray-500 mt-0.5 leading-relaxed font-normal">
-                      Individual pace & didactic tactile learning
+                      {t.about.pillar1Desc}
                     </p>
                   </div>
                 </div>
@@ -245,10 +262,10 @@ export default function AboutPage() {
                   </div>
                   <div>
                     <h4 className="font-display font-bold text-sm text-[#0F172A] group-hover:text-[#0750B8] transition-colors">
-                      LKG to Grade 12 Tuitions
+                      {t.about.pillar2Title}
                     </h4>
                     <p className="text-xs text-gray-500 mt-0.5 leading-relaxed font-normal">
-                      CBSE, ICSE & State Board concept clarity
+                      {t.about.pillar2Desc}
                     </p>
                   </div>
                 </div>
@@ -260,10 +277,10 @@ export default function AboutPage() {
                   </div>
                   <div>
                     <h4 className="font-display font-bold text-sm text-[#0F172A] group-hover:text-[#F36B12] transition-colors">
-                      Engineering Mathematics
+                      {t.about.pillar3Title}
                     </h4>
                     <p className="text-xs text-gray-500 mt-0.5 leading-relaxed font-normal">
-                      Collegiate calculus, matrices & analysis
+                      {t.about.pillar3Desc}
                     </p>
                   </div>
                 </div>
@@ -275,10 +292,10 @@ export default function AboutPage() {
                   </div>
                   <div>
                     <h4 className="font-display font-bold text-sm text-[#0F172A] group-hover:text-[#9A6700] transition-colors">
-                      Stress-Free Environment
+                      {t.about.pillar4Title}
                     </h4>
                     <p className="text-xs text-gray-500 mt-0.5 leading-relaxed font-normal">
-                      Natural daylight studios & biometric safety
+                      {t.about.pillar4Desc}
                     </p>
                   </div>
                 </div>
@@ -291,7 +308,7 @@ export default function AboutPage() {
                   className="px-7 py-3.5 rounded-2xl bg-[#0750B8] hover:bg-[#063f91] text-white font-bold text-xs sm:text-sm shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all flex items-center gap-2.5 cursor-pointer"
                 >
                   <Calendar className="w-4 h-4 text-amber-300" />
-                  <span>Schedule Meeting with Director</span>
+                  <span>{t.common.scheduleVisit}</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
 
@@ -300,7 +317,7 @@ export default function AboutPage() {
                   className="px-6 py-3.5 rounded-2xl bg-white hover:bg-gray-50 text-gray-800 font-bold text-xs sm:text-sm border border-gray-200/90 shadow-sm hover:border-[#0750B8]/40 transition-all flex items-center gap-2.5 cursor-pointer"
                 >
                   <Phone className="w-4 h-4 text-[#0750B8]" />
-                  <span>Call {SCHOOL_INFO.phone}</span>
+                  <span>{t.common.callNow}: {SCHOOL_INFO.phone}</span>
                 </a>
               </div>
             </div>
@@ -318,14 +335,16 @@ export default function AboutPage() {
                   <Compass className="w-6 h-6" />
                 </div>
                 <h3 className="font-display font-bold text-2xl text-[#121D28] mb-3">
-                  Our Vision
+                  {language === "ta" ? "எங்கள் தொலைநோக்கு (Vision)" : "Our Vision"}
                 </h3>
                 <p className="text-sm text-[#5E6D7A] leading-relaxed">
-                  &ldquo;Better Learning. Better Tomorrow. Brighter Future.&rdquo; To be Coimbatore&apos;s leading educational community where every young mind is empowered with self-reliance, academic poise, and ethical empathy.
+                  {language === "ta"
+                    ? "“சிறந்த கற்றல். சிறந்த நாளை. ஒளிமயமான எதிர்காலம்.” ஒவ்வொரு குழந்தையிடமும் தன்னம்பிக்கை, கல்வியறிவு மற்றும் நற்பண்புகளை வளர்த்தெடுப்பதே எங்கள் தொலைநோக்கு."
+                    : "“Better Learning. Better Tomorrow. Brighter Future.” To be Coimbatore's leading educational community where every young mind is empowered with self-reliance, academic poise, and ethical empathy."}
                 </p>
               </div>
               <div className="mt-6 pt-4 border-t border-gray-100 text-xs font-bold text-[#0750B8]">
-                • Lifelong Love for Learning
+                • {language === "ta" ? "வாழ்நாள் கற்றல் ஆர்வம்" : "Lifelong Love for Learning"}
               </div>
             </div>
 
@@ -335,14 +354,16 @@ export default function AboutPage() {
                   <Target className="w-6 h-6" />
                 </div>
                 <h3 className="font-display font-bold text-2xl text-[#121D28] mb-3">
-                  Our Mission
+                  {language === "ta" ? "எங்கள் நோக்கம் (Mission)" : "Our Mission"}
                 </h3>
                 <p className="text-sm text-[#5E6D7A] leading-relaxed">
-                  &ldquo;Every Child. Every Opportunity. Every Time.&rdquo; Providing authentic prepared environments with hands-on didactic apparatus, certified guidance, and stress-free academic coaching.
+                  {language === "ta"
+                    ? "“ஒவ்வொரு குழந்தைக்கும். ஒவ்வொரு வாய்ப்பும். ஒவ்வொரு முறையும்.” உண்மையான மாண்டிசோரி சூழலில், சான்றிதழ் பெற்ற ஆசிரியர்களின் வழிகாட்டலில் மன அழுத்தமில்லா கல்வியை வழங்குதல்."
+                    : "“Every Child. Every Opportunity. Every Time.” Providing authentic prepared environments with hands-on didactic apparatus, certified guidance, and stress-free academic coaching."}
                 </p>
               </div>
               <div className="mt-6 pt-4 border-t border-gray-100 text-xs font-bold text-[#159447]">
-                • Child-Centered Excellence
+                • {language === "ta" ? "குழந்தை மையக் கல்வி சிறப்பு" : "Child-Centered Excellence"}
               </div>
             </div>
 
@@ -352,14 +373,16 @@ export default function AboutPage() {
                   <Sparkles className="w-6 h-6" />
                 </div>
                 <h3 className="font-display font-bold text-2xl text-[#121D28] mb-3">
-                  Our Motto
+                  {language === "ta" ? "எங்கள் தாரக மந்திரம் (Motto)" : "Our Motto"}
                 </h3>
                 <p className="text-sm text-[#5E6D7A] leading-relaxed">
-                  &ldquo;Success Begins Here!&rdquo; Fostering emotional resilience, mathematical confidence, language fluency, and creative imagination in every child.
+                  {language === "ta"
+                    ? "“வெற்றி இங்கே தொடங்குகிறது!” கணித தன்னம்பிக்கை, மொழி புலமை மற்றும் ஆக்கப்பூர்வமான கற்பனைத் திறனை ஒவ்வொரு குழந்தையிடமும் உருவாக்குதல்."
+                    : "“Success Begins Here!” Fostering emotional resilience, mathematical confidence, language fluency, and creative imagination in every child."}
                 </p>
               </div>
               <div className="mt-6 pt-4 border-t border-gray-100 text-xs font-bold text-[#F36B12]">
-                • Individual Attention Guaranteed
+                • {language === "ta" ? "100% தனிநபர் கவனம்" : "Individual Attention Guaranteed"}
               </div>
             </div>
           </div>

@@ -2,9 +2,10 @@
 import React, { useState } from "react";
 import { ChevronDown, Sparkles, HelpCircle } from "lucide-react";
 import { SectionHeading } from "../ui/SectionHeading";
-import { FAQS } from "@/data/schoolData";
+import { useLanguage } from "@/context/LanguageContext";
 
 export const FaqSection: React.FC = () => {
+  const { t } = useLanguage();
   const [openIdx, setOpenIdx] = useState<number | null>(0);
 
   const toggleAccordion = (idx: number) => {
@@ -16,17 +17,17 @@ export const FaqSection: React.FC = () => {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
         <SectionHeading
-          badgeText="Common Inquiries"
+          badgeText={t.faqs.badge}
           badgeVariant="blue"
-          title="Frequently Asked Questions"
-          subtitle="Everything you need to know about Montessori education, our daily routines, and the enrollment experience at Dhivith Edu Care."
+          title={t.faqs.title}
+          subtitle={t.faqs.subtitle}
           align="center"
           className="mb-14"
         />
 
         {/* Accordion List */}
         <div className="space-y-4">
-          {FAQS.map((faq, idx) => {
+          {t.faqs.items.map((faq, idx) => {
             const isOpen = openIdx === idx;
             return (
               <div
@@ -35,7 +36,7 @@ export const FaqSection: React.FC = () => {
               >
                 <button
                   onClick={() => toggleAccordion(idx)}
-                  className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 focus:outline-none"
+                  className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 focus:outline-none cursor-pointer"
                   aria-expanded={isOpen}
                 >
                   <div className="flex items-center gap-3">

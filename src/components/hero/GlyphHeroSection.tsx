@@ -13,6 +13,7 @@ import {
   MapPin,
 } from "lucide-react";
 import { SCHOOL_INFO } from "@/data/schoolData";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface GlyphHeroSectionProps {
   onOpenTourModal: () => void;
@@ -20,6 +21,7 @@ interface GlyphHeroSectionProps {
 
 export const GlyphHeroSection: React.FC<GlyphHeroSectionProps> = ({ onOpenTourModal }) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const { language, t } = useLanguage();
 
   // Link scroll progress across the hero container
   const { scrollYProgress } = useScroll({
@@ -76,7 +78,7 @@ export const GlyphHeroSection: React.FC<GlyphHeroSectionProps> = ({ onOpenTourMo
           <div className="absolute inset-0 bg-radial-[at_center] from-black/40 via-black/60 to-black/85 pointer-events-none" />
         </motion.div>
 
-        {/* 2. Main Hero Content Composition - 100% matching screenshot */}
+        {/* 2. Main Hero Content Composition */}
         <div className="relative z-10 max-w-6xl mx-auto w-full flex flex-col items-center text-center space-y-4 sm:space-y-6 my-auto">
           {/* Top Badges */}
           <motion.div
@@ -86,18 +88,18 @@ export const GlyphHeroSection: React.FC<GlyphHeroSectionProps> = ({ onOpenTourMo
             <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-[#1e293b]/80 border border-white/20 text-[11px] sm:text-xs text-white shadow-lg backdrop-blur-md">
               <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#10b981] animate-pulse" />
               <span className="font-extrabold tracking-wider uppercase">
-                DHIVITH EDU CARE
+                {language === "ta" ? "திவித் எடு கேர்" : "DHIVITH EDU CARE"}
               </span>
               <span className="text-white/40">|</span>
               <span className="text-emerald-400 font-semibold flex items-center gap-1">
                 <MapPin className="w-3 h-3 text-emerald-400" />
-                Kinathukadavu
+                {language === "ta" ? "கிணத்துக்கடவு" : "Kinathukadavu"}
               </span>
             </div>
 
             <div className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#1e3a8a]/70 border border-blue-400/30 text-xs font-semibold text-blue-200 shadow-lg backdrop-blur-md">
               <Award className="w-3.5 h-3.5 text-amber-400" />
-              <span>Montessori Certified</span>
+              <span>{language === "ta" ? "மாண்டிசோரி அங்கீகாரம்" : "Montessori Certified"}</span>
             </div>
           </motion.div>
 
@@ -121,10 +123,10 @@ export const GlyphHeroSection: React.FC<GlyphHeroSectionProps> = ({ onOpenTourMo
             className="space-y-1.5 sm:space-y-2 max-w-2xl mx-auto px-3"
           >
             <h2 className="font-display font-extrabold text-xl sm:text-3xl md:text-4xl text-white tracking-tight leading-tight drop-shadow-lg">
-              Where Joyful Learning Begins
+              {language === "ta" ? "மகிழ்ச்சியான கற்றல் தொடங்கும் இடம்" : "Where Joyful Learning Begins"}
             </h2>
             <p className="text-xs sm:text-sm md:text-base text-white/90 leading-relaxed drop-shadow-md">
-              Montessori Pre-School (Day Care to UKG) & All Subject Tuitions (Grade 1–12) in Kinathukadavu.
+              {t.hero.description}
             </p>
           </motion.div>
 
@@ -140,7 +142,7 @@ export const GlyphHeroSection: React.FC<GlyphHeroSectionProps> = ({ onOpenTourMo
               <div className="p-1 rounded-md bg-[#0284c7]">
                 <Calendar className="w-3.5 h-3.5 text-white" />
               </div>
-              <span>Book School Visit</span>
+              <span>{t.common.scheduleVisit}</span>
               <ArrowRight className="w-4 h-4" />
             </button>
 
@@ -149,7 +151,7 @@ export const GlyphHeroSection: React.FC<GlyphHeroSectionProps> = ({ onOpenTourMo
                 href="/classes"
                 className="flex-1 sm:flex-initial px-5 py-3.5 rounded-xl bg-[#334155]/80 hover:bg-[#475569]/90 border border-white/20 text-white font-semibold text-xs sm:text-sm backdrop-blur-md transition-all flex items-center justify-center gap-1.5 shadow-lg hover:scale-105"
               >
-                <span>Our Classes</span>
+                <span>{t.nav.classes}</span>
                 <ChevronRight className="w-4 h-4 text-white/70" />
               </Link>
 
@@ -170,10 +172,10 @@ export const GlyphHeroSection: React.FC<GlyphHeroSectionProps> = ({ onOpenTourMo
           >
             <div className="text-center p-2 rounded-xl bg-white/5 border border-white/10 sm:border-transparent sm:bg-transparent">
               <div className="font-display font-black text-xl sm:text-3xl text-[#fbbf24] drop-shadow-md">
-                1:6
+                {t.hero.stat1Label}
               </div>
               <div className="text-[10px] sm:text-xs text-white/80 font-medium leading-tight mt-0.5">
-                Personal Attention
+                {t.hero.stat1Sub}
               </div>
             </div>
 
@@ -182,16 +184,16 @@ export const GlyphHeroSection: React.FC<GlyphHeroSectionProps> = ({ onOpenTourMo
                 PGMTTC
               </div>
               <div className="text-[10px] sm:text-xs text-white/80 font-medium leading-tight mt-0.5">
-                Certified Teachers
+                {language === "ta" ? "சான்றிதழ் ஆசிரியர்கள்" : "Certified Teachers"}
               </div>
             </div>
 
             <div className="text-center p-2 rounded-xl bg-white/5 border border-white/10 sm:border-transparent sm:bg-transparent">
               <div className="font-display font-black text-xl sm:text-3xl text-[#60a5fa] drop-shadow-md">
-                1 – 12th
+                {t.hero.stat3Label}
               </div>
               <div className="text-[10px] sm:text-xs text-white/80 font-medium leading-tight mt-0.5">
-                All Tuitions
+                {t.hero.stat3Sub}
               </div>
             </div>
           </motion.div>

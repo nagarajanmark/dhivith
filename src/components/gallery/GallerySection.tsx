@@ -5,12 +5,21 @@ import { Maximize2, Sparkles } from "lucide-react";
 import { SectionHeading } from "../ui/SectionHeading";
 import { GALLERY_ITEMS, GalleryItem } from "@/data/schoolData";
 import { GalleryLightboxModal } from "../modals/GalleryLightboxModal";
+import { useLanguage } from "@/context/LanguageContext";
 
 export const GallerySection: React.FC = () => {
+  const { t, language } = useLanguage();
   const [activeCategory, setActiveCategory] = useState<string>("All");
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
-  const categories = ["All", "Classroom", "Sensorial", "Outdoor", "Practical Life", "Creative"];
+  const categories = [
+    { key: "All", label: t.gallery.catAll },
+    { key: "Classroom", label: t.gallery.catClassroom },
+    { key: "Sensorial", label: t.gallery.catSensorial },
+    { key: "Outdoor", label: t.gallery.catOutdoor },
+    { key: "Practical Life", label: t.gallery.catPractical },
+    { key: "Creative", label: t.gallery.catCreative },
+  ];
 
   const filteredItems =
     activeCategory === "All"
@@ -39,10 +48,10 @@ export const GallerySection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
         <SectionHeading
-          badgeText="Visual Portfolio"
+          badgeText={t.gallery.badge}
           badgeVariant="green"
-          title="Moments of Wonder & Discovery"
-          subtitle="Glimpse into our daily classroom life—where learning is an active, tactile adventure of joyful independence."
+          title={t.gallery.title}
+          subtitle={t.gallery.desc}
           align="center"
           className="mb-12"
         />
@@ -50,18 +59,18 @@ export const GallerySection: React.FC = () => {
         {/* Category Filters */}
         <div className="flex items-center justify-center flex-wrap gap-2 sm:gap-3 mb-12">
           {categories.map((cat) => {
-            const isSelected = activeCategory === cat;
+            const isSelected = activeCategory === cat.key;
             return (
               <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 ${
+                key={cat.key}
+                onClick={() => setActiveCategory(cat.key)}
+                className={`px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 cursor-pointer ${
                   isSelected
                     ? "bg-[#0750B8] text-white shadow-md scale-105"
                     : "bg-gray-100 text-[#2A343D] hover:bg-[#EBF3FF] hover:text-[#0750B8] border border-gray-200/80"
                 }`}
               >
-                {cat}
+                {cat.label}
               </button>
             );
           })}
@@ -87,7 +96,7 @@ export const GallerySection: React.FC = () => {
               {/* Top Category Badge */}
               <div className="absolute top-4 left-4">
                 <span className="px-3 py-1 rounded-full text-[11px] font-extrabold bg-white/90 text-[#0750B8] shadow-sm backdrop-blur-md">
-                  {item.category}
+                  {categories.find((c) => c.key === item.category)?.label || item.category}
                 </span>
               </div>
 

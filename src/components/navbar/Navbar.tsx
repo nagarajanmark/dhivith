@@ -2,9 +2,10 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { Menu, X, Calendar, ArrowRight, Phone } from "lucide-react";
+import { Menu, X, Calendar, ArrowRight, Phone, Globe } from "lucide-react";
 import { Logo } from "../ui/Logo";
 import { SCHOOL_INFO } from "@/data/schoolData";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface NavbarProps {
   onOpenTourModal?: () => void;
@@ -15,6 +16,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTourModal }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
+  const { language, setLanguage, t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,11 +32,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTourModal }) => {
   }, []);
 
   const navLinks = [
-    { label: "Home", href: "/" },
-    { label: "Classes", href: "/classes" },
-    { label: "Gallery", href: "/gallery" },
-    { label: "About", href: "/about" },
-    { label: "Contact", href: "/contact" },
+    { label: t.nav.home, href: "/" },
+    { label: t.nav.classes, href: "/classes" },
+    { label: t.nav.gallery, href: "/gallery" },
+    { label: t.nav.about, href: "/about" },
+    { label: t.nav.contact, href: "/contact" },
   ];
 
   const handleBookVisit = () => {
@@ -55,7 +57,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTourModal }) => {
         {/* Compact Logo */}
         <Logo size="sm" />
 
-        {/* Short & Clean Desktop Navigation Links with Frosted Glass Hover & Active States */}
+        {/* Short & Clean Desktop Navigation Links */}
         <nav className="hidden lg:flex items-center gap-1">
           {navLinks.map((link) => {
             const isActive =
@@ -78,21 +80,47 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTourModal }) => {
           })}
         </nav>
 
-        {/* Sleek Glass CTA Button */}
-        <div className="flex items-center gap-2">
+        {/* Language Switcher + Book Visit CTA */}
+        <div className="flex items-center gap-2 sm:gap-2.5">
+          {/* Language Switcher Toggle Pill */}
+          <div className="inline-flex items-center p-0.5 rounded-full bg-white/80 border border-gray-200/80 shadow-xs backdrop-blur-md">
+            <button
+              onClick={() => setLanguage("en")}
+              className={`px-2.5 py-1 rounded-full text-[11px] font-bold transition-all cursor-pointer ${
+                language === "en"
+                  ? "bg-[#0750B8] text-white shadow-xs"
+                  : "text-gray-600 hover:text-[#0750B8]"
+              }`}
+              title="Switch to English"
+            >
+              EN
+            </button>
+            <button
+              onClick={() => setLanguage("ta")}
+              className={`px-2.5 py-1 rounded-full text-[11px] font-bold transition-all cursor-pointer ${
+                language === "ta"
+                  ? "bg-[#159447] text-white shadow-xs"
+                  : "text-gray-600 hover:text-[#159447]"
+              }`}
+              title="தமிழுக்கு மாற்றுக"
+            >
+              தமிழ்
+            </button>
+          </div>
+
           <button
             onClick={handleBookVisit}
-            className="hidden sm:inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-full bg-gradient-to-r from-[#0750B8] to-[#0962dc] text-white text-xs font-bold shadow-md hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300 group border border-white/20"
+            className="hidden sm:inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-full bg-gradient-to-r from-[#0750B8] to-[#0962dc] text-white text-xs font-bold shadow-md hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300 group border border-white/20 cursor-pointer"
           >
             <Calendar className="w-3.5 h-3.5 text-amber-300" />
-            <span>Book Visit</span>
+            <span>{t.nav.bookTour}</span>
             <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
           </button>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 rounded-full bg-white/70 hover:bg-[#EBF3FF] text-[#121D28] hover:text-[#0750B8] transition-colors focus:outline-none border border-white/80 shadow-xs"
+            className="lg:hidden p-2 rounded-full bg-white/70 hover:bg-[#EBF3FF] text-[#121D28] hover:text-[#0750B8] transition-colors focus:outline-none border border-white/80 shadow-xs cursor-pointer"
             aria-label="Toggle navigation menu"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -123,8 +151,40 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTourModal }) => {
                 </button>
               </div>
 
+              {/* Language Switcher inside Mobile Drawer */}
+              <div className="pt-4 pb-2">
+                <div className="flex items-center justify-between p-2 rounded-2xl bg-gray-100/90 border border-gray-200">
+                  <div className="flex items-center gap-2 pl-2 text-xs font-bold text-gray-700">
+                    <Globe className="w-4 h-4 text-[#0750B8]" />
+                    <span>Language / மொழி</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <button
+                      onClick={() => setLanguage("en")}
+                      className={`px-3 py-1 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                        language === "en"
+                          ? "bg-[#0750B8] text-white shadow-xs"
+                          : "text-gray-600 hover:text-black"
+                      }`}
+                    >
+                      EN
+                    </button>
+                    <button
+                      onClick={() => setLanguage("ta")}
+                      className={`px-3 py-1 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                        language === "ta"
+                          ? "bg-[#159447] text-white shadow-xs"
+                          : "text-gray-600 hover:text-black"
+                      }`}
+                    >
+                      தமிழ்
+                    </button>
+                  </div>
+                </div>
+              </div>
+
               {/* Navigation Links */}
-              <div className="py-5 flex flex-col space-y-1.5">
+              <div className="py-3 flex flex-col space-y-1.5">
                 {navLinks.map((link) => {
                   const isActive =
                     link.href === "/"
@@ -156,10 +216,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTourModal }) => {
                   setMobileMenuOpen(false);
                   handleBookVisit();
                 }}
-                className="w-full py-3 rounded-full bg-[#0750B8] text-white font-bold text-xs shadow-md flex items-center justify-center gap-2"
+                className="w-full py-3 rounded-full bg-[#0750B8] text-white font-bold text-xs shadow-md flex items-center justify-center gap-2 cursor-pointer"
               >
                 <Calendar className="w-3.5 h-3.5 text-amber-300" />
-                <span>Book a Campus Visit</span>
+                <span>{t.nav.bookTour}</span>
               </button>
 
               <a

@@ -26,10 +26,13 @@ import {
   Check,
 } from "lucide-react";
 
+import { useLanguage } from "@/context/LanguageContext";
+
 export default function ClassesPage() {
   const [isTourModalOpen, setIsTourModalOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<"all" | "preschool" | "tuition">("all");
   const [selectedProgram, setSelectedProgram] = useState<string>("pre-kg");
+  const { language, t } = useLanguage();
 
   const handleOpenTour = (progId?: string) => {
     setSelectedProgram(progId || "pre-kg");
@@ -39,68 +42,68 @@ export default function ClassesPage() {
   const tuitionOfferings = [
     {
       id: "primary-tuition",
-      title: "Primary Academic Coaching (LKG – Grade 5)",
+      title: language === "ta" ? "தொடக்கக் கல்வி டியூஷன் (LKG – 5-ஆம் வகுப்பு)" : "Primary Academic Coaching (LKG – Grade 5)",
       grades: "LKG to 5th Std",
       syllabus: "CBSE • ICSE • State Board • Matriculation",
-      tagline: "Solid foundations in phonics, English grammar, reading fluency, and mental arithmetic.",
+      tagline: language === "ta" ? "ஃபோனிக்ஸ் ஒலி உச்சரிப்பு, கையெழுத்துப் பயிற்சி, எளிய கணிதம் மற்றும் வாசிப்புத் திறன்." : "Solid foundations in phonics, English grammar, reading fluency, and mental arithmetic.",
       features: [
-        "Phonics & English handwriting improvement",
-        "Daily concept worksheets & math drills",
-        "Small batch size with individual attention",
-        "Daily homework support & doubt clearing",
+        language === "ta" ? "ஃபோனிக்ஸ் & ஆங்கில கையெழுத்து மேம்பாடு" : "Phonics & English handwriting improvement",
+        language === "ta" ? "தினசரி பயிற்சித்தாள்கள் & மனக்கணக்கு பயிற்சி" : "Daily concept worksheets & math drills",
+        language === "ta" ? "குறைந்த எண்ணிக்கையில் தனிநபர் கவனம்" : "Small batch size with individual attention",
+        language === "ta" ? "வீட்டுப்பாடம் மற்றும் சந்தேகங்கள் தீர்வு" : "Daily homework support & doubt clearing",
       ],
-      timing: "Evening Batches: 4:30 PM – 6:30 PM",
+      timing: language === "ta" ? "மாலை நேரம்: 4:30 – 6:30" : "Evening Batches: 4:30 PM – 6:30 PM",
       ratio: "Max 8 Students / Batch",
       color: "#0750B8",
       bg: "bg-[#EBF3FF]",
     },
     {
       id: "middle-secondary-tuition",
-      title: "Middle & High School (Grades 6 – 10)",
+      title: language === "ta" ? "உயர்நிலை வகுப்புகள் (6 – 10 ஆம் வகுப்பு)" : "Middle & High School (Grades 6 – 10)",
       grades: "6th to 10th Std",
       syllabus: "CBSE • ICSE • Tamil Nadu State Board",
-      tagline: "Subject-matter mastery in Mathematics, Science (Physics, Chemistry, Biology), and Languages.",
+      tagline: language === "ta" ? "கணிதம், அறிவியல் (இயற்பியல், வேதியியல், உயிரியல்) மற்றும் மொழிப் பாடங்களில் சிறப்பான தேர்ச்சி." : "Subject-matter mastery in Mathematics, Science (Physics, Chemistry, Biology), and Languages.",
       features: [
-        "Chapter-wise unit tests & board revision",
-        "Step-by-step problem-solving methods",
-        "Science practical concepts explained simply",
-        "Special focus on 10th Board Exam score boost",
+        language === "ta" ? "பாடவாரியான அலகுத் தேர்வுகள் & மாதிரி தேர்வுகள்" : "Chapter-wise unit tests & board revision",
+        language === "ta" ? "படிநிலையான கணக்கீட்டு முறைகள்" : "Step-by-step problem-solving methods",
+        language === "ta" ? "எளிய செய்முறை விளக்கங்கள்" : "Science practical concepts explained simply",
+        language === "ta" ? "10-ஆம் வகுப்பு பொதுத்தேர்வு சிறப்புப் பயிற்சி" : "Special focus on 10th Board Exam score boost",
       ],
-      timing: "Evening: 5:00 PM – 7:30 PM / Weekend Batches",
+      timing: language === "ta" ? "மாலை நேரம்: 5:00 – 7:30 / வார இறுதி" : "Evening: 5:00 PM – 7:30 PM / Weekend Batches",
       ratio: "Small Group Guidance",
       color: "#159447",
       bg: "bg-[#EAF8EF]",
     },
     {
       id: "higher-secondary-tuition",
-      title: "Higher Secondary (Grades 11 & 12)",
+      title: language === "ta" ? "மேல்நிலைக் கல்வி (11 & 12 ஆம் வகுப்பு)" : "Higher Secondary (Grades 11 & 12)",
       grades: "11th & 12th (+1 & +2)",
       syllabus: "CBSE & State Board",
-      tagline: "Rigorous coaching for Mathematics, Physics, Chemistry, and Computer Science.",
+      tagline: language === "ta" ? "கணிதம், இயற்பியல், வேதியியல் மற்றும் கணினி அறிவியலுக்கான தீவிர பயிற்சி." : "Rigorous coaching for Mathematics, Physics, Chemistry, and Computer Science.",
       features: [
-        "In-depth concept lectures by senior faculty",
-        "Previous 10-year question paper solving",
-        "Formula sheets, derivations & time-management tips",
-        "Regular parent performance reviews",
+        language === "ta" ? "மூத்த ஆசிரியர்களின் ஆழ்ந்த விளக்கவுரைகள்" : "In-depth concept lectures by senior faculty",
+        language === "ta" ? "கடந்த 10 ஆண்டு வினாத்தாள் பயிற்சிகள்" : "Previous 10-year question paper solving",
+        language === "ta" ? "சூத்திர குறிப்புகள் & நேர மேலாண்மை வழிகாட்டல்" : "Formula sheets, derivations & time-management tips",
+        language === "ta" ? "பெற்றோருடன் தொடர் முன்னேற்ற ஆய்வு" : "Regular parent performance reviews",
       ],
-      timing: "Evening: 5:30 PM – 8:00 PM",
+      timing: language === "ta" ? "மாலை நேரம்: 5:30 – 8:00" : "Evening: 5:30 PM – 8:00 PM",
       ratio: "Focused Coaching",
       color: "#F36B12",
       bg: "bg-[#FFF2E8]",
     },
     {
       id: "engg-maths-hub",
-      title: "Engineering Mathematics Coaching",
+      title: language === "ta" ? "பொறியியல் கணிதம் (Engineering Mathematics)" : "Engineering Mathematics Coaching",
       grades: "B.E. / B.Tech (M1, M2, M3, M4, Discrete Maths)",
       syllabus: "Anna University & Autonomous Colleges",
-      tagline: "Expert coaching under Mrs. S Tharani (M.Sc., PGDM, PGMTTC) for fast backlog clearance and top GPA.",
+      tagline: language === "ta" ? "திருமதி. S. தாரணி (M.Sc., PGDM, PGMTTC) வழிகாட்டலில் அண்ணா பல்கலைக்கழக சிறப்பு கணித வகுப்புகள்." : "Expert coaching under Mrs. S Tharani (M.Sc., PGDM, PGMTTC) for fast backlog clearance and top GPA.",
       features: [
-        "Clear step-by-step proofs and numericals",
-        "Anna University previous exam papers solved",
-        "Individual doubt resolution for every student",
-        "Proven 100% pass track record",
+        language === "ta" ? "எளிமையான படிநிலை கணக்கீட்டு தீர்வுகள்" : "Clear step-by-step proofs and numericals",
+        language === "ta" ? "அண்ணா பல்கலைக்கழக முந்தைய தேர்வு வினாக்கள் தீர்வு" : "Anna University previous exam papers solved",
+        language === "ta" ? "தனிநபர் சந்தேகங்கள் உடனுக்குடன் தீர்வு" : "Individual doubt resolution for every student",
+        language === "ta" ? "100% தேர்ச்சி விகிதம்" : "Proven 100% pass track record",
       ],
-      timing: "Flexible Weekend & Evening Batches",
+      timing: language === "ta" ? "வார இறுதி & மாலை நேர வகுப்புகள்" : "Flexible Weekend & Evening Batches",
       ratio: "Personal Mentorship",
       color: "#F5B900",
       bg: "bg-[#FFF9E5]",
@@ -113,11 +116,11 @@ export default function ClassesPage() {
 
       {/* Page Header */}
       <PageHeader
-        breadcrumb="All Classes & Courses"
-        badge="Admissions Open 2024 - 2025"
-        title="Pre-School Programs & All Subject Tuitions"
-        highlightedWord="Pre-School & Tuitions"
-        description="From loving Montessori Play School (Day Care to UKG) to comprehensive Tuitions & Coaching (LKG to 12th Std & Engineering Maths) in Kinathukadavu, Coimbatore."
+        breadcrumb={language === "ta" ? "அனைத்து வகுப்புகள் & பாடத்திட்டங்கள்" : "All Classes & Courses"}
+        badge={language === "ta" ? "சேர்க்கை நடைபெறுகிறது 2026 – 2027" : "Admissions Open 2026 - 2027"}
+        title={language === "ta" ? "மழலையர் பள்ளி வகுப்புகள் & அனைத்துப் பாட டியூஷன்" : "Pre-School Programs & All Subject Tuitions"}
+        highlightedWord={language === "ta" ? "மழலையர் பள்ளி & டியூஷன்" : "Pre-School & Tuitions"}
+        description={t.classes.desc}
       />
 
       {/* Category Switcher Tabs */}
@@ -125,17 +128,17 @@ export default function ClassesPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center gap-2 sm:gap-4 flex-wrap">
           <button
             onClick={() => setSelectedCategory("all")}
-            className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all ${
+            className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all cursor-pointer ${
               selectedCategory === "all"
                 ? "bg-[#0750B8] text-white shadow-md scale-105"
                 : "bg-white text-gray-700 hover:bg-gray-100 border border-gray-200"
             }`}
           >
-            All Classes & Courses
+            {language === "ta" ? "அனைத்து வகுப்புகளும்" : "All Classes & Courses"}
           </button>
           <button
             onClick={() => setSelectedCategory("preschool")}
-            className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all ${
+            className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all cursor-pointer ${
               selectedCategory === "preschool"
                 ? "bg-[#159447] text-white shadow-md scale-105"
                 : "bg-white text-gray-700 hover:bg-gray-100 border border-gray-200"

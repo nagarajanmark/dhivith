@@ -7,8 +7,10 @@ import { ContactSection } from "@/components/contact/ContactSection";
 import { CampusLocationMap } from "@/components/contact/CampusLocationMap";
 import { FaqSection } from "@/components/faq/FaqSection";
 import { TourBookingModal } from "@/components/modals/TourBookingModal";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function ContactPage() {
+  const { t } = useLanguage();
   const [isTourModalOpen, setIsTourModalOpen] = useState(false);
 
   return (
@@ -17,11 +19,11 @@ export default function ContactPage() {
 
       {/* Page Header */}
       <PageHeader
-        breadcrumb="Contact & Admissions"
-        badge="Get in Touch"
-        title="We Would Love to Welcome Your Family"
-        highlightedWord="Welcome Your Family"
-        description="Every Child. Every Opportunity. Every Time. Schedule an intimate campus tour, discuss your child's developmental readiness with Mrs. S Tharani, or inquire about school tuitions."
+        breadcrumb={t.contact.breadcrumb}
+        badge={t.contact.badge}
+        title={t.contact.title}
+        highlightedWord={t.contact.highlight}
+        description={t.contact.desc}
       />
 
       {/* Main Interactive Contact Section */}

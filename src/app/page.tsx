@@ -37,58 +37,60 @@ import { WhoWeAreSection } from "@/components/about/WhoWeAreSection";
 import { CampusVideoShowcase } from "@/components/video/CampusVideoShowcase";
 import { TestimonialsMasonry } from "@/components/testimonials/TestimonialsMasonry";
 import { SCHOOL_INFO, PROGRAMS, TESTIMONIALS, GALLERY_ITEMS, GalleryItem } from "@/data/schoolData";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function HomePage() {
+  const { t, language } = useLanguage();
   const [isTourModalOpen, setIsTourModalOpen] = useState(false);
   const [selectedAgeGroup, setSelectedAgeGroup] = useState<string>("pre-kg");
 
   const ageCategories = [
     {
       id: "day-care",
-      label: "1.5 – 6 Years",
-      title: "Day Care Sanctuary",
-      sub: "Loving home-like rest pods & sensory play",
-      badge: "Full / Half Day",
+      label: language === "ta" ? "1.5 – 6 வயது" : "1.5 – 6 Years",
+      title: t.classes.daycare,
+      sub: t.classes.daycareDesc,
+      badge: language === "ta" ? "முழு / அரை நாள்" : "Full / Half Day",
       href: "/classes",
       color: "#0750B8",
       bg: "bg-[#EBF3FF]",
     },
     {
       id: "play-group",
-      label: "2 – 3 Years",
-      title: "Play Group",
-      sub: "First joyful steps in social motor rhythm",
-      badge: "Morning Session",
+      label: language === "ta" ? "2 – 3 வயது" : "2 – 3 Years",
+      title: t.classes.playgroup,
+      sub: t.classes.playgroupDesc,
+      badge: language === "ta" ? "காலை நேர வகுப்பு" : "Morning Session",
       href: "/classes",
       color: "#F36B12",
       bg: "bg-[#FFF2E8]",
     },
     {
       id: "pre-kg",
-      label: "3 – 4 Years",
-      title: "Pre-KG Montessori",
-      sub: "Practical Life autonomy & sandpaper phonics",
-      badge: "Core Foundation",
+      label: language === "ta" ? "3 – 4 வயது" : "3 – 4 Years",
+      title: t.classes.prekg,
+      sub: t.classes.prekgDesc,
+      badge: language === "ta" ? "அடிப்படை கல்வி" : "Core Foundation",
       href: "/classes",
       color: "#159447",
       bg: "bg-[#EAF8EF]",
     },
     {
       id: "lkg-ukg",
-      label: "4 – 6 Years",
-      title: "LKG & UKG Kindergarten",
-      sub: "Golden bead math & reading fluency",
-      badge: "Elementary Ready",
+      label: language === "ta" ? "4 – 6 வயது" : "4 – 6 Years",
+      title: language === "ta" ? "LKG & UKG மழலையர் கல்வி" : "LKG & UKG Kindergarten",
+      sub: t.classes.ukgDesc,
+      badge: language === "ta" ? "முதல் வகுப்பு தயார்" : "Elementary Ready",
       href: "/classes",
       color: "#F5B900",
       bg: "bg-[#FFF9E5]",
     },
     {
       id: "tuitions",
-      label: "Grades 1 – 12",
-      title: "Tuition & Coaching Hub",
-      sub: "CBSE / ICSE / State Board + Engg Maths",
-      badge: "Evening Batches",
+      label: language === "ta" ? "1 – 12 ஆம் வகுப்பு" : "Grades 1 – 12",
+      title: t.classes.tuitions,
+      sub: t.classes.tuitionsDesc,
+      badge: language === "ta" ? "மாலை நேர டியூஷன்" : "Evening Batches",
       href: "/classes",
       color: "#0750B8",
       bg: "bg-[#EBF3FF]",
@@ -128,13 +130,13 @@ export default function HomePage() {
           <div className="text-center max-w-2xl mx-auto mb-14 sm:mb-18">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white text-[#0750B8] text-xs font-bold uppercase tracking-wider border border-gray-200/80 mb-4 shadow-xs">
               <span className="w-2 h-2 rounded-full bg-[#0750B8]" />
-              <span>Campus Ecosystem</span>
+              <span>{t.pillars.badge}</span>
             </div>
             <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-[#0F172A] tracking-tight leading-tight">
-              Four Pillars of Growth
+              {t.pillars.title}
             </h2>
             <p className="text-sm sm:text-base text-gray-500 mt-3 font-normal">
-              A balanced ecosystem fostering intellect, curiosity, and lifelong independence.
+              {t.pillars.subtitle}
             </p>
           </div>
 
@@ -145,7 +147,6 @@ export default function HomePage() {
               href="/classes"
               className="sticky top-20 sm:static z-10 group relative bg-white rounded-[28px] p-7 border border-gray-200/80 shadow-[0_10px_30px_rgba(0,0,0,0.06)] sm:shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-2xl hover:border-[#0750B8]/30 transition-all duration-300 hover:-translate-y-2 flex flex-col justify-between overflow-hidden"
             >
-              {/* Subtle top right color aura */}
               <div className="absolute top-0 right-0 w-32 h-32 bg-[#0750B8]/10 rounded-full blur-2xl pointer-events-none group-hover:bg-[#0750B8]/20 transition-all" />
 
               <div>
@@ -159,20 +160,20 @@ export default function HomePage() {
                 </div>
 
                 <div className="inline-block px-3 py-1 rounded-full bg-[#EBF3FF] text-[#0750B8] text-[11px] font-bold tracking-wide mb-3">
-                  Ages 1.5 – 6 Yrs
+                  {t.pillars.p1Age}
                 </div>
 
                 <h3 className="font-display font-black text-xl text-[#0F172A] mb-2 group-hover:text-[#0750B8] transition-colors leading-snug">
-                  Montessori Pre-School
+                  {t.pillars.p1Title}
                 </h3>
 
                 <p className="text-[13.5px] text-gray-600 leading-relaxed font-normal">
-                  Self-directed play, practical life autonomy, and sandpaper phonics.
+                  {t.pillars.p1Desc}
                 </p>
               </div>
 
               <div className="mt-8 pt-4 border-t border-gray-100 flex items-center justify-between text-xs font-bold text-[#0750B8]">
-                <span>Explore Stages</span>
+                <span>{t.pillars.p1Btn}</span>
                 <div className="w-7 h-7 rounded-full bg-[#EBF3FF] flex items-center justify-center group-hover:bg-[#0750B8] group-hover:text-white transition-all">
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                 </div>
@@ -184,7 +185,6 @@ export default function HomePage() {
               href="/classes"
               className="sticky top-24 sm:static z-20 group relative bg-white rounded-[28px] p-7 border border-gray-200/80 shadow-[0_10px_30px_rgba(0,0,0,0.06)] sm:shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-2xl hover:border-[#159447]/30 transition-all duration-300 hover:-translate-y-2 flex flex-col justify-between overflow-hidden"
             >
-              {/* Subtle top right color aura */}
               <div className="absolute top-0 right-0 w-32 h-32 bg-[#159447]/10 rounded-full blur-2xl pointer-events-none group-hover:bg-[#159447]/20 transition-all" />
 
               <div>
@@ -198,20 +198,20 @@ export default function HomePage() {
                 </div>
 
                 <div className="inline-block px-3 py-1 rounded-full bg-[#EAF8EF] text-[#159447] text-[11px] font-bold tracking-wide mb-3">
-                  Grades 1 – 12 & Engg
+                  {t.pillars.p2Age}
                 </div>
 
                 <h3 className="font-display font-black text-xl text-[#0F172A] mb-2 group-hover:text-[#159447] transition-colors leading-snug">
-                  Tuition & Coaching
+                  {t.pillars.p2Title}
                 </h3>
 
                 <p className="text-[13.5px] text-gray-600 leading-relaxed font-normal">
-                  CBSE / ICSE core mastery and collegiate Engineering Mathematics.
+                  {t.pillars.p2Desc}
                 </p>
               </div>
 
               <div className="mt-8 pt-4 border-t border-gray-100 flex items-center justify-between text-xs font-bold text-[#159447]">
-                <span>Explore Coaching</span>
+                <span>{t.pillars.p2Btn}</span>
                 <div className="w-7 h-7 rounded-full bg-[#EAF8EF] flex items-center justify-center group-hover:bg-[#159447] group-hover:text-white transition-all">
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                 </div>
@@ -223,7 +223,6 @@ export default function HomePage() {
               href="/classes"
               className="sticky top-28 sm:static z-30 group relative bg-white rounded-[28px] p-7 border border-gray-200/80 shadow-[0_10px_30px_rgba(0,0,0,0.06)] sm:shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-2xl hover:border-[#F36B12]/30 transition-all duration-300 hover:-translate-y-2 flex flex-col justify-between overflow-hidden"
             >
-              {/* Subtle top right color aura */}
               <div className="absolute top-0 right-0 w-32 h-32 bg-[#F36B12]/10 rounded-full blur-2xl pointer-events-none group-hover:bg-[#F36B12]/20 transition-all" />
 
               <div>
@@ -237,20 +236,20 @@ export default function HomePage() {
                 </div>
 
                 <div className="inline-block px-3 py-1 rounded-full bg-[#FFF2E8] text-[#F36B12] text-[11px] font-bold tracking-wide mb-3">
-                  6 Core Avenues
+                  {t.pillars.p3Age}
                 </div>
 
                 <h3 className="font-display font-black text-xl text-[#0F172A] mb-2 group-hover:text-[#F36B12] transition-colors leading-snug">
-                  Montessori Method
+                  {t.pillars.p3Title}
                 </h3>
 
                 <p className="text-[13.5px] text-gray-600 leading-relaxed font-normal">
-                  Sensorial geometry, golden bead math, and language discovery.
+                  {t.pillars.p3Desc}
                 </p>
               </div>
 
               <div className="mt-8 pt-4 border-t border-gray-100 flex items-center justify-between text-xs font-bold text-[#F36B12]">
-                <span>Learn Science</span>
+                <span>{t.pillars.p3Btn}</span>
                 <div className="w-7 h-7 rounded-full bg-[#FFF2E8] flex items-center justify-center group-hover:bg-[#F36B12] group-hover:text-white transition-all">
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                 </div>
@@ -262,7 +261,6 @@ export default function HomePage() {
               href="/classes"
               className="sticky top-32 sm:static z-40 group relative bg-white rounded-[28px] p-7 border border-gray-200/80 shadow-[0_10px_30px_rgba(0,0,0,0.06)] sm:shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-2xl hover:border-[#F5B900]/40 transition-all duration-300 hover:-translate-y-2 flex flex-col justify-between overflow-hidden"
             >
-              {/* Subtle top right color aura */}
               <div className="absolute top-0 right-0 w-32 h-32 bg-[#F5B900]/10 rounded-full blur-2xl pointer-events-none group-hover:bg-[#F5B900]/20 transition-all" />
 
               <div>
@@ -276,20 +274,20 @@ export default function HomePage() {
                 </div>
 
                 <div className="inline-block px-3 py-1 rounded-full bg-[#FFF9E5] text-[#9A6700] text-[11px] font-bold tracking-wide mb-3">
-                  Prepared Spaces
+                  {t.pillars.p4Age}
                 </div>
 
                 <h3 className="font-display font-black text-xl text-[#0F172A] mb-2 group-hover:text-[#9A6700] transition-colors leading-snug">
-                  Prepared Campus
+                  {t.pillars.p4Title}
                 </h3>
 
                 <p className="text-[13.5px] text-gray-600 leading-relaxed font-normal">
-                  Natural daylight classrooms, birch furniture & biometric safety.
+                  {t.pillars.p4Desc}
                 </p>
               </div>
 
               <div className="mt-8 pt-4 border-t border-gray-100 flex items-center justify-between text-xs font-bold text-[#9A6700]">
-                <span>Tour Spaces</span>
+                <span>{t.pillars.p4Btn}</span>
                 <div className="w-7 h-7 rounded-full bg-[#FFF9E5] flex items-center justify-center group-hover:bg-[#9A6700] group-hover:text-white transition-all">
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                 </div>
@@ -301,24 +299,23 @@ export default function HomePage() {
 
       {/* 4. INTERACTIVE AGE SELECTOR & PROGRAM MATCHER */}
       <section className="py-16 lg:py-24 bg-white border-y border-gray-100 relative overflow-hidden">
-        {/* Subtle background ambient glows */}
         <div className="absolute top-1/2 -left-40 w-80 h-80 bg-[#0750B8]/5 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute top-1/2 -right-40 w-80 h-80 bg-[#159447]/5 rounded-full blur-3xl pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
             <span className="text-xs font-bold uppercase tracking-wider text-[#159447] bg-[#EAF8EF] px-4 py-1.5 rounded-full border border-[#159447]/20 inline-block mb-3 shadow-xs">
-              Interactive Program Finder
+              {t.finder.badge}
             </span>
             <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-[#121D28] tracking-tight leading-tight">
-              Find the Perfect Program for Your Child
+              {t.finder.title}
             </h2>
             <p className="text-sm sm:text-base text-[#5E6D7A] mt-2">
-              Select your child&apos;s age or grade stage to view the tailored curriculum focus:
+              {t.finder.subtitle}
             </p>
           </div>
 
-          {/* Age Group Buttons - All tabs visible with flex-wrap */}
+          {/* Age Group Buttons */}
           <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-8 sm:mb-12">
             {ageCategories.map((cat) => {
               const isSelected = selectedAgeGroup === cat.id;
@@ -337,13 +334,11 @@ export default function HomePage() {
             })}
           </div>
 
-          {/* Creative Spotlight Card with Responsive Image */}
+          {/* Creative Spotlight Card */}
           <div className="relative rounded-[32px] sm:rounded-[40px] bg-gradient-to-br from-white via-[#EBF3FF]/40 to-[#EAF8EF]/50 p-6 sm:p-10 lg:p-12 border-2 border-gray-200/90 shadow-2xl max-w-5xl mx-auto overflow-hidden">
-            {/* Ambient Aura behind */}
             <div className="absolute right-0 bottom-0 w-80 sm:w-96 h-80 bg-gradient-to-tr from-[#0750B8]/10 via-[#159447]/10 to-amber-300/15 rounded-full blur-2xl pointer-events-none" />
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center relative z-10">
-              {/* Left Content */}
               <div className="lg:col-span-7 space-y-4 text-left">
                 <div
                   className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold shadow-xs border border-white/60 backdrop-blur-sm"
@@ -357,7 +352,7 @@ export default function HomePage() {
                     style={{ backgroundColor: currentAgeData.color }}
                   />
                   <span>
-                    {currentAgeData.badge} • Age: {currentAgeData.label}
+                    {currentAgeData.badge} • {language === "ta" ? "வயது" : "Age"}: {currentAgeData.label}
                   </span>
                 </div>
 
@@ -366,7 +361,7 @@ export default function HomePage() {
                 </h3>
 
                 <p className="text-sm sm:text-base text-[#5E6D7A] leading-relaxed max-w-lg font-medium">
-                  {currentAgeData.sub}. Child-centered Montessori learning in Kinathukadavu.
+                  {currentAgeData.sub}. {t.finder.suffix}
                 </p>
 
                 {/* Action Buttons */}
@@ -376,7 +371,7 @@ export default function HomePage() {
                     className="px-6 sm:px-7 py-3 sm:py-3.5 rounded-2xl bg-[#0750B8] hover:bg-[#063f91] text-white font-bold text-xs sm:text-sm shadow-lg hover:shadow-xl hover:scale-102 active:scale-98 transition-all flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <Calendar className="w-4 h-4 text-amber-300" />
-                    <span>Book a Campus Tour</span>
+                    <span>{t.finder.bookTour}</span>
                     <ArrowRight className="w-4 h-4" />
                   </button>
 
@@ -385,12 +380,11 @@ export default function HomePage() {
                     className="px-5 sm:px-6 py-3 sm:py-3.5 rounded-2xl bg-white hover:bg-gray-50 text-[#121D28] font-bold text-xs sm:text-sm border border-gray-200/80 shadow-xs hover:border-[#0750B8]/40 transition-all flex items-center justify-center gap-2"
                   >
                     <BookOpen className="w-4 h-4 text-[#0750B8]" />
-                    <span>Learn More</span>
+                    <span>{t.finder.learnMore}</span>
                   </Link>
                 </div>
               </div>
 
-              {/* Right Image Container - Visible on Mobile and Desktop */}
               <div className="lg:col-span-5 flex items-center justify-center pt-2 lg:pt-0">
                 <div className="relative w-full max-w-[300px] sm:max-w-[360px] lg:max-w-none aspect-[4/3] transition-transform duration-500 hover:scale-105 select-none">
                   <Image
@@ -407,19 +401,18 @@ export default function HomePage() {
         </div>
       </section>
 
-   {/* 6.5 INTERACTIVE MONTESSORI TEAR REVEAL */}
+      {/* 6.5 INTERACTIVE MONTESSORI TEAR REVEAL */}
       <TigerTearReveal
-        word="MONTESSORI"
-        tagline="NURTURING CURIOSITY & INDEPENDENCE"
-        subTagline="DHIVITH EDU CARE • KINATHUKADAVU, COIMBATORE"
+        word={language === "ta" ? "மாண்டிசோரி" : "MONTESSORI"}
+        tagline={language === "ta" ? "சுதந்திர சிந்தனை • செய்முறை கற்றல்" : "NURTURING CURIOSITY & INDEPENDENCE"}
+        subTagline={language === "ta" ? "திவித் எடு கேர் • கிணத்துக்கடவு, கோயம்புத்தூர்" : "DHIVITH EDU CARE • KINATHUKADAVU, COIMBATORE"}
         logoSrc="/logo.png"
         ink="#0750B8"
         paper="#ffffff"
         taglineColor="#121D28"
       />
 
-
-        {/* 5. VIRTUAL CAMPUS VIDEO SPOTLIGHT */}
+      {/* 5. VIRTUAL CAMPUS VIDEO SPOTLIGHT */}
       <CampusVideoShowcase onOpenTourModal={() => setIsTourModalOpen(true)} />
 
       {/* 3. CONTINUOUS MARQUEE SHOWCASE & LIGHTBOX GALLERY */}
@@ -427,36 +420,28 @@ export default function HomePage() {
         onOpenTourModal={() => setIsTourModalOpen(true)}
       />
 
-
-
-    
-
       {/* 6. PARENT PERSPECTIVES & RATINGS MASONRY */}
       <TestimonialsMasonry />
-
-   
 
       {/* 7. VISIT & ADMISSION CALL TO ACTION */}
       <section className="py-16 lg:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="rounded-[36px] relative overflow-hidden p-8 sm:p-12 lg:p-16 text-white text-left shadow-2xl border-4 border-white min-h-[380px] sm:min-h-[420px] flex items-center">
-            {/* Background image & soft left gradient for readability */}
             <div
               className="absolute inset-0 bg-cover bg-[center_right_20%] sm:bg-right transition-transform duration-700 hover:scale-105"
               style={{ backgroundImage: `url('/clouds.webp')` }}
             />
-            {/* Soft gradient overlay prioritizing clear image visibility on the right */}
             <div className="absolute inset-0 bg-gradient-to-r from-[#0750B8]/85 via-[#0750B8]/50 sm:via-[#0750B8]/30 to-transparent" />
 
             <div className="relative z-10 max-w-xl space-y-5">
               <span className="px-4 py-1.5 rounded-full bg-white/25 text-amber-300 text-xs font-bold uppercase tracking-wider backdrop-blur-md inline-block border border-white/30 shadow-sm">
-                Campus Tours Available Mon–Sat
+                {t.homeCta.badge}
               </span>
               <h2 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl text-white leading-[1.15] drop-shadow-md">
-                Come Discover the Joy of Learning.
+                {t.homeCta.title}
               </h2>
               <p className="text-white text-sm sm:text-base md:text-lg leading-relaxed drop-shadow font-medium max-w-lg">
-                Schedule an intimate walkthrough with Mrs. S Tharani to experience our live Montessori classrooms in Kinathukadavu, Coimbatore.
+                {t.homeCta.description}
               </p>
               <div className="flex flex-wrap items-center justify-start gap-4 pt-2">
                 <button
@@ -464,7 +449,7 @@ export default function HomePage() {
                   className="px-7 py-3.5 sm:px-8 sm:py-4 rounded-2xl bg-white text-[#0750B8] font-bold text-sm sm:text-base shadow-xl hover:bg-gray-50 hover:scale-105 active:scale-95 transition-all flex items-center gap-2 group cursor-pointer"
                 >
                   <Calendar className="w-5 h-5 text-[#F36B12]" />
-                  <span>Book a Campus Tour</span>
+                  <span>{t.homeCta.btnTour}</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </button>
                 <a
@@ -472,7 +457,7 @@ export default function HomePage() {
                   className="px-6 py-3.5 sm:px-7 sm:py-4 rounded-2xl bg-[#0750B8]/60 hover:bg-[#0750B8]/80 text-white font-bold text-sm sm:text-base border border-white/40 backdrop-blur-md shadow-lg transition-all flex items-center gap-2 cursor-pointer"
                 >
                   <Phone className="w-4 h-4 text-amber-300" />
-                  <span>Call {SCHOOL_INFO.phone}</span>
+                  <span>{t.homeCta.btnCall} {SCHOOL_INFO.phone}</span>
                 </a>
               </div>
             </div>

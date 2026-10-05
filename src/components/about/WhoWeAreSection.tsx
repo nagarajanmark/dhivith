@@ -14,6 +14,7 @@ import {
   BookOpen,
 } from "lucide-react";
 import { SCHOOL_INFO } from "@/data/schoolData";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface WhoWeAreSectionProps {
   onOpenTourModal: () => void;
@@ -52,6 +53,7 @@ const PercentCounter: React.FC = () => {
 export const WhoWeAreSection: React.FC<WhoWeAreSectionProps> = ({
   onOpenTourModal,
 }) => {
+  const { t, language } = useLanguage();
   const statsRef = React.useRef(null);
   const isStatsInView = useInView(statsRef, { once: true, amount: 0.3 });
 
@@ -134,17 +136,15 @@ export const WhoWeAreSection: React.FC<WhoWeAreSectionProps> = ({
             <div>
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EBF3FF] text-[#0750B8] text-xs font-bold uppercase tracking-wider border border-[#0750B8]/15 mb-3">
                 <Sparkles className="w-3.5 h-3.5 text-[#0750B8]" />
-                <span>Who We Are</span>
+                <span>{t.whoWeAre.badge}</span>
               </div>
 
               <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-[#121D28] tracking-tight leading-tight">
-                A Loving Space Where Children Learn Joyfully
+                {t.whoWeAre.title}
               </h2>
 
               <p className="text-sm sm:text-base text-[#5E6D7A] mt-3 leading-relaxed">
-                At <strong>Dhivith Edu Care</strong>, we help children learn through
-                practical activities, develop independent thinking, and grow with loving
-                care from certified educators.
+                {t.whoWeAre.description}
               </p>
             </div>
 
@@ -156,10 +156,10 @@ export const WhoWeAreSection: React.FC<WhoWeAreSectionProps> = ({
                 </div>
                 <div>
                   <div className="font-bold text-xs sm:text-sm text-[#121D28]">
-                    Authentic Montessori Method
+                    {t.whoWeAre.f1Title}
                   </div>
                   <div className="text-xs text-[#5E6D7A]">
-                    Self-correcting wooden apparatus, phonics & math activities.
+                    {t.whoWeAre.f1Desc}
                   </div>
                 </div>
               </div>
@@ -170,10 +170,10 @@ export const WhoWeAreSection: React.FC<WhoWeAreSectionProps> = ({
                 </div>
                 <div>
                   <div className="font-bold text-xs sm:text-sm text-[#121D28]">
-                    1:6 Personal Teacher Care
+                    {t.whoWeAre.f2Title}
                   </div>
                   <div className="text-xs text-[#5E6D7A]">
-                    Small batch sizes so every child gets gentle, individual attention.
+                    {t.whoWeAre.f2Desc}
                   </div>
                 </div>
               </div>
@@ -184,10 +184,10 @@ export const WhoWeAreSection: React.FC<WhoWeAreSectionProps> = ({
                 </div>
                 <div>
                   <div className="font-bold text-xs sm:text-sm text-[#121D28]">
-                    Safe & Prepared Environment
+                    {t.whoWeAre.f3Title}
                   </div>
                   <div className="text-xs text-[#5E6D7A]">
-                    Clean, airy classrooms with child-safe wooden furniture.
+                    {t.whoWeAre.f3Desc}
                   </div>
                 </div>
               </div>
@@ -200,7 +200,7 @@ export const WhoWeAreSection: React.FC<WhoWeAreSectionProps> = ({
                 className="px-6 py-3 rounded-xl bg-[#0750B8] hover:bg-[#063f91] text-white font-bold text-xs sm:text-sm shadow-md hover:scale-105 active:scale-95 transition-all flex items-center gap-2 cursor-pointer"
               >
                 <Calendar className="w-4 h-4 text-amber-300" />
-                <span>Book Campus Tour</span>
+                <span>{t.whoWeAre.btnTour}</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
 
@@ -209,7 +209,7 @@ export const WhoWeAreSection: React.FC<WhoWeAreSectionProps> = ({
                 className="px-5 py-3 rounded-xl bg-white hover:bg-gray-50 text-[#121D28] font-bold text-xs sm:text-sm border border-gray-200 transition-all flex items-center gap-2"
               >
                 <BookOpen className="w-4 h-4 text-[#0750B8]" />
-                <span>View Classes</span>
+                <span>{t.whoWeAre.btnClasses}</span>
               </Link>
             </div>
           </div>
@@ -229,13 +229,13 @@ export const WhoWeAreSection: React.FC<WhoWeAreSectionProps> = ({
           >
             <div>
               <div className="font-display font-black text-3xl sm:text-4xl lg:text-5xl text-[#0750B8] tracking-tight mb-2 group-hover:scale-105 transition-transform">
-                1 : 6
+                {t.whoWeAre.statRatio}
               </div>
               <div className="text-xs sm:text-sm font-bold text-[#121D28]">
-                Low Educator Ratio
+                {t.whoWeAre.statRatioLabel}
               </div>
               <div className="text-[11px] text-[#5E6D7A] mt-0.5">
-                Personal attention for every child
+                {t.whoWeAre.statRatioSub}
               </div>
             </div>
             {/* Animated Loader Bar */}
@@ -258,13 +258,13 @@ export const WhoWeAreSection: React.FC<WhoWeAreSectionProps> = ({
           >
             <div>
               <div className="font-display font-black text-3xl sm:text-4xl lg:text-5xl text-[#159447] tracking-tight mb-2 group-hover:scale-105 transition-transform">
-                1.5 – 6 Yrs
+                {t.whoWeAre.statPreschool}
               </div>
               <div className="text-xs sm:text-sm font-bold text-[#121D28]">
-                Pre-School Stages
+                {t.whoWeAre.statPreschoolLabel}
               </div>
               <div className="text-[11px] text-[#5E6D7A] mt-0.5">
-                Day Care to UKG Montessori
+                {t.whoWeAre.statPreschoolSub}
               </div>
             </div>
             {/* Animated Loader Bar */}
@@ -287,13 +287,13 @@ export const WhoWeAreSection: React.FC<WhoWeAreSectionProps> = ({
           >
             <div>
               <div className="font-display font-black text-3xl sm:text-4xl lg:text-5xl text-[#F36B12] tracking-tight mb-2 group-hover:scale-105 transition-transform">
-                1 – 12th
+                {t.whoWeAre.statTuition}
               </div>
               <div className="text-xs sm:text-sm font-bold text-[#121D28]">
-                Tuition Coaching
+                {t.whoWeAre.statTuitionLabel}
               </div>
               <div className="text-[11px] text-[#5E6D7A] mt-0.5">
-                CBSE, ICSE & State Board
+                {t.whoWeAre.statTuitionSub}
               </div>
             </div>
             {/* Animated Loader Bar */}
@@ -319,10 +319,10 @@ export const WhoWeAreSection: React.FC<WhoWeAreSectionProps> = ({
                 <PercentCounter />
               </div>
               <div className="text-xs sm:text-sm font-bold text-[#121D28]">
-                Practical Learning
+                {t.whoWeAre.statPractical}
               </div>
               <div className="text-[11px] text-[#5E6D7A] mt-0.5">
-                Certified sensory materials
+                {t.whoWeAre.statPracticalSub}
               </div>
             </div>
             {/* Animated Loader Bar */}

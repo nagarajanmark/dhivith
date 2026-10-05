@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface TeamMembersSectionProps {
   onOpenTourModal: () => void;
@@ -10,7 +11,8 @@ interface TeamMembersSectionProps {
 interface TeamMember {
   id: string;
   name: string;
-  position: string;
+  positionEn: string;
+  positionTa: string;
   image: string;
 }
 
@@ -18,54 +20,64 @@ const TEAM_MEMBERS: TeamMember[] = [
   {
     id: "founder",
     name: "Mrs. S Tharani",
-    position: "Founder & Director",
+    positionEn: "Founder & Director",
+    positionTa: "நிறுவனர் & இயக்குநர் (M.Sc., PGDM, PGMTTC)",
     image: "/school_images/1000591348.webp",
   },
   {
     id: "montessori-lead",
     name: "Mrs. K Soundarya",
-    position: "Montessori Lead Directress",
+    positionEn: "Montessori Lead Directress",
+    positionTa: "மாண்டிசோரி முதன்மை ஆசிரியர்",
     image: "/school_images/1000591345.webp",
   },
   {
     id: "stem-coach",
     name: "Mrs. M Kaviya",
-    position: "Academic Coaching Specialist",
+    positionEn: "Academic Coaching Specialist",
+    positionTa: "அனைத்துப் பாட டியூஷன் பயிற்றுநர்",
     image: "/school_images/1000227830.webp",
   },
   {
     id: "daycare-lead",
     name: "Mrs. R Priyadharshini",
-    position: "Day Care & Wellness Lead",
+    positionEn: "Day Care & Wellness Lead",
+    positionTa: "டே கேர் & மழலையர் பராமரிப்பு பொறுப்பாளர்",
     image: "/school_images/1000591351.webp",
   },
   {
     id: "early-learning",
     name: "Mrs. V Ananya",
-    position: "Primary Montessori Directress",
+    positionEn: "Primary Montessori Directress",
+    positionTa: "தொடக்க மாண்டிசோரி ஆசிரியை",
     image: "/school_images/1000223388.webp",
   },
   {
     id: "maths-mentor",
     name: "Mrs. S Divyabharathi",
-    position: "Mathematics & Science Faculty",
+    positionEn: "Mathematics & Science Faculty",
+    positionTa: "கணிதம் & அறிவியல் சிறப்பு ஆசிரியர்",
     image: "/school_images/1000227839.webp",
   },
   {
     id: "phonics-lead",
     name: "Mrs. P Nithyashree",
-    position: "Phonics & Language Mentor",
+    positionEn: "Phonics & Language Mentor",
+    positionTa: "ஃபோனிக்ஸ் ஒலிப்பியல் வழிகாட்டி",
     image: "/school_images/1000245525.webp",
   },
   {
     id: "wellness-lead",
     name: "Mrs. B Keerthana",
-    position: "Nursery & Child Development Lead",
+    positionEn: "Nursery & Child Development Lead",
+    positionTa: "மழலையர் குழந்தை மேம்பாட்டு ஆசிரியர்",
     image: "/school_images/1000264797.webp",
   },
 ];
 
 export const TeamMembersSection: React.FC<TeamMembersSectionProps> = ({ onOpenTourModal }) => {
+  const { language, t } = useLanguage();
+
   return (
     <section className="py-20 lg:py-28 bg-white relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -73,13 +85,13 @@ export const TeamMembersSection: React.FC<TeamMembersSectionProps> = ({ onOpenTo
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
           <div>
             <span className="text-xs font-bold text-gray-500 uppercase tracking-widest block mb-2">
-              OUR TEAM
+              {t.team.tag}
             </span>
             <h2 className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-[#111111] tracking-tight">
-              Our Professionals
+              {t.team.title}
             </h2>
             <p className="text-sm sm:text-base text-gray-500 mt-4 max-w-xl leading-relaxed">
-              Dedicated educators and certified Montessori directresses nurturing every child with individualized guidance and academic excellence.
+              {t.team.description}
             </p>
           </div>
 
@@ -88,7 +100,7 @@ export const TeamMembersSection: React.FC<TeamMembersSectionProps> = ({ onOpenTo
               onClick={onOpenTourModal}
               className="px-8 py-3.5 bg-[#111111] hover:bg-neutral-800 text-white font-bold text-xs uppercase tracking-wider rounded-full shadow-sm hover:shadow-md transition-all active:scale-95 cursor-pointer"
             >
-              JOIN TEAM
+              {t.team.joinBtn}
             </button>
           </div>
         </div>
@@ -118,7 +130,7 @@ export const TeamMembersSection: React.FC<TeamMembersSectionProps> = ({ onOpenTo
                   {member.name}
                 </h3>
                 <p className="text-xs sm:text-sm text-gray-200 font-normal mt-1 leading-tight">
-                  {member.position}
+                  {language === "ta" ? member.positionTa : member.positionEn}
                 </p>
               </div>
             </div>

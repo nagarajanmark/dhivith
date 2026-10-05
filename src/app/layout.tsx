@@ -112,13 +112,15 @@ const jsonLd = {
   openingHours: "Mo-Sa 08:30-19:30",
 };
 
+import { LanguageProvider } from "@/context/LanguageContext";
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${plusJakarta.variable} ${outfit.variable} scroll-smooth`}>
+    <html lang="ta" className={`${plusJakarta.variable} ${outfit.variable} scroll-smooth`}>
       <head>
         <script
           type="application/ld+json"
@@ -126,13 +128,15 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen flex flex-col bg-white text-[#121D28] font-body selection:bg-[#F5B900] selection:text-[#121D28] antialiased relative">
-        {/* Global Interactive Custom Mouse Cursor */}
-        <CustomCursor />
+        <LanguageProvider>
+          {/* Global Interactive Custom Mouse Cursor */}
+          <CustomCursor />
 
-        {children}
+          {children}
 
-        {/* Floating Green Quick Support Desk Trigger */}
-        <QuickSupportDesk />
+          {/* Floating Green Quick Support Desk Trigger */}
+          <QuickSupportDesk />
+        </LanguageProvider>
       </body>
     </html>
   );
