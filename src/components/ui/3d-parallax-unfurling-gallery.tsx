@@ -7,18 +7,22 @@ import React, {
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 
 const IMAGES = [
-  "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=800&q=80",
-  "https://images.unsplash.com/photo-1587654780291-39c9404d746b?auto=format&fit=crop&w=800&q=80",
-  "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?auto=format&fit=crop&w=800&q=80",
-  "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=80",
-  "https://images.unsplash.com/photo-1560421683-6856ea585c78?auto=format&fit=crop&w=800&q=80",
-  "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80",
-  "https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=800&q=80",
-  "https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=800&q=80",
-  "https://images.unsplash.com/photo-1472162072942-cd5147eb3902?auto=format&fit=crop&w=800&q=80",
-  "https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?auto=format&fit=crop&w=800&q=80",
-  "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=800&q=80",
-  "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=800&q=80",
+  "/school_images/1000453992.webp",
+  "/school_images/1000449608.webp",
+  "/school_images/1000450316.webp",
+  "/school_images/1000452018.webp",
+  "/school_images/1000452097.webp",
+  "/school_images/1000454520.webp",
+  "/school_images/1000501517.webp",
+  "/school_images/1000501518.webp",
+  "/school_images/1000227874.webp",
+  "/school_images/1000227888.webp",
+  "/school_images/1000223395.webp",
+  "/school_images/1000223404.webp",
+  "/school_images/1000227870.webp",
+  "/school_images/1000591351.webp",
+  "/school_images/1000591345.webp",
+  "/school_images/1000264797.webp",
 ];
 
 interface ImageCardProps {

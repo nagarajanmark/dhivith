@@ -16,11 +16,12 @@ import { SectionHeading } from "../ui/SectionHeading";
 import { DAILY_RHYTHM } from "@/data/schoolData";
 
 const journeyImages = [
-  "https://images.unsplash.com/photo-1587654780291-39c9404d746b?auto=format&fit=crop&w=900&q=80",
-  "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=900&q=80",
-  "https://images.unsplash.com/photo-1596464716127-f2a829822391?auto=format&fit=crop&w=900&q=80",
-  "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=80",
-  "https://images.unsplash.com/photo-1560421683-6856ea585c78?auto=format&fit=crop&w=900&q=80",
+  "/school_images/1000223395.webp",
+  "/school_images/1000453992.webp",
+  "/school_images/1000450316.webp",
+  "/school_images/1000452018.webp",
+  "/school_images/1000452097.webp",
+  "/school_images/1000454520.webp",
 ];
 
 export const MontessoriJourney: React.FC = () => {

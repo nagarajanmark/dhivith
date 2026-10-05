@@ -38,7 +38,7 @@ export const PhilosophySection: React.FC = () => {
       icon: <Compass className="w-6 h-6 text-[#0750B8]" />,
       color: "#0750B8",
       bgLight: "bg-[#EBF3FF]",
-      image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=900&q=80",
+      image: "/school_images/1000453992.webp",
       benefits: [
         "Internalized self-motivation rather than external rewards",
         "Deep 3-hour focus and concentration stamina",
@@ -55,7 +55,7 @@ export const PhilosophySection: React.FC = () => {
       icon: <Target className="w-6 h-6 text-[#159447]" />,
       color: "#159447",
       bgLight: "bg-[#EAF8EF]",
-      image: "https://images.unsplash.com/photo-1596464716127-f2a829822391?auto=format&fit=crop&w=900&q=80",
+      image: "/school_images/1000450316.webp",
       benefits: [
         "Executive function and decision-making poise",
         "Physical coordination and spatial refinement",
@@ -72,7 +72,7 @@ export const PhilosophySection: React.FC = () => {
       icon: <Sparkles className="w-6 h-6 text-[#F36B12]" />,
       color: "#F36B12",
       bgLight: "bg-[#FFF2E8]",
-      image: "https://images.unsplash.com/photo-1587654780291-39c9404d746b?auto=format&fit=crop&w=900&q=80",
+      image: "/school_images/1000449608.webp",
       benefits: [
         "Multi-sensory neurological pathways formation",
         "Concrete foundational grasp of math and phonetics",
@@ -89,7 +89,7 @@ export const PhilosophySection: React.FC = () => {
       icon: <Heart className="w-6 h-6 text-[#F5B900]" />,
       color: "#F5B900",
       bgLight: "bg-[#FFF9E5]",
-      image: "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=900&q=80",
+      image: "/school_images/1000452018.webp",
       benefits: [
         "Zero stress or performance anxiety",
         "Mastery-oriented learning rather than rote memorization",
@@ -106,7 +106,7 @@ export const PhilosophySection: React.FC = () => {
       icon: <Users2 className="w-6 h-6 text-[#0750B8]" />,
       color: "#0750B8",
       bgLight: "bg-[#EBF3FF]",
-      image: "https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=900&q=80",
+      image: "/school_images/1000452097.webp",
       benefits: [
         "Peer mentorship and genuine collaborative empathy",
         "Conflict resolution and conflict mediation tools",
@@ -121,114 +121,155 @@ export const PhilosophySection: React.FC = () => {
   return (
     <section
       id="philosophy"
-      className="py-20 lg:py-32 bg-white relative overflow-hidden border-t border-gray-100"
+      className="py-20 lg:py-28 bg-[#FAFAFA] relative overflow-hidden border-t border-gray-100"
     >
-      {/* Background Subtle Shapes */}
-      <div className="absolute -top-24 right-0 w-96 h-96 bg-gray-100 rounded-full blur-2xl pointer-events-none -z-10" />
+      {/* Background Subtle Ambient Glows */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-b from-[#0750B8]/5 via-[#159447]/5 to-transparent rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Heading */}
-        <SectionHeading
-          badgeText="Our Educational Philosophy"
-          badgeVariant="blue"
-          title="Every Child Is Unique. Every Journey Matters."
-          subtitle="At Dhivith Edu Care, education is not something given by a teacher; it is a natural, joyous process spontaneously carried out by the human individual."
-          align="center"
-          className="mb-16"
-        />
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white text-[#0750B8] text-xs font-bold uppercase tracking-wider border border-gray-200/90 mb-4 shadow-xs">
+            <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+            <span>Educational Philosophy</span>
+          </div>
 
-        {/* Interactive Tab Navigation */}
-        <div className="flex items-center justify-start lg:justify-center gap-2 sm:gap-3 overflow-x-auto pb-4 mb-12 scrollbar-none no-scrollbar">
+          <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-[#0F172A] tracking-tight leading-tight">
+            Every Child Is Unique. Every Journey Matters.
+          </h2>
+
+          <p className="text-sm sm:text-base text-gray-500 mt-3 font-normal max-w-2xl mx-auto">
+            At Dhivith Edu Care, education is not something dictated by an adult; it is a joyous, spontaneous journey carried out by the child.
+          </p>
+        </div>
+
+        {/* Interactive Tab Navigation - Clean Wrapped Grid/Flex */}
+        <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 mb-12">
           {pillars.map((pillar, idx) => {
             const isSelected = activeTab === idx;
             return (
               <button
                 key={pillar.id}
                 onClick={() => setActiveTab(idx)}
-                className={`flex-shrink-0 flex items-center gap-2.5 px-4 sm:px-5 py-3 rounded-2xl text-xs sm:text-sm font-bold transition-all duration-300 ${
+                className={`flex items-center gap-2.5 px-4 sm:px-5 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 border cursor-pointer ${
                   isSelected
-                    ? "bg-[#121D28] text-white shadow-lg scale-[1.03]"
-                    : "bg-gray-100 text-[#2A343D] hover:bg-[#EBF3FF] hover:text-[#0750B8] border border-gray-200/70"
+                    ? "bg-[#0750B8] text-white border-[#0750B8] shadow-lg scale-105"
+                    : "bg-white text-gray-700 border-gray-200/80 hover:border-[#0750B8]/40 hover:bg-gray-50 shadow-xs"
                 }`}
               >
-                <span className="p-1 rounded-lg bg-white/10">{pillar.icon}</span>
+                <span
+                  className={`p-1 rounded-full ${
+                    isSelected ? "bg-white/20 text-white" : "bg-gray-100"
+                  }`}
+                >
+                  {pillar.icon}
+                </span>
                 <span>{pillar.title}</span>
               </button>
             );
           })}
         </div>
 
-        {/* Editorial Layout: Content + Large Photography */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center bg-gray-50/70 rounded-3xl p-6 sm:p-10 lg:p-14 border border-gray-200/80 shadow-sm">
-          {/* Left Column: Deep Narrative */}
-          <div className="lg:col-span-6 space-y-6">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white shadow-sm border border-[#0750B8]/10 text-[#0750B8]">
-              <Sparkles className="w-3.5 h-3.5 text-[#F36B12]" />
-              Pillar {activeTab + 1} of {pillars.length}
+        {/* Editorial Layout: Content + Large Photography Frame */}
+        <div className="bg-white rounded-[32px] sm:rounded-[40px] p-7 sm:p-12 lg:p-14 border border-gray-200/80 shadow-[0_4px_30px_rgba(0,0,0,0.03)] grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          {/* Left Column: Narrative & Dr. Montessori Quote */}
+          <div className="lg:col-span-7 space-y-6 text-left">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#EBF3FF] text-[#0750B8] shadow-xs border border-[#0750B8]/15">
+              <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+              <span>Pillar {activeTab + 1} of {pillars.length}</span>
             </div>
 
-            <h3 className="font-display font-extrabold text-2xl sm:text-3xl md:text-4xl text-[#121D28] leading-tight">
+            <h3 className="font-display font-black text-2xl sm:text-3xl lg:text-4xl text-[#0F172A] leading-tight">
               {activePillar.title}
             </h3>
 
-            <p className="text-sm sm:text-base md:text-lg text-[#2A343D] font-medium leading-relaxed italic border-l-4 border-[#0750B8] pl-4">
+            <p className="text-sm sm:text-base text-gray-700 font-medium leading-relaxed italic border-l-4 border-[#0750B8] pl-4 py-0.5">
               &ldquo;{activePillar.shortDesc}&rdquo;
             </p>
 
-            <p className="text-sm sm:text-base text-[#5E6D7A] leading-relaxed">
+            <p className="text-sm sm:text-base text-gray-600 leading-relaxed font-normal">
               {activePillar.detailedText}
             </p>
 
             {/* Benefits Checklist */}
-            <div className="space-y-2.5 pt-2">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-[#121D28]">
-                How your child flourishes:
+            <div className="space-y-2.5 pt-1">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-gray-400">
+                Key Development Outcomes:
               </h4>
-              {activePillar.benefits.map((b, i) => (
-                <div key={i} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#2A343D]">
-                  <CheckCircle2 className="w-4 h-4 text-[#159447] flex-shrink-0 mt-0.5" />
-                  <span>{b}</span>
-                </div>
-              ))}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                {activePillar.benefits.map((b, i) => (
+                  <div
+                    key={i}
+                    className="flex items-start gap-2 p-2.5 rounded-xl bg-gray-50/90 border border-gray-100 text-xs sm:text-[13px] font-medium text-gray-800"
+                  >
+                    <CheckCircle2 className="w-4 h-4 text-[#159447] flex-shrink-0 mt-0.5" />
+                    <span>{b}</span>
+                  </div>
+                ))}
+              </div>
             </div>
 
             {/* Dr. Montessori Quote Block */}
-            <div className="p-4 sm:p-5 rounded-2xl bg-white border border-[#0750B8]/15 shadow-sm relative">
-              <Quote className="w-8 h-8 text-[#F5B900]/40 absolute top-3 right-3" />
-              <p className="text-xs sm:text-sm italic text-[#121D28] relative z-10 leading-relaxed font-serif">
+            <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-[#EBF3FF]/60 to-[#EAF8EF]/60 border border-gray-200/80 relative overflow-hidden">
+              <Quote className="w-10 h-10 text-amber-400/25 absolute top-2 right-3 pointer-events-none" />
+              <p className="text-xs sm:text-sm italic text-[#0F172A] relative z-10 leading-relaxed font-serif">
                 &ldquo;{activePillar.quote}&rdquo;
               </p>
               <div className="mt-2 text-[11px] font-bold text-[#0750B8] uppercase tracking-wider">
-                — Dr. Maria Montessori (Physician & Educator)
+                — Dr. Maria Montessori (Physician & Pioneer)
               </div>
             </div>
           </div>
 
-          {/* Right Column: Large Frame Photography */}
-          <div className="lg:col-span-6 relative">
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white aspect-[4/3] sm:aspect-[16/11] bg-[#121D28]">
+          {/* Right Column: Large Frame Photography + Thumbnail Switcher */}
+          <div className="lg:col-span-5 space-y-4">
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white aspect-[4/3] sm:aspect-[16/11] bg-slate-900 group">
               <Image
                 src={activePillar.image}
                 alt={activePillar.title}
                 fill
-                className="object-cover transition-transform duration-700 hover:scale-105"
-                sizes="(max-width: 1024px) 100vw, 600px"
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                sizes="(max-width: 1024px) 100vw, 550px"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/85 via-transparent to-transparent opacity-80" />
 
               {/* Ambient Badge Overlay */}
-              <div className="absolute bottom-4 left-4 right-4 p-3.5 rounded-2xl bg-[#121D28]/85 backdrop-blur-md text-white flex items-center justify-between">
+              <div className="absolute bottom-4 left-4 right-4 p-3 rounded-2xl bg-black/60 backdrop-blur-md text-white flex items-center justify-between border border-white/20 shadow-lg">
                 <div>
                   <div className="text-xs font-bold text-amber-300">
                     Prepared Learning Environment
                   </div>
                   <div className="text-[11px] text-white/80">
-                    Self-Correcting Tactile Materials
+                    Authentic Tactile Apparatus
                   </div>
                 </div>
-                <div className="w-8 h-8 rounded-xl bg-white/20 flex items-center justify-center">
-                  <ArrowRight className="w-4 h-4 text-white" />
+                <div className="w-8 h-8 rounded-xl bg-white/20 flex items-center justify-center text-white">
+                  <ArrowRight className="w-4 h-4" />
                 </div>
               </div>
+            </div>
+
+            {/* Direct Thumbnail Switcher */}
+            <div className="flex items-center gap-2.5 pt-1">
+              {pillars.map((p, idx) => (
+                <button
+                  key={p.id}
+                  onClick={() => setActiveTab(idx)}
+                  className={`relative flex-1 aspect-video rounded-xl overflow-hidden border-2 transition-all cursor-pointer ${
+                    activeTab === idx
+                      ? "border-[#0750B8] scale-105 shadow-md"
+                      : "border-transparent opacity-60 hover:opacity-100"
+                  }`}
+                >
+                  <Image
+                    src={p.image}
+                    alt={p.title}
+                    fill
+                    className="object-cover"
+                    sizes="120px"
+                  />
+                </button>
+              ))}
             </div>
           </div>
         </div>

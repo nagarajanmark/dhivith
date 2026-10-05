@@ -150,7 +150,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenTourModal }) => 
 
               <div className="relative rounded-[32px] overflow-hidden shadow-2xl border-4 border-white aspect-[4/5] bg-white">
                 <Image
-                  src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?auto=format&fit=crop&w=1000&q=85"
+                  src="/school_images/1000453992.webp"
                   alt="Dhivith Edu Care Montessori Classroom"
                   fill
                   priority

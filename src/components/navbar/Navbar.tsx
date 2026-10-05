@@ -31,12 +31,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTourModal }) => {
 
   const navLinks = [
     { label: "Home", href: "/" },
-    { label: "About", href: "/about" },
-    { label: "Method", href: "/montessori-method" },
-    { label: "Programs", href: "/programs" },
-    { label: "Tuition", href: "/tuitions" },
-    { label: "Environment", href: "/environment" },
+    { label: "Classes", href: "/classes" },
     { label: "Gallery", href: "/gallery" },
+    { label: "About", href: "/about" },
     { label: "Contact", href: "/contact" },
   ];
 

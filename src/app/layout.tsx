@@ -3,6 +3,7 @@ import { Plus_Jakarta_Sans, Outfit } from "next/font/google";
 import "./globals.css";
 import { SCHOOL_INFO } from "@/data/schoolData";
 import { QuickSupportDesk } from "@/components/ui/QuickSupportDesk";
+import { CustomCursor } from "@/components/ui/CustomCursor";
 
 const plusJakarta = Plus_Jakarta_Sans({
   variable: "--font-sans",
@@ -125,6 +126,9 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen flex flex-col bg-white text-[#121D28] font-body selection:bg-[#F5B900] selection:text-[#121D28] antialiased relative">
+        {/* Global Interactive Custom Mouse Cursor */}
+        <CustomCursor />
+
         {children}
 
         {/* Floating Green Quick Support Desk Trigger */}

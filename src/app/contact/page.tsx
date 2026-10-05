@@ -4,6 +4,7 @@ import { Navbar } from "@/components/navbar/Navbar";
 import { Footer } from "@/components/footer/Footer";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { ContactSection } from "@/components/contact/ContactSection";
+import { CampusLocationMap } from "@/components/contact/CampusLocationMap";
 import { FaqSection } from "@/components/faq/FaqSection";
 import { TourBookingModal } from "@/components/modals/TourBookingModal";
 
@@ -25,6 +26,9 @@ export default function ContactPage() {
 
       {/* Main Interactive Contact Section */}
       <ContactSection />
+
+      {/* Location & Directions Map Section */}
+      <CampusLocationMap />
 
       {/* FAQs Section */}
       <FaqSection />

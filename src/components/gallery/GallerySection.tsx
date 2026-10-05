@@ -119,6 +119,7 @@ export const GallerySection: React.FC = () => {
           onClose={() => setLightboxIndex(null)}
           onNext={handleNext}
           onPrev={handlePrev}
+          onSelectIndex={(idx) => setLightboxIndex(idx)}
         />
       )}
     </section>

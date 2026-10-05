@@ -102,33 +102,18 @@ export const Footer: React.FC<FooterProps> = ({ onOpenTourModal }) => {
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="hover:text-[#0750B8] transition-colors">
-                  About & Philosophy
-                </Link>
-              </li>
-              <li>
-                <Link href="/montessori-method" className="hover:text-[#0750B8] transition-colors">
-                  Montessori Method
-                </Link>
-              </li>
-              <li>
-                <Link href="/programs" className="hover:text-[#0750B8] transition-colors">
-                  Preschool Programs
-                </Link>
-              </li>
-              <li>
-                <Link href="/tuitions" className="hover:text-[#0750B8] transition-colors">
-                  Tuition & Coaching
-                </Link>
-              </li>
-              <li>
-                <Link href="/environment" className="hover:text-[#0750B8] transition-colors">
-                  Prepared Environment
+                <Link href="/classes" className="hover:text-[#0750B8] transition-colors">
+                  All Classes & Tuitions
                 </Link>
               </li>
               <li>
                 <Link href="/gallery" className="hover:text-[#0750B8] transition-colors">
-                  3D Gallery
+                  Campus Gallery
+                </Link>
+              </li>
+              <li>
+                <Link href="/about" className="hover:text-[#0750B8] transition-colors">
+                  About Dhivith Edu Care
                 </Link>
               </li>
               <li>

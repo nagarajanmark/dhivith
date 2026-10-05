@@ -14,11 +14,14 @@ import {
   Compass,
   ArrowRight,
   ShieldCheck,
+  ChevronRight,
+  Phone,
+  BookOpen,
 } from "lucide-react";
 import { Navbar } from "@/components/navbar/Navbar";
 import { Footer } from "@/components/footer/Footer";
-import { PageHeader } from "@/components/ui/PageHeader";
 import { PhilosophySection } from "@/components/philosophy/PhilosophySection";
+import { TeamMembersSection } from "@/components/about/TeamMembersSection";
 import { SchoolVisitCTA } from "@/components/cta/SchoolVisitCTA";
 import { TourBookingModal } from "@/components/modals/TourBookingModal";
 import { SCHOOL_INFO } from "@/data/schoolData";
@@ -30,98 +33,275 @@ export default function AboutPage() {
     <main className="min-h-screen flex flex-col bg-white text-[#121D28]">
       <Navbar onOpenTourModal={() => setIsTourModalOpen(true)} />
 
-      {/* Page Header */}
-      <PageHeader
-        breadcrumb="About Us"
-        badge="Our Heritage & Philosophy"
-        title="Nurturing Curious Minds in Kinathukadavu"
-        highlightedWord="Curious Minds"
-        description="Founded on July 2, 2024, DHIVITH EDU CARE blends authentic Montessori early-learning principles with personalized student-centred coaching to shape confident lifelong achievers."
-      />
+      {/* 1. HERO / ABOUT BANNER SECTION WITH about-bg.webp (Clean, Reduced Height, Direct Canvas) */}
+      <section className="relative pt-28 sm:pt-32 pb-12 sm:pb-16 overflow-hidden text-white min-h-[380px] sm:min-h-[420px] flex items-center bg-[#0750B8]">
+        {/* Full-bleed background image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 scale-105"
+          style={{ backgroundImage: `url('/about-bg.webp')` }}
+        />
+        {/* Ultra-luxe cinematic gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0750B8]/92 via-[#0750B8]/75 to-[#121D28]/90 backdrop-blur-[1px]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(245,185,0,0.25),transparent_65%)]" />
 
-      {/* Founder & Leadership Spotlight Section */}
-      <section className="py-16 lg:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center bg-gray-50/70 rounded-3xl p-8 sm:p-12 lg:p-16 border border-gray-200/80 shadow-sm">
-            {/* Founder Visual Frame */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+          {/* Breadcrumb & Pill Row */}
+          <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
+            <nav className="inline-flex items-center gap-2 text-xs font-semibold text-white/90 bg-white/15 px-3.5 py-1.5 rounded-full border border-white/20 backdrop-blur-md shadow-xs">
+              <Link href="/" className="hover:text-amber-300 transition-colors">
+                Home
+              </Link>
+              <ChevronRight className="w-3.5 h-3.5 text-white/60" />
+              <span className="text-amber-300 font-bold">About Us</span>
+            </nav>
+
+            <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/20 text-white border border-white/25 backdrop-blur-md shadow-xs">
+              <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+              <span>Heritage & Philosophy</span>
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            {/* Left Column: Bold Headline & Story */}
+            <div className="lg:col-span-7 space-y-4 text-left">
+              <h1 className="font-display font-black text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-[1.15] drop-shadow-md">
+                Nurturing Curious Minds in{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-yellow-200 to-amber-400">
+                  Kinathukadavu
+                </span>
+              </h1>
+
+              <p className="text-sm sm:text-base text-white/90 leading-relaxed font-normal max-w-xl drop-shadow-xs">
+                Founded on <strong>July 2, 2024</strong>, DHIVITH EDU CARE blends authentic Montessori early-learning with individualized coaching to inspire confidence, intellect, and lifelong success.
+              </p>
+
+              {/* Interactive CTAs */}
+              <div className="flex flex-wrap items-center gap-3.5 pt-2">
+                <button
+                  onClick={() => setIsTourModalOpen(true)}
+                  className="px-6 sm:px-7 py-3 sm:py-3.5 rounded-2xl bg-white text-[#0750B8] hover:bg-amber-300 hover:text-[#121D28] font-bold text-xs sm:text-sm shadow-xl hover:shadow-2xl hover:scale-105 active:scale-95 transition-all flex items-center gap-2 cursor-pointer"
+                >
+                  <Calendar className="w-4 h-4 text-[#F36B12]" />
+                  <span>Book a Campus Tour</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+
+                <a
+                  href={`tel:${SCHOOL_INFO.phoneRaw}`}
+                  className="px-5 sm:px-6 py-3 sm:py-3.5 rounded-2xl bg-white/15 hover:bg-white/25 text-white font-bold text-xs sm:text-sm border border-white/30 backdrop-blur-md shadow-lg transition-all flex items-center gap-2 cursor-pointer"
+                >
+                  <Phone className="w-4 h-4 text-amber-300" />
+                  <span>Call {SCHOOL_INFO.phone}</span>
+                </a>
+              </div>
+            </div>
+
+            {/* Right Column: 4 Stat Glass Cards + Director Chip */}
+            <div className="lg:col-span-5 space-y-3">
+              <div className="grid grid-cols-2 gap-3">
+                <div className="bg-white/15 hover:bg-white/20 backdrop-blur-md rounded-2xl p-4 sm:p-5 border border-white/20 text-center shadow-md transition-all hover:scale-102">
+                  <div className="font-display font-black text-2xl sm:text-3xl text-amber-300 mb-0.5">
+                    100%
+                  </div>
+                  <div className="text-[11px] sm:text-xs font-semibold text-white/90">
+                    Montessori Method
+                  </div>
+                </div>
+
+                <div className="bg-white/15 hover:bg-white/20 backdrop-blur-md rounded-2xl p-4 sm:p-5 border border-white/20 text-center shadow-md transition-all hover:scale-102">
+                  <div className="font-display font-black text-2xl sm:text-3xl text-emerald-300 mb-0.5">
+                    1:10
+                  </div>
+                  <div className="text-[11px] sm:text-xs font-semibold text-white/90">
+                    Teacher-Student Ratio
+                  </div>
+                </div>
+
+                <div className="bg-white/15 hover:bg-white/20 backdrop-blur-md rounded-2xl p-4 sm:p-5 border border-white/20 text-center shadow-md transition-all hover:scale-102">
+                  <div className="font-display font-black text-2xl sm:text-3xl text-white mb-0.5">
+                    5+
+                  </div>
+                  <div className="text-[11px] sm:text-xs font-semibold text-white/90">
+                    Foundational Stages
+                  </div>
+                </div>
+
+                <div className="bg-white/15 hover:bg-white/20 backdrop-blur-md rounded-2xl p-4 sm:p-5 border border-white/20 text-center shadow-md transition-all hover:scale-102">
+                  <div className="font-display font-black text-2xl sm:text-3xl text-amber-300 mb-0.5">
+                    LKG–12
+                  </div>
+                  <div className="text-[11px] sm:text-xs font-semibold text-white/90">
+                    Tuitions & Engg Maths
+                  </div>
+                </div>
+              </div>
+
+              {/* Director Signature Chip */}
+              <div className="bg-white/15 backdrop-blur-md rounded-xl p-3 border border-white/20 flex items-center justify-between text-xs">
+                <div className="flex items-center gap-2">
+                  <div className="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center text-amber-300">
+                    <Award className="w-3.5 h-3.5" />
+                  </div>
+                  <div>
+                    <div className="font-bold text-white text-xs">Mrs. S Tharani</div>
+                    <div className="text-[10px] text-white/75">M.Sc., PGDM, PGMTTC • Founder</div>
+                  </div>
+                </div>
+                <span className="text-[10px] font-bold text-emerald-300 bg-emerald-500/20 px-2 py-0.5 rounded-full border border-emerald-400/30">
+                  Certified
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Founder & Leadership Spotlight Section - Seamless Open Premium Layout */}
+      <section className="py-20 lg:py-28 bg-white relative overflow-hidden border-b border-gray-100">
+        {/* Soft Ambient Background Highlights */}
+        <div className="absolute top-1/3 left-0 w-96 h-96 bg-[#0750B8]/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-1/3 right-0 w-96 h-96 bg-[#159447]/5 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            {/* Left: Founder Visual Frame (Open Modern Floating Portrait) */}
             <div className="lg:col-span-5 relative">
-              <div className="relative mx-auto max-w-sm rounded-3xl overflow-hidden shadow-2xl border-4 border-white aspect-[4/5] bg-[#121D28]">
+              {/* Layered Decorative Backdrop Accent */}
+              <div className="absolute -top-4 -left-4 w-full h-full rounded-3xl bg-gradient-to-tr from-[#0750B8]/15 via-[#159447]/10 to-amber-300/20 -z-10 transform -rotate-1 hidden sm:block" />
+
+              <div className="relative mx-auto max-w-md rounded-3xl overflow-hidden shadow-2xl border-2 border-gray-100 aspect-[4/5] bg-slate-900 group">
                 <Image
-                  src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80"
+                  src="/school_images/1000591348.webp"
                   alt="Mrs. S Tharani - Educational Director"
                   fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 400px"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, 450px"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#121D28]/85 via-[#121D28]/30 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/90 via-[#0F172A]/25 to-transparent" />
 
                 <div className="absolute bottom-6 left-6 right-6 text-white">
                   <div className="text-xs font-bold uppercase tracking-wider text-amber-300 mb-1">
                     Founder & Director
                   </div>
-                  <h3 className="font-display font-bold text-2xl text-white">
+                  <h3 className="font-display font-extrabold text-2xl text-white">
                     {SCHOOL_INFO.founder}
                   </h3>
                   <p className="text-xs text-white/80">{SCHOOL_INFO.qualifications}</p>
                 </div>
               </div>
 
-              {/* Verified Badge */}
-              <div className="absolute -bottom-4 -right-2 sm:right-4 bg-white rounded-2xl p-3.5 shadow-xl border border-[#159447]/20 flex items-center gap-2.5">
-                <Award className="w-8 h-8 text-[#159447]" />
+              {/* Verified Badge Floating Bottom-Right */}
+              <div className="absolute -bottom-4 -right-2 sm:right-2 bg-white rounded-2xl p-4 shadow-xl border border-gray-100 flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-[#EAF8EF] text-[#159447] flex items-center justify-center flex-shrink-0">
+                  <Award className="w-5 h-5" />
+                </div>
                 <div>
-                  <div className="text-xs font-bold text-[#121D28]">PGMTTC Certified</div>
-                  <div className="text-[10px] text-[#5E6D7A]">Montessori Master Trainer</div>
+                  <div className="text-xs font-bold text-[#0F172A]">PGMTTC Certified</div>
+                  <div className="text-[11px] text-gray-500">Montessori Master Trainer</div>
                 </div>
               </div>
             </div>
 
-            {/* Founder Narrative */}
-            <div className="lg:col-span-7 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white text-[#0750B8] shadow-sm border border-[#0750B8]/15">
+            {/* Right: Editorial Founder Narrative */}
+            <div className="lg:col-span-7 space-y-6 text-left">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#EBF3FF] text-[#0750B8] text-xs font-bold uppercase tracking-wider border border-[#0750B8]/15 shadow-xs">
                 <GraduationCap className="w-4 h-4 text-[#F36B12]" />
-                Director&apos;s Message
+                <span>Director&apos;s Message</span>
               </div>
 
-              <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-[#121D28]">
+              <h2 className="font-display font-black text-3xl sm:text-4xl lg:text-5xl text-[#0F172A] tracking-tight leading-tight">
                 &ldquo;Every Child Has Limitless Inborn Potential.&rdquo;
               </h2>
 
-              <p className="text-base text-[#5E6D7A] leading-relaxed">
+              <p className="text-base sm:text-lg text-gray-600 leading-relaxed font-normal">
                 Welcome to <strong>DHIVITH EDU CARE</strong>. As an educator certified in Montessori Teacher Training (PGMTTC) and post-graduate management, my lifelong conviction is that true education does not force children into a rigid mold—it awakens their spontaneous joy of discovery.
               </p>
 
-              <p className="text-sm sm:text-base text-[#5E6D7A] leading-relaxed">
+              <p className="text-sm sm:text-base text-gray-600 leading-relaxed font-normal">
                 Since our inception on <strong>July 2, 2024</strong> in Kinathukadavu, Coimbatore, we have created an environment where toddlers, preschoolers, and school students receive genuine individual attention, self-correcting tactile learning tools, and stress-free academic coaching.
               </p>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                <div className="flex items-center gap-2.5 p-3 rounded-xl bg-white border border-[#0750B8]/10 text-xs font-semibold text-[#121D28]">
-                  <CheckCircle2 className="w-4 h-4 text-[#159447]" />
-                  <span>Student-Centred Montessori Care</span>
+              {/* Ultra-Premium 4 Feature Cards */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                {/* Card 1: Montessori Care */}
+                <div className="group p-4.5 sm:p-5 rounded-2xl bg-white hover:bg-[#EAF8EF]/40 border border-gray-200/80 hover:border-[#159447]/30 shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex items-start gap-3.5">
+                  <div className="w-10 h-10 rounded-xl bg-[#EAF8EF] text-[#159447] flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform shadow-xs">
+                    <Heart className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h4 className="font-display font-bold text-sm text-[#0F172A] group-hover:text-[#159447] transition-colors">
+                      Student-Centred Care
+                    </h4>
+                    <p className="text-xs text-gray-500 mt-0.5 leading-relaxed font-normal">
+                      Individual pace & didactic tactile learning
+                    </p>
+                  </div>
                 </div>
-                <div className="flex items-center gap-2.5 p-3 rounded-xl bg-white border border-[#0750B8]/10 text-xs font-semibold text-[#121D28]">
-                  <CheckCircle2 className="w-4 h-4 text-[#0750B8]" />
-                  <span>Tuition Support from LKG to Grade 12</span>
+
+                {/* Card 2: Tuition Support */}
+                <div className="group p-4.5 sm:p-5 rounded-2xl bg-white hover:bg-[#EBF3FF]/40 border border-gray-200/80 hover:border-[#0750B8]/30 shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex items-start gap-3.5">
+                  <div className="w-10 h-10 rounded-xl bg-[#EBF3FF] text-[#0750B8] flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform shadow-xs">
+                    <BookOpen className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h4 className="font-display font-bold text-sm text-[#0F172A] group-hover:text-[#0750B8] transition-colors">
+                      LKG to Grade 12 Tuitions
+                    </h4>
+                    <p className="text-xs text-gray-500 mt-0.5 leading-relaxed font-normal">
+                      CBSE, ICSE & State Board concept clarity
+                    </p>
+                  </div>
                 </div>
-                <div className="flex items-center gap-2.5 p-3 rounded-xl bg-white border border-[#0750B8]/10 text-xs font-semibold text-[#121D28]">
-                  <CheckCircle2 className="w-4 h-4 text-[#F36B12]" />
-                  <span>Engineering Mathematics Coaching</span>
+
+                {/* Card 3: Engineering Maths */}
+                <div className="group p-4.5 sm:p-5 rounded-2xl bg-white hover:bg-[#FFF2E8]/40 border border-gray-200/80 hover:border-[#F36B12]/30 shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex items-start gap-3.5">
+                  <div className="w-10 h-10 rounded-xl bg-[#FFF2E8] text-[#F36B12] flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform shadow-xs">
+                    <GraduationCap className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h4 className="font-display font-bold text-sm text-[#0F172A] group-hover:text-[#F36B12] transition-colors">
+                      Engineering Mathematics
+                    </h4>
+                    <p className="text-xs text-gray-500 mt-0.5 leading-relaxed font-normal">
+                      Collegiate calculus, matrices & analysis
+                    </p>
+                  </div>
                 </div>
-                <div className="flex items-center gap-2.5 p-3 rounded-xl bg-white border border-[#0750B8]/10 text-xs font-semibold text-[#121D28]">
-                  <CheckCircle2 className="w-4 h-4 text-[#F5B900]" />
-                  <span>Stress-Free Learning Environment</span>
+
+                {/* Card 4: Prepared Environment */}
+                <div className="group p-4.5 sm:p-5 rounded-2xl bg-white hover:bg-[#FFF9E5]/40 border border-gray-200/80 hover:border-[#F5B900]/40 shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex items-start gap-3.5">
+                  <div className="w-10 h-10 rounded-xl bg-[#FFF9E5] text-[#9A6700] flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform shadow-xs">
+                    <ShieldCheck className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h4 className="font-display font-bold text-sm text-[#0F172A] group-hover:text-[#9A6700] transition-colors">
+                      Stress-Free Environment
+                    </h4>
+                    <p className="text-xs text-gray-500 mt-0.5 leading-relaxed font-normal">
+                      Natural daylight studios & biometric safety
+                    </p>
+                  </div>
                 </div>
               </div>
 
-              <div className="pt-4 flex items-center gap-4">
+              {/* Action Buttons */}
+              <div className="pt-3 flex flex-wrap items-center gap-4">
                 <button
                   onClick={() => setIsTourModalOpen(true)}
-                  className="px-6 py-3.5 rounded-2xl bg-[#0750B8] hover:bg-[#063f91] text-white font-bold text-sm shadow-md transition-all flex items-center gap-2"
+                  className="px-7 py-3.5 rounded-2xl bg-[#0750B8] hover:bg-[#063f91] text-white font-bold text-xs sm:text-sm shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all flex items-center gap-2.5 cursor-pointer"
                 >
                   <Calendar className="w-4 h-4 text-amber-300" />
                   <span>Schedule Meeting with Director</span>
+                  <ArrowRight className="w-4 h-4" />
                 </button>
+
+                <a
+                  href={`tel:${SCHOOL_INFO.phoneRaw}`}
+                  className="px-6 py-3.5 rounded-2xl bg-white hover:bg-gray-50 text-gray-800 font-bold text-xs sm:text-sm border border-gray-200/90 shadow-sm hover:border-[#0750B8]/40 transition-all flex items-center gap-2.5 cursor-pointer"
+                >
+                  <Phone className="w-4 h-4 text-[#0750B8]" />
+                  <span>Call {SCHOOL_INFO.phone}</span>
+                </a>
               </div>
             </div>
           </div>
@@ -188,6 +368,9 @@ export default function AboutPage() {
 
       {/* Montessori Philosophy Pillars */}
       <PhilosophySection />
+
+      {/* 5. Dedicated Faculty & Mentors Section */}
+      <TeamMembersSection onOpenTourModal={() => setIsTourModalOpen(true)} />
 
       {/* School Visit CTA */}
       <SchoolVisitCTA onOpenTourModal={() => setIsTourModalOpen(true)} />

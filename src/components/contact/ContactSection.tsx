@@ -178,56 +178,6 @@ export const ContactSection: React.FC = () => {
                 </div>
               </div>
             </div>
-
-            {/* Interactive Campus Map Placeholder Card */}
-            <div className="relative rounded-3xl overflow-hidden shadow-md border border-[#0750B8]/15 bg-[#121D28] text-white p-6 aspect-[16/9] flex flex-col justify-between">
-              <div className="absolute inset-0 bg-gradient-to-tr from-[#0750B8]/60 via-[#159447]/30 to-[#121D28]/90 pointer-events-none" />
-              <div className="absolute inset-0 bg-grain opacity-40 pointer-events-none" />
-
-              <div className="relative z-10 flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-lg bg-white/20 backdrop-blur-md flex items-center justify-center">
-                    <Navigation className="w-4 h-4 text-amber-300" />
-                  </div>
-                  <span className="font-display font-bold text-sm">Kinathukadavu Campus</span>
-                </div>
-                <span className="text-[10px] uppercase font-bold tracking-wider px-2.5 py-1 rounded-full bg-white/20 backdrop-blur-md">
-                  Coimbatore - 641032
-                </span>
-              </div>
-
-              <div className="relative z-10">
-                <div className="font-display font-bold text-lg text-white">
-                  DHIVITH EDU CARE
-                </div>
-                <p className="text-xs text-white/80 mt-0.5 line-clamp-1">
-                  S.K.Garden, Site Nos. 16,17, Vadapudur
-                </p>
-
-                <div className="mt-4 flex items-center gap-3">
-                  <button
-                    onClick={() =>
-                      window.open(
-                        "https://maps.google.com/?q=Vadapudur+Kinathukadavu+Coimbatore+641032",
-                        "_blank"
-                      )
-                    }
-                    className="px-4 py-2 rounded-xl bg-white text-[#0750B8] hover:bg-gray-100 font-bold text-xs shadow transition-all flex items-center gap-1.5"
-                  >
-                    <span>View on Maps</span>
-                    <ExternalLink className="w-3.5 h-3.5" />
-                  </button>
-
-                  <button
-                    onClick={handleWhatsApp}
-                    className="px-4 py-2 rounded-xl bg-[#159447] hover:bg-[#117a3a] text-white font-bold text-xs shadow transition-all flex items-center gap-1.5"
-                  >
-                    <MessageSquare className="w-3.5 h-3.5" />
-                    <span>WhatsApp</span>
-                  </button>
-                </div>
-              </div>
-            </div>
           </div>
 
           {/* Right Column: Interactive School Visit & Enquiry Form (7 cols) */}
