@@ -9,21 +9,23 @@ import { WhyChooseUs } from "@/components/why-us/WhyChooseUs";
 import { SchoolVisitCTA } from "@/components/cta/SchoolVisitCTA";
 import { TourBookingModal } from "@/components/modals/TourBookingModal";
 import { ShieldCheck, Sun, Trees, Wind, Heart, Sparkles, CheckCircle2 } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function EnvironmentPage() {
+  const { language } = useLanguage();
   const [isTourModalOpen, setIsTourModalOpen] = useState(false);
 
   return (
     <main className="min-h-screen flex flex-col bg-white text-[#121D28]">
       <Navbar onOpenTourModal={() => setIsTourModalOpen(true)} />
 
-      {/* Page Header */}
       <PageHeader
-        breadcrumb="Our Prepared Environment"
-        badge="Architectural Calm & Child Scale"
-        title="Prepared for Peaceful Autonomy & Wonder"
-        highlightedWord="Prepared for Peaceful Autonomy"
-        description="Step inside our Kinathukadavu learning environment where natural daylight, non-toxic Scandinavian blonde wood, low open shelves, and organic garden terraces inspire joyful focus."
+        breadcrumb={language === "ta" ? "கற்றல் சூழல் & வளாகம்" : "Our Prepared Environment"}
+        title={language === "ta" ? "சுதந்திர சிந்தனை & அமைதியான கற்றல் சோலை" : "Prepared for Peaceful Autonomy & Wonder"}
+        highlightedWord={language === "ta" ? "அமைதியான கற்றல் சோலை" : "Prepared for Peaceful Autonomy"}
+        description={language === "ta" ? "இயற்கை வெளிச்சம், பாதுகாப்பான மரத்தாலான தளபாடங்கள், குறைந்த உயர அலமாரிகள் மற்றும் பசுமையான தோட்டம் கொண்ட கிணத்துக்கடவு வளாகம்." : "Step inside our Kinathukadavu learning environment where natural daylight, non-toxic Scandinavian blonde wood, low open shelves, and organic garden terraces inspire joyful focus."}
+        bannerImage="/school_images/1000227874.webp"
+        gradientTheme="green"
       />
 
       {/* Environment Core Showcase Component */}
@@ -34,13 +36,13 @@ export default function EnvironmentPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="text-xs font-bold uppercase tracking-wider text-[#159447] bg-[#EAF8EF] px-4 py-1.5 rounded-full border border-[#159447]/20">
-              Safety & Hygiene Protocols
+              {language === "ta" ? "பாதுகாப்பு & சுகாதார நெறிமுறைகள்" : "Safety & Hygiene Protocols"}
             </span>
-            <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-[#121D28] mt-3">
-              Designed for Absolute Peace of Mind
+            <h2 className="font-display font-extrabold text-2xl sm:text-3xl lg:text-3xl xl:text-4xl text-[#121D28] mt-3">
+              {language === "ta" ? "முழுமையான மன அமைதிக்கான பாதுகாப்பு" : "Designed for Absolute Peace of Mind"}
             </h2>
-            <p className="text-sm sm:text-base text-[#5E6D7A] mt-2">
-              Our campus adheres to stringent early-learning child-safety, hygiene, and wellness standards.
+            <p className="text-xs sm:text-sm md:text-base text-[#5E6D7A] mt-2">
+              {language === "ta" ? "எங்கள் வளாகம் குழந்தைகளுக்கான உயர் சுகாதார மற்றும் பாதுகாப்பு தரநிலைகளைப் பின்பற்றுகிறது." : "Our campus adheres to stringent early-learning child-safety, hygiene, and wellness standards."}
             </p>
           </div>
 

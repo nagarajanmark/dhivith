@@ -47,8 +47,8 @@ export default function AboutPage() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(245,185,0,0.25),transparent_65%)]" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-          {/* Breadcrumb & Pill Row */}
-          <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
+          {/* Breadcrumb */}
+          <div className="mb-6">
             <nav className="inline-flex items-center gap-2 text-xs font-semibold text-white/90 bg-white/15 px-3.5 py-1.5 rounded-full border border-white/20 backdrop-blur-md shadow-xs">
               <Link href="/" className="hover:text-amber-300 transition-colors">
                 {t.nav.home}
@@ -56,17 +56,12 @@ export default function AboutPage() {
               <ChevronRight className="w-3.5 h-3.5 text-white/60" />
               <span className="text-amber-300 font-bold">{t.nav.about}</span>
             </nav>
-
-            <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/20 text-white border border-white/25 backdrop-blur-md shadow-xs">
-              <Sparkles className="w-3.5 h-3.5 text-amber-300" />
-              <span>{language === "ta" ? "பாரம்பரியம் & தத்துவம்" : "Heritage & Philosophy"}</span>
-            </span>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* Left Column: Bold Headline & Story */}
             <div className="lg:col-span-7 space-y-4 text-left">
-              <h1 className="font-display font-black text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-[1.15] drop-shadow-md">
+              <h1 className="font-display font-black text-2xl sm:text-3xl lg:text-3xl xl:text-4xl 2xl:text-5xl text-white tracking-tight leading-[1.2] drop-shadow-md">
                 {language === "ta" ? (
                   <>
                     இளம் தளிர்களை செதுக்கும்{" "}
@@ -84,7 +79,7 @@ export default function AboutPage() {
                 )}
               </h1>
 
-              <p className="text-sm sm:text-base text-white/90 leading-relaxed font-normal max-w-xl drop-shadow-xs">
+              <p className="text-xs sm:text-sm md:text-base text-white/90 leading-relaxed font-normal max-w-xl drop-shadow-xs">
                 {t.about.bannerDesc}
               </p>
 
@@ -186,17 +181,17 @@ export default function AboutPage() {
 
               <div className="relative mx-auto max-w-md rounded-3xl overflow-hidden shadow-2xl border-2 border-gray-100 aspect-[4/5] bg-slate-900 group">
                 <Image
-                  src="/school_images/1000591348.webp"
+                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop"
                   alt="Mrs. S Tharani - Educational Director"
                   fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, 450px"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/90 via-[#0F172A]/25 to-transparent" />
 
                 <div className="absolute bottom-6 left-6 right-6 text-white">
                   <div className="text-xs font-bold uppercase tracking-wider text-amber-300 mb-1">
-                    Founder & Director
+                    {language === "ta" ? "நிறுவனர் & கல்வி இயக்குநர்" : "Founder & Director"}
                   </div>
                   <h3 className="font-display font-extrabold text-2xl text-white">
                     {SCHOOL_INFO.founder}
@@ -211,8 +206,12 @@ export default function AboutPage() {
                   <Award className="w-5 h-5" />
                 </div>
                 <div>
-                  <div className="text-xs font-bold text-[#0F172A]">PGMTTC Certified</div>
-                  <div className="text-[11px] text-gray-500">Montessori Master Trainer</div>
+                  <div className="text-xs font-bold text-[#0F172A]">
+                    {language === "ta" ? "PGMTTC சான்றிதழ்" : "PGMTTC Certified"}
+                  </div>
+                  <div className="text-[11px] text-gray-500">
+                    {language === "ta" ? "மாண்டிசோரி முதன்மை பயிற்சியாளர்" : "Montessori Master Trainer"}
+                  </div>
                 </div>
               </div>
             </div>
@@ -224,13 +223,13 @@ export default function AboutPage() {
                 <span>{language === "ta" ? "இயக்குநரின் செய்தி" : "Director's Message"}</span>
               </div>
 
-              <h2 className="font-display font-black text-3xl sm:text-4xl lg:text-5xl text-[#0F172A] tracking-tight leading-tight">
+              <h2 className="font-display font-black text-2xl sm:text-3xl lg:text-3xl xl:text-4xl text-[#0F172A] tracking-tight leading-tight">
                 {language === "ta"
                   ? "“ஒவ்வொரு குழந்தையிடமும் எல்லையற்ற உள்ளார்ந்த திறன் உள்ளது.”"
                   : "“Every Child Has Limitless Inborn Potential.”"}
               </h2>
 
-              <p className="text-base sm:text-lg text-gray-600 leading-relaxed font-normal">
+              <p className="text-xs sm:text-sm md:text-base text-gray-600 leading-relaxed font-normal">
                 {t.about.directorMessage}
               </p>
 
@@ -305,19 +304,19 @@ export default function AboutPage() {
               <div className="pt-3 flex flex-wrap items-center gap-4">
                 <button
                   onClick={() => setIsTourModalOpen(true)}
-                  className="px-7 py-3.5 rounded-2xl bg-[#0750B8] hover:bg-[#063f91] text-white font-bold text-xs sm:text-sm shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all flex items-center gap-2.5 cursor-pointer"
+                  className="whitespace-nowrap px-7 py-3.5 rounded-2xl bg-[#0750B8] hover:bg-[#063f91] text-white font-bold text-xs sm:text-sm shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all flex items-center gap-2.5 cursor-pointer"
                 >
-                  <Calendar className="w-4 h-4 text-amber-300" />
-                  <span>{t.common.scheduleVisit}</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <Calendar className="w-4 h-4 text-amber-300 shrink-0" />
+                  <span className="whitespace-nowrap">{t.common.scheduleVisit}</span>
+                  <ArrowRight className="w-4 h-4 shrink-0" />
                 </button>
 
                 <a
                   href={`tel:${SCHOOL_INFO.phoneRaw}`}
-                  className="px-6 py-3.5 rounded-2xl bg-white hover:bg-gray-50 text-gray-800 font-bold text-xs sm:text-sm border border-gray-200/90 shadow-sm hover:border-[#0750B8]/40 transition-all flex items-center gap-2.5 cursor-pointer"
+                  className="whitespace-nowrap px-6 py-3.5 rounded-2xl bg-white hover:bg-gray-50 text-gray-800 font-bold text-xs sm:text-sm border border-gray-200/90 shadow-sm hover:border-[#0750B8]/40 transition-all flex items-center gap-2.5 cursor-pointer"
                 >
-                  <Phone className="w-4 h-4 text-[#0750B8]" />
-                  <span>{t.common.callNow}: {SCHOOL_INFO.phone}</span>
+                  <Phone className="w-4 h-4 text-[#0750B8] shrink-0" />
+                  <span className="whitespace-nowrap">{t.common.callNow}: {SCHOOL_INFO.phone}</span>
                 </a>
               </div>
             </div>

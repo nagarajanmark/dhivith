@@ -1,18 +1,27 @@
 export interface Program {
   id: string;
   name: string;
+  nameTa?: string;
   subTitle: string;
+  subTitleTa?: string;
   ageRange: string;
+  ageRangeTa?: string;
   tagline: string;
+  taglineTa?: string;
   description: string;
+  descriptionTa?: string;
   keyBenefits: string[];
+  keyBenefitsTa?: string[];
   schedule: string;
+  scheduleTa?: string;
   ratio: string;
+  ratioTa?: string;
   color: string;
   badgeBg: string;
   badgeText: string;
   image: string;
   curriculumHighlights: string[];
+  curriculumHighlightsTa?: string[];
 }
 
 export interface ComprehensiveService {
@@ -64,9 +73,11 @@ export interface Testimonial {
 export interface GalleryItem {
   id: string;
   title: string;
+  titleTa?: string;
   category: "All" | "Classroom" | "Sensorial" | "Outdoor" | "Practical Life" | "Creative";
   image: string;
   caption: string;
+  captionTa?: string;
 }
 
 export interface FaqItem {
@@ -106,19 +117,33 @@ export const PROGRAMS: Program[] = [
   {
     id: "day-care",
     name: "Day Care",
+    nameTa: "டே கேர் (பகல் நேர பராமரிப்பு)",
     subTitle: "Loving, Safe & Sensorial Haven",
+    subTitleTa: "அன்பான, பாதுகாப்பான & ஊட்டமளிக்கும் சூழல்",
     ageRange: "1.5 – 6 Years",
+    ageRangeTa: "1.5 – 6 ஆண்டுகள்",
     tagline: "A warm home-like extension supporting working parents with tender care and structured rhythms.",
+    taglineTa: "பணிபுரியும் பெற்றோரின் சுமையை குறைத்து, குழந்தைகளை தாய்மடி போன்ற கனிவுடன் அரவணைக்கும் சூழல்.",
     description:
       "Our Day Care offers cozy climate-controlled rest pods, nutritious meal times, open tactile play stations, and attentive caregivers who ensure your child feels cherished, secure, and happy throughout the day.",
+    descriptionTa:
+      "எங்கள் டே கேர் மையம் பாதுகாப்பான மற்றும் குளிரூட்டப்பட்ட ஓய்வறைகள், சத்தான உணவு நேரம், தொடு உணர்வு விளையாட்டுப் பொருட்கள் மற்றும் அக்கறையுள்ள ஆசிரியர்களைக் கொண்டு உங்கள் குழந்தையை நாள் முழுவதும் மகிழ்ச்சியாகவும் பாதுகாப்பாகவும் வைக்கிறது.",
     keyBenefits: [
       "Attentive and caring certified staff",
       "Hygienic feeding, hydration & toilet support",
       "Quiet afternoon nap sanctuary with soothing acoustics",
       "Flexible hourly, half-day & full-day options",
     ],
+    keyBenefitsTa: [
+      "சான்றளிக்கப்பட்ட அன்பான மற்றும் கனிவான ஆசிரியர்கள்",
+      "சுகாதாரமான உணவு, குடிநீர் மற்றும் கழிப்பறைப் பழக்கவழக்க வழிகாட்டல்",
+      "அமைதியான மற்றும் இதமான பிற்பகல் உறக்கப் பகுதி",
+      "நெகிழ்வான மணிநேரம், அரை நாள் மற்றும் முழு நாள் விருப்பங்கள்",
+    ],
     schedule: "Full Day: 8:30 AM – 6:00 PM | Half-Day options",
+    scheduleTa: "முழு நாள்: காலை 8:30 – மாலை 6:00 | அரை நாள் விருப்பங்கள்",
     ratio: "1:4 Caregiver to Child Ratio",
+    ratioTa: "1:4 பராமரிப்பாளர் விகிதம்",
     color: "#0750B8",
     badgeBg: "bg-[#EBF3FF]",
     badgeText: "text-[#0750B8]",
@@ -129,23 +154,43 @@ export const PROGRAMS: Program[] = [
       "Daily personal health and developmental logs",
       "Supervised outdoor garden recreation",
     ],
+    curriculumHighlightsTa: [
+      "உடலியக்க வளர்ச்சி மற்றும் மென்மையான விளையாட்டு மண்டலங்கள்",
+      "இனிய கதைகள், பாடல்கள் மற்றும் இசை வட்டங்கள்",
+      "தினசரி தனிப்பட்ட சுகாதார மற்றும் வளர்ச்சி பதிவுகள்",
+      "கண்காணிக்கப்படும் திறந்தவெளி பூங்கா விளையாட்டுகள்",
+    ],
   },
   {
     id: "play-group",
     name: "Play Group",
+    nameTa: "ப்ளே குரூப் (மழலையர் விளையாட்டு வகுப்பு)",
     subTitle: "First Steps into Joyful Social Learning",
+    subTitleTa: "மகிழ்ச்சியான சமூகக் கற்றலின் முதல் படி",
     ageRange: "2 – 3 Years",
+    ageRangeTa: "2 – 3 ஆண்டுகள்",
     tagline: "Spontaneous curiosity, motor coordination, and joyful vocabulary building.",
+    taglineTa: "இயற்கையான ஆர்வம், உடல் அசைவு ஒருங்கிணைப்பு மற்றும் இனிய மொழி வளர்ச்சி.",
     description:
       "Children take their very first exploratory steps into a prepared educational setting. Through open-ended wooden toys, rhythm circles, tactile sensory trays, and nature play, little ones develop self-confidence and speech.",
+    descriptionTa:
+      "குழந்தைகள் கல்விச் சூழலில் தங்களின் முதல் பரிசோதனைப் படிகளை வைக்கின்றனர். மர பொம்மைகள், இசை வட்டங்கள், தொடு உணர்வு தட்டுகள் மற்றும் இயற்கையோடு இணைந்த விளையாட்டு மூலம் குழந்தைகள் தன்னம்பிக்கையையும் பேச்சாற்றலையும் வளர்க்கின்றனர்.",
     keyBenefits: [
       "Low wooden shelf accessibility and sensory bins",
       "Language enrichment with tactile nomenclature cards",
       "Peer sharing, turn-taking, and emotional bonding",
       "Guided motor tracks and balance exercises",
     ],
+    keyBenefitsTa: [
+      "குழந்தைகள் எளிதில் எட்டும் மர அலமாரிகள் மற்றும் தொடு உணர்வுப் பொருட்கள்",
+      "பட அட்டைகள் மூலம் சொல்லாற்றல் மற்றும் மொழி வளம் பெருக்குதல்",
+      "நண்பர்களுடன் பகிர்தல், வரிசை முறை மற்றும் பாசப் பிணைப்பு",
+      "உடல் சமநிலை மற்றும் தசை ஒருங்கிணைப்பு பயிற்சிகள்",
+    ],
     schedule: "Morning Batch: 9:00 AM – 12:00 PM",
+    scheduleTa: "காலை பிரிவு: 9:00 – 12:00",
     ratio: "1:5 Educator Ratio",
+    ratioTa: "1:5 ஆசிரியர் விகிதம்",
     color: "#F36B12",
     badgeBg: "bg-[#FFF2E8]",
     badgeText: "text-[#F36B12]",
@@ -156,23 +201,43 @@ export const PROGRAMS: Program[] = [
       "Water play, sand molding and clay modeling",
       "Self-guided snack table and hydration autonomy",
     ],
+    curriculumHighlightsTa: [
+      "வண்ணங்கள், வடிவங்கள் மற்றும் தொடு உணர்வு அறிதல்",
+      "பாடல்கள், கை அசைவு விளையாட்டுகள் மற்றும் பொம்மலாட்டம்",
+      "நீர் விளையாட்டு, மணல் மற்றும் களிமண் கலைப் படைப்புகள்",
+      "சுய உணவு உட்கொள்ளுதல் மற்றும் குடிநீர் குடித்தல் பயிற்சி",
+    ],
   },
   {
     id: "pre-kg",
     name: "Pre-KG",
+    nameTa: "ப்ரீ-கேஜி (Pre-KG)",
     subTitle: "Montessori Practical Life & Phonics",
+    subTitleTa: "மாண்டிசோரி செய்முறை வாழ்வியல் & உச்சரிப்பு பயிற்சி",
     ageRange: "3 – 4 Years",
+    ageRangeTa: "3 – 4 ஆண்டுகள்",
     tagline: "Uninterrupted work cycles cultivating focus, fine motor control, and clear expression.",
+    taglineTa: "தடையில்லா கற்றல் சுழற்சி மூலம் கூர்ந்த கவனம், கைவிரல் திறன் மற்றும் தெளிவான பேச்சு.",
     description:
       "A rich Montessori environment where children engage with Practical Life pouring, spooning, buttoning, and Sandpaper letter tracing, establishing deep neural pathways for concentration and independence.",
+    descriptionTa:
+      "குழந்தைகள் திரவம் ஊற்றுதல், கரண்டி பயன்படுத்துதல், பொத்தான் போடுதல் போன்ற நடைமுறை வாழ்வியல் பயிற்சிகள் மற்றும் மணல்தாள் எழுத்துக்களைத் தொட்டுப் பார்த்து ஆழமான கவனத்தையும் தன்னம்பிக்கையையும் வளர்க்கும் மாண்டிசோரி சூழல்.",
     keyBenefits: [
       "Sandpaper letters and multisensory phonetic sounds",
       "Practical Life exercises for grace, courtesy & self-care",
       "Sensorial dimension cylinders and pink tower spatial grading",
       "Botany and nature observation on the garden terrace",
     ],
+    keyBenefitsTa: [
+      "மணல்தாள் எழுத்துக்கள் மற்றும் பல உணர்வு ஒலி உச்சரிப்புப் பயிற்சி (Phonics)",
+      "மரியாதை, பண்பு மற்றும் சுய பராமரிப்புக்கான செய்முறை வாழ்வியல் பயிற்சிகள்",
+      "வடிவ உருளைகள் மற்றும் இளஞ்சிவப்பு கோபுரம் (Pink Tower) கொண்டு முப்பரிமாண கற்றல்",
+      "தோட்டப் பகுதியில் தாவரங்கள் மற்றும் இயற்கை கவனிப்பு",
+    ],
     schedule: "Daily Session: 8:45 AM – 12:45 PM",
+    scheduleTa: "தினசரி வகுப்பு: காலை 8:45 – மதியம் 12:45",
     ratio: "1:6 Educator Ratio",
+    ratioTa: "1:6 ஆசிரியர் விகிதம்",
     color: "#159447",
     badgeBg: "bg-[#EAF8EF]",
     badgeText: "text-[#159447]",
@@ -183,23 +248,43 @@ export const PROGRAMS: Program[] = [
       "Fine motor fasteners, dressing frames and pouring",
       "Expressive art with natural watercolors and easels",
     ],
+    curriculumHighlightsTa: [
+      "தொடு உணர்வு ஒலிப்பு முறை மற்றும் ஆரம்ப எழுத்துக்கூட்டல்",
+      "எண்ணிக்கைக் குச்சிகள், சுழல் பெட்டிகள் மற்றும் பூஜ்ஜியத்தின் தத்துவம்",
+      "ஆடை சட்டகங்கள், பொத்தான் மாட்டுதல் மற்றும் ஊற்றுதல் நுண்திறன்",
+      "இயற்கை வண்ணங்கள் மற்றும் வரைதல் மூலம் படைப்பாற்றல்",
+    ],
   },
   {
     id: "lkg",
     name: "LKG (Lower Kindergarten)",
+    nameTa: "எல்.கே.ஜி (LKG - கீழ் மழலையர்)",
     subTitle: "Language Mastery & Concrete Mathematics",
+    subTitleTa: "மொழி ஆளுமை & செய்முறை கணிதம்",
     ageRange: "4 – 5 Years",
+    ageRangeTa: "4 – 5 ஆண்டுகள்",
     tagline: "Grasping quantities with golden beads and expressing thoughts through emergent reading.",
+    taglineTa: "பொன்மணிகள் (Golden Beads) மூலம் எண்களைப் புரிந்து கொண்டு எளிய வாசிப்பில் சிறந்து விளங்குதல்.",
     description:
       "Children delve into concrete Montessori mathematics, three-letter phonetic reading, bilingual Hindi/Tamil/English basics, global geography maps, and hands-on science experiments in a peaceful setting.",
+    descriptionTa:
+      "குழந்தைகள் மாண்டிசோரி செய்முறைக் கணிதம், மூன்றெழுத்து வார்த்தை வாசிப்பு, தமிழ், ஆங்கிலம், இந்தி அடிப்படைகள், உலக வரைபடங்கள் மற்றும் செய்முறை அறிவியல் சோதனைகளில் அமைதியான சூழலில் ஈடுபடுகிறார்கள்.",
     keyBenefits: [
       "Golden bead decimal base-10 system operations",
       "Movable wooden alphabet sentence creation",
       "Hindi basics & vernacular cultural appreciation",
       "World geography puzzle maps and ecosystem studies",
     ],
+    keyBenefitsTa: [
+      "பொன்மணிகள் கொண்டு பத்தின் அடுக்கு தசம முறை கூட்டல், கழித்தல்",
+      "நகரும் மர எழுத்துக்கள் (Movable Alphabet) மூலம் வாக்கிய உருவாக்கம்",
+      "இந்தி, தமிழ் மற்றும் ஆங்கில மொழித் திறன் வளர்ச்சி",
+      "உலக வரைபட புதிர்கள் மற்றும் சுற்றுச்சூழல் விழிப்புணர்வு",
+    ],
     schedule: "Full Program: 8:30 AM – 1:15 PM",
+    scheduleTa: "முழு வகுப்பு: காலை 8:30 – மதியம் 1:15",
     ratio: "1:6 Educator Ratio",
+    ratioTa: "1:6 ஆசிரியர் விகிதம்",
     color: "#F5B900",
     badgeBg: "bg-[#FFF9E5]",
     badgeText: "text-[#9A6700]",
@@ -210,23 +295,43 @@ export const PROGRAMS: Program[] = [
       "Basic Hindi consonants, vowels and spoken phrases",
       "Leaf cabinets, seed germination and weather observation",
     ],
+    curriculumHighlightsTa: [
+      "பொன்மணிகள் மூலம் ஆயிரங்கள் வரையிலான கூட்டல் மற்றும் இடமதிப்பு",
+      "பார்வை சொற்கள், ஒலிப்பு வாசிப்பாளர்கள் மற்றும் கதை சொல்லுதல்",
+      "அடிப்படை இந்தி மற்றும் தமிழ் எழுத்துக்கள், உச்சரிப்புகள்",
+      "இலை மாதிரிகள், விதை முளைத்தல் மற்றும் வானிலை கவனிப்பு",
+    ],
   },
   {
     id: "ukg",
     name: "UKG (Upper Kindergarten)",
+    nameTa: "யு.கே.ஜி (UKG - மேல் மழலையர்)",
     subTitle: "Leadership, Academic Poise & Elementary Readiness",
+    subTitleTa: "தலைமைப் பண்பு & தொடக்கப் பள்ளி தயார்நிலை",
     ageRange: "5 – 6 Years",
+    ageRangeTa: "5 – 6 ஆண்டுகள்",
     tagline: "Smooth elementary transition with robust reading fluency and four-operation arithmetic.",
+    taglineTa: "சரளமான வாசிப்புத் திறன் மற்றும் நான்கு அடிப்படைக் கணித செயல்பாடுகளுடன் பள்ளிக்கான முழு தயார்நிலை.",
     description:
       "The pinnacle of our early childhood pathway. UKG scholars develop articulate public presentation skills, complex multi-digit calculations, written creative stories, and seamless readiness for CBSE, ICSE, and State Board schools.",
+    descriptionTa:
+      "எங்கள் மழலையர் பள்ளியின் உச்சகட்ட நிலை. UKG மாணவர்கள் மேடைப் பேச்சு, பல இலக்கக் கணக்கீடுகள், சுயமாக கதை எழுதுதல் மற்றும் CBSE, ICSE, மாநிலப் பாடத்திட்டப் பள்ளிகளில் சேர்வதற்கான முழு தன்னம்பிக்கையையும் பெறுகின்றனர்.",
     keyBenefits: [
       "Four-operation arithmetic (Addition, Subtraction, Multiplication)",
       "Fluent reading comprehension and independent journaling",
       "Hindi & English conversation and handwriting excellence",
       "Peer leadership, problem-solving and science demonstrations",
     ],
+    keyBenefitsTa: [
+      "நான்கு வித கணிதச் செயல்பாடுகள் (கூட்டல், கழித்தல், பெருக்கல்)",
+      "சரளமான வாசிப்பு, புரிதல் மற்றும் சுயமாக குறிப்புகள் எழுதுதல்",
+      "தமிழ், ஆங்கிலம் மற்றும் இந்தி உரையாடல் மற்றும் அழகான கையெழுத்து",
+      "நண்பர்களுக்கு வழிகாட்டுதல், சிக்கல் தீர்க்கும் திறன் மற்றும் அறிவியல் செயல்விளக்கங்கள்",
+    ],
     schedule: "Full Day: 8:30 AM – 1:30 PM",
+    scheduleTa: "முழு நாள்: காலை 8:30 – மதியம் 1:30",
     ratio: "1:8 Educator Ratio",
+    ratioTa: "1:8 ஆசிரியர் விகிதம்",
     color: "#0750B8",
     badgeBg: "bg-[#EBF3FF]",
     badgeText: "text-[#0750B8]",
@@ -236,6 +341,12 @@ export const PROGRAMS: Program[] = [
       "Fraction equivalence insets and geometric hierarchies",
       "Scientific experiments on matter, botany and zoology",
       "Preparation for formal school interviews and admissions",
+    ],
+    curriculumHighlightsTa: [
+      "இலக்கணப் பெட்டிகள், சொல் வகைகள் மற்றும் கதை உருவாக்கம்",
+      "பின்ன வடிவங்கள் மற்றும் வடிவியல் படிநிலைகள்",
+      "தாவரவியல், விலங்கியல் மற்றும் அறிவியல் சோதனைகள்",
+      "முதன்மைப் பள்ளி சேர்க்கை மற்றும் நேர்காணல்களுக்கான சிறப்பு தயார்நிலை",
     ],
   },
 ];
@@ -500,108 +611,138 @@ export const ENVIRONMENT_HOTSPOTS: EnvironmentHotspot[] = [
 export const GALLERY_ITEMS: GalleryItem[] = [
   {
     id: "g1",
-    title: "Engaged Montessori Classroom",
-    category: "Classroom",
+    title: "Paper Cup Pyramid Stacking Activity",
+    titleTa: "கப் அடுக்குதல் குழு விளையாட்டு",
+    category: "Practical Life",
     image: "/school_images/1000453992.webp",
-    caption: "Joyful learning in our prepared Montessori environment at Dhivith Edu Care.",
+    caption: "Children collaborating in a focused circle, stacking paper cups into pyramids to build patience and motor control.",
+    captionTa: "குழந்தைகள் வட்டத்தில் அமர்ந்து கப்களை அடுக்கி கோபுரம் அமைக்கும் கூர்ந்த கவனப் பயிற்சி.",
   },
   {
     id: "g2",
-    title: "Sensory & Motor Exploration",
+    title: "Sensory Ball Sorting & Color Trays",
+    titleTa: "வண்ணப் பந்துகள் & நிற வரிசைப்படுத்துதல்",
     category: "Sensorial",
     image: "/school_images/1000449608.webp",
-    caption: "Children engaging with didactic apparatus for cognitive and motor mastery.",
+    caption: "Interactive color classification and sensory exploration using colorful balls and labeled sorting trays.",
+    captionTa: "வண்ணப் பந்துகளைத் தட்டுகளில் வகைப்படுத்தி நிறங்களை அடையாளம் காணும் தொடு உணர்வுப் பயிற்சி.",
   },
   {
     id: "g3",
-    title: "Morning Circle & Learning Cycle",
+    title: "Montessori Number Rods & Math Sticks",
+    titleTa: "மாண்டிசோரி வண்ணக் குச்சிகள் & எண்கணிதம்",
     category: "Classroom",
     image: "/school_images/1000452018.webp",
-    caption: "Students collaborating with teachers during morning interactive circles.",
+    caption: "Hands-on numerical exploration using colored rods and geometric stick arrangements.",
+    captionTa: "வண்ணக் குச்சிகள் கொண்டு எண்கள் மற்றும் வடிவ அமைப்புகளை சுயமாகக் கற்கும் மாணவர்கள்.",
   },
   {
     id: "g4",
-    title: "Outdoor Play & Movement",
+    title: "Turf Play & Group Outdoor Fun",
+    titleTa: "பசுமைப் புல்வெளி விளையாட்டு & உடற்பயிற்சி",
     category: "Outdoor",
     image: "/school_images/1000452097.webp",
-    caption: "Healthy outdoor activities nurturing social bonding and physical balance.",
+    caption: "Active physical movement and joyful social bonding on our safe, clean artificial turf area.",
+    captionTa: "சுத்தமான பசுமை புல்வெளியில் குழந்தைகள் கூடி விளையாடி மகிழும் உடலியக்கப் பகுதி.",
   },
   {
     id: "g5",
-    title: "Creative Arts & Handcrafts",
-    category: "Creative",
+    title: "Montessori Self-Directed Work Cycle",
+    titleTa: "சுய விருப்ப மாண்டிசோரி செய்முறை வகுப்பறை",
+    category: "Classroom",
     image: "/school_images/1000454520.webp",
-    caption: "Process-oriented creative expression with vibrant natural materials.",
+    caption: "Students independently choosing and exploring didactic Montessori learning apparatus on floor mats.",
+    captionTa: "பாய்களில் அமர்ந்து தங்களுக்குப் பிடித்த மாண்டிசோரி கருவிகளை இயக்கி கற்கும் மாணவர்கள்.",
   },
   {
     id: "g6",
-    title: "Practical Life Exercises",
+    title: "Practical Life Pouring & Motor Skills",
+    titleTa: "செய்முறை வாழ்வியல் & கைவிரல் ஒருங்கிணைப்பு",
     category: "Practical Life",
     image: "/school_images/1000450316.webp",
-    caption: "Hands-on life skills building independence, grace, and concentration.",
+    caption: "Everyday practical life exercises cultivating fine motor strength, grace, and independence.",
+    captionTa: "குழந்தைகளின் கைவிரல் நரம்புத் திறன் மற்றும் தன்னம்பிக்கையை வளர்க்கும் செய்முறை பயிற்சிகள்.",
   },
   {
     id: "g7",
-    title: "Focused Study & Phonics",
-    category: "Classroom",
+    title: "Kidspire 2025 Student Achievement Awards",
+    titleTa: "கிட்ஸ்பயர் 2025 சாதனை சான்றிதழ்கள்",
+    category: "Creative",
     image: "/school_images/1000501517.webp",
-    caption: "Individual attention and phonics learning with dedicated educators.",
+    caption: "Proud young scholars displaying their achievement certificates at our annual Kidspire event.",
+    captionTa: "கிட்ஸ்பயர் 2025 நிகழ்வில் பாராட்டுச் சான்றிதழ்களைப் பெற்று பெருமிதம் கொள்ளும் குழந்தைகள்.",
   },
   {
     id: "g8",
-    title: "Montessori Wooden Materials",
-    category: "Sensorial",
+    title: "Kidspire Annual Celebration & Stage Honors",
+    titleTa: "கிட்ஸ்பயர் விழா & மேடை பாராட்டு",
+    category: "Creative",
     image: "/school_images/1000501518.webp",
-    caption: "Self-correcting tactile learning aids developing spatial and math logic.",
+    caption: "Recognizing student growth, participation, and early learning milestones at our annual day.",
+    captionTa: "ஆண்டு விழா மேடையில் மாணவர்களின் தனித்திறமைகளை பாராட்டி உற்சாகப்படுத்தும் தருணம்.",
   },
   {
     id: "g9",
-    title: "Academic Coaching & Tuitions",
+    title: "Focused Evening Tuition Batches",
+    titleTa: "மாலை நேர சிறப்பு டியூஷன் வகுப்புகள்",
     category: "Classroom",
     image: "/school_images/1000227874.webp",
-    caption: "Small batch coaching ensuring every student understands core concepts.",
+    caption: "Small batch coaching with personalized educator attention for school board subjects.",
+    captionTa: "பள்ளி மாணவர்களுக்கான பாடவாரியான சந்தேகங்கள் தீர்க்கும் மாலை நேர வழிகாட்டல்.",
   },
   {
     id: "g10",
-    title: "Early Childhood Play & Storytelling",
-    category: "Creative",
+    title: "Early Sensorial Discovery & Play",
+    titleTa: "மழலையர் தொடு உணர்வு விளையாட்டு",
+    category: "Sensorial",
     image: "/school_images/1000227888.webp",
-    caption: "Engaging stories and rhyme circles building vocabulary and wonder.",
+    caption: "Nurturing curiosity with tactile, open-ended educational materials for toddlers.",
+    captionTa: "மழலையர் குழந்தைகளுக்கான தொடு உணர்வு மற்றும் சொல்லாற்றலை வளர்க்கும் பயிற்சி.",
   },
   {
     id: "g11",
-    title: "Campus Activities & Celebrations",
-    category: "Outdoor",
+    title: "Wooden Alphabet Board & Letter Matching",
+    titleTa: "மர எழுத்துப் பலகை & ஆங்கில எழுத்துப் பொருத்துதல்",
+    category: "Classroom",
     image: "/school_images/1000223395.webp",
-    caption: "Celebrations and cultural events nurturing community spirit.",
+    caption: "Tactile letter recognition and motor grip placing carved wooden alphabets onto the board.",
+    captionTa: "மர எழுத்து பலகையில் எழுத்துக்களைத் தொட்டுப் பார்த்து சரியாகப் பொருத்தும் பயிற்சி.",
   },
   {
     id: "g12",
-    title: "Hands-On Math & Geometry",
+    title: "3D Animal Picture Cube Puzzle",
+    titleTa: "முப்பரிமாண படக் கட்டை புதிர் அடுக்குதல்",
     category: "Sensorial",
     image: "/school_images/1000223404.webp",
-    caption: "Connecting concrete manipulatives with early mathematical concepts.",
+    caption: "Spatial visualization and problem solving aligning multi-sided 3D animal picture wooden blocks.",
+    captionTa: "விலங்கு படக் கட்டைகளை சுழற்றி சரியான படத்தை உருவாக்கும் முப்பரிமாண புதிர்.",
   },
   {
     id: "g13",
-    title: "Cozy Reading Corner",
+    title: "Teacher Mentorship & Flashcard Nomenclature",
+    titleTa: "ஆசிரியர் நேரடி வழிகாட்டல் & பட அட்டைப் பயிற்சி",
     category: "Classroom",
     image: "/school_images/1000227870.webp",
-    caption: "Encouraging a lifelong love for reading in our sunlit literature nook.",
+    caption: "One-on-one educator guidance introducing vocabulary and animals through nomenclature cards.",
+    captionTa: "ஆசிரியை குழந்தைகளுடன் அமர்ந்து பட அட்டைகள் மூலம் பெயர்களைக் கற்பிக்கும் காட்சி.",
   },
   {
     id: "g14",
-    title: "Special Celebrations & Milestones",
+    title: "Creative Crayon Coloring & Art Table",
+    titleTa: "வண்ணம் தீட்டும் வரை கலைப் பயிற்சி",
     category: "Creative",
     image: "/school_images/1000591351.webp",
-    caption: "Proud student achievements and joyful milestones at Dhivith Edu Care.",
+    caption: "Children developing tripod grip and imaginative colors using wax crayons on picture sheets.",
+    captionTa: "வண்ண மெழுகுக் குச்சிகள் கொண்டு வரைபடங்களுக்கு அழகாக வண்ணம் தீட்டும் குழந்தைகள்.",
   },
   {
     id: "g15",
-    title: "Campus Entrance & Welcoming Space",
+    title: "Welcoming & Secure Campus Environment",
+    titleTa: "பாதுகாப்பான & அன்பான பள்ளி வளாகம்",
     category: "Outdoor",
     image: "/school_images/1000591345.webp",
-    caption: "Safe, welcoming campus environment in Vadapudur, Kinathukadavu.",
+    caption: "Our cheerful, child-centric school campus located in Vadapudur, Kinathukadavu.",
+    captionTa: "வடகாளூர், கிணத்துக்கடவில் அமைந்துள்ள தூய்மையான மழலையர் பள்ளி வளாகம்.",
   },
 ];
 

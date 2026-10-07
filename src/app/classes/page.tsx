@@ -70,15 +70,15 @@ export default function ClassesPage() {
         language === "ta" ? "10-ஆம் வகுப்பு பொதுத்தேர்வு சிறப்புப் பயிற்சி" : "Special focus on 10th Board Exam score boost",
       ],
       timing: language === "ta" ? "மாலை நேரம்: 5:00 – 7:30 / வார இறுதி" : "Evening: 5:00 PM – 7:30 PM / Weekend Batches",
-      ratio: "Small Group Guidance",
+      ratio: language === "ta" ? "சிறிய குழு தனிநபர் வழிகாட்டல்" : "Small Group Guidance",
       color: "#159447",
       bg: "bg-[#EAF8EF]",
     },
     {
       id: "higher-secondary-tuition",
       title: language === "ta" ? "மேல்நிலைக் கல்வி (11 & 12 ஆம் வகுப்பு)" : "Higher Secondary (Grades 11 & 12)",
-      grades: "11th & 12th (+1 & +2)",
-      syllabus: "CBSE & State Board",
+      grades: language === "ta" ? "11 & 12 ஆம் வகுப்பு (+1 & +2)" : "11th & 12th (+1 & +2)",
+      syllabus: language === "ta" ? "CBSE & மாநில பாடத்திட்டம் (State Board)" : "CBSE & State Board",
       tagline: language === "ta" ? "கணிதம், இயற்பியல், வேதியியல் மற்றும் கணினி அறிவியலுக்கான தீவிர பயிற்சி." : "Rigorous coaching for Mathematics, Physics, Chemistry, and Computer Science.",
       features: [
         language === "ta" ? "மூத்த ஆசிரியர்களின் ஆழ்ந்த விளக்கவுரைகள்" : "In-depth concept lectures by senior faculty",
@@ -87,7 +87,7 @@ export default function ClassesPage() {
         language === "ta" ? "பெற்றோருடன் தொடர் முன்னேற்ற ஆய்வு" : "Regular parent performance reviews",
       ],
       timing: language === "ta" ? "மாலை நேரம்: 5:30 – 8:00" : "Evening: 5:30 PM – 8:00 PM",
-      ratio: "Focused Coaching",
+      ratio: language === "ta" ? "கவனம் மிகுந்த பயிற்சி" : "Focused Coaching",
       color: "#F36B12",
       bg: "bg-[#FFF2E8]",
     },
@@ -95,7 +95,7 @@ export default function ClassesPage() {
       id: "engg-maths-hub",
       title: language === "ta" ? "பொறியியல் கணிதம் (Engineering Mathematics)" : "Engineering Mathematics Coaching",
       grades: "B.E. / B.Tech (M1, M2, M3, M4, Discrete Maths)",
-      syllabus: "Anna University & Autonomous Colleges",
+      syllabus: language === "ta" ? "அண்ணா பல்கலைக்கழகம் & தன்னாட்சி கல்லூரிகள்" : "Anna University & Autonomous Colleges",
       tagline: language === "ta" ? "திருமதி. S. தாரணி (M.Sc., PGDM, PGMTTC) வழிகாட்டலில் அண்ணா பல்கலைக்கழக சிறப்பு கணித வகுப்புகள்." : "Expert coaching under Mrs. S Tharani (M.Sc., PGDM, PGMTTC) for fast backlog clearance and top GPA.",
       features: [
         language === "ta" ? "எளிமையான படிநிலை கணக்கீட்டு தீர்வுகள்" : "Clear step-by-step proofs and numericals",
@@ -104,7 +104,7 @@ export default function ClassesPage() {
         language === "ta" ? "100% தேர்ச்சி விகிதம்" : "Proven 100% pass track record",
       ],
       timing: language === "ta" ? "வார இறுதி & மாலை நேர வகுப்புகள்" : "Flexible Weekend & Evening Batches",
-      ratio: "Personal Mentorship",
+      ratio: language === "ta" ? "நேரடி தனிநபர் வழிகாட்டல்" : "Personal Mentorship",
       color: "#F5B900",
       bg: "bg-[#FFF9E5]",
     },
@@ -114,13 +114,13 @@ export default function ClassesPage() {
     <main className="min-h-screen flex flex-col bg-white text-[#121D28]">
       <Navbar onOpenTourModal={() => handleOpenTour()} />
 
-      {/* Page Header */}
       <PageHeader
         breadcrumb={language === "ta" ? "அனைத்து வகுப்புகள் & பாடத்திட்டங்கள்" : "All Classes & Courses"}
-        badge={language === "ta" ? "சேர்க்கை நடைபெறுகிறது 2026 – 2027" : "Admissions Open 2026 - 2027"}
         title={language === "ta" ? "மழலையர் பள்ளி வகுப்புகள் & அனைத்துப் பாட டியூஷன்" : "Pre-School Programs & All Subject Tuitions"}
-        highlightedWord={language === "ta" ? "மழலையர் பள்ளி & டியூஷன்" : "Pre-School & Tuitions"}
+        highlightedWord={language === "ta" ? "மழலையர் பள்ளி வகுப்புகள்" : "Pre-School Programs"}
         description={t.classes.desc}
+        bannerImage="/school_images/1000449035.webp"
+        gradientTheme="blue"
       />
 
       {/* Category Switcher Tabs */}
@@ -144,17 +144,17 @@ export default function ClassesPage() {
                 : "bg-white text-gray-700 hover:bg-gray-100 border border-gray-200"
             }`}
           >
-            🎒 Pre-School & Day Care (Age 1.5 – 6)
+            {language === "ta" ? "🎒 மாண்டிசோரி & டே கேர் (வயது 1.5 – 6)" : "🎒 Pre-School & Day Care (Age 1.5 – 6)"}
           </button>
           <button
             onClick={() => setSelectedCategory("tuition")}
-            className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all ${
+            className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all cursor-pointer ${
               selectedCategory === "tuition"
                 ? "bg-[#F36B12] text-white shadow-md scale-105"
                 : "bg-white text-gray-700 hover:bg-gray-100 border border-gray-200"
             }`}
           >
-            📚 Tuitions (LKG to 12th & Engg Maths)
+            {language === "ta" ? "📚 டியூஷன்கள் (LKG முதல் 12 & கணிதம்)" : "📚 Tuitions (LKG to 12th & Engg Maths)"}
           </button>
         </div>
       </section>
@@ -165,13 +165,13 @@ export default function ClassesPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-14">
               <span className="text-xs font-bold uppercase tracking-wider text-[#159447] bg-[#EAF8EF] px-4 py-1.5 rounded-full border border-[#159447]/20">
-                Montessori Pre-School Pathway
+                {language === "ta" ? "மாண்டிசோரி மழலையர் கல்வி" : "Montessori Pre-School Pathway"}
               </span>
-              <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-[#121D28] mt-3">
-                Early Childhood Classes (Day Care to UKG)
+              <h2 className="font-display font-extrabold text-2xl sm:text-3xl lg:text-3xl xl:text-4xl text-[#121D28] mt-3">
+                {language === "ta" ? "ஆரம்பப் பள்ளி வகுப்புகள் (டே கேர் முதல் UKG வரை)" : "Early Childhood Classes (Day Care to UKG)"}
               </h2>
-              <p className="text-sm text-[#5E6D7A] mt-2">
-                Certified Montessori environments with 1:6 individual educator attention.
+              <p className="text-xs sm:text-sm md:text-base text-[#5E6D7A] mt-2">
+                {language === "ta" ? "சான்றளிக்கப்பட்ட மாண்டிசோரி வகுப்பறைகள் மற்றும் 1:6 தனிநபர் ஆசிரியர் கவனம்." : "Certified Montessori environments with 1:6 individual educator attention."}
               </p>
             </div>
 
@@ -186,14 +186,14 @@ export default function ClassesPage() {
                     <div className="relative w-full h-52 bg-slate-900 overflow-hidden">
                       <Image
                         src={prog.image}
-                        alt={prog.name}
+                        alt={(language === "ta" && prog.nameTa) ? prog.nameTa : prog.name}
                         fill
                         className="object-cover transition-transform duration-500 hover:scale-105"
                         sizes="(max-width: 768px) 100vw, 400px"
                       />
                       <div className="absolute top-4 left-4">
                         <span className="px-3.5 py-1 rounded-full text-xs font-extrabold bg-white/95 text-[#0750B8] shadow-sm backdrop-blur-md">
-                          Age: {prog.ageRange}
+                          {language === "ta" ? `வயது: ${prog.ageRangeTa || prog.ageRange}` : `Age: ${prog.ageRange}`}
                         </span>
                       </div>
                     </div>
@@ -201,17 +201,17 @@ export default function ClassesPage() {
                     {/* Program Content */}
                     <div className="p-6">
                       <h3 className="font-display font-bold text-xl text-[#121D28]">
-                        {prog.name}
+                        {(language === "ta" && prog.nameTa) ? prog.nameTa : prog.name}
                       </h3>
                       <p className="text-xs font-semibold text-[#159447] mt-0.5 mb-3">
-                        {prog.subTitle}
+                        {(language === "ta" && prog.subTitleTa) ? prog.subTitleTa : prog.subTitle}
                       </p>
                       <p className="text-xs text-[#5E6D7A] leading-relaxed mb-4">
-                        {prog.description}
+                        {(language === "ta" && prog.descriptionTa) ? prog.descriptionTa : prog.description}
                       </p>
 
                       <div className="space-y-2 pt-2 border-t border-gray-100">
-                        {prog.keyBenefits.slice(0, 3).map((b, i) => (
+                        {((language === "ta" && prog.keyBenefitsTa) ? prog.keyBenefitsTa : prog.keyBenefits).slice(0, 3).map((b, i) => (
                           <div key={i} className="flex items-start gap-2 text-xs text-[#2A343D]">
                             <CheckCircle2 className="w-3.5 h-3.5 text-[#159447] flex-shrink-0 mt-0.5" />
                             <span>{b}</span>
@@ -228,7 +228,7 @@ export default function ClassesPage() {
                       className="w-full py-3 rounded-xl bg-[#0750B8] hover:bg-[#063f91] text-white font-bold text-xs shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
                     >
                       <Calendar className="w-4 h-4 text-amber-300" />
-                      <span>Enquire Admission</span>
+                      <span>{language === "ta" ? "சேர்க்கை முன்பதிவு" : "Enquire Admission"}</span>
                       <ArrowRight className="w-3.5 h-3.5" />
                     </button>
                   </div>
@@ -245,13 +245,13 @@ export default function ClassesPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-14">
               <span className="text-xs font-bold uppercase tracking-wider text-[#F36B12] bg-[#FFF2E8] px-4 py-1.5 rounded-full border border-[#F36B12]/20">
-                Academic Coaching Hub
+                {language === "ta" ? "சிறப்பு கல்வி & டியூஷன் மையம்" : "Academic Coaching Hub"}
               </span>
-              <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-[#121D28] mt-3">
-                Tuition Classes (LKG to 12th Std & Engineering Maths)
+              <h2 className="font-display font-extrabold text-2xl sm:text-3xl lg:text-3xl xl:text-4xl text-[#121D28] mt-3">
+                {language === "ta" ? "மாலை நேர டியூஷன் (LKG முதல் 12 வரை & பொறியியல் கணிதம்)" : "Tuition Classes (LKG to 12th Std & Engineering Maths)"}
               </h2>
-              <p className="text-sm text-[#5E6D7A] mt-2">
-                Concept-based teaching with individual doubt clearing in small focused batches.
+              <p className="text-xs sm:text-sm md:text-base text-[#5E6D7A] mt-2">
+                {language === "ta" ? "கருத்து சார்ந்த எளிய கற்பித்தல் மற்றும் தனிநபர் சந்தேகங்கள் உடனுக்குடன் தீர்வு." : "Concept-based teaching with individual doubt clearing in small focused batches."}
               </p>
             </div>
 
@@ -299,10 +299,10 @@ export default function ClassesPage() {
 
                     <button
                       onClick={() => handleOpenTour(t.id)}
-                      className="w-full sm:w-auto px-6 py-3 rounded-xl bg-[#0750B8] hover:bg-[#063f91] text-white font-bold text-xs transition-all shadow-md flex items-center justify-center gap-1.5 cursor-pointer"
+                      className="w-full sm:w-auto px-6 py-3 rounded-xl bg-[#0750B8] hover:bg-[#063f91] text-white font-bold text-xs transition-all shadow-md flex items-center justify-center gap-1.5 cursor-pointer whitespace-nowrap"
                     >
                       <Calendar className="w-3.5 h-3.5 text-amber-300" />
-                      <span>Join Batch</span>
+                      <span>{language === "ta" ? "வகுப்பில் சேர" : "Join Batch"}</span>
                     </button>
                   </div>
                 </div>

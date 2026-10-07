@@ -111,7 +111,9 @@ const TESTIMONIALS_DATA: TestimonialItem[] = [
   },
 ];
 
-const TestimonialCard: React.FC<{ item: TestimonialItem }> = ({ item }) => (
+import { useLanguage } from "@/context/LanguageContext";
+
+const TestimonialCard: React.FC<{ item: any }> = ({ item }) => (
   <div className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-7 border border-gray-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-xl hover:border-gray-300 transition-all duration-300 flex flex-col justify-between group">
     <div>
       {/* Bright Yellow Stars */}
@@ -148,9 +150,11 @@ const TestimonialCard: React.FC<{ item: TestimonialItem }> = ({ item }) => (
 );
 
 export const TestimonialsMasonry: React.FC = () => {
-  const col1 = [TESTIMONIALS_DATA[0], TESTIMONIALS_DATA[1], TESTIMONIALS_DATA[2]];
-  const col2 = [TESTIMONIALS_DATA[3], TESTIMONIALS_DATA[4], TESTIMONIALS_DATA[5]];
-  const col3 = [TESTIMONIALS_DATA[6], TESTIMONIALS_DATA[7], TESTIMONIALS_DATA[8]];
+  const { t } = useLanguage();
+  const list = t.testimonials.items || [];
+  const col1 = [list[0], list[1], list[2]].filter(Boolean);
+  const col2 = [list[3], list[4], list[5]].filter(Boolean);
+  const col3 = [list[6], list[7], list[8]].filter(Boolean);
 
   return (
     <section className="py-20 lg:py-28 bg-[#FAFAFA] border-t border-gray-100 relative overflow-hidden">
@@ -160,16 +164,16 @@ export const TestimonialsMasonry: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
-          <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-white text-gray-700 text-xs font-medium border border-gray-200/90 shadow-xs mb-4">
-            Testimonials
+          <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-white text-[#0750B8] text-xs font-bold border border-gray-200/90 shadow-xs mb-4">
+            {t.testimonials.badge}
           </div>
 
-          <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-[#0F172A] tracking-tight leading-tight">
-            What our parents say
+          <h2 className="font-display font-extrabold text-2xl sm:text-3xl lg:text-3xl xl:text-4xl text-[#0F172A] tracking-tight leading-tight">
+            {t.testimonials.title}
           </h2>
 
-          <p className="text-sm sm:text-base text-gray-500 mt-3 font-normal">
-            See what our families and students have to say about us.
+          <p className="text-xs sm:text-sm md:text-base text-gray-500 mt-3 font-normal">
+            {t.testimonials.subtitle}
           </p>
         </div>
 

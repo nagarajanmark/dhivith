@@ -123,11 +123,11 @@ export const DhivithPortalSection: React.FC<DhivithPortalSectionProps> = ({ onOp
               <span>Welcome to Dhivith Edu Care</span>
             </div>
 
-            <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-white leading-tight">
+            <h2 className="font-display font-extrabold text-2xl sm:text-3xl lg:text-3xl xl:text-4xl text-white leading-tight">
               Where Joyful Learning Meets Limitless Potential.
             </h2>
 
-            <p className="text-white/85 text-sm sm:text-base md:text-lg leading-relaxed max-w-3xl">
+            <p className="text-white/85 text-xs sm:text-sm md:text-base leading-relaxed max-w-3xl">
               Founded on July 2, 2024, by Mrs. S Tharani (M.Sc., PGDM, PGMTTC), we combine authentic Montessori preschooling with personalized academic mentoring in Vadapudur, Kinathukadavu, Coimbatore.
             </p>
 

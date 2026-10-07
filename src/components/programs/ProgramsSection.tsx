@@ -13,12 +13,14 @@ import { SectionHeading } from "../ui/SectionHeading";
 import { Badge } from "../ui/Badge";
 import { PROGRAMS, Program } from "@/data/schoolData";
 import { ProgramDetailModal } from "../modals/ProgramDetailModal";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface ProgramsSectionProps {
   onOpenTourModal: (programId?: string) => void;
 }
 
 export const ProgramsSection: React.FC<ProgramsSectionProps> = ({ onOpenTourModal }) => {
+  const { language } = useLanguage();
   const [selectedProgram, setSelectedProgram] = useState<Program | null>(null);
   const [detailModalOpen, setDetailModalOpen] = useState(false);
 
@@ -35,10 +37,14 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({ onOpenTourModa
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
         <SectionHeading
-          badgeText="Montessori Learning Pathways"
+          badgeText={language === "ta" ? "மாண்டிசோரி கற்றல் வழிகள்" : "Montessori Learning Pathways"}
           badgeVariant="orange"
-          title="Nurturing Every Developmental Stage"
-          subtitle="From tender first steps in our Toddler community to academic mastery and leadership in Kindergarten, our age-tailored environments foster lifelong independence."
+          title={language === "ta" ? "ஒவ்வொரு வளர்ச்சி நிலையையும் செதுக்கும் சூழல்" : "Nurturing Every Developmental Stage"}
+          subtitle={
+            language === "ta"
+              ? "மழலையர் முதல் தொடக்கப்பள்ளி வரையிலான ஒவ்வொரு கட்டத்திலும் குழந்தையின் சுயமாக கற்கும் ஆர்வத்தை வளர்க்கும் பிரத்யேக கல்வி."
+              : "From tender first steps in our Toddler community to academic mastery and leadership in Kindergarten, our age-tailored environments foster lifelong independence."
+          }
           align="center"
           className="mb-16"
         />
@@ -71,21 +77,21 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({ onOpenTourModa
                         color: "#FFFFFF",
                       }}
                     >
-                      {prog.ageRange}
+                      {language === "ta" ? (prog.ageRangeTa || prog.ageRange) : prog.ageRange}
                     </span>
 
                     <span className="px-3 py-1 rounded-full text-[11px] font-bold bg-white/90 text-[#121D28] shadow-sm backdrop-blur-md">
-                      {prog.ratio}
+                      {language === "ta" ? (prog.ratioTa || prog.ratio) : prog.ratio}
                     </span>
                   </div>
 
                   {/* Title on Image */}
                   <div className="absolute bottom-5 left-5 right-5 text-white">
                     <span className="text-xs font-semibold text-amber-300 uppercase tracking-wider block mb-1">
-                      {prog.subTitle}
+                      {language === "ta" ? (prog.subTitleTa || prog.subTitle) : prog.subTitle}
                     </span>
                     <h3 className="font-display font-extrabold text-2xl sm:text-3xl group-hover:text-amber-200 transition-colors">
-                      {prog.name}
+                      {language === "ta" ? (prog.nameTa || prog.name) : prog.name}
                     </h3>
                   </div>
                 </div>
@@ -94,10 +100,10 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({ onOpenTourModa
                 <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between space-y-6">
                   <div>
                     <p className="text-xs sm:text-sm font-semibold text-[#0750B8] mb-2 italic">
-                      &ldquo;{prog.tagline}&rdquo;
+                      &ldquo;{language === "ta" ? (prog.taglineTa || prog.tagline) : prog.tagline}&rdquo;
                     </p>
                     <p className="text-xs sm:text-sm text-[#5E6D7A] leading-relaxed">
-                      {prog.description}
+                      {language === "ta" ? (prog.descriptionTa || prog.description) : prog.description}
                     </p>
                   </div>
 
@@ -105,9 +111,9 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({ onOpenTourModa
                   <div className="space-y-2 pt-2 border-t border-gray-200/80">
                     <div className="text-[11px] font-bold uppercase tracking-wider text-[#121D28] flex items-center gap-1.5">
                       <Sparkles className="w-3.5 h-3.5 text-[#F36B12]" />
-                      Key Developmental Milestones:
+                      <span>{language === "ta" ? "முக்கிய வளர்ச்சி மைல்கற்கள்:" : "Key Developmental Milestones:"}</span>
                     </div>
-                    {prog.keyBenefits.slice(0, 3).map((benefit, i) => (
+                    {((language === "ta" && prog.keyBenefitsTa) ? prog.keyBenefitsTa : prog.keyBenefits).slice(0, 3).map((benefit, i) => (
                       <div key={i} className="flex items-start gap-2 text-xs text-[#2A343D]">
                         <CheckCircle2
                           className="w-3.5 h-3.5 flex-shrink-0 mt-0.5"
@@ -121,25 +127,25 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({ onOpenTourModa
                   {/* Schedule Indicator */}
                   <div className="flex items-center gap-2 text-xs text-[#5E6D7A] bg-white/80 p-2.5 rounded-xl border border-gray-100">
                     <Clock className="w-4 h-4 text-[#0750B8] flex-shrink-0" />
-                    <span className="font-medium truncate">{prog.schedule}</span>
+                    <span className="font-medium truncate">{language === "ta" ? (prog.scheduleTa || prog.schedule) : prog.schedule}</span>
                   </div>
 
                   {/* Action Buttons */}
                   <div className="pt-2 flex flex-col sm:flex-row items-center gap-3">
                     <button
                       onClick={() => handleOpenProgram(prog)}
-                      className="w-full sm:flex-1 py-3 rounded-xl bg-white hover:bg-[#EBF3FF] text-[#0750B8] font-bold text-xs border border-[#0750B8]/20 hover:border-[#0750B8]/40 transition-all flex items-center justify-center gap-1.5 group/btn"
+                      className="w-full sm:flex-1 py-3 rounded-xl bg-white hover:bg-[#EBF3FF] text-[#0750B8] font-bold text-xs border border-[#0750B8]/20 hover:border-[#0750B8]/40 transition-all flex items-center justify-center gap-1.5 group/btn cursor-pointer"
                     >
-                      <span>Discover Curriculum</span>
+                      <span>{language === "ta" ? "பாடத்திட்டம் அறிக" : "Discover Curriculum"}</span>
                       <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
                     </button>
 
                     <button
                       onClick={() => onOpenTourModal(prog.id)}
-                      className="w-full sm:w-auto px-5 py-3 rounded-xl bg-[#0750B8] hover:bg-[#063f91] text-white font-bold text-xs shadow-md transition-all flex items-center justify-center gap-1.5"
+                      className="w-full sm:w-auto px-5 py-3 rounded-xl bg-[#0750B8] hover:bg-[#063f91] text-white font-bold text-xs shadow-md transition-all flex items-center justify-center gap-1.5 cursor-pointer"
                     >
                       <Calendar className="w-3.5 h-3.5 text-amber-300" />
-                      <span>Book Tour</span>
+                      <span>{language === "ta" ? "வளாக பார்வை" : "Book Tour"}</span>
                     </button>
                   </div>
                 </div>

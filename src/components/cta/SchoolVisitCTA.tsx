@@ -29,17 +29,17 @@ export const SchoolVisitCTA: React.FC<SchoolVisitCTAProps> = ({ onOpenTourModal 
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#0750B8]/85 via-[#0750B8]/50 sm:via-[#0750B8]/30 to-transparent" />
 
-          <div className="relative z-10 max-w-xl text-left space-y-5">
+          <div className="relative z-10 max-w-2xl text-left space-y-4 sm:space-y-5">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/25 text-amber-300 text-xs font-bold uppercase tracking-wider backdrop-blur-md border border-white/30 shadow-sm">
               <Sparkles className="w-3.5 h-3.5" />
               <span>{t.common.admissionsOpen}</span>
             </div>
 
-            <h2 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl text-white tracking-tight leading-[1.15] drop-shadow-md">
+            <h2 className="font-display font-extrabold text-2xl sm:text-3xl lg:text-3xl xl:text-4xl 2xl:text-5xl text-white tracking-tight leading-[1.2] drop-shadow-md">
               {t.homeCta.title}
             </h2>
 
-            <p className="text-white text-sm sm:text-base md:text-lg font-medium leading-relaxed drop-shadow max-w-lg">
+            <p className="text-white/95 text-xs sm:text-sm md:text-base font-medium leading-relaxed drop-shadow max-w-xl">
               {t.homeCta.description}
             </p>
 

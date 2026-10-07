@@ -22,10 +22,11 @@ export default function GalleryPage() {
       {/* Page Header */}
       <PageHeader
         breadcrumb={t.gallery.breadcrumb}
-        badge={t.gallery.badge}
         title={t.gallery.title}
         highlightedWord={t.gallery.highlight}
         description={t.gallery.desc}
+        bannerImage="/school_images/1000450316.webp"
+        gradientTheme="green"
       />
 
       {/* Mode Switcher Bar */}

@@ -29,6 +29,37 @@
     selection-color: #121d28;
   }
 
+  /* Responsive Font Scaling for screens below 1500px */
+  @media (max-width: 1535px) {
+    html {
+      font-size: 14.5px;
+    }
+  }
+
+  @media (max-width: 1366px) {
+    html {
+      font-size: 14px;
+    }
+  }
+
+  @media (max-width: 1200px) {
+    html {
+      font-size: 13.5px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    html {
+      font-size: 13.5px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    html {
+      font-size: 14px;
+    }
+  }
+
   ::selection {
     background: #f5b900;
     color: #121d28;

@@ -6,6 +6,7 @@ import Link from "next/link";
 import { ArrowUpRight, Sparkles, Maximize2 } from "lucide-react";
 import { GALLERY_ITEMS, GalleryItem } from "@/data/schoolData";
 import { GalleryLightboxModal } from "../modals/GalleryLightboxModal";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface ContinuousMarqueeGalleryProps {
   onOpenTourModal?: () => void;
@@ -14,6 +15,7 @@ interface ContinuousMarqueeGalleryProps {
 export const ContinuousMarqueeGallery: React.FC<ContinuousMarqueeGalleryProps> = ({
   onOpenTourModal,
 }) => {
+  const { t, language } = useLanguage();
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   // Split gallery items into two distinct sets for row 1 and row 2
@@ -55,15 +57,15 @@ export const ContinuousMarqueeGallery: React.FC<ContinuousMarqueeGalleryProps> =
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#EBF3FF] text-[#0750B8] text-xs font-bold uppercase tracking-wider mb-3 shadow-xs">
               <Sparkles className="w-3.5 h-3.5 text-[#159447]" />
-              <span>Campus Visual Showcase</span>
+              <span>{t.marqueeGallery.badge}</span>
             </div>
 
-            <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-[#0F172A] tracking-tight leading-tight mb-3">
-              Moments of Joy & Learning
+            <h2 className="font-display font-extrabold text-2xl sm:text-3xl lg:text-3xl xl:text-4xl text-[#0F172A] tracking-tight leading-tight mb-3">
+              {t.marqueeGallery.title}
             </h2>
 
-            <p className="text-gray-600 text-sm sm:text-base leading-relaxed font-normal">
-              Continuous marquee showcase of our vibrant Montessori classrooms, hands-on learning, outdoor play, and student life in Kinathukadavu, Coimbatore.
+            <p className="text-gray-600 text-xs sm:text-sm md:text-base leading-relaxed font-normal">
+              {t.marqueeGallery.subtitle}
             </p>
           </div>
 
@@ -72,7 +74,7 @@ export const ContinuousMarqueeGallery: React.FC<ContinuousMarqueeGalleryProps> =
               href="/gallery"
               className="inline-flex items-center gap-2 px-6 sm:px-7 py-3.5 rounded-2xl bg-[#0750B8] hover:bg-[#063f91] text-white font-extrabold text-xs sm:text-sm tracking-wider shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95"
             >
-              <span>EXPLORE FULL GALLERY</span>
+              <span>{t.marqueeGallery.exploreBtn}</span>
               <ArrowUpRight className="w-4 h-4 text-amber-300" />
             </Link>
 
@@ -88,88 +90,122 @@ export const ContinuousMarqueeGallery: React.FC<ContinuousMarqueeGalleryProps> =
         {/* ROW 1: Moves Left */}
         <div className="overflow-hidden flex">
           <div className="animate-marquee-left flex gap-4 sm:gap-6 py-1">
-            {infiniteRow1.map((item, index) => (
-              <div
-                key={`row1-${item.id}-${index}`}
-                onClick={() => handleOpenPhoto(item)}
-                className="relative w-[280px] sm:w-[360px] md:w-[420px] aspect-[16/10] rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500 hover:scale-[1.03] group bg-slate-900 flex-shrink-0 border border-gray-200/80"
-              >
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                  sizes="(max-width: 640px) 280px, (max-width: 1024px) 360px, 420px"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-60 group-hover:opacity-90 transition-opacity" />
+            {infiniteRow1.map((item, index) => {
+              const itemTitle = (language === "ta" && item.titleTa) ? item.titleTa : item.title;
+              const itemCaption = (language === "ta" && item.captionTa) ? item.captionTa : item.caption;
+              const catLabel =
+                item.category === "Classroom"
+                  ? (language === "ta" ? "வகுப்பறை" : "Classroom")
+                  : item.category === "Sensorial"
+                  ? (language === "ta" ? "தொடு உணர்வு" : "Sensorial")
+                  : item.category === "Outdoor"
+                  ? (language === "ta" ? "வெளிப்புறம்" : "Outdoor")
+                  : item.category === "Practical Life"
+                  ? (language === "ta" ? "செய்முறை வாழ்வியல்" : "Practical Life")
+                  : item.category === "Creative"
+                  ? (language === "ta" ? "படைப்பாற்றல்" : "Creative")
+                  : item.category;
 
-                {/* Hover Click / Zoom Icon */}
-                <div className="absolute top-3.5 right-3.5 w-9 h-9 rounded-full bg-black/40 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 backdrop-blur-md group-hover:scale-110 shadow-md">
-                  <Maximize2 className="w-4 h-4" />
-                </div>
+              return (
+                <div
+                  key={`row1-${item.id}-${index}`}
+                  onClick={() => handleOpenPhoto(item)}
+                  className="relative w-[280px] sm:w-[360px] md:w-[420px] aspect-[16/10] rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500 hover:scale-[1.03] group bg-slate-900 flex-shrink-0 border border-gray-200/80"
+                >
+                  <Image
+                    src={item.image}
+                    alt={itemTitle}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    sizes="(max-width: 640px) 280px, (max-width: 1024px) 360px, 420px"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-60 group-hover:opacity-90 transition-opacity" />
 
-                {/* Top Badge */}
-                <div className="absolute top-3.5 left-3.5">
-                  <span className="px-3 py-1 rounded-full text-[11px] font-black bg-white/95 text-[#0750B8] shadow-sm backdrop-blur-md">
-                    {item.category}
-                  </span>
-                </div>
+                  {/* Hover Click / Zoom Icon */}
+                  <div className="absolute top-3.5 right-3.5 w-9 h-9 rounded-full bg-black/40 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 backdrop-blur-md group-hover:scale-110 shadow-md">
+                    <Maximize2 className="w-4 h-4" />
+                  </div>
 
-                {/* Bottom Caption on Hover */}
-                <div className="absolute bottom-3.5 left-4 right-4 text-white">
-                  <h3 className="font-display font-bold text-sm sm:text-base drop-shadow-sm leading-snug line-clamp-1 group-hover:text-amber-300 transition-colors">
-                    {item.title}
-                  </h3>
-                  <p className="text-[11px] sm:text-xs text-white/80 line-clamp-1 mt-0.5 opacity-0 group-hover:opacity-100 transition-opacity">
-                    {item.caption}
-                  </p>
+                  {/* Top Badge */}
+                  <div className="absolute top-3.5 left-3.5">
+                    <span className="px-3 py-1 rounded-full text-[11px] font-black bg-white/95 text-[#0750B8] shadow-sm backdrop-blur-md">
+                      {catLabel}
+                    </span>
+                  </div>
+
+                  {/* Bottom Caption on Hover */}
+                  <div className="absolute bottom-3.5 left-4 right-4 text-white">
+                    <h3 className="font-display font-bold text-sm sm:text-base drop-shadow-sm leading-snug line-clamp-1 group-hover:text-amber-300 transition-colors">
+                      {itemTitle}
+                    </h3>
+                    <p className="text-[11px] sm:text-xs text-white/80 line-clamp-1 mt-0.5 opacity-0 group-hover:opacity-100 transition-opacity">
+                      {itemCaption}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
 
         {/* ROW 2: Moves Right */}
         <div className="overflow-hidden flex">
           <div className="animate-marquee-right flex gap-4 sm:gap-6 py-1">
-            {infiniteRow2.map((item, index) => (
-              <div
-                key={`row2-${item.id}-${index}`}
-                onClick={() => handleOpenPhoto(item)}
-                className="relative w-[280px] sm:w-[360px] md:w-[420px] aspect-[16/10] rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500 hover:scale-[1.03] group bg-slate-900 flex-shrink-0 border border-gray-200/80"
-              >
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                  sizes="(max-width: 640px) 280px, (max-width: 1024px) 360px, 420px"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-60 group-hover:opacity-90 transition-opacity" />
+            {infiniteRow2.map((item, index) => {
+              const itemTitle = (language === "ta" && item.titleTa) ? item.titleTa : item.title;
+              const itemCaption = (language === "ta" && item.captionTa) ? item.captionTa : item.caption;
+              const catLabel =
+                item.category === "Classroom"
+                  ? (language === "ta" ? "வகுப்பறை" : "Classroom")
+                  : item.category === "Sensorial"
+                  ? (language === "ta" ? "தொடு உணர்வு" : "Sensorial")
+                  : item.category === "Outdoor"
+                  ? (language === "ta" ? "வெளிப்புறம்" : "Outdoor")
+                  : item.category === "Practical Life"
+                  ? (language === "ta" ? "செய்முறை வாழ்வியல்" : "Practical Life")
+                  : item.category === "Creative"
+                  ? (language === "ta" ? "படைப்பாற்றல்" : "Creative")
+                  : item.category;
 
-                {/* Hover Click / Zoom Icon */}
-                <div className="absolute top-3.5 right-3.5 w-9 h-9 rounded-full bg-black/40 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 backdrop-blur-md group-hover:scale-110 shadow-md">
-                  <Maximize2 className="w-4 h-4" />
-                </div>
+              return (
+                <div
+                  key={`row2-${item.id}-${index}`}
+                  onClick={() => handleOpenPhoto(item)}
+                  className="relative w-[280px] sm:w-[360px] md:w-[420px] aspect-[16/10] rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500 hover:scale-[1.03] group bg-slate-900 flex-shrink-0 border border-gray-200/80"
+                >
+                  <Image
+                    src={item.image}
+                    alt={itemTitle}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    sizes="(max-width: 640px) 280px, (max-width: 1024px) 360px, 420px"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-60 group-hover:opacity-90 transition-opacity" />
 
-                {/* Top Badge */}
-                <div className="absolute top-3.5 left-3.5">
-                  <span className="px-3 py-1 rounded-full text-[11px] font-black bg-white/95 text-[#0750B8] shadow-sm backdrop-blur-md">
-                    {item.category}
-                  </span>
-                </div>
+                  {/* Hover Click / Zoom Icon */}
+                  <div className="absolute top-3.5 right-3.5 w-9 h-9 rounded-full bg-black/40 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 backdrop-blur-md group-hover:scale-110 shadow-md">
+                    <Maximize2 className="w-4 h-4" />
+                  </div>
 
-                {/* Bottom Caption on Hover */}
-                <div className="absolute bottom-3.5 left-4 right-4 text-white">
-                  <h3 className="font-display font-bold text-sm sm:text-base drop-shadow-sm leading-snug line-clamp-1 group-hover:text-amber-300 transition-colors">
-                    {item.title}
-                  </h3>
-                  <p className="text-[11px] sm:text-xs text-white/80 line-clamp-1 mt-0.5 opacity-0 group-hover:opacity-100 transition-opacity">
-                    {item.caption}
-                  </p>
+                  {/* Top Badge */}
+                  <div className="absolute top-3.5 left-3.5">
+                    <span className="px-3 py-1 rounded-full text-[11px] font-black bg-white/95 text-[#0750B8] shadow-sm backdrop-blur-md">
+                      {catLabel}
+                    </span>
+                  </div>
+
+                  {/* Bottom Caption on Hover */}
+                  <div className="absolute bottom-3.5 left-4 right-4 text-white">
+                    <h3 className="font-display font-bold text-sm sm:text-base drop-shadow-sm leading-snug line-clamp-1 group-hover:text-amber-300 transition-colors">
+                      {itemTitle}
+                    </h3>
+                    <p className="text-[11px] sm:text-xs text-white/80 line-clamp-1 mt-0.5 opacity-0 group-hover:opacity-100 transition-opacity">
+                      {itemCaption}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>

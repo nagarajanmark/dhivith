@@ -57,14 +57,14 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
       )}
 
       <h2
-        className={`font-display font-extrabold text-3xl sm:text-4xl md:text-5xl tracking-tight text-[#121D28] leading-[1.15] ${titleClassName}`}
+        className={`font-display font-extrabold text-2xl sm:text-3xl lg:text-3xl xl:text-4xl 2xl:text-5xl tracking-tight text-[#121D28] leading-[1.2] ${titleClassName}`}
       >
         {renderTitle()}
       </h2>
 
       {subtitle && (
         <p
-          className={`mt-4 text-base sm:text-lg md:text-xl text-[#5E6D7A] font-normal leading-relaxed ${subtitleClassName}`}
+          className={`mt-3 sm:mt-4 text-xs sm:text-sm md:text-base text-[#5E6D7A] font-normal leading-relaxed ${subtitleClassName}`}
         >
           {subtitle}
         </p>

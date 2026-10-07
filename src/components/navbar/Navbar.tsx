@@ -35,6 +35,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTourModal }) => {
     { label: t.nav.home, href: "/" },
     { label: t.nav.classes, href: "/classes" },
     { label: t.nav.gallery, href: "/gallery" },
+    { label: t.nav.games, href: "/games" },
     { label: t.nav.about, href: "/about" },
     { label: t.nav.contact, href: "/contact" },
   ];

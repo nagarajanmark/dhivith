@@ -9,21 +9,27 @@ import { MontessoriJourney } from "@/components/journey/MontessoriJourney";
 import { SchoolVisitCTA } from "@/components/cta/SchoolVisitCTA";
 import { TourBookingModal } from "@/components/modals/TourBookingModal";
 import { Sparkles, CheckCircle2, BookOpen, Calculator, Heart, Eye } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function MontessoriMethodPage() {
+  const { language } = useLanguage();
   const [isTourModalOpen, setIsTourModalOpen] = useState(false);
 
   return (
     <main className="min-h-screen flex flex-col bg-white text-[#121D28]">
       <Navbar onOpenTourModal={() => setIsTourModalOpen(true)} />
 
-      {/* Page Header */}
       <PageHeader
-        breadcrumb="Montessori Method"
-        badge="Pedagogical Science"
-        title="The Proven Montessori Learning Method"
-        highlightedWord="Montessori Learning Method"
-        description="Discover how Dr. Maria Montessori's scientifically prepared environments cultivate deep concentration, concrete numerical logic, and joyous independent thinkers."
+        breadcrumb={language === "ta" ? "மாண்டிசோரி முறை" : "Montessori Method"}
+        title={language === "ta" ? "நிரூபிக்கப்பட்ட மாண்டிசோரி கற்றல் முறை" : "The Proven Montessori Learning Method"}
+        highlightedWord={language === "ta" ? "மாண்டிசோரி கற்றல் முறை" : "Montessori Learning Method"}
+        description={
+          language === "ta"
+            ? "டாக்டர் மரியா மாண்டிசோரியின் அறிவியல் பூர்வமான கற்றல் சூழல் எவ்வாறு குழந்தைகளின் ஆழ்ந்த கவனம், கணித தர்க்கம் மற்றும் தன்னம்பிக்கையை வளர்க்கிறது என்பதை அறிந்துகொள்ளுங்கள்."
+            : "Discover how Dr. Maria Montessori's scientifically prepared environments cultivate deep concentration, concrete numerical logic, and joyous independent thinkers."
+        }
+        bannerImage="/school_images/1000227847.webp"
+        gradientTheme="green"
       />
 
       {/* 6 Montessori Pillars Component */}
@@ -37,10 +43,10 @@ export default function MontessoriMethodPage() {
               <span className="text-xs font-bold uppercase tracking-wider text-[#0750B8] bg-white px-3.5 py-1 rounded-full shadow-sm">
                 Pedagogical Breakthrough
               </span>
-              <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-[#121D28] mt-3">
+              <h2 className="font-display font-extrabold text-2xl sm:text-3xl lg:text-3xl xl:text-4xl text-[#121D28] mt-3">
                 From Concrete Hands-on Senses to Abstract Intellect
               </h2>
-              <p className="text-sm sm:text-base text-[#5E6D7A] mt-3 leading-relaxed">
+              <p className="text-xs sm:text-sm md:text-base text-[#5E6D7A] mt-3 leading-relaxed">
                 Conventional schools force young children to memorize abstract numbers on chalkboards. Montessori children physically touch three-dimensional materials before writing numerals.
               </p>
             </div>

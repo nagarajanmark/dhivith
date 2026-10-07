@@ -14,52 +14,44 @@ import {
   CheckCircle2,
   ArrowRight,
 } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface CampusVideoShowcaseProps {
   onOpenTourModal: () => void;
 }
 
-interface VideoTrack {
-  id: string;
-  title: string;
-  subtitle: string;
-  duration: string;
-  src: string;
-  badge: string;
-  tagline: string;
-}
-
-const VIDEO_PLAYLIST: VideoTrack[] = [
-  {
-    id: "campus-experience",
-    title: "A Day at Dhivith Edu Care",
-    subtitle: "Explore our Montessori classrooms, sensory activities & happy children.",
-    duration: "Campus Tour",
-    src: "/Dhivith_School_website_video_banner_20261005204114.mp4",
-    badge: "Featured Experience",
-    tagline: "Live Montessori Method in Action",
-  },
-  {
-    id: "interactive-learning",
-    title: "Joyful Learning & Play",
-    subtitle: "Independent child-led exploration with certified Montessori apparatus.",
-    duration: "Classroom Life",
-    src: "/banner-video.mp4",
-    badge: "Classroom Focus",
-    tagline: "Hands-on Practical Life & Sensorial Work",
-  },
-];
-
 export const CampusVideoShowcase: React.FC<CampusVideoShowcaseProps> = ({
   onOpenTourModal,
 }) => {
+  const { t, language } = useLanguage();
   const [activeTrackIndex, setActiveTrackIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
   const [progress, setProgress] = useState(0);
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  const activeTrack = VIDEO_PLAYLIST[activeTrackIndex];
+  const playlist = [
+    {
+      id: "campus-experience",
+      title: t.video.track1Title,
+      subtitle: t.video.track1Subtitle,
+      duration: t.video.track1Duration,
+      src: "/Dhivith_School_website_video_banner_20261005204114.mp4",
+      badge: t.video.track1Badge,
+      tagline: t.video.track1Tagline,
+    },
+    {
+      id: "interactive-learning",
+      title: t.video.track2Title,
+      subtitle: t.video.track2Subtitle,
+      duration: t.video.track2Duration,
+      src: "/banner-video.mp4",
+      badge: t.video.track2Badge,
+      tagline: t.video.track2Tagline,
+    },
+  ];
+
+  const activeTrack = playlist[activeTrackIndex] || playlist[0];
 
   // Auto-play when switching video tracks
   useEffect(() => {
@@ -113,16 +105,15 @@ export const CampusVideoShowcase: React.FC<CampusVideoShowcaseProps> = ({
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
           <div className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-[#EAF8EF] text-[#159447] text-[11px] sm:text-xs font-bold uppercase tracking-wider border border-[#159447]/20 mb-3 shadow-xs">
             <Sparkles className="w-3.5 h-3.5 text-[#159447]" />
-            <span>Virtual Campus Experience</span>
+            <span>{t.video.badge}</span>
           </div>
 
-          <h2 className="font-display font-extrabold text-2xl sm:text-4xl lg:text-5xl text-[#121D28] tracking-tight leading-tight px-2">
-            See the Magic of Montessori in Action
+          <h2 className="font-display font-extrabold text-2xl sm:text-3xl lg:text-3xl xl:text-4xl text-[#121D28] tracking-tight leading-tight px-2">
+            {t.video.title}
           </h2>
 
-          <p className="text-xs sm:text-base text-[#5E6D7A] mt-2.5 max-w-2xl mx-auto px-2">
-            Watch our children discover, learn, and grow every day in our
-            peaceful, activity-filled environment in Kinathukadavu.
+          <p className="text-xs sm:text-sm md:text-base text-[#5E6D7A] mt-2.5 max-w-2xl mx-auto px-2">
+            {t.video.subtitle}
           </p>
         </div>
 
@@ -232,10 +223,10 @@ export const CampusVideoShowcase: React.FC<CampusVideoShowcaseProps> = ({
                 <div className="hidden sm:flex items-center gap-3 flex-shrink-0">
                   <button
                     onClick={onOpenTourModal}
-                    className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl bg-white text-[#0750B8] hover:bg-gray-100 font-bold text-xs sm:text-sm shadow-lg transition-all flex items-center gap-1.5 cursor-pointer"
+                    className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl bg-white text-[#0750B8] hover:bg-gray-100 font-bold text-xs sm:text-sm shadow-lg transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap"
                   >
                     <Calendar className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#F36B12]" />
-                    <span>Book a Campus Tour</span>
+                    <span>{t.video.bookTour}</span>
                   </button>
                 </div>
               </div>
@@ -244,7 +235,7 @@ export const CampusVideoShowcase: React.FC<CampusVideoShowcaseProps> = ({
 
           {/* Light Theme Video Switcher Tabs (2 Videos) */}
           <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-gray-100 bg-gray-50/80 p-2.5 sm:p-4">
-            {VIDEO_PLAYLIST.map((track, idx) => {
+            {playlist.map((track, idx) => {
               const isSelected = activeTrackIndex === idx;
               return (
                 <button
@@ -307,7 +298,7 @@ export const CampusVideoShowcase: React.FC<CampusVideoShowcaseProps> = ({
               className="w-full py-3 rounded-xl bg-[#0750B8] text-white font-bold text-xs shadow-md flex items-center justify-center gap-2"
             >
               <Calendar className="w-4 h-4 text-amber-300" />
-              <span>Book a Campus Tour</span>
+              <span>{t.video.bookTour}</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
           </div>
@@ -321,10 +312,10 @@ export const CampusVideoShowcase: React.FC<CampusVideoShowcaseProps> = ({
             </div>
             <div>
               <div className="font-bold text-xs sm:text-sm text-[#121D28]">
-                Safe & Caring Campus
+                {t.video.val1Title}
               </div>
               <div className="text-[11px] text-[#5E6D7A]">
-                Live supervision & kid-safe spaces
+                {t.video.val1Desc}
               </div>
             </div>
           </div>
@@ -335,10 +326,10 @@ export const CampusVideoShowcase: React.FC<CampusVideoShowcaseProps> = ({
             </div>
             <div>
               <div className="font-bold text-xs sm:text-sm text-[#121D28]">
-                Certified Teachers
+                {t.video.val2Title}
               </div>
               <div className="text-[11px] text-[#5E6D7A]">
-                Trained in genuine Montessori
+                {t.video.val2Desc}
               </div>
             </div>
           </div>
@@ -349,10 +340,10 @@ export const CampusVideoShowcase: React.FC<CampusVideoShowcaseProps> = ({
             </div>
             <div>
               <div className="font-bold text-xs sm:text-sm text-[#121D28]">
-                Individual Attention
+                {t.video.val3Title}
               </div>
               <div className="text-[11px] text-[#5E6D7A]">
-                Small batch sizes for every child
+                {t.video.val3Desc}
               </div>
             </div>
           </div>

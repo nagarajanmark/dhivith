@@ -60,10 +60,10 @@ export const MontessoriJourney: React.FC = () => {
             <Sparkles className="w-3.5 h-3.5" />
             <span>The Natural Daily Flow</span>
           </div>
-          <h2 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl text-white tracking-tight">
+          <h2 className="font-display font-extrabold text-2xl sm:text-3xl lg:text-3xl xl:text-4xl text-white tracking-tight">
             A Day of Joyful Discovery & Purpose
           </h2>
-          <p className="mt-4 text-white/75 text-sm sm:text-base md:text-lg leading-relaxed">
+          <p className="mt-3 sm:mt-4 text-white/80 text-xs sm:text-sm md:text-base leading-relaxed">
             Experience how the Montessori daily rhythm balances deep focus, hands-on creativity, social nourishment, and mindful outdoor play.
           </p>
         </div>

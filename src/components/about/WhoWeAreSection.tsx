@@ -85,7 +85,7 @@ export const WhoWeAreSection: React.FC<WhoWeAreSectionProps> = ({
                 <div className="relative z-10 flex items-center justify-between">
                   <span className="px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-[#0750B8]/15 shadow-sm text-xs font-bold text-[#0750B8] inline-flex items-center gap-1.5">
                     <Sparkles className="w-3.5 h-3.5 text-amber-500" />
-                    <span>Montessori Pre-School</span>
+                    <span>{language === "ta" ? "மாண்டிசோரி முன்பள்ளி" : "Montessori Pre-School"}</span>
                   </span>
                 </div>
 
@@ -106,7 +106,7 @@ export const WhoWeAreSection: React.FC<WhoWeAreSectionProps> = ({
                 <div className="relative z-10 flex items-center justify-center pt-3 border-t border-gray-200/60 text-xs">
                   <span className="flex items-center gap-1.5 font-bold text-[#159447]">
                     <span className="w-2 h-2 rounded-full bg-[#159447] animate-pulse" />
-                    Kinathukadavu, Coimbatore
+                    {language === "ta" ? "கிணத்துக்கடவு, கோயம்புத்தூர்" : "Kinathukadavu, Coimbatore"}
                   </span>
                 </div>
               </div>
@@ -124,7 +124,7 @@ export const WhoWeAreSection: React.FC<WhoWeAreSectionProps> = ({
                     <CheckCircle2 className="w-3.5 h-3.5 text-[#159447]" />
                   </div>
                   <div className="text-[10px] text-[#5E6D7A]">
-                    Founder & Director • {SCHOOL_INFO.qualifications}
+                    {language === "ta" ? "நிறுவனர் & இயக்குநர்" : "Founder & Director"} • {SCHOOL_INFO.qualifications}
                   </div>
                 </div>
               </div>
@@ -135,15 +135,14 @@ export const WhoWeAreSection: React.FC<WhoWeAreSectionProps> = ({
           <div className="lg:col-span-6 space-y-5">
             <div>
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EBF3FF] text-[#0750B8] text-xs font-bold uppercase tracking-wider border border-[#0750B8]/15 mb-3">
-                <Sparkles className="w-3.5 h-3.5 text-[#0750B8]" />
                 <span>{t.whoWeAre.badge}</span>
               </div>
 
-              <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-[#121D28] tracking-tight leading-tight">
+              <h2 className="font-display font-extrabold text-2xl sm:text-3xl lg:text-3xl xl:text-4xl text-[#121D28] tracking-tight leading-tight">
                 {t.whoWeAre.title}
               </h2>
 
-              <p className="text-sm sm:text-base text-[#5E6D7A] mt-3 leading-relaxed">
+              <p className="text-xs sm:text-sm md:text-base text-[#5E6D7A] mt-3 leading-relaxed">
                 {t.whoWeAre.description}
               </p>
             </div>
@@ -228,7 +227,7 @@ export const WhoWeAreSection: React.FC<WhoWeAreSectionProps> = ({
             className="p-5 sm:p-6 rounded-3xl bg-gray-50/70 border border-gray-200/80 shadow-xs hover:shadow-md hover:border-[#0750B8]/30 transition-all duration-300 flex flex-col justify-between text-center relative overflow-hidden group"
           >
             <div>
-              <div className="font-display font-black text-3xl sm:text-4xl lg:text-5xl text-[#0750B8] tracking-tight mb-2 group-hover:scale-105 transition-transform">
+              <div className="font-display font-black text-2xl sm:text-3xl lg:text-3xl xl:text-4xl text-[#0750B8] tracking-tight mb-2 group-hover:scale-105 transition-transform">
                 {t.whoWeAre.statRatio}
               </div>
               <div className="text-xs sm:text-sm font-bold text-[#121D28]">
@@ -257,7 +256,7 @@ export const WhoWeAreSection: React.FC<WhoWeAreSectionProps> = ({
             className="p-5 sm:p-6 rounded-3xl bg-gray-50/70 border border-gray-200/80 shadow-xs hover:shadow-md hover:border-[#159447]/30 transition-all duration-300 flex flex-col justify-between text-center relative overflow-hidden group"
           >
             <div>
-              <div className="font-display font-black text-3xl sm:text-4xl lg:text-5xl text-[#159447] tracking-tight mb-2 group-hover:scale-105 transition-transform">
+              <div className="font-display font-black text-2xl sm:text-3xl lg:text-3xl xl:text-4xl text-[#159447] tracking-tight mb-2 group-hover:scale-105 transition-transform">
                 {t.whoWeAre.statPreschool}
               </div>
               <div className="text-xs sm:text-sm font-bold text-[#121D28]">
@@ -286,7 +285,7 @@ export const WhoWeAreSection: React.FC<WhoWeAreSectionProps> = ({
             className="p-5 sm:p-6 rounded-3xl bg-gray-50/70 border border-gray-200/80 shadow-xs hover:shadow-md hover:border-[#F36B12]/30 transition-all duration-300 flex flex-col justify-between text-center relative overflow-hidden group"
           >
             <div>
-              <div className="font-display font-black text-3xl sm:text-4xl lg:text-5xl text-[#F36B12] tracking-tight mb-2 group-hover:scale-105 transition-transform">
+              <div className="font-display font-black text-2xl sm:text-3xl lg:text-3xl xl:text-4xl text-[#F36B12] tracking-tight mb-2 group-hover:scale-105 transition-transform">
                 {t.whoWeAre.statTuition}
               </div>
               <div className="text-xs sm:text-sm font-bold text-[#121D28]">
@@ -315,7 +314,7 @@ export const WhoWeAreSection: React.FC<WhoWeAreSectionProps> = ({
             className="p-5 sm:p-6 rounded-3xl bg-gray-50/70 border border-gray-200/80 shadow-xs hover:shadow-md hover:border-[#9A6700]/30 transition-all duration-300 flex flex-col justify-between text-center relative overflow-hidden group"
           >
             <div>
-              <div className="font-display font-black text-3xl sm:text-4xl lg:text-5xl text-[#9A6700] tracking-tight mb-2 group-hover:scale-105 transition-transform">
+              <div className="font-display font-black text-2xl sm:text-3xl lg:text-3xl xl:text-4xl text-[#9A6700] tracking-tight mb-2 group-hover:scale-105 transition-transform">
                 <PercentCounter />
               </div>
               <div className="text-xs sm:text-sm font-bold text-[#121D28]">

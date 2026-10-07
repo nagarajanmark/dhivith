@@ -3,8 +3,10 @@
 import React from "react";
 import { MapPin, Phone } from "lucide-react";
 import { SCHOOL_INFO } from "@/data/schoolData";
+import { useLanguage } from "@/context/LanguageContext";
 
 export const CampusLocationMap: React.FC = () => {
+  const { t, language } = useLanguage();
   const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
     "Dhivith Edu Care, S.K.Garden, Site Nos. 16,17, Vadapudur, Kinathukadavu, Coimbatore - 641032"
   )}`;
@@ -19,10 +21,10 @@ export const CampusLocationMap: React.FC = () => {
           <div>
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EBF3FF] text-[#0750B8] text-xs font-bold uppercase tracking-wider border border-[#0750B8]/20 mb-3 shadow-xs">
               <span className="w-2 h-2 rounded-full bg-[#0750B8]" />
-              <span>Location & Directions</span>
+              <span>{t.campusMap.badge}</span>
             </div>
-            <h2 className="font-display font-black text-3xl sm:text-4xl lg:text-5xl text-[#121D28] tracking-tight uppercase">
-              VISIT OUR CAMPUS & HEADQUARTERS
+            <h2 className="font-display font-black text-2xl sm:text-3xl lg:text-3xl xl:text-4xl text-[#121D28] tracking-tight uppercase">
+              {t.campusMap.title}
             </h2>
           </div>
 
@@ -33,7 +35,7 @@ export const CampusLocationMap: React.FC = () => {
             className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-gradient-to-r from-[#0750B8] via-[#0962dc] to-[#159447] hover:brightness-110 text-white font-bold text-xs sm:text-sm uppercase tracking-wider shadow-lg shadow-[#0750B8]/25 hover:shadow-xl hover:scale-105 active:scale-95 transition-all self-start md:self-auto cursor-pointer"
           >
             <MapPin className="w-4 h-4 fill-white" />
-            <span>GET DIRECTIONS ON GOOGLE MAPS</span>
+            <span>{t.campusMap.getDirections}</span>
             <span className="text-base font-normal leading-none">↗</span>
           </a>
         </div>
@@ -55,17 +57,17 @@ export const CampusLocationMap: React.FC = () => {
               <div className="flex items-center gap-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#159447] animate-pulse flex-shrink-0" />
                 <h3 className="font-display font-black text-sm sm:text-base text-[#121D28] uppercase tracking-wide">
-                  DHIVITH EDU CARE
+                  {language === "ta" ? "திவித் எடு கேர்" : "DHIVITH EDU CARE"}
                 </h3>
               </div>
 
               <span className="px-3 py-1 rounded-md bg-[#EAF8EF] text-[#159447] text-[11px] font-bold uppercase tracking-wider flex-shrink-0 border border-[#159447]/20">
-                COIMBATORE, TN
+                {t.campusMap.locationCity}
               </span>
             </div>
 
             <p className="text-xs text-[#5E6D7A] mt-3 leading-relaxed">
-              {SCHOOL_INFO.address}, {SCHOOL_INFO.city} (PIN: 641032)
+              {language === "ta" ? "வ.எண். 382/35, 382/36, S.K.கார்டன், வடபுதூர், கிணத்துக்கடவு, கோயம்புத்தூர் - 641032" : `${SCHOOL_INFO.address}, ${SCHOOL_INFO.city} (PIN: 641032)`}
             </p>
 
             <div className="mt-4 pt-3 border-t border-gray-100 flex flex-wrap items-center justify-between gap-3 text-xs">
@@ -83,7 +85,7 @@ export const CampusLocationMap: React.FC = () => {
                 rel="noopener noreferrer"
                 className="font-bold text-[#0750B8] hover:text-[#159447] uppercase tracking-wider flex items-center gap-1 transition-colors"
               >
-                <span>GET DIRECTIONS ON GOOGLE MAPS</span>
+                <span>{t.campusMap.getDirections}</span>
                 <span className="text-sm font-semibold">↗</span>
               </a>
             </div>

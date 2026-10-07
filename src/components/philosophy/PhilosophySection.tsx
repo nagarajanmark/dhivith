@@ -138,11 +138,11 @@ export const PhilosophySection: React.FC = () => {
             <span>{t.philosophy.badge}</span>
           </div>
 
-          <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-[#0F172A] tracking-tight leading-tight">
+          <h2 className="font-display font-extrabold text-2xl sm:text-3xl lg:text-3xl xl:text-4xl text-[#0F172A] tracking-tight leading-tight">
             {language === "ta" ? "ஒவ்வொரு குழந்தையும் தனித்துவமானது. கற்றல் ஒரு பேரின்பம்." : "Every Child Is Unique. Every Journey Matters."}
           </h2>
 
-          <p className="text-sm sm:text-base text-gray-500 mt-3 font-normal max-w-2xl mx-auto">
+          <p className="text-xs sm:text-sm md:text-base text-gray-500 mt-3 font-normal max-w-2xl mx-auto">
             {t.philosophy.desc}
           </p>
         </div>
@@ -184,15 +184,15 @@ export const PhilosophySection: React.FC = () => {
               <span>{language === "ta" ? `தத்துவம் ${activeTab + 1} / ${pillars.length}` : `Pillar ${activeTab + 1} of ${pillars.length}`}</span>
             </div>
 
-            <h3 className="font-display font-black text-2xl sm:text-3xl lg:text-4xl text-[#0F172A] leading-tight">
+            <h3 className="font-display font-black text-xl sm:text-2xl lg:text-2xl xl:text-3xl text-[#0F172A] leading-tight">
               {language === "ta" ? activePillar.titleTa : activePillar.titleEn}
             </h3>
 
-            <p className="text-sm sm:text-base text-gray-700 font-medium leading-relaxed italic border-l-4 border-[#0750B8] pl-4 py-0.5">
+            <p className="text-xs sm:text-sm md:text-base text-gray-700 font-medium leading-relaxed italic border-l-4 border-[#0750B8] pl-4 py-0.5">
               &ldquo;{language === "ta" ? activePillar.shortDescTa : activePillar.shortDescEn}&rdquo;
             </p>
 
-            <p className="text-sm sm:text-base text-gray-600 leading-relaxed font-normal">
+            <p className="text-xs sm:text-sm md:text-base text-gray-600 leading-relaxed font-normal">
               {language === "ta" ? activePillar.detailedTextTa : activePillar.detailedTextEn}
             </p>
 

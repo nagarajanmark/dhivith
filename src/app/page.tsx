@@ -132,10 +132,10 @@ export default function HomePage() {
               <span className="w-2 h-2 rounded-full bg-[#0750B8]" />
               <span>{t.pillars.badge}</span>
             </div>
-            <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-[#0F172A] tracking-tight leading-tight">
+            <h2 className="font-display font-extrabold text-2xl sm:text-3xl lg:text-3xl xl:text-4xl text-[#0F172A] tracking-tight leading-tight">
               {t.pillars.title}
             </h2>
-            <p className="text-sm sm:text-base text-gray-500 mt-3 font-normal">
+            <p className="text-xs sm:text-sm md:text-base text-gray-500 mt-3 font-normal">
               {t.pillars.subtitle}
             </p>
           </div>
@@ -307,10 +307,10 @@ export default function HomePage() {
             <span className="text-xs font-bold uppercase tracking-wider text-[#159447] bg-[#EAF8EF] px-4 py-1.5 rounded-full border border-[#159447]/20 inline-block mb-3 shadow-xs">
               {t.finder.badge}
             </span>
-            <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-[#121D28] tracking-tight leading-tight">
+            <h2 className="font-display font-extrabold text-2xl sm:text-3xl lg:text-3xl xl:text-4xl text-[#121D28] tracking-tight leading-tight">
               {t.finder.title}
             </h2>
-            <p className="text-sm sm:text-base text-[#5E6D7A] mt-2">
+            <p className="text-xs sm:text-sm md:text-base text-[#5E6D7A] mt-2">
               {t.finder.subtitle}
             </p>
           </div>
@@ -356,11 +356,11 @@ export default function HomePage() {
                   </span>
                 </div>
 
-                <h3 className="font-display font-black text-2xl sm:text-3xl lg:text-4xl text-[#121D28] tracking-tight leading-tight">
+                <h3 className="font-display font-black text-xl sm:text-2xl lg:text-2xl xl:text-3xl text-[#121D28] tracking-tight leading-tight">
                   {currentAgeData.title}
                 </h3>
 
-                <p className="text-sm sm:text-base text-[#5E6D7A] leading-relaxed max-w-lg font-medium">
+                <p className="text-xs sm:text-sm md:text-base text-[#5E6D7A] leading-relaxed max-w-lg font-medium">
                   {currentAgeData.sub}. {t.finder.suffix}
                 </p>
 
@@ -433,14 +433,14 @@ export default function HomePage() {
             />
             <div className="absolute inset-0 bg-gradient-to-r from-[#0750B8]/85 via-[#0750B8]/50 sm:via-[#0750B8]/30 to-transparent" />
 
-            <div className="relative z-10 max-w-xl space-y-5">
+            <div className="relative z-10 max-w-2xl space-y-4 sm:space-y-5">
               <span className="px-4 py-1.5 rounded-full bg-white/25 text-amber-300 text-xs font-bold uppercase tracking-wider backdrop-blur-md inline-block border border-white/30 shadow-sm">
                 {t.homeCta.badge}
               </span>
-              <h2 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl text-white leading-[1.15] drop-shadow-md">
+              <h2 className="font-display font-extrabold text-2xl sm:text-3xl lg:text-3xl xl:text-4xl 2xl:text-5xl text-white leading-[1.2] drop-shadow-md">
                 {t.homeCta.title}
               </h2>
-              <p className="text-white text-sm sm:text-base md:text-lg leading-relaxed drop-shadow font-medium max-w-lg">
+              <p className="text-xs sm:text-sm md:text-base leading-relaxed drop-shadow font-medium max-w-xl text-white/95">
                 {t.homeCta.description}
               </p>
               <div className="flex flex-wrap items-center justify-start gap-4 pt-2">

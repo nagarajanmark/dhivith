@@ -111,7 +111,7 @@ export const GlyphHeroSection: React.FC<GlyphHeroSectionProps> = ({ onOpenTourMo
                 opacity: textOpacity,
                 transformOrigin: "center center",
               }}
-              className="font-display font-black text-5xl sm:text-8xl md:text-9xl lg:text-[130px] xl:text-[150px] tracking-wider text-white drop-shadow-[0_15px_40px_rgba(0,0,0,0.9)] leading-none uppercase text-center"
+              className="font-display font-black text-4xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-7xl 2xl:text-[120px] tracking-wider text-white drop-shadow-[0_15px_40px_rgba(0,0,0,0.9)] leading-none uppercase text-center"
             >
               DHIVITH
             </motion.h1>
@@ -122,10 +122,10 @@ export const GlyphHeroSection: React.FC<GlyphHeroSectionProps> = ({ onOpenTourMo
             style={{ opacity: uiOpacity, y: uiY }}
             className="space-y-1.5 sm:space-y-2 max-w-2xl mx-auto px-3"
           >
-            <h2 className="font-display font-extrabold text-xl sm:text-3xl md:text-4xl text-white tracking-tight leading-tight drop-shadow-lg">
+            <h2 className="font-display font-extrabold text-base sm:text-xl md:text-xl lg:text-2xl xl:text-2xl 2xl:text-3xl text-white tracking-tight leading-tight drop-shadow-lg">
               {language === "ta" ? "மகிழ்ச்சியான கற்றல் தொடங்கும் இடம்" : "Where Joyful Learning Begins"}
             </h2>
-            <p className="text-xs sm:text-sm md:text-base text-white/90 leading-relaxed drop-shadow-md">
+            <p className="text-xs sm:text-xs md:text-sm lg:text-sm xl:text-base text-white/90 leading-relaxed drop-shadow-md max-w-xl mx-auto">
               {t.hero.description}
             </p>
           </motion.div>
@@ -133,34 +133,34 @@ export const GlyphHeroSection: React.FC<GlyphHeroSectionProps> = ({ onOpenTourMo
           {/* Dual Action Buttons Row */}
           <motion.div
             style={{ opacity: uiOpacity, y: uiY }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2 w-full max-w-xl mx-auto"
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2 w-full max-w-4xl mx-auto"
           >
             <button
               onClick={onOpenTourModal}
-              className="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-gradient-to-r from-[#0284c7] via-[#059669] to-[#10b981] hover:brightness-110 text-white font-bold text-xs sm:text-sm shadow-xl flex items-center justify-center gap-2 cursor-pointer transition-all hover:scale-105"
+              className="w-full sm:w-auto whitespace-nowrap shrink-0 px-6 sm:px-7 py-3 sm:py-3.5 rounded-xl bg-gradient-to-r from-[#0284c7] via-[#059669] to-[#10b981] hover:brightness-110 text-white font-bold text-xs sm:text-sm shadow-xl flex items-center justify-center gap-2 cursor-pointer transition-all hover:scale-105"
             >
-              <div className="p-1 rounded-md bg-[#0284c7]">
+              <div className="p-1 rounded-md bg-[#0284c7] shrink-0">
                 <Calendar className="w-3.5 h-3.5 text-white" />
               </div>
-              <span>{t.common.scheduleVisit}</span>
-              <ArrowRight className="w-4 h-4" />
+              <span className="whitespace-nowrap">{t.common.scheduleVisit}</span>
+              <ArrowRight className="w-4 h-4 shrink-0" />
             </button>
 
-            <div className="flex items-center gap-3 w-full sm:w-auto justify-center">
+            <div className="flex items-center gap-2.5 sm:gap-3 w-full sm:w-auto justify-center">
               <Link
                 href="/classes"
-                className="flex-1 sm:flex-initial px-5 py-3.5 rounded-xl bg-[#334155]/80 hover:bg-[#475569]/90 border border-white/20 text-white font-semibold text-xs sm:text-sm backdrop-blur-md transition-all flex items-center justify-center gap-1.5 shadow-lg hover:scale-105"
+                className="flex-1 sm:flex-initial whitespace-nowrap shrink-0 px-4 sm:px-5 py-3 sm:py-3.5 rounded-xl bg-[#334155]/80 hover:bg-[#475569]/90 border border-white/20 text-white font-semibold text-xs sm:text-sm backdrop-blur-md transition-all flex items-center justify-center gap-1.5 shadow-lg hover:scale-105"
               >
-                <span>{t.nav.classes}</span>
-                <ChevronRight className="w-4 h-4 text-white/70" />
+                <span className="whitespace-nowrap">{t.nav.classes}</span>
+                <ChevronRight className="w-4 h-4 text-white/70 shrink-0" />
               </Link>
 
               <a
                 href={`tel:${SCHOOL_INFO.phoneRaw}`}
-                className="flex-1 sm:flex-initial px-5 py-3.5 rounded-xl bg-[#0f172a]/80 hover:bg-[#1e293b]/90 border border-white/20 text-white font-medium text-xs sm:text-sm backdrop-blur-md transition-all flex items-center justify-center gap-2 shadow-lg hover:scale-105"
+                className="flex-1 sm:flex-initial whitespace-nowrap shrink-0 px-4 sm:px-5 py-3 sm:py-3.5 rounded-xl bg-[#0f172a]/80 hover:bg-[#1e293b]/90 border border-white/20 text-white font-medium text-xs sm:text-sm backdrop-blur-md transition-all flex items-center justify-center gap-2 shadow-lg hover:scale-105"
               >
-                <Phone className="w-3.5 h-3.5 text-emerald-400" />
-                <span>{SCHOOL_INFO.phoneFormatted}</span>
+                <Phone className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                <span className="whitespace-nowrap">{SCHOOL_INFO.phoneFormatted}</span>
               </a>
             </div>
           </motion.div>

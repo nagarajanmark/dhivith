@@ -13,6 +13,7 @@ import {
   Calendar,
 } from "lucide-react";
 import { GalleryItem } from "@/data/schoolData";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface GalleryLightboxModalProps {
   items: GalleryItem[];
@@ -35,6 +36,7 @@ export const GalleryLightboxModal: React.FC<GalleryLightboxModalProps> = ({
   onSelectIndex,
   onOpenTourModal,
 }) => {
+  const { t, language } = useLanguage();
   const currentItem = items[currentIndex];
   const thumbnailStripRef = useRef<HTMLDivElement>(null);
 
@@ -201,21 +203,31 @@ export const GalleryLightboxModal: React.FC<GalleryLightboxModalProps> = ({
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
           <div className="space-y-1">
             <h3 className="font-display font-black text-lg sm:text-xl md:text-2xl text-[#121D28] tracking-tight uppercase">
-              {currentItem.title}
+              {(language === "ta" && currentItem.titleTa) ? currentItem.titleTa : currentItem.title}
             </h3>
 
             {/* Badges / Meta */}
             <div className="flex flex-wrap items-center gap-2 pt-0.5">
               <span className="px-2.5 py-0.5 rounded-full text-[11px] font-extrabold bg-[#EBF3FF] text-[#0750B8] uppercase">
-                {currentItem.category}
+                {currentItem.category === "Classroom"
+                  ? (language === "ta" ? "வகுப்பறை" : "Classroom")
+                  : currentItem.category === "Sensorial"
+                  ? (language === "ta" ? "தொடு உணர்வு" : "Sensorial")
+                  : currentItem.category === "Outdoor"
+                  ? (language === "ta" ? "வெளிப்புறம்" : "Outdoor")
+                  : currentItem.category === "Practical Life"
+                  ? (language === "ta" ? "செய்முறை வாழ்வியல்" : "Practical Life")
+                  : currentItem.category === "Creative"
+                  ? (language === "ta" ? "படைப்பாற்றல்" : "Creative")
+                  : currentItem.category}
               </span>
               <span className="inline-flex items-center gap-1 text-[11px] sm:text-xs text-gray-600 font-semibold">
                 <MapPin className="w-3.5 h-3.5 text-emerald-600" />
-                Kinathukadavu, Coimbatore
+                {language === "ta" ? "கிணத்துக்கடவு, கோயம்புத்தூர்" : "Kinathukadavu, Coimbatore"}
               </span>
               <span className="hidden sm:inline-flex items-center gap-1 text-[11px] sm:text-xs text-emerald-700 bg-[#EAF8EF] px-2.5 py-0.5 rounded-full font-semibold border border-[#159447]/20">
                 <Sparkles className="w-3.5 h-3.5 text-amber-500" />
-                Small Batch (1:6 Ratio)
+                {language === "ta" ? "1:6 ஆசிரியர்-மாணவர் விகிதம்" : "Small Batch (1:6 Ratio)"}
               </span>
             </div>
           </div>
@@ -229,7 +241,7 @@ export const GalleryLightboxModal: React.FC<GalleryLightboxModalProps> = ({
             className="w-full sm:w-auto px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl bg-gradient-to-r from-[#0750B8] to-[#159447] hover:brightness-110 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transition-all hover:scale-105 active:scale-95 cursor-pointer flex-shrink-0"
           >
             <Calendar className="w-4 h-4 text-amber-200" />
-            <span>BOOK A VISIT</span>
+            <span>{language === "ta" ? "வளாக பார்வைக்கு முன்பதிவு" : "BOOK A VISIT"}</span>
             <ArrowUpRight className="w-4 h-4" />
           </button>
         </div>

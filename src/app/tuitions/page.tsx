@@ -21,21 +21,27 @@ import {
   Users,
 } from "lucide-react";
 import { SCHOOL_INFO } from "@/data/schoolData";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function TuitionsPage() {
+  const { language } = useLanguage();
   const [isTourModalOpen, setIsTourModalOpen] = useState(false);
 
   return (
     <main className="min-h-screen flex flex-col bg-white text-[#121D28]">
       <Navbar onOpenTourModal={() => setIsTourModalOpen(true)} />
 
-      {/* Page Header */}
       <PageHeader
-        breadcrumb="Tuition & Coaching"
-        badge="Academic Excellence"
-        title="Comprehensive Tuition Classes & Engineering Maths"
-        highlightedWord="Tuition Classes & Engineering Maths"
-        description="Better Learning. Better Tomorrow. Brighter Future. Expert coaching for LKG to Grade 12 across ICSE, CBSE, and State Board syllabi, along with collegiate Engineering Mathematics."
+        breadcrumb={language === "ta" ? "டியூஷன் & பயிற்சி" : "Tuition & Coaching"}
+        title={language === "ta" ? "அனைத்துப் பாட டியூஷன் & பொறியியல் கணிதம்" : "Comprehensive Tuition Classes & Engineering Maths"}
+        highlightedWord={language === "ta" ? "டியூஷன் & பொறியியல் கணிதம்" : "Tuition Classes & Engineering Maths"}
+        description={
+          language === "ta"
+            ? "சிறந்த கற்றல். சிறந்த எதிர்காலம். LKG முதல் 12-ஆம் வகுப்பு வரை (CBSE, ICSE, Matric & State Board) அனைத்துப் பாடங்கள் மற்றும் பொறியியல் கணிதப் பயிற்சி (M1, M2, M3, M4)."
+            : "Better Learning. Better Tomorrow. Brighter Future. Expert coaching for LKG to Grade 12 across ICSE, CBSE, and State Board syllabi, along with collegiate Engineering Mathematics."
+        }
+        bannerImage="/school_images/1000449608.webp"
+        gradientTheme="blue"
       />
 
       {/* Comprehensive Services Core Component */}
@@ -48,10 +54,10 @@ export default function TuitionsPage() {
             <span className="text-xs font-bold uppercase tracking-wider text-[#0750B8] bg-[#EBF3FF] px-4 py-1.5 rounded-full border border-[#0750B8]/20">
               Structured Multi-Board Batches
             </span>
-            <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-[#121D28] mt-3">
+            <h2 className="font-display font-extrabold text-2xl sm:text-3xl lg:text-3xl xl:text-4xl text-[#121D28] mt-3">
               Tailored Coaching for Every Educational Board
             </h2>
-            <p className="text-sm sm:text-base text-[#5E6D7A] mt-2">
+            <p className="text-xs sm:text-sm md:text-base text-[#5E6D7A] mt-2">
               We align our evening coaching sessions with each student&apos;s specific school curriculum for guaranteed academic mastery and top marks.
             </p>
           </div>

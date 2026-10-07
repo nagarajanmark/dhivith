@@ -14,8 +14,10 @@ import {
 } from "lucide-react";
 import { SectionHeading } from "../ui/SectionHeading";
 import { ENVIRONMENT_HOTSPOTS, EnvironmentHotspot } from "@/data/schoolData";
+import { useLanguage } from "@/context/LanguageContext";
 
 export const EnvironmentSection: React.FC = () => {
+  const { language } = useLanguage();
   const [activeHotspot, setActiveHotspot] = useState<EnvironmentHotspot>(
     ENVIRONMENT_HOTSPOTS[0]
   );
@@ -25,10 +27,10 @@ export const EnvironmentSection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
         <SectionHeading
-          badgeText="Prepared Educational Spaces"
+          badgeText={language === "ta" ? "வடிவமைக்கப்பட்ட கற்றல் சூழல்" : "Prepared Educational Spaces"}
           badgeVariant="yellow"
-          title="Designed with Natural Light, Calm & Child Scale"
-          subtitle="Every physical element in our preschool is purposely tailored to the child's height, strength, and sensory comfort—fostering effortless autonomy and deep concentration."
+          title={language === "ta" ? "இயற்கை வெளிச்சமும் அமைதியும் நிறைந்த வளாகம்" : "Designed with Natural Light, Calm & Child Scale"}
+          subtitle={language === "ta" ? "குழந்தையின் உயரத்திற்கு ஏற்ற மர அலமாரிகள், தொடு உணர்வு கருவிகள் மற்றும் அமைதியான காற்றோட்டமான சூழல்." : "Every physical element in our preschool is purposely tailored to the child's height, strength, and sensory comfort—fostering effortless autonomy and deep concentration."}
           align="center"
           className="mb-16"
         />

@@ -78,44 +78,49 @@ export const GallerySection: React.FC = () => {
 
         {/* Masonry / Responsive Photo Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredItems.map((item) => (
-            <div
-              key={item.id}
-              onClick={() => handleOpenLightbox(item)}
-              className="group relative rounded-3xl overflow-hidden aspect-[4/3] bg-[#121D28] cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-1.5"
-            >
-              <Image
-                src={item.image}
-                alt={item.title}
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-110"
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#121D28]/80 via-transparent to-transparent opacity-80 group-hover:opacity-95 transition-opacity" />
+          {filteredItems.map((item) => {
+            const itemTitle = (language === "ta" && item.titleTa) ? item.titleTa : item.title;
+            const itemCaption = (language === "ta" && item.captionTa) ? item.captionTa : item.caption;
 
-              {/* Top Category Badge */}
-              <div className="absolute top-4 left-4">
-                <span className="px-3 py-1 rounded-full text-[11px] font-extrabold bg-white/90 text-[#0750B8] shadow-sm backdrop-blur-md">
-                  {categories.find((c) => c.key === item.category)?.label || item.category}
-                </span>
-              </div>
+            return (
+              <div
+                key={item.id}
+                onClick={() => handleOpenLightbox(item)}
+                className="group relative rounded-3xl overflow-hidden aspect-[4/3] bg-[#121D28] cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-1.5"
+              >
+                <Image
+                  src={item.image}
+                  alt={itemTitle}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#121D28]/80 via-transparent to-transparent opacity-80 group-hover:opacity-95 transition-opacity" />
 
-              {/* Hover Lightbox Icon */}
-              <div className="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/40 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm">
-                <Maximize2 className="w-4 h-4" />
-              </div>
+                {/* Top Category Badge */}
+                <div className="absolute top-4 left-4">
+                  <span className="px-3 py-1 rounded-full text-[11px] font-extrabold bg-white/90 text-[#0750B8] shadow-sm backdrop-blur-md">
+                    {categories.find((c) => c.key === item.category)?.label || item.category}
+                  </span>
+                </div>
 
-              {/* Bottom Caption */}
-              <div className="absolute bottom-4 left-4 right-4 text-white">
-                <h3 className="font-display font-bold text-lg group-hover:text-amber-300 transition-colors">
-                  {item.title}
-                </h3>
-                <p className="text-xs text-white/80 line-clamp-1 mt-0.5">
-                  {item.caption}
-                </p>
+                {/* Hover Lightbox Icon */}
+                <div className="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/40 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm">
+                  <Maximize2 className="w-4 h-4" />
+                </div>
+
+                {/* Bottom Caption */}
+                <div className="absolute bottom-4 left-4 right-4 text-white">
+                  <h3 className="font-display font-bold text-lg group-hover:text-amber-300 transition-colors">
+                    {itemTitle}
+                  </h3>
+                  <p className="text-xs text-white/80 line-clamp-1 mt-0.5">
+                    {itemCaption}
+                  </p>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 
