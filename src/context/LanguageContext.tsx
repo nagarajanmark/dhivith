@@ -15,7 +15,7 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 const LANGUAGE_STORAGE_KEY = "dhivith_preferred_lang";
 
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [language, setLanguageState] = useState<Language>("ta"); // Default to Tamil per user preference
+  const [language, setLanguageState] = useState<Language>("en"); // Default to English initially
 
   useEffect(() => {
     try {
@@ -55,10 +55,10 @@ export const useLanguage = (): LanguageContextType => {
   if (!context) {
     // Fallback if rendered outside provider
     return {
-      language: "ta",
+      language: "en",
       setLanguage: () => {},
       toggleLanguage: () => {},
-      t: TRANSLATIONS.ta,
+      t: TRANSLATIONS.en,
     };
   }
   return context;
