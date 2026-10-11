@@ -52,8 +52,8 @@ export default function ClassesPage() {
         language === "ta" ? "குறைந்த எண்ணிக்கையில் தனிநபர் கவனம்" : "Small batch size with individual attention",
         language === "ta" ? "வீட்டுப்பாடம் மற்றும் சந்தேகங்கள் தீர்வு" : "Daily homework support & doubt clearing",
       ],
-      timing: language === "ta" ? "மாலை நேரம்: 4:30 – 6:30" : "Evening Batches: 4:30 PM – 6:30 PM",
-      ratio: "Max 8 Students / Batch",
+      timing: language === "ta" ? "காலை: 5:00 – 7:00 AM | மாலை: 5:00 – 7:00 PM" : "Morning: 5:00 – 7:00 AM | Evening: 5:00 – 7:00 PM",
+      ratio: language === "ta" ? "மாலையில் 8 ஆசிரியர்கள் வழிகாட்டல்" : "8 Dedicated Evening Staffs",
       color: "#0750B8",
       bg: "bg-[#EBF3FF]",
     },
@@ -69,8 +69,8 @@ export default function ClassesPage() {
         language === "ta" ? "எளிய செய்முறை விளக்கங்கள்" : "Science practical concepts explained simply",
         language === "ta" ? "10-ஆம் வகுப்பு பொதுத்தேர்வு சிறப்புப் பயிற்சி" : "Special focus on 10th Board Exam score boost",
       ],
-      timing: language === "ta" ? "மாலை நேரம்: 5:00 – 7:30 / வார இறுதி" : "Evening: 5:00 PM – 7:30 PM / Weekend Batches",
-      ratio: language === "ta" ? "சிறிய குழு தனிநபர் வழிகாட்டல்" : "Small Group Guidance",
+      timing: language === "ta" ? "காலை: 5:00 – 7:00 AM | மாலை: 5:00 – 9:30 PM" : "Morning: 5:00 – 7:00 AM | Evening: 5:00 – 9:30 PM",
+      ratio: language === "ta" ? "மாலையில் 8 ஆசிரியர்கள் வழிகாட்டல்" : "8 Evening Staff Members",
       color: "#159447",
       bg: "bg-[#EAF8EF]",
     },
@@ -86,8 +86,8 @@ export default function ClassesPage() {
         language === "ta" ? "சூத்திர குறிப்புகள் & நேர மேலாண்மை வழிகாட்டல்" : "Formula sheets, derivations & time-management tips",
         language === "ta" ? "பெற்றோருடன் தொடர் முன்னேற்ற ஆய்வு" : "Regular parent performance reviews",
       ],
-      timing: language === "ta" ? "மாலை நேரம்: 5:30 – 8:00" : "Evening: 5:30 PM – 8:00 PM",
-      ratio: language === "ta" ? "கவனம் மிகுந்த பயிற்சி" : "Focused Coaching",
+      timing: language === "ta" ? "காலை: 5:00 – 7:00 AM | மாலை: 5:00 – 9:30 PM" : "Morning: 5:00 – 7:00 AM | Evening: 5:00 – 9:30 PM",
+      ratio: language === "ta" ? "மாலையில் 8 ஆசிரியர்கள் வழிகாட்டல்" : "8 Evening Staff Members",
       color: "#F36B12",
       bg: "bg-[#FFF2E8]",
     },
@@ -103,7 +103,7 @@ export default function ClassesPage() {
         language === "ta" ? "தனிநபர் சந்தேகங்கள் உடனுக்குடன் தீர்வு" : "Individual doubt resolution for every student",
         language === "ta" ? "100% தேர்ச்சி விகிதம்" : "Proven 100% pass track record",
       ],
-      timing: language === "ta" ? "வார இறுதி & மாலை நேர வகுப்புகள்" : "Flexible Weekend & Evening Batches",
+      timing: language === "ta" ? "காலை: 5:00 – 7:00 AM | மாலை: 5:00 – 9:30 PM" : "Morning: 5:00 – 7:00 AM | Evening: 5:00 – 9:30 PM",
       ratio: language === "ta" ? "நேரடி தனிநபர் வழிகாட்டல்" : "Personal Mentorship",
       color: "#F5B900",
       bg: "bg-[#FFF9E5]",
@@ -119,7 +119,7 @@ export default function ClassesPage() {
         title={language === "ta" ? "மழலையர் பள்ளி வகுப்புகள் & அனைத்துப் பாட டியூஷன்" : "Pre-School Programs & All Subject Tuitions"}
         highlightedWord={language === "ta" ? "மழலையர் பள்ளி வகுப்புகள்" : "Pre-School Programs"}
         description={t.classes.desc}
-        bannerImage="/school_images/1000449035.webp"
+        bannerImage="/school_images/montessori-child-activity-workspace-coimbatore.webp"
         gradientTheme="blue"
       />
 
@@ -186,7 +186,7 @@ export default function ClassesPage() {
                     <div className="relative w-full h-52 bg-slate-900 overflow-hidden">
                       <Image
                         src={prog.image}
-                        alt={(language === "ta" && prog.nameTa) ? prog.nameTa : prog.name}
+                        alt={`${prog.name} (${prog.ageRange}) - Dhivith Edu Care Kinathukadavu Coimbatore`}
                         fill
                         className="object-cover transition-transform duration-500 hover:scale-105"
                         sizes="(max-width: 768px) 100vw, 400px"

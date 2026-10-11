@@ -25,7 +25,7 @@ export default function GalleryPage() {
         title={t.gallery.title}
         highlightedWord={t.gallery.highlight}
         description={t.gallery.desc}
-        bannerImage="/school_images/1000450316.webp"
+        bannerImage="/school_images/practical-life-fine-motor-coordination-tirupur.webp"
         gradientTheme="green"
       />
 

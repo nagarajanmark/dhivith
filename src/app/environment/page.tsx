@@ -24,7 +24,7 @@ export default function EnvironmentPage() {
         title={language === "ta" ? "சுதந்திர சிந்தனை & அமைதியான கற்றல் சோலை" : "Prepared for Peaceful Autonomy & Wonder"}
         highlightedWord={language === "ta" ? "அமைதியான கற்றல் சோலை" : "Prepared for Peaceful Autonomy"}
         description={language === "ta" ? "இயற்கை வெளிச்சம், பாதுகாப்பான மரத்தாலான தளபாடங்கள், குறைந்த உயர அலமாரிகள் மற்றும் பசுமையான தோட்டம் கொண்ட கிணத்துக்கடவு வளாகம்." : "Step inside our Kinathukadavu learning environment where natural daylight, non-toxic Scandinavian blonde wood, low open shelves, and organic garden terraces inspire joyful focus."}
-        bannerImage="/school_images/1000227874.webp"
+        bannerImage="/school_images/evening-tuition-batches-grade-1-to-12-pollachi.webp"
         gradientTheme="green"
       />
 

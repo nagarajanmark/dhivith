@@ -16,6 +16,14 @@ import {
   PhonicsSafariGame,
   MagicDrawingGame,
   RainbowPianoGame,
+  JigsawPuzzleGame,
+  AnimalSoundGuessGame,
+  FruitIdentificationGame,
+  ConnectTheDotsGame,
+  StorytellingGame,
+  SimpleMazeGame,
+  NurseryRhymesGame,
+  ObjectSortingGame,
   playChime,
 } from "@/components/games/KidsGamesCollection";
 import {
@@ -30,16 +38,17 @@ import {
   Heart,
   Smile,
   Zap,
+  Filter,
 } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function GamesPage() {
   const { language, t } = useLanguage();
   const [isTourModalOpen, setIsTourModalOpen] = useState(false);
-  const [activeGameId, setActiveGameId] = useState<GameId>("tower");
+  const [activeGameId, setActiveGameId] = useState<GameId>("jigsaw");
   const [selectedCategory, setSelectedCategory] = useState<"all" | "sensory" | "math" | "art" | "memory">("all");
   const [soundEnabled, setSoundEnabled] = useState(true);
-  const [totalStars, setTotalStars] = useState(12);
+  const [totalStars, setTotalStars] = useState(15);
 
   const activeGameMeta = KIDS_GAMES_LIST.find((g) => g.id === activeGameId) || KIDS_GAMES_LIST[0];
 
@@ -47,6 +56,39 @@ export default function GamesPage() {
     if (selectedCategory === "all") return true;
     return g.category === selectedCategory;
   });
+
+  const categoryPills = [
+    {
+      id: "all" as const,
+      labelEn: "🌟 All Activities",
+      labelTa: "🌟 அனைத்தும்",
+      count: KIDS_GAMES_LIST.length,
+    },
+    {
+      id: "sensory" as const,
+      labelEn: "🔷 Sensory & Motor",
+      labelTa: "🔷 தொடு உணர்வு",
+      count: KIDS_GAMES_LIST.filter((g) => g.category === "sensory").length,
+    },
+    {
+      id: "math" as const,
+      labelEn: "🎈 Math & Logic",
+      labelTa: "🎈 கணிதம் & தர்க்கம்",
+      count: KIDS_GAMES_LIST.filter((g) => g.category === "math").length,
+    },
+    {
+      id: "art" as const,
+      labelEn: "🎨 Art & Stories",
+      labelTa: "🎨 கலை & கதை",
+      count: KIDS_GAMES_LIST.filter((g) => g.category === "art").length,
+    },
+    {
+      id: "memory" as const,
+      labelEn: "🦁 Memory & Speech",
+      labelTa: "🦁 நினைவாற்றல் & பேச்சு",
+      count: KIDS_GAMES_LIST.filter((g) => g.category === "memory").length,
+    },
+  ];
 
   const playSound = (type: "pop" | "win" | "wrong" | "ding" | "piano", noteFreq?: number) => {
     if (soundEnabled) {
@@ -67,7 +109,7 @@ export default function GamesPage() {
         title={t.gamesPage.title}
         highlightedWord={t.gamesPage.highlight}
         description={t.gamesPage.desc}
-        bannerImage="/school_images/1000264802.webp"
+        bannerImage="/school_images/montessori-sensorial-tactile-learning-coimbatore.webp"
         gradientTheme="amber"
       />
 
@@ -75,17 +117,40 @@ export default function GamesPage() {
       <section className="py-8 sm:py-12 lg:py-16 relative">
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
           
-          {/* Top: 8 Games Selection Grid (Clean at Top, No Scrolling) */}
-          <div className="mb-8">
-            <div className="text-center mb-4">
-              <span className="text-xs font-extrabold uppercase tracking-wider text-[#F36B12] bg-[#FFF2E8] px-3.5 py-1 rounded-full border border-[#F36B12]/20">
-                {language === "ta" ? "விளையாட்டை தேர்ந்தெடுக்கவும்" : "Select A Game To Play"}
-              </span>
-            </div>
+          {/* Category Filter Navigation */}
+          <div className="mb-6 flex flex-wrap items-center justify-center gap-2">
+            {categoryPills.map((cat) => {
+              const isSelected = selectedCategory === cat.id;
+              return (
+                <button
+                  key={cat.id}
+                  onClick={() => {
+                    setSelectedCategory(cat.id);
+                    playSound("pop");
+                  }}
+                  className={`px-3.5 py-1.5 rounded-full text-xs font-black transition-all cursor-pointer flex items-center gap-1.5 border ${
+                    isSelected
+                      ? "bg-[#F36B12] text-white border-[#F36B12] shadow-md scale-105"
+                      : "bg-white text-gray-700 hover:bg-gray-50 border-gray-200 shadow-xs"
+                  }`}
+                >
+                  <span>{language === "ta" ? cat.labelTa : cat.labelEn}</span>
+                  <span
+                    className={`px-1.5 py-0.2 rounded-full text-[10px] font-bold ${
+                      isSelected ? "bg-white/25 text-white" : "bg-gray-100 text-gray-600"
+                    }`}
+                  >
+                    {cat.count}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
 
-            {/* 8-Game Grid Cards (Fully visible at top, no scroll needed) */}
+          {/* 16 Games Selection Grid */}
+          <div className="mb-8">
             <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2.5 sm:gap-3">
-              {KIDS_GAMES_LIST.map((game) => {
+              {filteredGames.map((game) => {
                 const isActive = activeGameId === game.id;
                 return (
                   <button
@@ -181,6 +246,7 @@ export default function GamesPage() {
               <div className="absolute -bottom-12 -left-12 w-56 h-56 bg-blue-100/60 rounded-full blur-3xl pointer-events-none" />
 
               <div className="relative z-10 w-full flex-1 flex flex-col justify-center">
+                {/* 1. Pink Tower Builder */}
                 {activeGameId === "tower" && (
                   <TowerBuilderGame
                     onWin={() => handleWin(5)}
@@ -188,6 +254,7 @@ export default function GamesPage() {
                   />
                 )}
 
+                {/* 2. Shape & Color Sorter */}
                 {activeGameId === "shapes" && (
                   <ShapeMatchGame
                     onWin={() => handleWin(4)}
@@ -195,6 +262,7 @@ export default function GamesPage() {
                   />
                 )}
 
+                {/* 3. Balloon Math & Pop */}
                 {activeGameId === "balloon" && (
                   <BalloonMathGame
                     onWin={() => handleWin(4)}
@@ -202,6 +270,7 @@ export default function GamesPage() {
                   />
                 )}
 
+                {/* 4. Safari Animal Memory */}
                 {activeGameId === "memory" && (
                   <AnimalMemoryGame
                     onWin={() => handleWin(6)}
@@ -209,6 +278,7 @@ export default function GamesPage() {
                   />
                 )}
 
+                {/* 5. Fruit Harvest Counting */}
                 {activeGameId === "basket" && (
                   <FruitCountingGame
                     onWin={() => handleWin(4)}
@@ -216,6 +286,7 @@ export default function GamesPage() {
                   />
                 )}
 
+                {/* 6. Phonics & Letter Safari */}
                 {activeGameId === "phonics" && (
                   <PhonicsSafariGame
                     onWin={() => handleWin(2)}
@@ -223,6 +294,7 @@ export default function GamesPage() {
                   />
                 )}
 
+                {/* 7. Magic Drawing Canvas */}
                 {activeGameId === "drawing" && (
                   <MagicDrawingGame
                     onWin={() => handleWin(2)}
@@ -230,9 +302,74 @@ export default function GamesPage() {
                   />
                 )}
 
+                {/* 8. Rainbow Kids Piano */}
                 {activeGameId === "piano" && (
                   <RainbowPianoGame
                     onWin={() => handleWin(3)}
+                    onPlaySound={playSound}
+                  />
+                )}
+
+                {/* 9. Jigsaw Puzzles */}
+                {activeGameId === "jigsaw" && (
+                  <JigsawPuzzleGame
+                    onWin={() => handleWin(4)}
+                    onPlaySound={playSound}
+                  />
+                )}
+
+                {/* 10. Animal Sound Safari */}
+                {activeGameId === "animalSound" && (
+                  <AnimalSoundGuessGame
+                    onWin={() => handleWin(5)}
+                    onPlaySound={playSound}
+                  />
+                )}
+
+                {/* 11. Fruit Identification */}
+                {activeGameId === "fruitId" && (
+                  <FruitIdentificationGame
+                    onWin={() => handleWin(4)}
+                    onPlaySound={playSound}
+                  />
+                )}
+
+                {/* 12. Connect-the-Dots */}
+                {activeGameId === "connectDots" && (
+                  <ConnectTheDotsGame
+                    onWin={() => handleWin(4)}
+                    onPlaySound={playSound}
+                  />
+                )}
+
+                {/* 13. Picture-Based Storytelling */}
+                {activeGameId === "storytelling" && (
+                  <StorytellingGame
+                    onWin={() => handleWin(5)}
+                    onPlaySound={playSound}
+                  />
+                )}
+
+                {/* 14. Simple Maze Adventure */}
+                {activeGameId === "maze" && (
+                  <SimpleMazeGame
+                    onWin={() => handleWin(5)}
+                    onPlaySound={playSound}
+                  />
+                )}
+
+                {/* 15. Nursery Rhymes Jukebox */}
+                {activeGameId === "nurseryRhymes" && (
+                  <NurseryRhymesGame
+                    onWin={() => handleWin(4)}
+                    onPlaySound={playSound}
+                  />
+                )}
+
+                {/* 16. Drag-and-Drop Object Sorting */}
+                {activeGameId === "sorting" && (
+                  <ObjectSortingGame
+                    onWin={() => handleWin(4)}
                     onPlaySound={playSound}
                   />
                 )}

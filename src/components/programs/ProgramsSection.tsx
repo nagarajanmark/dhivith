@@ -61,7 +61,7 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({ onOpenTourModa
                 <div className="relative h-64 sm:h-72 w-full overflow-hidden bg-[#121D28]">
                   <Image
                     src={prog.image}
-                    alt={prog.name}
+                    alt={`${prog.name} (${prog.ageRange}) - Montessori Program at Dhivith Edu Care Kinathukadavu Coimbatore`}
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                     sizes="(max-width: 768px) 100vw, 600px"

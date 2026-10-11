@@ -36,6 +36,7 @@ import { GlyphHeroSection } from "@/components/hero/GlyphHeroSection";
 import { WhoWeAreSection } from "@/components/about/WhoWeAreSection";
 import { CampusVideoShowcase } from "@/components/video/CampusVideoShowcase";
 import { TestimonialsMasonry } from "@/components/testimonials/TestimonialsMasonry";
+import { PolaroidMemoriesSection } from "@/components/gallery/PolaroidMemoriesSection";
 import { SCHOOL_INFO, PROGRAMS, TESTIMONIALS, GALLERY_ITEMS, GalleryItem } from "@/data/schoolData";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -115,8 +116,8 @@ export default function HomePage() {
         {/* Full-Height Majestic Tree Anchored Left (Visible with First Card on Mobile) */}
         <div className="absolute -left-24 sm:-left-48 md:-left-60 lg:-left-72 xl:-left-80 top-12 sm:top-0 bottom-auto sm:bottom-0 w-[360px] sm:w-[700px] lg:w-[900px] xl:w-[1020px] h-[400px] sm:h-full pointer-events-none select-none z-0 opacity-85 sm:opacity-90 lg:opacity-100 transition-all duration-700">
           <Image
-            src="/tree.webp"
-            alt="Nature Learning Tree"
+            src="/holistic-nature-learning-tree-dhivith.webp"
+            alt="Holistic Nature and Child-Centric Learning Environment at Dhivith Edu Care Kinathukadavu"
             fill
             className="object-contain object-top-left sm:object-bottom drop-shadow-2xl"
           />
@@ -388,8 +389,8 @@ export default function HomePage() {
               <div className="lg:col-span-5 flex items-center justify-center pt-2 lg:pt-0">
                 <div className="relative w-full max-w-[300px] sm:max-w-[360px] lg:max-w-none aspect-[4/3] transition-transform duration-500 hover:scale-105 select-none">
                   <Image
-                    src="/together.webp"
-                    alt="Children Learning Together at Dhivith Edu Care"
+                    src="/children-learning-together-montessori-coimbatore.webp"
+                    alt="Children Learning Together at Dhivith Edu Care Montessori School Kinathukadavu Coimbatore"
                     fill
                     priority
                     className="object-contain object-center drop-shadow-xl"
@@ -414,6 +415,9 @@ export default function HomePage() {
 
       {/* 5. VIRTUAL CAMPUS VIDEO SPOTLIGHT */}
       <CampusVideoShowcase onOpenTourModal={() => setIsTourModalOpen(true)} />
+
+      {/* 5.5 INTERACTIVE POLAROID LINE MEMORIES CAROUSEL */}
+      <PolaroidMemoriesSection />
 
       {/* 3. CONTINUOUS MARQUEE SHOWCASE & LIGHTBOX GALLERY */}
       <ContinuousMarqueeGallery

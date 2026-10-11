@@ -68,8 +68,8 @@ export const WhoWeAreSection: React.FC<WhoWeAreSectionProps> = ({
               {/* Big 3D Sitting Children Sitting Exactly on Card Top Border */}
               <div className="absolute top-0 right-4 sm:right-8 z-30 w-52 sm:w-64 md:w-76 lg:w-84 aspect-square -translate-y-[62%] pointer-events-none transition-transform duration-500 hover:scale-105 select-none">
                 <Image
-                  src="/sitting.webp"
-                  alt="Children Sitting on Card Joyfully"
+                  src="/happy-children-sitting-dhivith-edu-care-kinathukadavu.webp"
+                  alt="Happy children learning together at Dhivith Edu Care Montessori School Kinathukadavu Coimbatore"
                   fill
                   priority
                   className="object-contain drop-shadow-[0_16px_16px_rgba(0,0,0,0.35)]"
@@ -94,7 +94,7 @@ export const WhoWeAreSection: React.FC<WhoWeAreSectionProps> = ({
                   <div className="relative w-28 h-28 sm:w-36 sm:h-36 md:w-40 md:h-40 drop-shadow-xl group-hover:scale-105 transition-transform duration-500">
                     <Image
                       src="/logo.png"
-                      alt="Dhivith Edu Care Official Logo"
+                      alt="Dhivith Edu Care Official Logo - Montessori Pre-School Kinathukadavu Coimbatore"
                       fill
                       priority
                       className="object-contain"

@@ -50,7 +50,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
         <div className="absolute inset-0">
           <Image
             src={bannerImage}
-            alt={title}
+            alt={`${title} - Dhivith Edu Care Kinathukadavu Coimbatore`}
             fill
             priority
             className="object-cover object-center transition-transform duration-1000 scale-105"
@@ -74,13 +74,24 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
         <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-white/10 rounded-full blur-3xl pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center w-full">
-          {/* Breadcrumb Pill */}
-          <nav className="inline-flex items-center gap-2 text-xs font-semibold text-white/90 bg-white/15 px-4 py-1.5 rounded-full border border-white/20 backdrop-blur-md mb-5 shadow-sm hover:bg-white/20 transition-colors">
-            <Link href="/" className="hover:text-amber-300 transition-colors">
-              Home
-            </Link>
-            <ChevronRight className="w-3.5 h-3.5 text-white/60" />
-            <span className="text-amber-300 font-bold">{breadcrumb}</span>
+          {/* Breadcrumb Pill with Schema.org BreadcrumbList Microdata */}
+          <nav
+            aria-label="Breadcrumb"
+            itemScope
+            itemType="https://schema.org/BreadcrumbList"
+            className="inline-flex items-center gap-2 text-xs font-semibold text-white/90 bg-white/15 px-4 py-1.5 rounded-full border border-white/20 backdrop-blur-md mb-5 shadow-sm hover:bg-white/20 transition-colors"
+          >
+            <span itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem" className="inline-flex items-center">
+              <Link href="/" itemProp="item" className="hover:text-amber-300 transition-colors">
+                <span itemProp="name">Home</span>
+              </Link>
+              <meta itemProp="position" content="1" />
+            </span>
+            <ChevronRight className="w-3.5 h-3.5 text-white/60" aria-hidden="true" />
+            <span itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem" className="inline-flex items-center">
+              <span itemProp="name" className="text-amber-300 font-bold">{breadcrumb}</span>
+              <meta itemProp="position" content="2" />
+            </span>
           </nav>
 
           {/* Title */}
@@ -104,13 +115,24 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
       <div className="absolute top-1/2 right-10 w-96 h-96 bg-[#F5B900]/15 rounded-full blur-3xl pointer-events-none -z-10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-        {/* Breadcrumb */}
-        <nav className="inline-flex items-center gap-2 text-xs font-semibold text-[#5E6D7A] bg-white/80 px-4 py-1.5 rounded-full border border-gray-200 mb-6 shadow-sm">
-          <Link href="/" className="hover:text-[#0750B8] transition-colors">
-            Home
-          </Link>
-          <ChevronRight className="w-3.5 h-3.5 text-gray-400" />
-          <span className="text-[#0750B8] font-bold">{breadcrumb}</span>
+        {/* Breadcrumb with Schema.org BreadcrumbList Microdata */}
+        <nav
+          aria-label="Breadcrumb"
+          itemScope
+          itemType="https://schema.org/BreadcrumbList"
+          className="inline-flex items-center gap-2 text-xs font-semibold text-[#5E6D7A] bg-white/80 px-4 py-1.5 rounded-full border border-gray-200 mb-6 shadow-sm"
+        >
+          <span itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem" className="inline-flex items-center">
+            <Link href="/" itemProp="item" className="hover:text-[#0750B8] transition-colors">
+              <span itemProp="name">Home</span>
+            </Link>
+            <meta itemProp="position" content="1" />
+          </span>
+          <ChevronRight className="w-3.5 h-3.5 text-gray-400" aria-hidden="true" />
+          <span itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem" className="inline-flex items-center">
+            <span itemProp="name" className="text-[#0750B8] font-bold">{breadcrumb}</span>
+            <meta itemProp="position" content="2" />
+          </span>
         </nav>
 
         {/* Title */}

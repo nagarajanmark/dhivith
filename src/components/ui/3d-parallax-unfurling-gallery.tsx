@@ -7,22 +7,22 @@ import React, {
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 
 const IMAGES = [
-  "/school_images/1000453992.webp",
-  "/school_images/1000449608.webp",
-  "/school_images/1000450316.webp",
-  "/school_images/1000452018.webp",
-  "/school_images/1000452097.webp",
-  "/school_images/1000454520.webp",
-  "/school_images/1000501517.webp",
-  "/school_images/1000501518.webp",
-  "/school_images/1000227874.webp",
-  "/school_images/1000227888.webp",
-  "/school_images/1000223395.webp",
-  "/school_images/1000223404.webp",
-  "/school_images/1000227870.webp",
-  "/school_images/1000591351.webp",
-  "/school_images/1000591345.webp",
-  "/school_images/1000264797.webp",
+  "/school_images/paper-cup-pyramid-stacking-activity-kinathukadavu.webp",
+  "/school_images/sensory-ball-sorting-color-trays-coimbatore.webp",
+  "/school_images/practical-life-fine-motor-coordination-tirupur.webp",
+  "/school_images/montessori-number-rods-math-coaching-pollachi.webp",
+  "/school_images/safe-outdoor-turf-play-area-kinathukadavu.webp",
+  "/school_images/montessori-self-directed-work-cycle-coimbatore.webp",
+  "/school_images/kidspire-student-achievement-awards-dhivith.webp",
+  "/school_images/kidspire-annual-celebration-stage-honors-kinathukadavu.webp",
+  "/school_images/evening-tuition-batches-grade-1-to-12-pollachi.webp",
+  "/school_images/toddler-sensorial-discovery-wooden-toys-kinathukadavu.webp",
+  "/school_images/wooden-alphabet-letter-matching-board-coimbatore.webp",
+  "/school_images/3d-animal-picture-cube-puzzle-blocks-palladam.webp",
+  "/school_images/montessori-teacher-guidance-nomenclature-kinathukadavu.webp",
+  "/school_images/creative-crayon-drawing-coloring-art-tirupur.webp",
+  "/school_images/dhivith-edu-care-school-campus-vadapudur-kinathukadavu.webp",
+  "/school_images/montessori-practical-life-motor-skills-kinathukadavu.webp",
 ];
 
 interface ImageCardProps {
@@ -41,7 +41,7 @@ const ImageCard = ({ src, theme = "light" }: ImageCardProps) => {
     >
       <img
         src={src}
-        alt="Montessori Campus Activity"
+        alt="Dhivith Edu Care Montessori Campus Activity and Early Learning in Kinathukadavu Coimbatore"
         loading="eager"
         className="w-full h-full object-cover block select-none"
       />

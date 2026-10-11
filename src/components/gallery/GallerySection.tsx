@@ -90,7 +90,7 @@ export const GallerySection: React.FC = () => {
               >
                 <Image
                   src={item.image}
-                  alt={itemTitle}
+                  alt={`${itemTitle} - Dhivith Edu Care Montessori School Kinathukadavu Coimbatore`}
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"

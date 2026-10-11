@@ -28,7 +28,7 @@ export default function MontessoriMethodPage() {
             ? "டாக்டர் மரியா மாண்டிசோரியின் அறிவியல் பூர்வமான கற்றல் சூழல் எவ்வாறு குழந்தைகளின் ஆழ்ந்த கவனம், கணித தர்க்கம் மற்றும் தன்னம்பிக்கையை வளர்க்கிறது என்பதை அறிந்துகொள்ளுங்கள்."
             : "Discover how Dr. Maria Montessori's scientifically prepared environments cultivate deep concentration, concrete numerical logic, and joyous independent thinkers."
         }
-        bannerImage="/school_images/1000227847.webp"
+        bannerImage="/school_images/dhivith-pre-kg-montessori-curriculum-pollachi.webp"
         gradientTheme="green"
       />
 

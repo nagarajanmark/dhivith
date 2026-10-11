@@ -22,7 +22,7 @@ export default function ContactPage() {
         title={t.contact.title}
         highlightedWord={t.contact.highlight}
         description={t.contact.desc}
-        bannerImage="/school_images/1000223388.webp"
+        bannerImage="/school_images/dhivith-daycare-preschool-haven-kinathukadavu.webp"
         gradientTheme="blue"
       />
 

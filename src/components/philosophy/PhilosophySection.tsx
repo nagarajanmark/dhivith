@@ -51,7 +51,7 @@ export const PhilosophySection: React.FC = () => {
       icon: <Compass className="w-6 h-6 text-[#0750B8]" />,
       color: "#0750B8",
       bgLight: "bg-[#EBF3FF]",
-      image: "/school_images/1000453992.webp",
+      image: "/school_images/paper-cup-pyramid-stacking-activity-kinathukadavu.webp",
       benefitsEn: [
         "Internalized self-motivation rather than external rewards",
         "Deep 3-hour focus and concentration stamina",
@@ -78,7 +78,7 @@ export const PhilosophySection: React.FC = () => {
       icon: <Target className="w-6 h-6 text-[#159447]" />,
       color: "#159447",
       bgLight: "bg-[#EAF8EF]",
-      image: "/school_images/1000450316.webp",
+      image: "/school_images/practical-life-fine-motor-coordination-tirupur.webp",
       benefitsEn: [
         "Executive function and decision-making poise",
         "Physical coordination and spatial refinement",
@@ -105,7 +105,7 @@ export const PhilosophySection: React.FC = () => {
       icon: <Sparkles className="w-6 h-6 text-[#F36B12]" />,
       color: "#F36B12",
       bgLight: "bg-[#FFF2E8]",
-      image: "/school_images/1000449608.webp",
+      image: "/school_images/sensory-ball-sorting-color-trays-coimbatore.webp",
       benefitsEn: [
         "Multi-sensory neurological pathways formation",
         "Concrete foundational grasp of math and phonetics",
@@ -231,7 +231,7 @@ export const PhilosophySection: React.FC = () => {
             <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white aspect-[4/3] sm:aspect-[16/11] bg-slate-900 group">
               <Image
                 src={activePillar.image}
-                alt={language === "ta" ? activePillar.titleTa : activePillar.titleEn}
+                alt={`${activePillar.titleEn} - Montessori Philosophy at Dhivith Edu Care Kinathukadavu Coimbatore`}
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
                 sizes="(max-width: 1024px) 100vw, 550px"
@@ -268,7 +268,7 @@ export const PhilosophySection: React.FC = () => {
                 >
                   <Image
                     src={p.image}
-                    alt={language === "ta" ? p.titleTa : p.titleEn}
+                    alt={`${p.titleEn} - Montessori Learning Method at Dhivith Edu Care`}
                     fill
                     className="object-cover"
                     sizes="120px"

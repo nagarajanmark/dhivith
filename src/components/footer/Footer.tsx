@@ -25,7 +25,7 @@ import { SCHOOL_INFO } from "@/data/schoolData";
 import { useLanguage } from "@/context/LanguageContext";
 
 interface FooterProps {
-  onOpenTourModal: (programId?: string) => void;
+  onOpenTourModal?: (programId?: string) => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({ onOpenTourModal }) => {
@@ -50,16 +50,16 @@ export const Footer: React.FC<FooterProps> = ({ onOpenTourModal }) => {
 
   return (
     <footer className="bg-white text-[#2D3748] pt-16 sm:pt-20 pb-10 relative overflow-hidden border-t-2 border-gray-100 shadow-[0_-10px_40px_rgba(0,0,0,0.02)]">
-      {/* Soft Ambient Luminous Highlights */}
-      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[#0750B8]/4 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-0 right-10 w-[500px] h-[500px] bg-[#159447]/4 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute top-1/2 right-1/4 w-96 h-96 bg-amber-400/5 rounded-full blur-[120px] pointer-events-none" />
+        {/* Soft Ambient Luminous Highlights */}
+        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[#0750B8]/4 rounded-full blur-[140px] pointer-events-none" />
+        <div className="absolute bottom-0 right-10 w-[500px] h-[500px] bg-[#159447]/4 rounded-full blur-[140px] pointer-events-none" />
+        <div className="absolute top-1/2 right-1/4 w-96 h-96 bg-amber-400/5 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          
         
-      
-        {/* 2. Main 4-Column Mega Grid (Clean White Cards) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 pb-14 border-b border-gray-200">
+          {/* 2. Main 4-Column Mega Grid (Clean White Cards) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 pb-14 border-b border-gray-200">
           
           {/* Column 1: Brand, Legacy & Vision Quote (4 Cols) */}
           <div className="lg:col-span-4 space-y-5">
@@ -133,6 +133,12 @@ export const Footer: React.FC<FooterProps> = ({ onOpenTourModal }) => {
                 <Link href="/about" className="hover:text-[#0750B8] transition-colors flex items-center gap-1.5 group">
                   <ChevronRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-[#0750B8] group-hover:translate-x-0.5 transition-all" />
                   <span>{t.nav.about}</span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/about#teachers" className="hover:text-[#0750B8] transition-colors flex items-center gap-1.5 group">
+                  <ChevronRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-[#0750B8] group-hover:translate-x-0.5 transition-all" />
+                  <span>{language === "ta" ? "ஆசிரியர்கள் & பணியாளர்கள்" : "Teachers & Staff"}</span>
                 </Link>
               </li>
              
@@ -237,7 +243,9 @@ export const Footer: React.FC<FooterProps> = ({ onOpenTourModal }) => {
                   <Clock className="w-3.5 h-3.5" />
                 </div>
                 <span className="text-[#4A5568] font-medium">
-                  {language === "ta" ? "திங்கள் – சனி: 8:30 AM – 7:30 PM" : "Mon–Sat: 8:30 AM – 7:30 PM"}
+                  {language === "ta"
+                    ? "திங்கள் – சனி: காலை 5:00 AM – இரவு 9:30 PM"
+                    : "Mon–Sat: 5:00 AM – 9:30 PM (Tuition Batches)"}
                 </span>
               </div>
             </div>
@@ -278,10 +286,19 @@ export const Footer: React.FC<FooterProps> = ({ onOpenTourModal }) => {
               {language === "ta" ? "சேர்க்கை விதிமுறைகள்" : "Admissions Policy"}
             </span>
             <span className="text-gray-300">•</span>
-            <span className="text-[#159447] font-bold flex items-center gap-1">
+            <div className="text-[#159447] font-bold flex items-center gap-1.5 flex-wrap justify-center">
               <span className="w-1.5 h-1.5 rounded-full bg-[#159447]" />
-              {language === "ta" ? "கிணத்துக்கடவு, கோயம்புத்தூர்" : "Kinathukadavu, Coimbatore"}
-            </span>
+              <span>{language === "ta" ? "சேவை பகுதிகள்: " : "Serving: "}</span>
+              <span className="text-[#0750B8]">Kinathukadavu</span>
+              <span className="text-gray-400">•</span>
+              <span className="text-[#0750B8]">Coimbatore</span>
+              <span className="text-gray-400">•</span>
+              <span className="text-[#F36B12]">Pollachi</span>
+              <span className="text-gray-400">•</span>
+              <span className="text-purple-600">Palladam</span>
+              <span className="text-gray-400">•</span>
+              <span className="text-sky-600">Tirupur</span>
+            </div>
           </div>
 
           <button

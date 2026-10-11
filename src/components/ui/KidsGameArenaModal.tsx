@@ -21,6 +21,14 @@ import {
   PhonicsSafariGame,
   MagicDrawingGame,
   RainbowPianoGame,
+  JigsawPuzzleGame,
+  AnimalSoundGuessGame,
+  FruitIdentificationGame,
+  ConnectTheDotsGame,
+  StorytellingGame,
+  SimpleMazeGame,
+  NurseryRhymesGame,
+  ObjectSortingGame,
   playChime,
 } from "@/components/games/KidsGamesCollection";
 import { useLanguage } from "@/context/LanguageContext";
@@ -34,7 +42,7 @@ interface KidsGameArenaModalProps {
 export const KidsGameArenaModal: React.FC<KidsGameArenaModalProps> = ({
   isOpen,
   onClose,
-  initialGame = "tower",
+  initialGame = "jigsaw",
 }) => {
   const { language } = useLanguage();
   const [activeTab, setActiveTab] = useState<GameId>(initialGame);
@@ -214,11 +222,91 @@ export const KidsGameArenaModal: React.FC<KidsGameArenaModalProps> = ({
               onPlaySound={playSound}
             />
           )}
+
+          {activeTab === "jigsaw" && (
+            <JigsawPuzzleGame
+              onWin={() => {
+                setTotalStars((s) => s + 4);
+                playSound("win");
+              }}
+              onPlaySound={playSound}
+            />
+          )}
+
+          {activeTab === "animalSound" && (
+            <AnimalSoundGuessGame
+              onWin={() => {
+                setTotalStars((s) => s + 5);
+                playSound("win");
+              }}
+              onPlaySound={playSound}
+            />
+          )}
+
+          {activeTab === "fruitId" && (
+            <FruitIdentificationGame
+              onWin={() => {
+                setTotalStars((s) => s + 4);
+                playSound("win");
+              }}
+              onPlaySound={playSound}
+            />
+          )}
+
+          {activeTab === "connectDots" && (
+            <ConnectTheDotsGame
+              onWin={() => {
+                setTotalStars((s) => s + 4);
+                playSound("win");
+              }}
+              onPlaySound={playSound}
+            />
+          )}
+
+          {activeTab === "storytelling" && (
+            <StorytellingGame
+              onWin={() => {
+                setTotalStars((s) => s + 5);
+                playSound("win");
+              }}
+              onPlaySound={playSound}
+            />
+          )}
+
+          {activeTab === "maze" && (
+            <SimpleMazeGame
+              onWin={() => {
+                setTotalStars((s) => s + 5);
+                playSound("win");
+              }}
+              onPlaySound={playSound}
+            />
+          )}
+
+          {activeTab === "nurseryRhymes" && (
+            <NurseryRhymesGame
+              onWin={() => {
+                setTotalStars((s) => s + 4);
+                playSound("win");
+              }}
+              onPlaySound={playSound}
+            />
+          )}
+
+          {activeTab === "sorting" && (
+            <ObjectSortingGame
+              onWin={() => {
+                setTotalStars((s) => s + 4);
+                playSound("win");
+              }}
+              onPlaySound={playSound}
+            />
+          )}
         </div>
 
         {/* Bottom Full Page Link Footer */}
         <div className="p-3 bg-gray-50 border-t border-gray-100 flex items-center justify-between text-xs font-semibold text-gray-500 flex-shrink-0">
-          <span>{language === "ta" ? "8+ மாண்டிசோரி கற்றல் விளையாட்டுகள்" : "8+ Fun Interactive Montessori Games"}</span>
+          <span>{language === "ta" ? "16+ மாண்டிசோரி கற்றல் விளையாட்டுகள்" : "16+ Fun Interactive Montessori Activities"}</span>
           <Link
             href="/games"
             onClick={onClose}

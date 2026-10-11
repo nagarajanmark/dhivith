@@ -16,12 +16,12 @@ import { SectionHeading } from "../ui/SectionHeading";
 import { DAILY_RHYTHM } from "@/data/schoolData";
 
 const journeyImages = [
-  "/school_images/1000223395.webp",
-  "/school_images/1000453992.webp",
-  "/school_images/1000450316.webp",
-  "/school_images/1000452018.webp",
-  "/school_images/1000452097.webp",
-  "/school_images/1000454520.webp",
+  "/school_images/wooden-alphabet-letter-matching-board-coimbatore.webp",
+  "/school_images/paper-cup-pyramid-stacking-activity-kinathukadavu.webp",
+  "/school_images/practical-life-fine-motor-coordination-tirupur.webp",
+  "/school_images/montessori-number-rods-math-coaching-pollachi.webp",
+  "/school_images/safe-outdoor-turf-play-area-kinathukadavu.webp",
+  "/school_images/montessori-self-directed-work-cycle-coimbatore.webp",
 ];
 
 export const MontessoriJourney: React.FC = () => {
@@ -123,7 +123,7 @@ export const MontessoriJourney: React.FC = () => {
             <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-white/20 aspect-[4/3] bg-black">
               <Image
                 src={currentImage}
-                alt={currentRhythm.title}
+                alt={`${currentRhythm.title} - Daily Montessori Routine at Dhivith Edu Care Kinathukadavu Coimbatore`}
                 fill
                 className="object-cover transition-all duration-700 hover:scale-105"
                 sizes="(max-width: 1024px) 100vw, 600px"

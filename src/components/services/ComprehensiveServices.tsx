@@ -12,10 +12,15 @@ import {
   MessageSquare,
   ArrowRight,
   HeartHandshake,
+  Clock,
+  Sunrise,
+  Moon,
+  Users,
 } from "lucide-react";
 import { SectionHeading } from "../ui/SectionHeading";
 import { Badge } from "../ui/Badge";
 import { COMPREHENSIVE_SERVICES, SCHOOL_INFO } from "@/data/schoolData";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface ComprehensiveServicesProps {
   onOpenTourModal: () => void;
@@ -24,6 +29,7 @@ interface ComprehensiveServicesProps {
 export const ComprehensiveServices: React.FC<ComprehensiveServicesProps> = ({
   onOpenTourModal,
 }) => {
+  const { language } = useLanguage();
   const getServiceIcon = (iconName: string) => {
     switch (iconName) {
       case "BookOpen":
@@ -97,13 +103,84 @@ export const ComprehensiveServices: React.FC<ComprehensiveServicesProps> = ({
 
         {/* Section Heading */}
         <SectionHeading
-          badgeText="Beyond Preschool"
+          badgeText={language === "ta" ? "பள்ளிப் பாடங்கள் & உயர்கல்வி" : "Beyond Preschool"}
           badgeVariant="blue"
-          title="Our Comprehensive Academic Services"
-          subtitle="Better Learning. Better Tomorrow. Brighter Future. Discover our premier tuition classes, engineering mathematics coaching, and specialized student-centred programs in Kinathukadavu, Coimbatore."
+          title={
+            language === "ta"
+              ? "அனைத்துப் பாட டியூஷன் & பொறியியல் கணிதப் பயிற்சி"
+              : "Our Comprehensive Academic Tuition Services"
+          }
+          subtitle={
+            language === "ta"
+              ? "காலை மற்றும் மாலை நேர சிறப்பு வகுப்புகள், அண்ணா பல்கலைக்கழக பொறியியல் கணிதம், மற்றும் அர்ப்பணிப்புமிக்க 8 ஆசிரியர்கள் வழிகாட்டலில் கிணத்துக்கடவில் சிறந்த கல்விப் பயிற்சி."
+              : "Better Learning. Better Tomorrow. Brighter Future. Discover our morning and evening tuition batches, engineering mathematics coaching, and specialized student-centred programs with 8 dedicated evening staff members in Kinathukadavu, Coimbatore."
+          }
           align="center"
-          className="mb-16"
+          className="mb-10"
         />
+
+        {/* Tuition Sessions & Faculty Strength Highlight Cards */}
+        <div className="mb-14 grid grid-cols-1 md:grid-cols-3 gap-5">
+          {/* Morning Session Card */}
+          <div className="bg-gradient-to-br from-[#EBF3FF] via-white to-blue-50/40 rounded-3xl p-6 border border-[#0750B8]/20 shadow-sm flex items-start gap-4 hover:shadow-md transition-all group">
+            <div className="w-12 h-12 rounded-2xl bg-[#0750B8] text-white flex items-center justify-center shrink-0 shadow-md group-hover:scale-105 transition-transform">
+              <Sunrise className="w-6 h-6 text-amber-300" />
+            </div>
+            <div>
+              <span className="text-[11px] font-bold uppercase tracking-wider text-[#0750B8] bg-white px-2.5 py-0.5 rounded-full border border-[#0750B8]/20 inline-block mb-1 shadow-xs">
+                {language === "ta" ? "காலை நேர வகுப்பு" : "Morning Session"}
+              </span>
+              <h4 className="font-display font-extrabold text-xl text-[#0F172A]">
+                5:00 AM – 7:00 AM
+              </h4>
+              <p className="text-xs text-gray-600 mt-1 leading-relaxed">
+                {language === "ta"
+                  ? "அதிகாலை அமைதியான சூழலில் பொதுத்தேர்வு (10th, 11th, 12th) மற்றும் கணித சிறப்பு தீவிரப் பயிற்சி."
+                  : "Fresh-mind early morning focus batch for Board exam preparation, formula mastery, and intensive revision."}
+              </p>
+            </div>
+          </div>
+
+          {/* Evening Session Card */}
+          <div className="bg-gradient-to-br from-[#FFF2E8] via-white to-orange-50/40 rounded-3xl p-6 border border-[#F36B12]/20 shadow-sm flex items-start gap-4 hover:shadow-md transition-all group">
+            <div className="w-12 h-12 rounded-2xl bg-[#F36B12] text-white flex items-center justify-center shrink-0 shadow-md group-hover:scale-105 transition-transform">
+              <Moon className="w-6 h-6 text-yellow-200" />
+            </div>
+            <div>
+              <span className="text-[11px] font-bold uppercase tracking-wider text-[#F36B12] bg-white px-2.5 py-0.5 rounded-full border border-[#F36B12]/20 inline-block mb-1 shadow-xs">
+                {language === "ta" ? "மாலை நேர வகுப்பு" : "Evening Session"}
+              </span>
+              <h4 className="font-display font-extrabold text-xl text-[#0F172A]">
+                5:00 PM – 9:30 PM
+              </h4>
+              <p className="text-xs text-gray-600 mt-1 leading-relaxed">
+                {language === "ta"
+                  ? "LKG முதல் 12ஆம் வகுப்பு வரை அனைத்து பாடங்கள் (CBSE, ICSE, State Board) & பொறியியல் கணித வகுப்புகள்."
+                  : "Comprehensive subject coaching for LKG to Grade 12 (CBSE, ICSE, State Board) and Engineering Mathematics."}
+              </p>
+            </div>
+          </div>
+
+          {/* Evening Staff Strength Card */}
+          <div className="bg-gradient-to-br from-[#EAF8EF] via-white to-emerald-50/40 rounded-3xl p-6 border border-[#159447]/20 shadow-sm flex items-start gap-4 hover:shadow-md transition-all group">
+            <div className="w-12 h-12 rounded-2xl bg-[#159447] text-white flex items-center justify-center shrink-0 shadow-md group-hover:scale-105 transition-transform">
+              <Users className="w-6 h-6 text-emerald-100" />
+            </div>
+            <div>
+              <span className="text-[11px] font-bold uppercase tracking-wider text-[#159447] bg-white px-2.5 py-0.5 rounded-full border border-[#159447]/20 inline-block mb-1 shadow-xs">
+                {language === "ta" ? "ஆசிரியர் பலம்" : "Evening Faculty"}
+              </span>
+              <h4 className="font-display font-extrabold text-xl text-[#0F172A]">
+                {language === "ta" ? "8 ஆசிரியர்கள் & பணியாளர்கள்" : "8 Dedicated Staffs"}
+              </h4>
+              <p className="text-xs text-gray-600 mt-1 leading-relaxed">
+                {language === "ta"
+                  ? "மாலை நேர வகுப்புகளில் 8 ஆசிரியர்கள் செயல்பட்டு ஒவ்வொரு குழந்தைக்கும் தனிநபர் வழிகாட்டல் மற்றும் சந்தேகங்கள் தீர்க்கின்றனர்."
+                  : "8 subject specialist teachers active every evening ensuring personalized attention, homework support, and top marks."}
+              </p>
+            </div>
+          </div>
+        </div>
 
         {/* 4 Comprehensive Services Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">

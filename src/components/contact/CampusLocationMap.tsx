@@ -91,6 +91,42 @@ export const CampusLocationMap: React.FC = () => {
             </div>
           </div>
         </div>
+
+        {/* Regional Highway Connectivity & Distance Pills */}
+        <div className="mt-8 pt-6 border-t border-gray-100">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+            <h3 className="font-display font-extrabold text-sm sm:text-base text-[#121D28] uppercase tracking-wide flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#0750B8]" />
+              <span>{language === "ta" ? "அருகிலுள்ள நகரங்களுக்கான பயண நேரம் & தூரம்" : "Commute Distance & Nearby Connectivity"}</span>
+            </h3>
+            <span className="text-xs text-gray-500 font-medium">
+              {language === "ta" ? "NH 83 தேசிய நெடுஞ்சாலை நேரடி வழி" : "Direct access via Pollachi-Coimbatore NH 83 Highway"}
+            </span>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+            {[
+              { name: "Kinathukadavu", nameTa: "கிணத்துக்கடவு", dist: "0 km (Campus)", time: "2 mins", color: "border-[#0750B8]/30 bg-[#EBF3FF]/70" },
+              { name: "Pollachi", nameTa: "பொள்ளாச்சி", dist: "~18 km", time: "15-18 mins", color: "border-[#F36B12]/30 bg-[#FFF2E8]/70" },
+              { name: "Coimbatore", nameTa: "கோயம்புத்தூர்", dist: "~16 km", time: "18-20 mins", color: "border-[#159447]/30 bg-[#EAF8EF]/70" },
+              { name: "Palladam", nameTa: "பல்லடம்", dist: "~28 km", time: "25-30 mins", color: "border-purple-300 bg-purple-50/70" },
+              { name: "Tirupur", nameTa: "திருப்பூர்", dist: "~45 km", time: "40-45 mins", color: "border-sky-300 bg-sky-50/70" },
+            ].map((item) => (
+              <div
+                key={item.name}
+                className={`p-3.5 rounded-2xl border ${item.color} shadow-xs flex flex-col justify-between`}
+              >
+                <div className="font-extrabold text-xs text-[#121D28]">
+                  {language === "ta" ? item.nameTa : item.name}
+                </div>
+                <div className="text-[11px] font-semibold text-gray-600 mt-1 flex items-center justify-between">
+                  <span>{item.dist}</span>
+                  <span className="font-bold text-[#0750B8]">{item.time}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

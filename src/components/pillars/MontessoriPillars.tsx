@@ -72,7 +72,7 @@ export const MontessoriPillars: React.FC<MontessoriPillarsProps> = ({ onOpenTour
                 <div className="relative h-56 w-full overflow-hidden bg-[#121D28]">
                   <Image
                     src={area.image}
-                    alt={area.title}
+                    alt={`${area.title} Montessori Learning Area at Dhivith Edu Care Kinathukadavu Coimbatore`}
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-110"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
@@ -161,7 +161,7 @@ export const MontessoriPillars: React.FC<MontessoriPillarsProps> = ({ onOpenTour
             <div className="relative h-56 w-full flex-shrink-0">
               <Image
                 src={selectedArea.image}
-                alt={selectedArea.title}
+                alt={`${selectedArea.title} Montessori Curriculum at Dhivith Edu Care Kinathukadavu`}
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 700px"

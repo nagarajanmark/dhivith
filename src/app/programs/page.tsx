@@ -36,7 +36,7 @@ export default function ProgramsPage() {
             ? "ஒவ்வொரு குழந்தை. ஒவ்வொரு வாய்ப்பு. எப்போதும். உங்கள் குழந்தையின் உடல் அசைவு, மொழி வளர்ச்சி மற்றும் பள்ளித் தயார்நிலையை உறுதி செய்யும் ஐந்து படிநிலைக் கல்வி."
             : "Every Child. Every Opportunity. Every Time. Explore our five structured developmental stages designed to guide your child from initial sensory motor exploration to confident elementary graduation."
         }
-        bannerImage="/school_images/1000453992.webp"
+        bannerImage="/school_images/paper-cup-pyramid-stacking-activity-kinathukadavu.webp"
         gradientTheme="blue"
       />
 

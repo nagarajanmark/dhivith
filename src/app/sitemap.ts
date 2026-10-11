@@ -1,27 +1,22 @@
 import { MetadataRoute } from "next";
+import { siteConfig } from "@/config/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://dhivithedumetric.edu";
+  const baseUrl = siteConfig.url;
   const now = new Date();
 
   return [
     {
       url: `${baseUrl}`,
       lastModified: now,
-      changeFrequency: "weekly",
+      changeFrequency: "daily",
       priority: 1.0,
     },
     {
-      url: `${baseUrl}/about`,
+      url: `${baseUrl}/classes`,
       lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/montessori-method`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.9,
+      changeFrequency: "weekly",
+      priority: 0.95,
     },
     {
       url: `${baseUrl}/programs`,
@@ -36,6 +31,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.95,
     },
     {
+      url: `${baseUrl}/about`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/montessori-method`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/teachers`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.88,
+    },
+    {
       url: `${baseUrl}/environment`,
       lastModified: now,
       changeFrequency: "monthly",
@@ -45,13 +58,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${baseUrl}/gallery`,
       lastModified: now,
       changeFrequency: "weekly",
-      priority: 0.85,
+      priority: 0.88,
+    },
+    {
+      url: `${baseUrl}/games`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.82,
     },
     {
       url: `${baseUrl}/contact`,
       lastModified: now,
       changeFrequency: "monthly",
-      priority: 0.9,
+      priority: 0.92,
     },
   ];
 }

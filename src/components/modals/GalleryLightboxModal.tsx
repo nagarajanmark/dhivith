@@ -188,7 +188,7 @@ export const GalleryLightboxModal: React.FC<GalleryLightboxModalProps> = ({
         <div className="relative w-full h-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-white/15 bg-black/50 flex items-center justify-center">
           <Image
             src={currentItem.image}
-            alt={currentItem.title}
+            alt={`${currentItem.title} - Dhivith Edu Care Kinathukadavu Coimbatore`}
             fill
             className="object-contain"
             sizes="(max-width: 1200px) 100vw, 1200px"
@@ -283,7 +283,7 @@ export const GalleryLightboxModal: React.FC<GalleryLightboxModalProps> = ({
               >
                 <Image
                   src={item.image}
-                  alt={item.title}
+                  alt={`${item.title} - Dhivith Edu Care Activity`}
                   fill
                   className="object-cover pointer-events-none"
                   sizes="80px"

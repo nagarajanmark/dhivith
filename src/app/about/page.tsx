@@ -181,8 +181,8 @@ export default function AboutPage() {
 
               <div className="relative mx-auto max-w-md rounded-3xl overflow-hidden shadow-2xl border-2 border-gray-100 aspect-[4/5] bg-slate-900 group">
                 <Image
-                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop"
-                  alt="Mrs. S Tharani - Educational Director"
+                  src="/teachers/mrs-s-tharani-founder-dhivith-edu-care-kinathukadavu.png"
+                  alt="Mrs. S Tharani - Founder & Educational Director of Dhivith Edu Care Kinathukadavu Coimbatore"
                   fill
                   className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, 450px"

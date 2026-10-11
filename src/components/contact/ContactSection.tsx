@@ -12,40 +12,162 @@ import {
   Navigation,
   ExternalLink,
   GraduationCap,
+  AlertCircle,
+  ShieldCheck,
 } from "lucide-react";
 import confetti from "canvas-confetti";
 import { SectionHeading } from "../ui/SectionHeading";
 import { SCHOOL_INFO, PROGRAMS } from "@/data/schoolData";
 import { useLanguage } from "@/context/LanguageContext";
+import {
+  validateParentName,
+  validatePhone,
+  validateChildInfo,
+  validateEmail,
+  normalizeIndianPhone,
+} from "@/lib/validation";
 
 export const ContactSection: React.FC = () => {
   const { t, language } = useLanguage();
+  const isTa = language === "ta";
+
   const [parentName, setParentName] = useState("");
   const [childAge, setChildAge] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [serviceChoice, setServiceChoice] = useState("pre-kg");
   const [message, setMessage] = useState("");
+  const [honeypot, setHoneypot] = useState(""); // Anti-bot honeypot
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [touched, setTouched] = useState<Record<string, boolean>>({});
 
+  // Comprehensive Form Validation
   const validate = () => {
     const errs: Record<string, string> = {};
-    if (!parentName.trim()) errs.parentName = language === "ta" ? "முழு பெயர் அவசியம்" : "Full name is required";
-    if (!childAge.trim()) errs.childAge = language === "ta" ? "குழந்தையின் வயது அல்லது வகுப்பு தேவை" : "Child's age / grade is required";
-    if (!phone.trim() || phone.length < 8) errs.phone = language === "ta" ? "சரியான தொலைபேசி எண் தேவை" : "Valid phone number is required";
+
+    const nameCheck = validateParentName(parentName, isTa);
+    if (!nameCheck.isValid) errs.parentName = nameCheck.error!;
+
+    const childCheck = validateChildInfo(childAge, isTa);
+    if (!childCheck.isValid) errs.childAge = childCheck.error!;
+
+    const phoneCheck = validatePhone(phone, isTa);
+    if (!phoneCheck.isValid) errs.phone = phoneCheck.error!;
+
+    const emailCheck = validateEmail(email, isTa);
+    if (!emailCheck.isValid) errs.email = emailCheck.error!;
+
     setErrors(errs);
     return Object.keys(errs).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Real-time input handling with active sanitization
+  const handleParentNameChange = (val: string) => {
+    // Strip numbers and code injection characters immediately
+    const sanitized = val.replace(/[0-9<>{}/]/g, "").slice(0, 60);
+    setParentName(sanitized);
+    if (touched.parentName) {
+      const check = validateParentName(sanitized, isTa);
+      setErrors((prev) => ({ ...prev, parentName: check.isValid ? "" : check.error || "" }));
+    }
+  };
+
+  const handlePhoneChange = (val: string) => {
+    // Digits, spaces, plus sign, max 15 characters
+    const filtered = val.replace(/[^0-9+\s-]/g, "").slice(0, 15);
+    setPhone(filtered);
+    if (touched.phone) {
+      const check = validatePhone(filtered, isTa);
+      setErrors((prev) => ({ ...prev, phone: check.isValid ? "" : check.error || "" }));
+    }
+  };
+
+  const handleChildAgeChange = (val: string) => {
+    const filtered = val.replace(/[<>{}/]/g, "").slice(0, 80);
+    setChildAge(filtered);
+    if (touched.childAge) {
+      const check = validateChildInfo(filtered, isTa);
+      setErrors((prev) => ({ ...prev, childAge: check.isValid ? "" : check.error || "" }));
+    }
+  };
+
+  const handleEmailChange = (val: string) => {
+    const trimmed = val.trim().slice(0, 100);
+    setEmail(trimmed);
+    if (touched.email) {
+      const check = validateEmail(trimmed, isTa);
+      setErrors((prev) => ({ ...prev, email: check.isValid ? "" : check.error || "" }));
+    }
+  };
+
+  const markTouched = (field: string) => {
+    setTouched((prev) => ({ ...prev, [field]: true }));
+    if (field === "parentName") {
+      const c = validateParentName(parentName, isTa);
+      setErrors((prev) => ({ ...prev, parentName: c.isValid ? "" : c.error || "" }));
+    } else if (field === "phone") {
+      const c = validatePhone(phone, isTa);
+      setErrors((prev) => ({ ...prev, phone: c.isValid ? "" : c.error || "" }));
+    } else if (field === "childAge") {
+      const c = validateChildInfo(childAge, isTa);
+      setErrors((prev) => ({ ...prev, childAge: c.isValid ? "" : c.error || "" }));
+    } else if (field === "email") {
+      const c = validateEmail(email, isTa);
+      setErrors((prev) => ({ ...prev, email: c.isValid ? "" : c.error || "" }));
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!validate()) return;
+    setTouched({
+      parentName: true,
+      childAge: true,
+      phone: true,
+      email: true,
+    });
+
+    if (!validate()) {
+      return;
+    }
+
+    // Bot detection check
+    if (honeypot) {
+      console.warn("Spam submission blocked");
+      return;
+    }
 
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
+    setSubmitError(null);
+
+    try {
+      const cleanPhone = normalizeIndianPhone(phone);
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          type: "enquiry",
+          parentName: parentName.trim(),
+          phone: cleanPhone,
+          email: email.trim() || undefined,
+          childAge: childAge.trim(),
+          program: serviceChoice,
+          message: message.trim() || undefined,
+          website: honeypot || undefined,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok || !data.success) {
+        throw new Error(data.error || "Failed to submit enquiry");
+      }
+
       setIsSuccess(true);
       try {
         confetti({
@@ -57,7 +179,16 @@ export const ContactSection: React.FC = () => {
       } catch {
         // fallback
       }
-    }, 800);
+    } catch (err: any) {
+      setSubmitError(
+        err?.message ||
+          (isTa
+            ? "மின்னஞ்சல் அனுப்புவதில் பிழை ஏற்பட்டது. தயவுசெய்து வாட்ஸ்அப் மூலம் தொடர்பு கொள்ளவும்."
+            : "Failed to submit enquiry. Please try again or connect directly on WhatsApp.")
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleWhatsApp = () => {
@@ -195,6 +326,11 @@ export const ContactSection: React.FC = () => {
                 <p className="text-[#5E6D7A] text-base mt-3 max-w-md mx-auto leading-relaxed">
                   {t.contact.successDesc} <strong className="text-[#0750B8]">{phone}</strong>.
                 </p>
+                {email && (
+                  <p className="text-xs text-[#159447] font-bold mt-2 bg-[#EAF8EF] border border-[#159447]/20 py-1.5 px-3 rounded-lg inline-block">
+                    ✉️ {language === "ta" ? "உறுதிப்படுத்தல் மின்னஞ்சல் உங்கள் முகவரிக்கு அனுப்பப்பட்டுள்ளது:" : "Confirmation email sent to"} <strong>{email}</strong>
+                  </p>
+                )}
 
                 <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
                   <button
@@ -230,36 +366,77 @@ export const ContactSection: React.FC = () => {
                   </p>
                 </div>
 
+                {submitError && (
+                  <div className="p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs sm:text-sm font-semibold flex items-center justify-between gap-3">
+                    <span>{submitError}</span>
+                    <button
+                      type="button"
+                      onClick={handleWhatsApp}
+                      className="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs whitespace-nowrap cursor-pointer transition-all"
+                    >
+                      WhatsApp
+                    </button>
+                  </div>
+                )}
+
+                {/* Hidden anti-bot honeypot */}
+                <input
+                  type="text"
+                  name="website"
+                  value={honeypot}
+                  onChange={(e) => setHoneypot(e.target.value)}
+                  tabIndex={-1}
+                  autoComplete="off"
+                  className="hidden pointer-events-none opacity-0 h-0 w-0 absolute"
+                  aria-hidden="true"
+                />
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-bold text-[#121D28] uppercase tracking-wider mb-1.5">
-                      {t.contact.parentNameLabel}
+                      {t.contact.parentNameLabel} <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
                       value={parentName}
-                      onChange={(e) => setParentName(e.target.value)}
+                      onChange={(e) => handleParentNameChange(e.target.value)}
+                      onBlur={() => markTouched("parentName")}
                       placeholder={t.contact.parentNamePlaceholder}
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[#0750B8] transition-all"
+                      className={`w-full px-4 py-3 rounded-xl border text-sm transition-all focus:outline-none focus:ring-2 ${
+                        touched.parentName && errors.parentName
+                          ? "border-red-400 bg-red-50/30 focus:ring-red-400 focus:border-red-400"
+                          : "border-gray-200 bg-white focus:ring-[#0750B8]"
+                      }`}
                     />
-                    {errors.parentName && (
-                      <p className="text-xs text-red-500 mt-1">{errors.parentName}</p>
+                    {touched.parentName && errors.parentName && (
+                      <p className="text-xs text-red-600 mt-1.5 flex items-center gap-1 font-medium">
+                        <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                        <span>{errors.parentName}</span>
+                      </p>
                     )}
                   </div>
 
                   <div>
                     <label className="block text-xs font-bold text-[#121D28] uppercase tracking-wider mb-1.5">
-                      {t.contact.childAgeLabel}
+                      {t.contact.childAgeLabel} <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
                       value={childAge}
-                      onChange={(e) => setChildAge(e.target.value)}
+                      onChange={(e) => handleChildAgeChange(e.target.value)}
+                      onBlur={() => markTouched("childAge")}
                       placeholder={t.contact.childAgePlaceholder}
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[#0750B8] transition-all"
+                      className={`w-full px-4 py-3 rounded-xl border text-sm transition-all focus:outline-none focus:ring-2 ${
+                        touched.childAge && errors.childAge
+                          ? "border-red-400 bg-red-50/30 focus:ring-red-400 focus:border-red-400"
+                          : "border-gray-200 bg-white focus:ring-[#0750B8]"
+                      }`}
                     />
-                    {errors.childAge && (
-                      <p className="text-xs text-red-500 mt-1">{errors.childAge}</p>
+                    {touched.childAge && errors.childAge && (
+                      <p className="text-xs text-red-600 mt-1.5 flex items-center gap-1 font-medium">
+                        <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                        <span>{errors.childAge}</span>
+                      </p>
                     )}
                   </div>
                 </div>
@@ -267,31 +444,50 @@ export const ContactSection: React.FC = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-bold text-[#121D28] uppercase tracking-wider mb-1.5">
-                      {t.contact.phoneLabel}
+                      {t.contact.phoneLabel} <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="tel"
                       value={phone}
-                      onChange={(e) => setPhone(e.target.value)}
+                      onChange={(e) => handlePhoneChange(e.target.value)}
+                      onBlur={() => markTouched("phone")}
                       placeholder={t.contact.phonePlaceholder}
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[#0750B8] transition-all"
+                      className={`w-full px-4 py-3 rounded-xl border text-sm transition-all focus:outline-none focus:ring-2 ${
+                        touched.phone && errors.phone
+                          ? "border-red-400 bg-red-50/30 focus:ring-red-400 focus:border-red-400"
+                          : "border-gray-200 bg-white focus:ring-[#0750B8]"
+                      }`}
                     />
-                    {errors.phone && (
-                      <p className="text-xs text-red-500 mt-1">{errors.phone}</p>
+                    {touched.phone && errors.phone && (
+                      <p className="text-xs text-red-600 mt-1.5 flex items-center gap-1 font-medium">
+                        <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                        <span>{errors.phone}</span>
+                      </p>
                     )}
                   </div>
 
                   <div>
                     <label className="block text-xs font-bold text-[#121D28] uppercase tracking-wider mb-1.5">
-                      {t.contact.emailLabel}
+                      {t.contact.emailLabel} <span className="text-gray-400 text-[10px]">({isTa ? "விருப்பத்தேர்வு" : "Optional"})</span>
                     </label>
                     <input
                       type="email"
                       value={email}
-                      onChange={(e) => setEmail(e.target.value)}
+                      onChange={(e) => handleEmailChange(e.target.value)}
+                      onBlur={() => markTouched("email")}
                       placeholder={t.contact.emailPlaceholder}
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[#0750B8] transition-all"
+                      className={`w-full px-4 py-3 rounded-xl border text-sm transition-all focus:outline-none focus:ring-2 ${
+                        touched.email && errors.email
+                          ? "border-red-400 bg-red-50/30 focus:ring-red-400 focus:border-red-400"
+                          : "border-gray-200 bg-white focus:ring-[#0750B8]"
+                      }`}
                     />
+                    {touched.email && errors.email && (
+                      <p className="text-xs text-red-600 mt-1.5 flex items-center gap-1 font-medium">
+                        <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                        <span>{errors.email}</span>
+                      </p>
+                    )}
                   </div>
                 </div>
 

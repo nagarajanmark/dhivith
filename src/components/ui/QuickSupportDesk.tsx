@@ -16,6 +16,7 @@ import confetti from "canvas-confetti";
 import { SCHOOL_INFO } from "@/data/schoolData";
 import { KidsGameArenaModal } from "@/components/ui/KidsGameArenaModal";
 import { useLanguage } from "@/context/LanguageContext";
+import { trackWhatsAppClick, trackPhoneCall } from "@/lib/analytics";
 
 export const QuickSupportDesk: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,6 +24,7 @@ export const QuickSupportDesk: React.FC = () => {
   const { language, t } = useLanguage();
 
   const handleWhatsApp = () => {
+    trackWhatsAppClick("Quick Support Desk");
     const text = encodeURIComponent(
       language === "ta"
         ? "வணக்கம் திருமதி. S. தாரணி / திவித் எடு கேர் உதவி மையம்! மழலையர் பள்ளி சேர்க்கை மற்றும் டியூஷன் வகுப்புகள் குறித்த தகவல்களை அறிய விரும்புகிறேன்."
@@ -85,6 +87,7 @@ export const QuickSupportDesk: React.FC = () => {
               {/* Option 2: Direct Helpline (Blue/Slate Card) */}
               <a
                 href={`tel:${SCHOOL_INFO.phoneRaw}`}
+                onClick={() => trackPhoneCall("Quick Support Desk")}
                 className="w-full p-3.5 rounded-2xl bg-[#F0F5FA]/80 hover:bg-[#EBF3FF] border border-[#0750B8]/20 transition-all flex items-center justify-between group text-left cursor-pointer shadow-xs hover:shadow-sm"
               >
                 <div className="flex items-center gap-3">

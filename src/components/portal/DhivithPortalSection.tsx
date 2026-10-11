@@ -23,7 +23,7 @@ export const DhivithPortalSection: React.FC<DhivithPortalSectionProps> = ({ onOp
             <div className="w-9 h-9 rounded-xl bg-white p-1 shadow-md flex items-center justify-center flex-shrink-0">
               <Image
                 src="/logo.png"
-                alt="Logo"
+                alt="DHIVITH EDU CARE - Montessori Pre-School Kinathukadavu"
                 width={32}
                 height={32}
                 className="object-contain"
@@ -83,8 +83,8 @@ export const DhivithPortalSection: React.FC<DhivithPortalSectionProps> = ({ onOp
           background={
             <div className="relative w-full h-full">
               <Image
-                src="/school_images/1000453992.webp"
-                alt="Dhivith Edu Care Campus"
+                src="/school_images/paper-cup-pyramid-stacking-activity-kinathukadavu.webp"
+                alt="Dhivith Edu Care Campus and Montessori Classroom in Kinathukadavu Coimbatore"
                 fill
                 className="object-cover opacity-40"
               />

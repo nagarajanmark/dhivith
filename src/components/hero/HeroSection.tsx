@@ -150,8 +150,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenTourModal }) => 
 
               <div className="relative rounded-[32px] overflow-hidden shadow-2xl border-4 border-white aspect-[4/5] bg-white">
                 <Image
-                  src="/school_images/1000453992.webp"
-                  alt="Dhivith Edu Care Montessori Classroom"
+                  src="/school_images/paper-cup-pyramid-stacking-activity-kinathukadavu.webp"
+                  alt="Dhivith Edu Care Montessori Classroom and Learning Environment in Kinathukadavu Coimbatore"
                   fill
                   priority
                   className="object-cover transition-transform duration-700 hover:scale-105"
@@ -166,7 +166,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenTourModal }) => 
                     <div className="relative w-11 h-11 rounded-xl overflow-hidden bg-white p-1 shadow-sm flex items-center justify-center flex-shrink-0">
                       <Image
                         src="/logo.png"
-                        alt="Dhivith Edu Care"
+                        alt="Dhivith Edu Care Montessori Pre-School and Tuition Centre Kinathukadavu"
                         width={40}
                         height={40}
                         className="object-contain"

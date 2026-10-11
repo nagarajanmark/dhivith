@@ -138,6 +138,10 @@ export interface TranslationDictionary {
     title: string;
     description: string;
     joinBtn: string;
+    filterAll: string;
+    filterTeachers: string;
+    filterCare: string;
+    qualificationsLabel: string;
   };
   // Philosophy
   philosophy: {
@@ -476,11 +480,15 @@ export const TRANSLATIONS: Record<Language, TranslationDictionary> = {
       pillar4Desc: "Warm, supportive atmosphere designed for joyful discovery.",
     },
     team: {
-      tag: "OUR TEAM",
-      title: "Our Professionals",
+      tag: "OUR EDUCATORS & STAFF",
+      title: "Meet Our Dedicated Teachers & Staff",
       description:
-        "Dedicated educators and certified Montessori directresses nurturing every child with individualized guidance and academic excellence.",
-      joinBtn: "JOIN TEAM",
+        "Passionate, certified Montessori leadership, qualified kindergarten educators, and loving care staff nurturing every child at Dhivith Edu Care, Kinathukadavu.",
+      joinBtn: "SCHEDULE VISIT",
+      filterAll: "All Staff",
+      filterTeachers: "Teachers & Leadership",
+      filterCare: "Care & Support Staff",
+      qualificationsLabel: "Credentials & Roles",
     },
     philosophy: {
       badge: "The Montessori Method",
@@ -541,7 +549,7 @@ export const TRANSLATIONS: Record<Language, TranslationDictionary> = {
       officialEmail: "Official Email",
       timings: "Timings",
       preschoolHours: "Pre-School: Mon–Sat: 8:30 AM – 6:30 PM",
-      tuitionHours: "Tuitions: Evening Batches 4:00 PM – 8:30 PM",
+      tuitionHours: "Tuition Sessions: Morning: 5:00 AM – 7:00 AM | Evening: 5:00 PM – 9:30 PM (8 Dedicated Staffs)",
       formTitle: "Admissions & Academic Enquiry Form",
       formSubtitle: "Fill in your details below. We welcome inquiries for Preschool (Day Care, Play Group, Pre-KG, LKG, UKG) and Tuitions (LKG to Grade 12 / Engineering Maths).",
       parentNameLabel: "Parent / Student Full Name *",
@@ -554,7 +562,7 @@ export const TRANSLATIONS: Record<Language, TranslationDictionary> = {
       emailPlaceholder: "parent@gmail.com",
       serviceLabel: "Program / Service of Interest",
       messageLabel: "Your Message / Specific Questions",
-      messagePlaceholder: "Tell us about your requirements, preferred timing, or questions for Mrs. S Tharani...",
+      messagePlaceholder: "Tell us about your requirements, preferred timing, or questions for Mrs. S tharani.png..",
       submitBtn: "Submit Admission Enquiry",
       whatsappBtn: "WhatsApp Helpline",
       successTitle: "Enquiry Received!",
@@ -601,7 +609,7 @@ export const TRANSLATIONS: Record<Language, TranslationDictionary> = {
         },
         {
           question: "How can parents schedule a campus tour or enroll their child?",
-          answer: "You can click 'Book Visit' anywhere on this website, call our direct admissions helpline at +91 7448981592, or send a WhatsApp message to schedule a private tour with Mrs. S Tharani.",
+          answer: "You can click 'Book Visit' anywhere on this website, call our direct admissions helpline at +91 7448981592, or send a WhatsApp message to schedule a private tour with Mrs. S tharani.png",
         },
       ],
     },
@@ -894,11 +902,15 @@ export const TRANSLATIONS: Record<Language, TranslationDictionary> = {
       pillar4Desc: "அன்பான ஆசிரியர்கள் மற்றும் பாதுகாப்பான விளையாட்டு வளாகம்.",
     },
     team: {
-      tag: "எங்கள் குழு",
-      title: "எங்கள் ஆசிரியர்கள் & வழிகாட்டிகள்",
+      tag: "எங்கள் ஆசிரியர்கள் & பணியாளர்கள்",
+      title: "எங்கள் ஆசிரியர்கள் மற்றும் பாசமிகு பணியாளர்கள்",
       description:
-        "குழந்தைகளின் திறமைகளை அன்புடன் வளர்த்தெடுக்கும் சான்றிதழ் பெற்ற மாண்டிசோரி ஆசிரியர்கள் மற்றும் அனுபவம் வாய்ந்த கல்வி பயிற்றுநர்கள்.",
-      joinBtn: "ஆசிரியராக இணைய",
+        "சான்றிதழ் பெற்ற மாண்டிசோரி கல்வி இயக்குநர், அனுபவமிக்க மழலையர் பள்ளி ஆசிரியைகள் மற்றும் தாய் போன்ற அரவணைப்பு தரும் பராமரிப்புப் பணியாளர்கள்.",
+      joinBtn: "நேரில் சந்திக்க",
+      filterAll: "அனைத்து பணியாளர்கள்",
+      filterTeachers: "ஆசிரியர்கள் & தலைமை",
+      filterCare: "பராமரிப்பு & உதவியாளர்கள்",
+      qualificationsLabel: "தகுதிகள் & பொறுப்புகள்",
     },
     philosophy: {
       badge: "மாண்டிசோரி கல்வி முறை",
@@ -959,7 +971,7 @@ export const TRANSLATIONS: Record<Language, TranslationDictionary> = {
       officialEmail: "அதிகாரப்பூர்வ மின்னஞ்சல்",
       timings: "நேரங்கள்",
       preschoolHours: "மழலையர் பள்ளி: திங்கள்–சனி காலை 8:30 – மாலை 6:30",
-      tuitionHours: "டியூஷன்: மாலை நேர வகுப்புகள் 4:00 – 8:30",
+      tuitionHours: "டியூஷன் நேரம்: காலை 5:00 – 7:00 AM | மாலை 5:00 – 9:30 PM (மாலையில் 8 ஆசிரியர்கள்/பணியாளர்கள்)",
       formTitle: "சேர்க்கை மற்றும் கல்வி விசாரணை படிவம்",
       formSubtitle: "கீழே உள்ள படிவத்தை நிரப்பவும். மழலையர் பள்ளி (Day Care, Play Group, Pre-KG, LKG, UKG) மற்றும் டியூஷன் (LKG முதல் 12ஆம் வகுப்பு / பொறியியல் கணிதம்) சேர்க்கைக்கு வரவேற்கிறோம்.",
       parentNameLabel: "பெற்றோர் / மாணவர் பெயர் *",

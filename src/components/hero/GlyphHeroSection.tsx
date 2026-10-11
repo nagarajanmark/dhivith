@@ -63,7 +63,8 @@ export const GlyphHeroSection: React.FC<GlyphHeroSectionProps> = ({ onOpenTourMo
             loop
             muted
             playsInline
-            preload="auto"
+            preload="metadata"
+            poster="/school_images/dhivith-daycare-preschool-haven-kinathukadavu.webp"
             className="w-full h-full object-cover"
           >
             <source src="/hero_banner.mp4" type="video/mp4" />
@@ -114,6 +115,7 @@ export const GlyphHeroSection: React.FC<GlyphHeroSectionProps> = ({ onOpenTourMo
               className="font-display font-black text-4xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-7xl 2xl:text-[120px] tracking-wider text-white drop-shadow-[0_15px_40px_rgba(0,0,0,0.9)] leading-none uppercase text-center"
             >
               DHIVITH
+              <span className="sr-only"> EDU CARE – Montessori Pre-School, Day Care & Tuitions in Kinathukadavu, Coimbatore</span>
             </motion.h1>
           </div>
 

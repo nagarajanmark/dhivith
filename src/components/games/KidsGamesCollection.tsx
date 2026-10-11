@@ -93,7 +93,15 @@ export type GameId =
   | "basket"
   | "phonics"
   | "drawing"
-  | "piano";
+  | "piano"
+  | "jigsaw"
+  | "animalSound"
+  | "fruitId"
+  | "connectDots"
+  | "storytelling"
+  | "maze"
+  | "nurseryRhymes"
+  | "sorting";
 
 export interface GameMetadata {
   id: GameId;
@@ -223,7 +231,130 @@ export const KIDS_GAMES_LIST: GameMetadata[] = [
     descTa: "வானவில் வண்ணக் கட்டைகளைத் தட்டி இனிமையான பாடல்களையும் ஒலிகளையும் இசைக்கலாம்.",
     recommendedAge: "Age 2 - 8",
   },
+  {
+    id: "jigsaw",
+    titleEn: "Jigsaw Puzzles",
+    titleTa: "விலங்கு & பொருள் புதிர்",
+    category: "sensory",
+    emoji: "🧩",
+    color: "#F97316",
+    bgGrad: "from-orange-50 to-white",
+    badgeEn: "Spatial Logic",
+    badgeTa: "பொருத்தும் திறன்",
+    descEn: "Assemble cute pictures piece by piece to build spatial perception and fine motor dexterity.",
+    descTa: "பல்வேறு வண்ணப் படங்களின் துண்டுகளை சரியாகப் பொருத்தி படத்தை முழுமையாக்குங்கள்.",
+    recommendedAge: "Age 2 - 7",
+  },
+  {
+    id: "animalSound",
+    titleEn: "Animal Sound Safari",
+    titleTa: "விலங்கு ஒலி கணிப்பு",
+    category: "memory",
+    emoji: "🔊",
+    color: "#D97706",
+    bgGrad: "from-amber-50 to-white",
+    badgeEn: "Audio Quiz",
+    badgeTa: "செவிப்புலன் அறிவு",
+    descEn: "Listen to realistic animal sounds (lion, cat, cow, frog, etc.) and pick the animal friend.",
+    descTa: "ஒலிகளைக் கேட்டு அது எந்த விலங்கு என்று சரியாகக் கண்டுபிடிக்கும் மகிழ்ச்சியான விளையாட்டு.",
+    recommendedAge: "Age 2 - 6",
+  },
+  {
+    id: "fruitId",
+    titleEn: "Fruit Identification",
+    titleTa: "பழங்கள் அடையாளம் காணுதல்",
+    category: "memory",
+    emoji: "🍓",
+    color: "#E11D48",
+    bgGrad: "from-rose-50 to-white",
+    badgeEn: "Nature & Health",
+    badgeTa: "இயற்கை அறிவு",
+    descEn: "Identify delicious fruits, learn fun healthy facts, colors, tastes, and spoken pronunciations.",
+    descTa: "சுவையான பழங்களின் பெயர்கள், சுவைகள் மற்றும் ஆரோக்கிய நன்மைகளைக் கற்றுக்கொள்ளுங்கள்.",
+    recommendedAge: "Age 2 - 7",
+  },
+  {
+    id: "connectDots",
+    titleEn: "Connect-the-Dots",
+    titleTa: "புள்ளிகளை இணைக்கும் விளையாட்டு",
+    category: "math",
+    emoji: "⭐",
+    color: "#2563EB",
+    bgGrad: "from-blue-50 to-white",
+    badgeEn: "Numbers & Drawing",
+    badgeTa: "எண்கள் பயிற்சி",
+    descEn: "Tap numbers in sequence (1, 2, 3...) to draw glowing stars, sailboats, and happy homes.",
+    descTa: "வரிசையாக எண்களை இணைத்து அழகான உருவங்களை வரையும் உற்சாகமான விளையாட்டு.",
+    recommendedAge: "Age 3 - 7",
+  },
+  {
+    id: "storytelling",
+    titleEn: "Picture-Based Storytelling",
+    titleTa: "படக் கதை சொல்லும் மேடை",
+    category: "art",
+    emoji: "📖",
+    color: "#9333EA",
+    bgGrad: "from-purple-50 to-white",
+    badgeEn: "Story & Wonder",
+    badgeTa: "கற்பனை வளம்",
+    descEn: "Read and listen to illustrated interactive adventures with sound effects and lovable characters.",
+    descTa: "அழகான வண்ணப் படங்களுடன் கதைகளை வாசித்துக் கேட்டு மகிழும் கற்பனை உலகம்.",
+    recommendedAge: "Age 2 - 8",
+  },
+  {
+    id: "maze",
+    titleEn: "Simple Maze Adventure",
+    titleTa: "எளிய புதிர் பாதை விளையாட்டு",
+    category: "math",
+    emoji: "🐰",
+    color: "#16A34A",
+    bgGrad: "from-emerald-50 to-white",
+    badgeEn: "Problem Solving",
+    badgeTa: "சிக்கல் தீர்க்கும் திறன்",
+    descEn: "Guide friendly bunnies and puppies through clear paths to reach carrots, bones, and flowers.",
+    descTa: "அன்பான விலங்குகளைத் தடைகளின்றி இலக்கு நோக்கி அழைத்துச் செல்லும் எளிய பாதை விளையாட்டு.",
+    recommendedAge: "Age 3 - 8",
+  },
+  {
+    id: "nurseryRhymes",
+    titleEn: "Nursery Rhymes Jukebox",
+    titleTa: "மழலையர் பாடல்கள் ஜூக்பாக்ஸ்",
+    category: "art",
+    emoji: "🎵",
+    color: "#06B6D4",
+    bgGrad: "from-cyan-50 to-white",
+    badgeEn: "Music & Sing-Along",
+    badgeTa: "இசை & பாடல்",
+    descEn: "Play and sing classic nursery rhymes (Twinkle Twinkle, Bus, Old MacDonald) with synchronized lyrics.",
+    descTa: "பிரபலமான மழலையர் பாடல்களை ரசித்து, வரிகளுடன் சேர்ந்து பாடி மகிழுங்கள்.",
+    recommendedAge: "Age 1 - 7",
+  },
+  {
+    id: "sorting",
+    titleEn: "Object Sorting Bins",
+    titleTa: "பொருட்கள் வரிசைப்படுத்துதல்",
+    category: "sensory",
+    emoji: "🧺",
+    color: "#F59E0B",
+    bgGrad: "from-amber-50 to-white",
+    badgeEn: "Montessori Practical Life",
+    badgeTa: "மாண்டிசோரி பயிற்சி",
+    descEn: "Sort everyday objects, fruits, and animals into correct matching boxes and colored baskets.",
+    descTa: "பொருட்களை நிறம், வகை ஆகியவற்றின் அடிப்படையில் சரியான பெட்டிகளில் பிரித்து வைக்கும் பயிற்சி.",
+    recommendedAge: "Age 2 - 6",
+  },
 ];
+
+export {
+  JigsawPuzzleGame,
+  AnimalSoundGuessGame,
+  FruitIdentificationGame,
+  ConnectTheDotsGame,
+  StorytellingGame,
+  SimpleMazeGame,
+  NurseryRhymesGame,
+  ObjectSortingGame,
+} from "./NewKidsActivities";
 
 // ==========================================
 // 1. TOWER BUILDER GAME

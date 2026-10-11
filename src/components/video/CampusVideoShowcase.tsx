@@ -13,8 +13,10 @@ import {
   Award,
   CheckCircle2,
   ArrowRight,
+  ExternalLink,
 } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import { SCHOOL_INFO } from "@/data/schoolData";
 
 interface CampusVideoShowcaseProps {
   onOpenTourModal: () => void;
@@ -37,6 +39,7 @@ export const CampusVideoShowcase: React.FC<CampusVideoShowcaseProps> = ({
       subtitle: t.video.track1Subtitle,
       duration: t.video.track1Duration,
       src: "/Dhivith_School_website_video_banner_20261005204114.mp4",
+      youtubeUrl: SCHOOL_INFO.youtube,
       badge: t.video.track1Badge,
       tagline: t.video.track1Tagline,
     },
@@ -46,6 +49,7 @@ export const CampusVideoShowcase: React.FC<CampusVideoShowcaseProps> = ({
       subtitle: t.video.track2Subtitle,
       duration: t.video.track2Duration,
       src: "/banner-video.mp4",
+      youtubeUrl: SCHOOL_INFO.youtube,
       badge: t.video.track2Badge,
       tagline: t.video.track2Tagline,
     },
@@ -64,7 +68,17 @@ export const CampusVideoShowcase: React.FC<CampusVideoShowcaseProps> = ({
     }
   }, [activeTrackIndex]);
 
-  const togglePlay = () => {
+  const openYouTube = (e?: React.MouseEvent) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    const url = activeTrack.youtubeUrl || SCHOOL_INFO.youtube || "https://www.youtube.com";
+    window.open(url, "_blank", "noopener,noreferrer");
+  };
+
+  const togglePlay = (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
     if (!videoRef.current) return;
     if (isPlaying) {
       videoRef.current.pause();
@@ -75,7 +89,8 @@ export const CampusVideoShowcase: React.FC<CampusVideoShowcaseProps> = ({
     }
   };
 
-  const toggleMute = () => {
+  const toggleMute = (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
     if (!videoRef.current) return;
     videoRef.current.muted = !videoRef.current.muted;
     setIsMuted(videoRef.current.muted);
@@ -90,7 +105,8 @@ export const CampusVideoShowcase: React.FC<CampusVideoShowcaseProps> = ({
     }
   };
 
-  const handleFullscreen = () => {
+  const handleFullscreen = (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
     if (videoRef.current) {
       if (videoRef.current.requestFullscreen) {
         videoRef.current.requestFullscreen();
@@ -103,9 +119,25 @@ export const CampusVideoShowcase: React.FC<CampusVideoShowcaseProps> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header Title in White Theme */}
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-[#EAF8EF] text-[#159447] text-[11px] sm:text-xs font-bold uppercase tracking-wider border border-[#159447]/20 mb-3 shadow-xs">
-            <Sparkles className="w-3.5 h-3.5 text-[#159447]" />
-            <span>{t.video.badge}</span>
+          <div className="flex flex-wrap items-center justify-center gap-2 mb-3">
+            <div className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-[#EAF8EF] text-[#159447] text-[11px] sm:text-xs font-bold uppercase tracking-wider border border-[#159447]/20 shadow-xs">
+              <Sparkles className="w-3.5 h-3.5 text-[#159447]" />
+              <span>{t.video.badge}</span>
+            </div>
+
+            {/* Direct YouTube channel link in header */}
+            <a
+              href={SCHOOL_INFO.youtube}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#FF0000]/10 hover:bg-[#FF0000] text-[#FF0000] hover:text-white text-[11px] sm:text-xs font-bold border border-[#FF0000]/20 shadow-xs transition-all duration-200"
+            >
+              <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+              </svg>
+              <span>{language === "ta" ? "YouTube சேனல்" : "YouTube Channel"}</span>
+              <ExternalLink className="w-3 h-3" />
+            </a>
           </div>
 
           <h2 className="font-display font-extrabold text-2xl sm:text-3xl lg:text-3xl xl:text-4xl text-[#121D28] tracking-tight leading-tight px-2">
@@ -117,8 +149,17 @@ export const CampusVideoShowcase: React.FC<CampusVideoShowcaseProps> = ({
           </p>
         </div>
 
-        {/* Main Video Player Card */}
-        <div className="relative rounded-2xl sm:rounded-[36px] overflow-hidden border-2 border-gray-200/90 bg-white shadow-xl">
+        {/* Main Video Player Card — Clicking anywhere opens YouTube */}
+        <div
+          onClick={openYouTube}
+          className="relative rounded-2xl sm:rounded-[36px] overflow-hidden border-2 border-gray-200/90 bg-white shadow-xl cursor-pointer group"
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") openYouTube();
+          }}
+          aria-label={language === "ta" ? "YouTube-ல் வீடியோ பார்க்க கிளிக் செய்யவும்" : "Click to watch video on YouTube"}
+        >
           {/* Main Video Element */}
           <div className="relative aspect-[16/10] sm:aspect-[21/9] md:aspect-[16/8] w-full overflow-hidden flex items-center justify-center bg-black">
             <video
@@ -129,16 +170,17 @@ export const CampusVideoShowcase: React.FC<CampusVideoShowcaseProps> = ({
               muted={isMuted}
               playsInline
               onTimeUpdate={handleTimeUpdate}
-              onClick={togglePlay}
-              className="w-full h-full object-cover cursor-pointer"
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
             />
 
             {/* Video overlay vignette */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/40 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-black/40 pointer-events-none group-hover:bg-black/30 transition-colors" />
 
-            {/* Top Bar inside Video: Title & Live Badge */}
-            <div className="absolute top-3 sm:top-6 inset-x-3 sm:inset-x-8 flex items-center justify-between z-20 pointer-events-none">
-              <div className="flex items-center gap-1.5 sm:gap-3">
+
+
+            {/* Top Bar inside Video: Title & Live Badge + Direct YouTube button */}
+            <div className="absolute top-3 sm:top-6 inset-x-3 sm:inset-x-8 flex items-center justify-between z-20">
+              <div className="flex items-center gap-1.5 sm:gap-3 pointer-events-none">
                 <span className="flex h-2 w-2 sm:h-2.5 sm:w-2.5 relative">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                   <span className="relative inline-flex rounded-full h-2 w-2 sm:h-2.5 sm:w-2.5 bg-emerald-500" />
@@ -151,12 +193,25 @@ export const CampusVideoShowcase: React.FC<CampusVideoShowcaseProps> = ({
                 </span>
               </div>
 
-              {/* Volume & Fullscreen Quick Buttons */}
-              <div className="flex items-center gap-1.5 sm:gap-2 pointer-events-auto">
+              {/* YouTube badge button + Volume & Fullscreen Quick Buttons */}
+              <div className="flex items-center gap-1.5 sm:gap-2">
                 <button
+                  type="button"
+                  onClick={openYouTube}
+                  className="px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full bg-[#FF0000] hover:bg-[#CC0000] text-white text-[11px] sm:text-xs font-bold flex items-center gap-1.5 shadow-lg transition-transform active:scale-95 cursor-pointer"
+                >
+                  <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                  </svg>
+                  <span className="hidden xs:inline">{language === "ta" ? "YouTube" : "YouTube"}</span>
+                  <ExternalLink className="w-3 h-3" />
+                </button>
+
+                <button
+                  type="button"
                   onClick={toggleMute}
                   aria-label={isMuted ? "Unmute" : "Mute"}
-                  className="p-2 sm:p-3 rounded-full bg-black/60 hover:bg-black/80 backdrop-blur-md border border-white/25 text-white transition-transform active:scale-95 cursor-pointer shadow-md"
+                  className="p-2 sm:p-2.5 rounded-full bg-black/60 hover:bg-black/80 backdrop-blur-md border border-white/25 text-white transition-transform active:scale-95 cursor-pointer shadow-md"
                 >
                   {isMuted ? (
                     <VolumeX className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-300" />
@@ -165,25 +220,15 @@ export const CampusVideoShowcase: React.FC<CampusVideoShowcaseProps> = ({
                   )}
                 </button>
                 <button
+                  type="button"
                   onClick={handleFullscreen}
                   aria-label="Fullscreen"
-                  className="p-2 sm:p-3 rounded-full bg-black/60 hover:bg-black/80 backdrop-blur-md border border-white/25 text-white transition-transform active:scale-95 cursor-pointer hidden sm:flex shadow-md"
+                  className="p-2 sm:p-2.5 rounded-full bg-black/60 hover:bg-black/80 backdrop-blur-md border border-white/25 text-white transition-transform active:scale-95 cursor-pointer hidden sm:flex shadow-md"
                 >
                   <Maximize2 className="w-4 h-4" />
                 </button>
               </div>
             </div>
-
-            {/* Center Big Play Button (when paused) */}
-            {!isPlaying && (
-              <button
-                onClick={togglePlay}
-                aria-label="Play video"
-                className="absolute z-30 w-14 h-14 sm:w-20 sm:h-20 rounded-full bg-[#0750B8] hover:bg-[#0962dc] text-white flex items-center justify-center shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 cursor-pointer"
-              >
-                <Play className="w-6 h-6 sm:w-9 sm:h-9 ml-1 fill-current" />
-              </button>
-            )}
 
             {/* Bottom Controls Bar inside Video */}
             <div className="absolute bottom-0 inset-x-0 p-3 sm:p-6 z-20 flex flex-col gap-2 sm:gap-3">
@@ -199,6 +244,7 @@ export const CampusVideoShowcase: React.FC<CampusVideoShowcaseProps> = ({
               <div className="flex items-center justify-between gap-3 pt-0.5 sm:pt-1">
                 <div className="flex items-center gap-2 sm:gap-3 min-w-0">
                   <button
+                    type="button"
                     onClick={togglePlay}
                     className="p-2 sm:p-2.5 rounded-lg sm:rounded-xl bg-white/25 hover:bg-white/35 backdrop-blur-md border border-white/30 text-white transition-transform active:scale-95 cursor-pointer flex items-center justify-center flex-shrink-0"
                   >
@@ -219,10 +265,26 @@ export const CampusVideoShowcase: React.FC<CampusVideoShowcaseProps> = ({
                   </div>
                 </div>
 
-                {/* Tour Button on Tablet/Desktop */}
-                <div className="hidden sm:flex items-center gap-3 flex-shrink-0">
+                {/* Direct Action Buttons on Tablet/Desktop */}
+                <div className="hidden sm:flex items-center gap-2.5 flex-shrink-0">
                   <button
-                    onClick={onOpenTourModal}
+                    type="button"
+                    onClick={openYouTube}
+                    className="px-4 py-2 sm:py-2.5 rounded-xl bg-[#FF0000] hover:bg-[#CC0000] text-white font-bold text-xs sm:text-sm shadow-lg transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap"
+                  >
+                    <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                    </svg>
+                    <span>{language === "ta" ? "YouTube-ல் திறக்க" : "Open in YouTube"}</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onOpenTourModal();
+                    }}
                     className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl bg-white text-[#0750B8] hover:bg-gray-100 font-bold text-xs sm:text-sm shadow-lg transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap"
                   >
                     <Calendar className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#F36B12]" />
@@ -238,64 +300,100 @@ export const CampusVideoShowcase: React.FC<CampusVideoShowcaseProps> = ({
             {playlist.map((track, idx) => {
               const isSelected = activeTrackIndex === idx;
               return (
-                <button
+                <div
                   key={track.id}
-                  onClick={() => setActiveTrackIndex(idx)}
-                  className={`p-3 sm:p-4 rounded-xl sm:rounded-2xl text-left transition-all duration-300 flex items-start gap-3 cursor-pointer ${
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setActiveTrackIndex(idx);
+                  }}
+                  className={`p-3 sm:p-4 rounded-xl sm:rounded-2xl text-left transition-all duration-300 flex items-start justify-between gap-3 cursor-pointer ${
                     isSelected
                       ? "bg-white border border-[#0750B8]/20 shadow-sm"
                       : "hover:bg-white/60 opacity-80 hover:opacity-100"
                   }`}
                 >
-                  <div
-                    className={`w-8 h-8 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5 ${
-                      isSelected
-                        ? "bg-[#0750B8] text-white shadow-md"
-                        : "bg-gray-200/80 text-[#5E6D7A]"
-                    }`}
-                  >
-                    {isSelected && isPlaying ? (
-                      <span className="flex gap-0.5 items-end h-3">
-                        <span className="w-0.5 sm:w-1 bg-white h-full animate-bounce" />
-                        <span className="w-0.5 sm:w-1 bg-white h-2/3 animate-bounce [animation-delay:0.2s]" />
-                        <span className="w-0.5 sm:w-1 bg-white h-4/5 animate-bounce [animation-delay:0.4s]" />
-                      </span>
-                    ) : (
-                      <Play className="w-3.5 h-3.5 fill-current ml-0.5" />
-                    )}
-                  </div>
-
-                  <div className="min-w-0">
-                    <div className="flex items-center gap-2">
-                      <span
-                        className={`text-[9px] sm:text-[10px] font-extrabold uppercase tracking-wider ${
-                          isSelected ? "text-[#0750B8]" : "text-[#5E6D7A]"
-                        }`}
-                      >
-                        {track.duration}
-                      </span>
-                    </div>
+                  <div className="flex items-start gap-3 min-w-0">
                     <div
-                      className={`font-bold text-xs sm:text-sm truncate mt-0.5 ${
-                        isSelected ? "text-[#0750B8]" : "text-[#121D28]"
+                      className={`w-8 h-8 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5 ${
+                        isSelected
+                          ? "bg-[#0750B8] text-white shadow-md"
+                          : "bg-gray-200/80 text-[#5E6D7A]"
                       }`}
                     >
-                      {track.title}
+                      {isSelected && isPlaying ? (
+                        <span className="flex gap-0.5 items-end h-3">
+                          <span className="w-0.5 sm:w-1 bg-white h-full animate-bounce" />
+                          <span className="w-0.5 sm:w-1 bg-white h-2/3 animate-bounce [animation-delay:0.2s]" />
+                          <span className="w-0.5 sm:w-1 bg-white h-4/5 animate-bounce [animation-delay:0.4s]" />
+                        </span>
+                      ) : (
+                        <Play className="w-3.5 h-3.5 fill-current ml-0.5" />
+                      )}
                     </div>
-                    <div className="text-[11px] sm:text-xs text-[#5E6D7A] line-clamp-1 mt-0.5">
-                      {track.subtitle}
+
+                    <div className="min-w-0">
+                      <div className="flex items-center gap-2">
+                        <span
+                          className={`text-[9px] sm:text-[10px] font-extrabold uppercase tracking-wider ${
+                            isSelected ? "text-[#0750B8]" : "text-[#5E6D7A]"
+                          }`}
+                        >
+                          {track.duration}
+                        </span>
+                      </div>
+                      <div
+                        className={`font-bold text-xs sm:text-sm truncate mt-0.5 ${
+                          isSelected ? "text-[#0750B8]" : "text-[#121D28]"
+                        }`}
+                      >
+                        {track.title}
+                      </div>
+                      <div className="text-[11px] sm:text-xs text-[#5E6D7A] line-clamp-1 mt-0.5">
+                        {track.subtitle}
+                      </div>
                     </div>
                   </div>
-                </button>
+
+                  {/* Direct YouTube click button on tab */}
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      openYouTube(e);
+                    }}
+                    title={language === "ta" ? "YouTube-ல் காண்க" : "Watch on YouTube"}
+                    className="p-2 rounded-lg bg-gray-100 hover:bg-[#FF0000] text-gray-600 hover:text-white transition-colors flex-shrink-0"
+                  >
+                    <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                    </svg>
+                  </button>
+                </div>
               );
             })}
           </div>
 
-          {/* Mobile Direct Action Button below tabs */}
-          <div className="p-3 bg-white border-t border-gray-100 sm:hidden">
+          {/* Mobile Direct Action Buttons below tabs */}
+          <div className="p-3 bg-white border-t border-gray-100 sm:hidden flex items-center gap-2">
             <button
-              onClick={onOpenTourModal}
-              className="w-full py-3 rounded-xl bg-[#0750B8] text-white font-bold text-xs shadow-md flex items-center justify-center gap-2"
+              type="button"
+              onClick={openYouTube}
+              className="flex-1 py-3 rounded-xl bg-[#FF0000] text-white font-bold text-xs shadow-md flex items-center justify-center gap-1.5"
+            >
+              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+              </svg>
+              <span>{language === "ta" ? "YouTube-ல் காண்க" : "Watch on YouTube"}</span>
+              <ExternalLink className="w-3 h-3" />
+            </button>
+
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                onOpenTourModal();
+              }}
+              className="flex-1 py-3 rounded-xl bg-[#0750B8] text-white font-bold text-xs shadow-md flex items-center justify-center gap-2"
             >
               <Calendar className="w-4 h-4 text-amber-300" />
               <span>{t.video.bookTour}</span>

@@ -40,7 +40,7 @@ export default function TuitionsPage() {
             ? "சிறந்த கற்றல். சிறந்த எதிர்காலம். LKG முதல் 12-ஆம் வகுப்பு வரை (CBSE, ICSE, Matric & State Board) அனைத்துப் பாடங்கள் மற்றும் பொறியியல் கணிதப் பயிற்சி (M1, M2, M3, M4)."
             : "Better Learning. Better Tomorrow. Brighter Future. Expert coaching for LKG to Grade 12 across ICSE, CBSE, and State Board syllabi, along with collegiate Engineering Mathematics."
         }
-        bannerImage="/school_images/1000449608.webp"
+        bannerImage="/school_images/sensory-ball-sorting-color-trays-coimbatore.webp"
         gradientTheme="blue"
       />
 
@@ -58,7 +58,9 @@ export default function TuitionsPage() {
               Tailored Coaching for Every Educational Board
             </h2>
             <p className="text-xs sm:text-sm md:text-base text-[#5E6D7A] mt-2">
-              We align our evening coaching sessions with each student&apos;s specific school curriculum for guaranteed academic mastery and top marks.
+              {language === "ta"
+                ? "காலை (5:00 – 7:00 AM) மற்றும் மாலை (5:00 – 9:30 PM) நேரங்களில் 8 ஆசிரியர்கள் வழிகாட்டலில் ஒவ்வொரு மாணவரின் பள்ளிப் பாடத்திட்டத்திற்கு ஏற்ப சிறந்த பயிற்சி அளிக்கப்படுகிறது."
+                : "We align our morning (5:00 – 7:00 AM) and evening (5:00 – 9:30 PM with 8 dedicated staff members) coaching sessions with each student's specific school curriculum for guaranteed academic mastery and top marks."}
             </p>
           </div>
 

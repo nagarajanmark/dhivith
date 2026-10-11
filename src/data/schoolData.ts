@@ -105,10 +105,14 @@ export const SCHOOL_INFO = {
   address: "S.F.Nos. 382/35, 382/36, S.K.Garden, Site Nos. 16,17, Vadapudur, Kinathukadavu",
   city: "Coimbatore - 641032, Tamil Nadu, India",
   fullAddress: "S.F.Nos. 382/35, 382/36, S.K.Garden, Site Nos. 16,17, Vadapudur, Kinathukadavu, Coimbatore - 641032",
-  hours: "Monday – Saturday: 8:30 AM – 7:30 PM (Pre-school + Tuition Batches)",
+  hours: "Monday – Saturday: 5:00 AM – 9:30 PM (Preschool + Morning & Evening Tuitions)",
   preschoolHours: "8:30 AM – 1:30 PM (Extended Day Care till 6:00 PM)",
-  tuitionHours: "4:00 PM – 7:30 PM (LKG to Grade 12 Coaching)",
+  tuitionMorning: "5:00 AM – 7:00 AM",
+  tuitionEvening: "5:00 PM – 9:30 PM",
+  tuitionStaffCount: "8 Dedicated Evening Staff Members",
+  tuitionHours: "Morning: 5:00 AM – 7:00 AM | Evening: 5:00 PM – 9:30 PM (8 Evening Staffs)",
   whatsapp: "917448981592",
+  youtube: "https://www.youtube.com/@DhivithEduCare",
   ratio: "1:6 Educator Ratio",
   accreditation: "Certified Montessori & Structured Multi-Board Education",
 };
@@ -147,7 +151,7 @@ export const PROGRAMS: Program[] = [
     color: "#0750B8",
     badgeBg: "bg-[#EBF3FF]",
     badgeText: "text-[#0750B8]",
-    image: "/school_images/1000223388.webp",
+    image: "/school_images/dhivith-daycare-preschool-haven-kinathukadavu.webp",
     curriculumHighlights: [
       "Sensory motor exploration and soft play zones",
       "Gentle storytelling, rhymes and musical circles",
@@ -194,7 +198,7 @@ export const PROGRAMS: Program[] = [
     color: "#F36B12",
     badgeBg: "bg-[#FFF2E8]",
     badgeText: "text-[#F36B12]",
-    image: "/school_images/1000227830.webp",
+    image: "/school_images/dhivith-playgroup-early-learning-coimbatore.webp",
     curriculumHighlights: [
       "Tactile color, shape and texture discovery",
       "Rhyme circles, fingerplays and puppet theater",
@@ -241,7 +245,7 @@ export const PROGRAMS: Program[] = [
     color: "#159447",
     badgeBg: "bg-[#EAF8EF]",
     badgeText: "text-[#159447]",
-    image: "/school_images/1000227847.webp",
+    image: "/school_images/dhivith-pre-kg-montessori-curriculum-pollachi.webp",
     curriculumHighlights: [
       "Tactile phonics and early blending sounds",
       "Number rods, spindle boxes and concept of zero",
@@ -288,7 +292,7 @@ export const PROGRAMS: Program[] = [
     color: "#F5B900",
     badgeBg: "bg-[#FFF9E5]",
     badgeText: "text-[#9A6700]",
-    image: "/school_images/1000228329.webp",
+    image: "/school_images/dhivith-lkg-kindergarten-foundation-palladam.webp",
     curriculumHighlights: [
       "Addition and place value up to thousands with golden beads",
       "Sight words, phonetic readers and creative storytelling",
@@ -335,7 +339,7 @@ export const PROGRAMS: Program[] = [
     color: "#0750B8",
     badgeBg: "bg-[#EBF3FF]",
     badgeText: "text-[#0750B8]",
-    image: "/school_images/1000245525.webp",
+    image: "/school_images/dhivith-ukg-primary-readiness-tirupur.webp",
     curriculumHighlights: [
       "Grammar boxes, parts of speech and story composition",
       "Fraction equivalence insets and geometric hierarchies",
@@ -429,7 +433,7 @@ export const LEARNING_AREAS: LearningArea[] = [
     accentColor: "#F36B12",
     bgLight: "rgba(243, 107, 18, 0.08)",
     iconName: "Sparkles",
-    image: "/school_images/1000264797.webp",
+    image: "/school_images/montessori-practical-life-motor-skills-kinathukadavu.webp",
     activities: [
       "Water pouring, table wiping & flower arranging",
       "Dressing frames & fine motor fasteners",
@@ -448,7 +452,7 @@ export const LEARNING_AREAS: LearningArea[] = [
     accentColor: "#0750B8",
     bgLight: "rgba(7, 80, 184, 0.08)",
     iconName: "Eye",
-    image: "/school_images/1000264802.webp",
+    image: "/school_images/montessori-sensorial-tactile-learning-coimbatore.webp",
     activities: [
       "Pink Tower & Broad Stairs spatial blocks",
       "Cylinder blocks & geometric solids",
@@ -467,7 +471,7 @@ export const LEARNING_AREAS: LearningArea[] = [
     accentColor: "#159447",
     bgLight: "rgba(21, 148, 71, 0.08)",
     iconName: "BookOpen",
-    image: "/school_images/1000306293.webp",
+    image: "/school_images/montessori-phonics-language-immersion-pollachi.webp",
     activities: [
       "Sandpaper letters tactile tracing",
       "Large wooden movable alphabet word building",
@@ -486,7 +490,7 @@ export const LEARNING_AREAS: LearningArea[] = [
     accentColor: "#D9A300",
     bgLight: "rgba(245, 185, 0, 0.12)",
     iconName: "Calculator",
-    image: "/school_images/1000309031.webp",
+    image: "/school_images/montessori-mathematics-number-reasoning-kinathukadavu.webp",
     activities: [
       "Red & blue numerical rods",
       "Golden bead decimal base-10 system",
@@ -505,7 +509,7 @@ export const LEARNING_AREAS: LearningArea[] = [
     accentColor: "#0750B8",
     bgLight: "rgba(7, 80, 184, 0.08)",
     iconName: "Globe",
-    image: "/school_images/1000364177.webp",
+    image: "/school_images/montessori-cultural-science-geography-tirupur.webp",
     activities: [
       "Wooden puzzle maps of continents & Tamil Nadu geography",
       "Botany leaf cabinets & live seedling tracking",
@@ -524,7 +528,7 @@ export const LEARNING_AREAS: LearningArea[] = [
     accentColor: "#F36B12",
     bgLight: "rgba(243, 107, 18, 0.08)",
     iconName: "Palette",
-    image: "/school_images/1000380645.webp",
+    image: "/school_images/montessori-creative-expression-art-palladam.webp",
     activities: [
       "Natural watercolor & gouache easels",
       "Pottery wheel & sensory clay sculpting",
@@ -542,7 +546,7 @@ export const ENVIRONMENT_HOTSPOTS: EnvironmentHotspot[] = [
     area: "Indoor Learning Spaces",
     description:
       "Flooded with diffuse natural daylight, non-toxic blonde wood furnishings, and open floor mats designed at the child's exact physical scale in Kinathukadavu.",
-    image: "/school_images/1000404467.webp",
+    image: "/school_images/sunlit-prepared-montessori-classroom-kinathukadavu.webp",
     features: [
       "Child-height open cedar shelving",
       "Ergonomic Finnish birch seating",
@@ -556,7 +560,7 @@ export const ENVIRONMENT_HOTSPOTS: EnvironmentHotspot[] = [
     area: "Cognitive Development",
     description:
       "Dedicated carpets for 3D geometric solids, golden bead decimal cabinets, and binominal cubes for sensory mathematical reasoning.",
-    image: "/school_images/1000404470.webp",
+    image: "/school_images/sensorial-geometry-math-sanctuary-coimbatore.webp",
     features: [
       "Isolated quiet concentration pods",
       "Complete AMI wooden material suite",
@@ -570,7 +574,7 @@ export const ENVIRONMENT_HOTSPOTS: EnvironmentHotspot[] = [
     area: "Linguistic Immersion",
     description:
       "Plush organic cotton floor cushions, forward-facing curated international picture books, and tactile phonics stations.",
-    image: "/school_images/1000410342.webp",
+    image: "/school_images/cozy-literature-reading-library-nook-pollachi.webp",
     features: [
       "Over 1,000+ age-graded picture books",
       "Audio listening and storytelling corner",
@@ -584,7 +588,7 @@ export const ENVIRONMENT_HOTSPOTS: EnvironmentHotspot[] = [
     area: "Outdoor Eco-Laboratory",
     description:
       "Raised herb beds, butterfly host plants, rain gauge stations, and child-safe gardening tools connecting students directly with earth's rhythms.",
-    image: "/school_images/1000438373.webp",
+    image: "/school_images/botanical-nature-garden-terrace-kinathukadavu.webp",
     features: [
       "Child-tended organic vegetable patch",
       "Sensory herbal smelling pathway",
@@ -598,7 +602,7 @@ export const ENVIRONMENT_HOTSPOTS: EnvironmentHotspot[] = [
     area: "Practical Life Hub",
     description:
       "Specially designed safe prep counters with functioning sinks at child height, allowing children to practice motor life skills autonomously.",
-    image: "/school_images/1000449027.webp",
+    image: "/school_images/child-sized-activity-culinary-studio-palladam.webp",
     features: [
       "Tempered safety utensils for small hands",
       "Filtered water pouring faucets",
@@ -614,7 +618,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     title: "Paper Cup Pyramid Stacking Activity",
     titleTa: "கப் அடுக்குதல் குழு விளையாட்டு",
     category: "Practical Life",
-    image: "/school_images/1000453992.webp",
+    image: "/school_images/paper-cup-pyramid-stacking-activity-kinathukadavu.webp",
     caption: "Children collaborating in a focused circle, stacking paper cups into pyramids to build patience and motor control.",
     captionTa: "குழந்தைகள் வட்டத்தில் அமர்ந்து கப்களை அடுக்கி கோபுரம் அமைக்கும் கூர்ந்த கவனப் பயிற்சி.",
   },
@@ -623,7 +627,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     title: "Sensory Ball Sorting & Color Trays",
     titleTa: "வண்ணப் பந்துகள் & நிற வரிசைப்படுத்துதல்",
     category: "Sensorial",
-    image: "/school_images/1000449608.webp",
+    image: "/school_images/sensory-ball-sorting-color-trays-coimbatore.webp",
     caption: "Interactive color classification and sensory exploration using colorful balls and labeled sorting trays.",
     captionTa: "வண்ணப் பந்துகளைத் தட்டுகளில் வகைப்படுத்தி நிறங்களை அடையாளம் காணும் தொடு உணர்வுப் பயிற்சி.",
   },
@@ -632,7 +636,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     title: "Montessori Number Rods & Math Sticks",
     titleTa: "மாண்டிசோரி வண்ணக் குச்சிகள் & எண்கணிதம்",
     category: "Classroom",
-    image: "/school_images/1000452018.webp",
+    image: "/school_images/montessori-number-rods-math-coaching-pollachi.webp",
     caption: "Hands-on numerical exploration using colored rods and geometric stick arrangements.",
     captionTa: "வண்ணக் குச்சிகள் கொண்டு எண்கள் மற்றும் வடிவ அமைப்புகளை சுயமாகக் கற்கும் மாணவர்கள்.",
   },
@@ -641,7 +645,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     title: "Turf Play & Group Outdoor Fun",
     titleTa: "பசுமைப் புல்வெளி விளையாட்டு & உடற்பயிற்சி",
     category: "Outdoor",
-    image: "/school_images/1000452097.webp",
+    image: "/school_images/safe-outdoor-turf-play-area-kinathukadavu.webp",
     caption: "Active physical movement and joyful social bonding on our safe, clean artificial turf area.",
     captionTa: "சுத்தமான பசுமை புல்வெளியில் குழந்தைகள் கூடி விளையாடி மகிழும் உடலியக்கப் பகுதி.",
   },
@@ -650,7 +654,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     title: "Montessori Self-Directed Work Cycle",
     titleTa: "சுய விருப்ப மாண்டிசோரி செய்முறை வகுப்பறை",
     category: "Classroom",
-    image: "/school_images/1000454520.webp",
+    image: "/school_images/montessori-self-directed-work-cycle-coimbatore.webp",
     caption: "Students independently choosing and exploring didactic Montessori learning apparatus on floor mats.",
     captionTa: "பாய்களில் அமர்ந்து தங்களுக்குப் பிடித்த மாண்டிசோரி கருவிகளை இயக்கி கற்கும் மாணவர்கள்.",
   },
@@ -659,7 +663,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     title: "Practical Life Pouring & Motor Skills",
     titleTa: "செய்முறை வாழ்வியல் & கைவிரல் ஒருங்கிணைப்பு",
     category: "Practical Life",
-    image: "/school_images/1000450316.webp",
+    image: "/school_images/practical-life-fine-motor-coordination-tirupur.webp",
     caption: "Everyday practical life exercises cultivating fine motor strength, grace, and independence.",
     captionTa: "குழந்தைகளின் கைவிரல் நரம்புத் திறன் மற்றும் தன்னம்பிக்கையை வளர்க்கும் செய்முறை பயிற்சிகள்.",
   },
@@ -668,7 +672,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     title: "Kidspire 2025 Student Achievement Awards",
     titleTa: "கிட்ஸ்பயர் 2025 சாதனை சான்றிதழ்கள்",
     category: "Creative",
-    image: "/school_images/1000501517.webp",
+    image: "/school_images/kidspire-student-achievement-awards-dhivith.webp",
     caption: "Proud young scholars displaying their achievement certificates at our annual Kidspire event.",
     captionTa: "கிட்ஸ்பயர் 2025 நிகழ்வில் பாராட்டுச் சான்றிதழ்களைப் பெற்று பெருமிதம் கொள்ளும் குழந்தைகள்.",
   },
@@ -677,7 +681,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     title: "Kidspire Annual Celebration & Stage Honors",
     titleTa: "கிட்ஸ்பயர் விழா & மேடை பாராட்டு",
     category: "Creative",
-    image: "/school_images/1000501518.webp",
+    image: "/school_images/kidspire-annual-celebration-stage-honors-kinathukadavu.webp",
     caption: "Recognizing student growth, participation, and early learning milestones at our annual day.",
     captionTa: "ஆண்டு விழா மேடையில் மாணவர்களின் தனித்திறமைகளை பாராட்டி உற்சாகப்படுத்தும் தருணம்.",
   },
@@ -686,7 +690,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     title: "Focused Evening Tuition Batches",
     titleTa: "மாலை நேர சிறப்பு டியூஷன் வகுப்புகள்",
     category: "Classroom",
-    image: "/school_images/1000227874.webp",
+    image: "/school_images/evening-tuition-batches-grade-1-to-12-pollachi.webp",
     caption: "Small batch coaching with personalized educator attention for school board subjects.",
     captionTa: "பள்ளி மாணவர்களுக்கான பாடவாரியான சந்தேகங்கள் தீர்க்கும் மாலை நேர வழிகாட்டல்.",
   },
@@ -695,7 +699,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     title: "Early Sensorial Discovery & Play",
     titleTa: "மழலையர் தொடு உணர்வு விளையாட்டு",
     category: "Sensorial",
-    image: "/school_images/1000227888.webp",
+    image: "/school_images/toddler-sensorial-discovery-wooden-toys-kinathukadavu.webp",
     caption: "Nurturing curiosity with tactile, open-ended educational materials for toddlers.",
     captionTa: "மழலையர் குழந்தைகளுக்கான தொடு உணர்வு மற்றும் சொல்லாற்றலை வளர்க்கும் பயிற்சி.",
   },
@@ -704,7 +708,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     title: "Wooden Alphabet Board & Letter Matching",
     titleTa: "மர எழுத்துப் பலகை & ஆங்கில எழுத்துப் பொருத்துதல்",
     category: "Classroom",
-    image: "/school_images/1000223395.webp",
+    image: "/school_images/wooden-alphabet-letter-matching-board-coimbatore.webp",
     caption: "Tactile letter recognition and motor grip placing carved wooden alphabets onto the board.",
     captionTa: "மர எழுத்து பலகையில் எழுத்துக்களைத் தொட்டுப் பார்த்து சரியாகப் பொருத்தும் பயிற்சி.",
   },
@@ -713,7 +717,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     title: "3D Animal Picture Cube Puzzle",
     titleTa: "முப்பரிமாண படக் கட்டை புதிர் அடுக்குதல்",
     category: "Sensorial",
-    image: "/school_images/1000223404.webp",
+    image: "/school_images/3d-animal-picture-cube-puzzle-blocks-palladam.webp",
     caption: "Spatial visualization and problem solving aligning multi-sided 3D animal picture wooden blocks.",
     captionTa: "விலங்கு படக் கட்டைகளை சுழற்றி சரியான படத்தை உருவாக்கும் முப்பரிமாண புதிர்.",
   },
@@ -722,7 +726,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     title: "Teacher Mentorship & Flashcard Nomenclature",
     titleTa: "ஆசிரியர் நேரடி வழிகாட்டல் & பட அட்டைப் பயிற்சி",
     category: "Classroom",
-    image: "/school_images/1000227870.webp",
+    image: "/school_images/montessori-teacher-guidance-nomenclature-kinathukadavu.webp",
     caption: "One-on-one educator guidance introducing vocabulary and animals through nomenclature cards.",
     captionTa: "ஆசிரியை குழந்தைகளுடன் அமர்ந்து பட அட்டைகள் மூலம் பெயர்களைக் கற்பிக்கும் காட்சி.",
   },
@@ -731,7 +735,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     title: "Creative Crayon Coloring & Art Table",
     titleTa: "வண்ணம் தீட்டும் வரை கலைப் பயிற்சி",
     category: "Creative",
-    image: "/school_images/1000591351.webp",
+    image: "/school_images/creative-crayon-drawing-coloring-art-tirupur.webp",
     caption: "Children developing tripod grip and imaginative colors using wax crayons on picture sheets.",
     captionTa: "வண்ண மெழுகுக் குச்சிகள் கொண்டு வரைபடங்களுக்கு அழகாக வண்ணம் தீட்டும் குழந்தைகள்.",
   },
@@ -740,7 +744,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     title: "Welcoming & Secure Campus Environment",
     titleTa: "பாதுகாப்பான & அன்பான பள்ளி வளாகம்",
     category: "Outdoor",
-    image: "/school_images/1000591345.webp",
+    image: "/school_images/dhivith-edu-care-school-campus-vadapudur-kinathukadavu.webp",
     caption: "Our cheerful, child-centric school campus located in Vadapudur, Kinathukadavu.",
     captionTa: "வடகாளூர், கிணத்துக்கடவில் அமைந்துள்ள தூய்மையான மழலையர் பள்ளி வளாகம்.",
   },
@@ -838,10 +842,17 @@ export const FAQS: FaqItem[] = [
 
 export const DAILY_RHYTHM = [
   {
+    time: "5:00 – 7:00 AM",
+    title: "Early Morning Tuition & Focus Batch",
+    description: "Deep study and problem-solving session for school Board exams, competitive tests, and Engineering Mathematics.",
+    icon: "Sunrise",
+    color: "#0750B8",
+  },
+  {
     time: "8:30 – 9:00 AM",
     title: "Welcoming & Graceful Entry",
     description: "Personal greeting at the door, changing into indoor footwear, self-directed cloakroom organization.",
-    icon: "Sunrise",
+    icon: "Sun",
     color: "#0750B8",
   },
   {
@@ -873,10 +884,151 @@ export const DAILY_RHYTHM = [
     color: "#0750B8",
   },
   {
-    time: "4:00 – 7:30 PM",
-    title: "Tuition Classes & Subject Coaching",
-    description: "Dedicated evening coaching batches for LKG to Grade 12 (CBSE/ICSE/State), Hindi, & Engineering Maths.",
+    time: "5:00 – 9:30 PM",
+    title: "Evening Tuition Batches (8 Dedicated Staffs)",
+    description: "Dedicated evening coaching for LKG to Grade 12 (CBSE/ICSE/State Board), Hindi, and Engineering Maths, guided by 8 dedicated evening staff members.",
     icon: "BookOpen",
     color: "#159447",
   },
 ];
+
+export interface StaffMember {
+  id: string;
+  name: string;
+  nameTa: string;
+  qualification: string;
+  role: string;
+  roleTa: string;
+  category: "Leadership" | "Teaching" | "Care";
+  categoryEn: string;
+  categoryTa: string;
+  bioEn: string;
+  bioTa: string;
+  image: string;
+  highlightsEn?: string[];
+  highlightsTa?: string[];
+}
+
+export const STAFF_MEMBERS: StaffMember[] = [
+  {
+    id: "s-tharani",
+    name: "Mrs. S. Tharani",
+    nameTa: "திருமதி. S. தாரணி",
+    qualification: "M.Sc., PGDM, PGMTTC",
+    role: "Founder & Educational Director | Montessori Kinathukadavu",
+    roleTa: "நிறுவனர் & கல்வி இயக்குநர் | மாண்டிசோரி கிணத்துக்கடவு",
+    category: "Leadership",
+    categoryEn: "Leadership & Director",
+    categoryTa: "தலைமை & கல்வி வழிகாட்டல்",
+    bioEn: "Specialized PGMTTC Montessori certified directress with dual postgraduate credentials, leading authentic Montessori pre-school education, foundational literacy, and collegiate mathematics coaching in Kinathukadavu, serving families across Coimbatore and Pollachi.",
+    bioTa: "PGMTTC மாண்டிசோரி சிறப்புச் சான்றிதழ் மற்றும் முதுகலை பட்டங்களுடன், கிணத்துக்கடவு, கோயம்புத்தூர், பொள்ளாச்சி பகுதி குழந்தைகளுக்கு உலகத்தரம் வாய்ந்த மழலையர் கல்வி மற்றும் கணிதப் பயிற்சியை வழிநடத்துகிறார்.",
+    image: "/teachers/mrs-s-tharani-founder-dhivith-edu-care-kinathukadavu.png",
+    highlightsEn: [
+      "PGMTTC Montessori Certified Master Trainer",
+      "M.Sc. & PGDM Postgraduate Credentials",
+      "Specialist in Early Child Development & Collegiate Maths",
+    ],
+    highlightsTa: [
+      "PGMTTC சான்றிதழ் பெற்ற மாண்டிசோரி முதன்மை பயிற்சியாளர்",
+      "M.Sc. மற்றும் PGDM முதுகலை பட்டதாரி",
+      "குழந்தை உளவியல் மற்றும் உயர் கணித சிறப்பு பயிற்றுநர்",
+    ],
+  },
+  {
+    id: "d-ramyadevi",
+    name: "Mrs. D. Ramyadevi",
+    nameTa: "திருமதி. D. ரம்யாதேவி",
+    qualification: "M.Sc., B.Ed",
+    role: "Kindergarten & Montessori Educator | Coimbatore & Kinathukadavu",
+    roleTa: "கே.ஜி & மாண்டிசோரி ஆசிரியை | கோயம்புத்தூர் & கிணத்துக்கடவு",
+    category: "Teaching",
+    categoryEn: "Kindergarten Faculty",
+    categoryTa: "மழலையர் பிரிவு ஆசிரியர்",
+    bioEn: "Qualified kindergarten and Montessori educator with M.Sc. and B.Ed credentials, dedicated to early childhood literacy, sensory arithmetic, and phonics readiness for pre-kg and kindergarten scholars across Kinathukadavu and South Coimbatore.",
+    bioTa: "M.Sc., B.Ed பட்டங்களுடன் கிணத்துக்கடவு மற்றும் கோவை பகுதி மழலையர் குழந்தைகளுக்கு அடிப்படை மொழி வளர்ச்சி, எண்கணிதம், ஃபோனிக்ஸ் ஒலிப்பியல் மற்றும் தொடு உணர்வு பயிற்சிகளை அன்புடன் வழங்கி வருகிறார்.",
+    image: "/teachers/mrs-d-ramyadevi-kg-montessori-teacher-kinathukadavu-coimbatore.webp",
+    highlightsEn: [
+      "M.Sc. & B.Ed Certified Educator",
+      "Early Childhood & KG Specialist",
+      "Phonics & Number Readiness Mentor",
+    ],
+    highlightsTa: [
+      "M.Sc., B.Ed சான்றிதழ் பெற்ற ஆசிரியர்",
+      "மழலையர் கல்வி மற்றும் கற்றல் சிறப்பு வழிகாட்டி",
+      "ஃபோனிக்ஸ் ஒலிப்பியல் & கணித தயார்நிலை வழிகாட்டி",
+    ],
+  },
+  {
+    id: "k-vinothini",
+    name: "Mrs. K. Vinothini",
+    nameTa: "திருமதி. K. விநோதினி",
+    qualification: "B.Sc., B.Ed",
+    role: "Play-Based Learning & KG Faculty | Pollachi & Kinathukadavu",
+    roleTa: "விளையாட்டு வழி கற்றல் & கே.ஜி ஆசிரியை | பொள்ளாச்சி & கிணத்துக்கடவு",
+    category: "Teaching",
+    categoryEn: "Kindergarten Faculty",
+    categoryTa: "மழலையர் பிரிவு ஆசிரியர்",
+    bioEn: "Dedicated kindergarten teacher with B.Sc. and B.Ed credentials, specialized in interactive play-based pedagogy, storytelling, and cognitive motor development for toddlers and young learners in the Kinathukadavu-Pollachi corridor.",
+    bioTa: "B.Sc., B.Ed பட்டங்களுடன், கிணத்துக்கடவு மற்றும் பொள்ளாச்சி சுற்றுவட்டாரக் குழந்தைகளுக்கு விளையாட்டு வழி கற்றல், அறிவாற்றல் வளர்ச்சி மற்றும் கதை சொல்லும் கலை மூலம் தன்னம்பிக்கை ஊட்டுகிறார்.",
+    image: "/teachers/mrs-k-vinothini-kindergarten-educator-pollachi-kinathukadavu.webp",
+    highlightsEn: [
+      "B.Sc. & B.Ed Qualified Teacher",
+      "Interactive Play-Based Pedagogy",
+      "Creative Art & Storytelling Facilitator",
+    ],
+    highlightsTa: [
+      "B.Sc., B.Ed தகுதி பெற்ற ஆசிரியர்",
+      "விளையாட்டு வழி மற்றும் செய்முறை கற்றல் வழிகாட்டி",
+      "கற்பனைத் திறன் & கதை சொல்லும் கலை பயிற்றுநர்",
+    ],
+  },
+  {
+    id: "k-eswari",
+    name: "Mrs. K. Eswari",
+    nameTa: "திருமதி. K. ஈஸ்வரி",
+    qualification: "Care Specialist",
+    role: "Day Care & Early Childhood Caregiver | Kinathukadavu",
+    roleTa: "டே கேர் & மழலையர் பராமரிப்பு சிறப்பு பணியாளர் | கிணத்துக்கடவு",
+    category: "Care",
+    categoryEn: "Day Care & Wellness Staff",
+    categoryTa: "பராமரிப்பு & டே கேர் பணியாளர்",
+    bioEn: "Loving and attentive daycare caregiver ensuring tender mother-like care, hygienic meal routines, restful nap times, and complete child safety for working parents across Kinathukadavu, Palladam, and Pollachi.",
+    bioTa: "கிணத்துக்கடவு, பல்லடம் மற்றும் பொள்ளாச்சி பகுதி பணிபுரியும் பெற்றோரின் குழந்தைகளுக்கு தாய் போன்ற அன்பு, சத்தான உணவு நேரம், சுகாதாரமான தூய்மை மற்றும் முழுமையான பாதுகாப்பை கனிவுடன் வழங்கி வருகிறார்.",
+    image: "/teachers/mrs-k-eswari-daycare-caregiver-specialist-kinathukadavu.jpg",
+    highlightsEn: [
+      "Attentive Infant & Toddler Caregiver",
+      "Nutritious Feeding & Rest Routine Support",
+      "Strict Hygiene & Child Wellness Focus",
+    ],
+    highlightsTa: [
+      "அன்பான மழலையர் பராமரிப்பு சிறப்பு பணியாளர்",
+      "சத்தான உணவு & அமைதியான தூக்க நேர பராமரிப்பு",
+      "உயரிய சுகாதார தூய்மை மற்றும் கனிவான கவனிப்பு",
+    ],
+  },
+  {
+    id: "s-rajamanickam",
+    name: "Mr. S. Rajamanickam",
+    nameTa: "திரு. S. ராஜமாணிக்கம்",
+    qualification: "Campus Care & Support",
+    role: "Campus Safety & Child Caretaker | Vadapudur Campus",
+    roleTa: "வளாகப் பாதுகாப்பு & மாணவர் பராமரிப்பாளர் | வடபுதூர் வளாகம்",
+    category: "Care",
+    categoryEn: "Campus Safety & Care",
+    categoryTa: "வளாகப் பராமரிப்பு",
+    bioEn: "Vigilant and dependable caretaker dedicated to child safety, CCTV-monitored campus tidiness, smooth daily operations, and a secure learning environment at our Vadapudur campus in Kinathukadavu.",
+    bioTa: "கிணத்துக்கடவு வடபுதூர் பள்ளி வளாகத்தின் முழுமையான பாதுகாப்பு, தூய்மை மற்றும் அன்றாட செயல்பாடுகளை அர்ப்பணிப்புடன் கவனித்துக் கொண்டு சிறந்த சூழலை உறுதி செய்கிறார்.",
+    image: "/teachers/mr-s-rajamanickam-campus-safety-caretaker-vadapudur.webp",
+    highlightsEn: [
+      "Dedicated Campus Caretaker",
+      "Child Safety & Secure Premises",
+      "Hygiene & Facility Support",
+    ],
+    highlightsTa: [
+      "அர்ப்பணிப்புமிக்க வளாகப் பராமரிப்பாளர்",
+      "குழந்தைகளின் வளாக பாதுகாப்பு உறுதி",
+      "தூய்மை மற்றும் உதவிப் பணிகள்",
+    ],
+  },
+];
+

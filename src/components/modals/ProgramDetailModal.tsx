@@ -54,7 +54,7 @@ export const ProgramDetailModal: React.FC<ProgramDetailModalProps> = ({
         <div className="relative h-64 sm:h-72 w-full flex-shrink-0">
           <Image
             src={program.image}
-            alt={progName}
+            alt={`${progName} (${program.ageRange}) - Dhivith Edu Care Kinathukadavu Coimbatore`}
             fill
             className="object-cover"
             sizes="(max-width: 768px) 100vw, 800px"

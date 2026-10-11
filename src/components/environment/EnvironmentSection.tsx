@@ -62,7 +62,7 @@ export const EnvironmentSection: React.FC = () => {
             <div className="relative h-72 sm:h-96 w-full rounded-2xl overflow-hidden shadow-md bg-[#121D28] mb-6">
               <Image
                 src={activeHotspot.image}
-                alt={activeHotspot.title}
+                alt={`${activeHotspot.title} - Prepared Learning Space at Dhivith Edu Care Kinathukadavu Coimbatore`}
                 fill
                 className="object-cover transition-transform duration-700 hover:scale-105"
                 sizes="(max-width: 1024px) 100vw, 700px"
@@ -115,7 +115,7 @@ export const EnvironmentSection: React.FC = () => {
                   <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-xl overflow-hidden flex-shrink-0 bg-[#121D28]">
                     <Image
                       src={item.image}
-                      alt={item.title}
+                      alt={`${item.title} - Dhivith Edu Care Campus Kinathukadavu`}
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-500"
                       sizes="100px"

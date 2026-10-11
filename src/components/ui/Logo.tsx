@@ -47,7 +47,7 @@ export const Logo: React.FC<LogoProps> = ({
       <div className={`relative flex-shrink-0 ${currentSize.container} aspect-square transition-transform duration-500 group-hover:scale-105`}>
         <Image
           src="/logo.png"
-          alt="DHIVITH EDU CARE - A Montessori Pre-School"
+          alt="DHIVITH EDU CARE - Montessori Pre-School & Tuitions in Kinathukadavu, Coimbatore"
           width={currentSize.image}
           height={currentSize.image}
           priority
