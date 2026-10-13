@@ -2,9 +2,9 @@ const fs = require('fs');
 const path = require('path');
 
 const TEACHER_MAP = {
-  'ramyadevi.webp': 'mrs-d-ramyadevi-kg-montessori-teacher-kinathukadavu-coimbatore.webp',
-  'vinothini.webp': 'mrs-k-vinothini-kindergarten-educator-pollachi-kinathukadavu.webp',
-  'eswari.jpg': 'mrs-k-eswari-daycare-caregiver-specialist-kinathukadavu.jpg',
+  'eswari.webp': 'mrs-d-eswari-kg-montessori-teacher-kinathukadavu-coimbatore.webp',
+  'ramyadevi.webp': 'mrs-k-ramyadevi-kindergarten-educator-pollachi-kinathukadavu.webp',
+  'vinothini.jpg': 'mrs-k-vinothini-daycare-caregiver-specialist-kinathukadavu.jpg',
   'rajamanickam.webp': 'mr-s-rajamanickam-campus-safety-caretaker-vadapudur.webp',
 };
 

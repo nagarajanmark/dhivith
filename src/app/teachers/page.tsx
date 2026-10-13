@@ -34,7 +34,7 @@ const teachersJsonLd = {
         name: "DHIVITH EDU CARE",
         url: siteConfig.url,
       },
-      hasCredential: "M.Sc., PGDM, PGMTTC",
+      hasCredential: "M.Sc., PGDPM, PGDNTTC",
       image: `${siteConfig.url}/teachers/mrs-s-tharani-founder-dhivith-edu-care-kinathukadavu.png`,
       workLocation: "Kinathukadavu, Coimbatore, Tamil Nadu",
       knowsAbout: ["Montessori Pedagogy", "Early Child Development", "Collegiate Mathematics Coaching"],
@@ -42,57 +42,57 @@ const teachersJsonLd = {
     {
       "@type": "Person",
       name: "Mrs. D. Ramyadevi",
-      jobTitle: "Kindergarten & Montessori Educator",
+      jobTitle: "KG Teacher",
       worksFor: {
         "@type": "EducationalOrganization",
         name: "DHIVITH EDU CARE",
         url: siteConfig.url,
       },
-      hasCredential: "M.Sc., B.Ed",
-      image: `${siteConfig.url}/teachers/mrs-d-ramyadevi-kg-montessori-teacher-kinathukadavu-coimbatore.webp`,
-      workLocation: "Kinathukadavu, Coimbatore, Tamil Nadu",
-      knowsAbout: ["Kindergarten Education", "Early Phonics", "Montessori Arithmetic"],
-    },
-    {
-      "@type": "Person",
-      name: "Mrs. K. Vinothini",
-      jobTitle: "Play-Based Learning & Kindergarten Faculty",
-      worksFor: {
-        "@type": "EducationalOrganization",
-        name: "DHIVITH EDU CARE",
-        url: siteConfig.url,
-      },
-      hasCredential: "B.Sc., B.Ed",
-      image: `${siteConfig.url}/teachers/mrs-k-vinothini-kindergarten-educator-pollachi-kinathukadavu.webp`,
+      hasCredential: "M.Sc., B.Ed.",
+      image: `${siteConfig.url}/teachers/mrs-k-ramyadevi-kindergarten-educator-pollachi-kinathukadavu.webp`,
       workLocation: "Kinathukadavu, Pollachi, Tamil Nadu",
       knowsAbout: ["Play-Based Learning", "Toddler Development", "Storytelling & Creative Art"],
     },
     {
       "@type": "Person",
+      name: "Mrs. K. Vinothini",
+      jobTitle: "KG Teacher",
+      worksFor: {
+        "@type": "EducationalOrganization",
+        name: "DHIVITH EDU CARE",
+        url: siteConfig.url,
+      },
+      hasCredential: "B.Sc., B.Ed.",
+      image: `${siteConfig.url}/teachers/mrs-k-vinothini-daycare-caregiver-specialist-kinathukadavu.jpg`,
+      workLocation: "Kinathukadavu, Tamil Nadu",
+      knowsAbout: ["Kindergarten Education", "Early Childhood Pedagogy", "Phonics & Play-Based Learning"],
+    },
+    {
+      "@type": "Person",
       name: "Mrs. K. Eswari",
-      jobTitle: "Day Care & Early Childhood Caregiver",
+      jobTitle: "Care Taker / Day Care Staff",
       worksFor: {
         "@type": "EducationalOrganization",
         name: "DHIVITH EDU CARE",
         url: siteConfig.url,
       },
       hasCredential: "Care Specialist",
-      image: `${siteConfig.url}/teachers/mrs-k-eswari-daycare-caregiver-specialist-kinathukadavu.jpg`,
-      workLocation: "Kinathukadavu, Tamil Nadu",
-      knowsAbout: ["Infant & Toddler Care", "Hygiene & Feeding Routines", "Day Care Operations"],
+      image: `${siteConfig.url}/teachers/mrs-d-eswari-kg-montessori-teacher-kinathukadavu-coimbatore.webp`,
+      workLocation: "Kinathukadavu, Coimbatore, Tamil Nadu",
+      knowsAbout: ["Day Care Operations", "Hygiene & Feeding Routines", "Tender Child Care"],
     },
     {
       "@type": "Person",
-      name: "Mr. S. Rajamanickam",
-      jobTitle: "Campus Safety & Child Caretaker",
+      name: "Mrs. S. Rajamanickam",
+      jobTitle: "Care Taker",
       worksFor: {
         "@type": "EducationalOrganization",
         name: "DHIVITH EDU CARE",
         url: siteConfig.url,
       },
-      image: `${siteConfig.url}/teachers/mr-s-rajamanickam-campus-safety-caretaker-vadapudur.webp`,
+      image: `${siteConfig.url}/teachers/mrs-s-rajamanickam-care-taker-vadapudur.jpg`,
       workLocation: "Vadapudur, Kinathukadavu, Tamil Nadu",
-      knowsAbout: ["Campus Safety", "Facility Maintenance", "Child Security"],
+      knowsAbout: ["Child Safety & Care", "Motherly Supervision", "Campus Tidiness"],
     },
   ],
 };
@@ -121,8 +121,8 @@ export default function TeachersPage() {
         }
         description={
           language === "ta"
-            ? "PGMTTC சான்றிதழ் பெற்ற மாண்டிசோரி வழிகாட்டி, தகுதிவாய்ந்த மழலையர் பள்ளி ஆசிரியைகள் மற்றும் அரவணைக்கும் டே கேர் பணியாளர்கள் குழு."
-            : "Meet our PGMTTC Montessori certified directress, qualified postgraduate and B.Ed KG educators, and tender daycare caregivers dedicated to your child's holistic growth."
+            ? "PGDNTTC சான்றிதழ் பெற்ற மாண்டிசோரி வழிகாட்டி, தகுதிவாய்ந்த மழலையர் பள்ளி ஆசிரியைகள் மற்றும் அரவணைக்கும் டே கேர் பணியாளர்கள் குழு."
+            : "Meet our PGDNTTC Montessori certified directress, qualified postgraduate and B.Ed KG educators, and tender daycare caregivers dedicated to your child's holistic growth."
         }
         bannerImage="/teachers/mrs-s-tharani-founder-dhivith-edu-care-kinathukadavu.png"
         gradientTheme="blue"
@@ -176,7 +176,7 @@ export default function TeachersPage() {
                   <Users className="w-6 h-6" />
                 </div>
                 <h3 className="font-display font-bold text-lg text-[#0F172A] mb-2">
-                  {language === "ta" ? "1:6 தனிநபர் விகிதம்" : "1:6 Teacher-Child Ratio"}
+                  {language === "ta" ? "1:10 தனிநபர் விகிதம்" : "1:10 Teacher-Child Ratio"}
                 </h3>
                 <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
                   {language === "ta"

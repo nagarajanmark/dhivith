@@ -112,8 +112,8 @@ export default function ProgramsPage() {
               </h3>
               <p className="text-xs text-[#5E6D7A] leading-relaxed">
                 {language === "ta"
-                  ? "1:6 ஆசிரியர் கவனத்தில் உங்கள் குழந்தை சுயபராமரிப்பு, மொழி, எளிய கணிதம் மற்றும் நட்புறவுப் பிணைப்பை வளர்த்துக் கொள்கிறது."
-                  : "Your child builds self-care, language, math logic, and peer friendships under our close 1:6 educator guidance."}
+                  ? "1:10 ஆசிரியர் கவனத்தில் உங்கள் குழந்தை சுயபராமரிப்பு, மொழி, எளிய கணிதம் மற்றும் நட்புறவுப் பிணைப்பை வளர்த்துக் கொள்கிறது."
+                  : "Your child builds self-care, language, math logic, and peer friendships under our close 1:10 educator guidance."}
               </p>
             </div>
           </div>

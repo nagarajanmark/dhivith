@@ -13,6 +13,7 @@ import {
   Users,
   ChevronRight,
   MessageCircle,
+  LucideIcon,
 } from "lucide-react";
 import { STAFF_MEMBERS, StaffMember, SCHOOL_INFO } from "@/data/schoolData";
 import { useLanguage } from "@/context/LanguageContext";
@@ -21,59 +22,98 @@ interface TeamMembersSectionProps {
   onOpenTourModal: () => void;
 }
 
-// Dhivith Edu Care brand theme palette for each faculty member
-const DHIVITH_BRAND_PALETTES = [
-  {
+interface FacultyPalette {
+  cardBg: string;
+  accentYellow: string;
+  badgeBg: string;
+  roleIcon: LucideIcon;
+  roleColor: string;
+  specialtyEn: string;
+  specialtyTa: string;
+}
+
+// Dhivith Edu Care brand theme palette for each faculty member (keyed by staff ID)
+const DHIVITH_BRAND_PALETTES: Record<string, FacultyPalette> = {
+  "s-tharani": {
     // Mrs. S. Tharani - Brand Royal Blue
     cardBg: "#0750B8",
     accentYellow: "#F5B900",
     badgeBg: "rgba(255, 255, 255, 0.25)",
     roleIcon: Award,
     roleColor: "#FDE047",
-    specialtyEn: "Montessori & Collegiate Maths",
-    specialtyTa: "மாண்டிசோரி & உயர் கணிதம்",
+    specialtyEn: "Founder & Educational Director",
+    specialtyTa: "நிறுவனர் & கல்வி இயக்குநர்",
   },
-  {
+  "d-ramyadevi": {
     // Mrs. D. Ramyadevi - Brand Nature Green
     cardBg: "#159447",
     accentYellow: "#F5B900",
     badgeBg: "rgba(255, 255, 255, 0.25)",
     roleIcon: GraduationCap,
     roleColor: "#BFDBFE",
-    specialtyEn: "Phonics & Sensorial Arithmetic",
-    specialtyTa: "ஃபோனிக்ஸ் & எண்கணிதம்",
+    specialtyEn: "KG Teacher",
+    specialtyTa: "கே.ஜி ஆசிரியை",
   },
-  {
+  "k-vinothini": {
     // Mrs. K. Vinothini - Brand Warm Orange
     cardBg: "#F36B12",
     accentYellow: "#F5B900",
     badgeBg: "rgba(255, 255, 255, 0.25)",
     roleIcon: Sparkles,
     roleColor: "#FEF08A",
-    specialtyEn: "Play Pedagogy & Storytelling",
-    specialtyTa: "விளையாட்டு வழி & கதை கலை",
+    specialtyEn: "KG Teacher",
+    specialtyTa: "கே.ஜி ஆசிரியை",
   },
-  {
+  "k-eswari": {
     // Mrs. K. Eswari - Brand Amber / Honey Gold
     cardBg: "#D97706",
     accentYellow: "#F5B900",
     badgeBg: "rgba(255, 255, 255, 0.25)",
     roleIcon: Heart,
     roleColor: "#FECDD3",
-    specialtyEn: "Infant Care & Nutrition Wellness",
-    specialtyTa: "மழலையர் நலம் & பராமரிப்பு",
+    specialtyEn: "Care Taker / Day Care Staff",
+    specialtyTa: "பராமரிப்பு & டே கேர் பணியாளர்",
   },
-  {
-    // Mr. S. Rajamanickam - Brand Deep Charcoal / Navy
+  "s-rajamanickam": {
+    // Mrs. S. Rajamanickam - Brand Deep Charcoal / Navy
     cardBg: "#1E293B",
     accentYellow: "#F5B900",
     badgeBg: "rgba(255, 255, 255, 0.25)",
     roleIcon: ShieldCheck,
     roleColor: "#A7F3D0",
-    specialtyEn: "Child Safety & Campus Security",
-    specialtyTa: "வளாக தூய்மை & பாதுகாப்பு",
+    specialtyEn: "Care Taker",
+    specialtyTa: "வளாகப் பராமரிப்பாளர்",
   },
-];
+  // Backward compatibility aliases
+  "k-ramyadevi": {
+    cardBg: "#159447",
+    accentYellow: "#F5B900",
+    badgeBg: "rgba(255, 255, 255, 0.25)",
+    roleIcon: GraduationCap,
+    roleColor: "#BFDBFE",
+    specialtyEn: "KG Teacher",
+    specialtyTa: "கே.ஜி ஆசிரியை",
+  },
+  "d-eswari": {
+    cardBg: "#D97706",
+    accentYellow: "#F5B900",
+    badgeBg: "rgba(255, 255, 255, 0.25)",
+    roleIcon: Heart,
+    roleColor: "#FECDD3",
+    specialtyEn: "Care Taker / Day Care Staff",
+    specialtyTa: "பராமரிப்பு & டே கேர் பணியாளர்",
+  },
+};
+
+const DEFAULT_PALETTE: FacultyPalette = {
+  cardBg: "#0750B8",
+  accentYellow: "#F5B900",
+  badgeBg: "rgba(255, 255, 255, 0.25)",
+  roleIcon: Award,
+  roleColor: "#FDE047",
+  specialtyEn: "Educator",
+  specialtyTa: "ஆசிரியர்",
+};
 
 export const TeamMembersSection: React.FC<TeamMembersSectionProps> = ({
   onOpenTourModal,
@@ -132,7 +172,7 @@ export const TeamMembersSection: React.FC<TeamMembersSectionProps> = ({
           {/* Description */}
           <p className="text-xs sm:text-sm md:text-base text-gray-600 mt-3 leading-relaxed max-w-2xl mx-auto font-normal">
             {language === "ta"
-              ? "PGMTTC மாண்டிசோரி சிறப்புச் சான்றிதழ் பெற்ற கல்வி இயக்குநர், தகுதிவாய்ந்த மழலையர் பள்ளி ஆசிரியைகள் மற்றும் தாய் போன்ற அரவணைப்பு தரும் பராமரிப்புப் பணியாளர்கள்."
+              ? "PGDNTTC மாண்டிசோரி சிறப்புச் சான்றிதழ் பெற்ற கல்வி இயக்குநர், தகுதிவாய்ந்த மழலையர் பள்ளி ஆசிரியைகள் மற்றும் தாய் போன்ற அரவணைப்பு தரும் பராமரிப்புப் பணியாளர்கள்."
               : t.team.description}
           </p>
 
@@ -180,7 +220,7 @@ export const TeamMembersSection: React.FC<TeamMembersSectionProps> = ({
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 xl:gap-6 max-w-7xl mx-auto">
           {filteredMembers.map((member) => {
             const originalIndex = STAFF_MEMBERS.findIndex((m) => m.id === member.id);
-            const palette = DHIVITH_BRAND_PALETTES[originalIndex % DHIVITH_BRAND_PALETTES.length];
+            const palette = DHIVITH_BRAND_PALETTES[member.id] || DEFAULT_PALETTE;
             const Icon = palette.roleIcon;
 
             return (
@@ -286,8 +326,8 @@ export const TeamMembersSection: React.FC<TeamMembersSectionProps> = ({
             <div>
               <h4 className="font-display font-bold text-base sm:text-lg text-[#0F172A]">
                 {language === "ta"
-                  ? "1:6 ஆசிரியர் - குழந்தை விகிதம் & அன்பான பாதுகாப்பு"
-                  : "1:6 Personal Educator Ratio & Certified Montessori Pedagogy"}
+                  ? "1:10 ஆசிரியர் - குழந்தை விகிதம் & அன்பான பாதுகாப்பு"
+                  : "1:10 Personal Educator Ratio & Certified Montessori Pedagogy"}
               </h4>
               <p className="text-xs sm:text-sm text-gray-500 mt-0.5">
                 {language === "ta"

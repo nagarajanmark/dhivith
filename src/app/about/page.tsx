@@ -118,7 +118,7 @@ export default function AboutPage() {
 
                 <div className="bg-white/15 hover:bg-white/20 backdrop-blur-md rounded-2xl p-4 sm:p-5 border border-white/20 text-center shadow-md transition-all hover:scale-102">
                   <div className="font-display font-black text-2xl sm:text-3xl text-emerald-300 mb-0.5">
-                    1:6
+                    1:10
                   </div>
                   <div className="text-[11px] sm:text-xs font-semibold text-white/90">
                     {language === "ta" ? "தனிநபர் வழிகாட்டல்" : "Teacher-Student Ratio"}

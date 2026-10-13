@@ -116,7 +116,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenTourModal }) => 
                   <ShieldCheck className="w-4 h-4" />
                 </div>
                 <div className="text-left">
-                  <div className="text-xs font-bold text-[#121D28]">1:6 Ratio</div>
+                  <div className="text-xs font-bold text-[#121D28]">1:10 Ratio</div>
                   <div className="text-[11px] text-[#5E6D7A]">Individual Focus</div>
                 </div>
               </div>

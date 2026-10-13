@@ -2,17 +2,17 @@ import type { Metadata } from "next";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: "Certified Teachers & Faculty | Mrs. S Tharani, Mrs. D Ramyadevi, Mrs. K Vinothini | DHIVITH EDU CARE",
+  title: "Certified Teachers & Staff | Mrs. S Tharani, Mrs. D Ramyadevi, Mrs. K Vinothini, Mrs. K Eswari | DHIVITH EDU CARE",
   description:
-    "Meet our qualified teachers at DHIVITH EDU CARE in Kinathukadavu, Coimbatore: Mrs. S Tharani (Founder & PGMTTC Montessori Director), Mrs. D Ramyadevi (M.Sc., B.Ed Kindergarten Educator), Mrs. K Vinothini (B.Sc., B.Ed Play-Based Learning Faculty), Mrs. K Eswari (Day Care Specialist), and Mr. S Rajamanickam (Campus Safety Caretaker).",
+    "Meet our qualified educators and dedicated staff at DHIVITH EDU CARE in Kinathukadavu, Coimbatore: Mrs. S Tharani (Founder & Educational Director, M.Sc., PGDPM, PGDNTTC), Mrs. D Ramyadevi (KG Teacher, M.Sc., B.Ed.), Mrs. K Vinothini (KG Teacher, B.Sc., B.Ed.), Mrs. K Eswari (Care Taker / Day Care Staff), and Mrs. S Rajamanickam (Care Taker).",
   keywords: [
-    "Mrs S Tharani Founder Montessori Director",
-    "Mrs D Ramyadevi KG Teacher Coimbatore",
-    "Mrs K Vinothini Kindergarten Educator Pollachi",
-    "Mrs K Eswari Day Care Caregiver Kinathukadavu",
-    "Mr S Rajamanickam Campus Caretaker Vadapudur",
+    "Mrs S Tharani Founder Educational Director",
+    "Mrs D Ramyadevi KG Teacher Kinathukadavu",
+    "Mrs K Vinothini KG Teacher Coimbatore",
+    "Mrs K Eswari Care Taker Day Care Staff",
+    "Mrs S Rajamanickam Care Taker Vadapudur",
     "Montessori Teachers Kinathukadavu",
-    "PGMTTC Certified Teachers Coimbatore",
+    "PGDNTTC Certified Teachers Coimbatore",
     "Play School Faculty Pollachi",
     "Preschool Teachers Palladam Tirupur",
     "Dhivith Edu Care Teaching Staff",

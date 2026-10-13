@@ -23,7 +23,7 @@ export const WhyChooseUs: React.FC = () => {
   const pillars = [
     {
       icon: <Users className="w-6 h-6 text-[#0750B8]" />,
-      title: language === "ta" ? "1:6 ஆசிரியர்-மாணவர் விகிதம்" : "Intimate 1:6 Educator Ratio",
+      title: language === "ta" ? "1:10 ஆசிரியர்-மாணவர் விகிதம்" : "Intimate 1:10 Educator Ratio",
       description:
         language === "ta"
           ? "ஒவ்வொரு குழந்தைக்கும் சான்றளிக்கப்பட்ட மாண்டிசோரி ஆசிரியர்களால் தனிநபர் கவனிப்பு மற்றும் கற்றல் திட்டங்கள்."

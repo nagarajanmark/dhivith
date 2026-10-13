@@ -171,7 +171,7 @@ export default function ClassesPage() {
                 {language === "ta" ? "ஆரம்பப் பள்ளி வகுப்புகள் (டே கேர் முதல் UKG வரை)" : "Early Childhood Classes (Day Care to UKG)"}
               </h2>
               <p className="text-xs sm:text-sm md:text-base text-[#5E6D7A] mt-2">
-                {language === "ta" ? "சான்றளிக்கப்பட்ட மாண்டிசோரி வகுப்பறைகள் மற்றும் 1:6 தனிநபர் ஆசிரியர் கவனம்." : "Certified Montessori environments with 1:6 individual educator attention."}
+                {language === "ta" ? "சான்றளிக்கப்பட்ட மாண்டிசோரி வகுப்பறைகள் மற்றும் 1:10 தனிநபர் ஆசிரியர் கவனம்." : "Certified Montessori environments with 1:10 individual educator attention."}
               </p>
             </div>
 

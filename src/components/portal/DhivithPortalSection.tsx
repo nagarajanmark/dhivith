@@ -150,7 +150,7 @@ export const DhivithPortalSection: React.FC<DhivithPortalSectionProps> = ({ onOp
                   02
                 </div>
                 <h3 className="font-display font-bold text-lg text-white mb-1.5">
-                  1:6 Educator Ratio
+                  1:10 Educator Ratio
                 </h3>
                 <p className="text-xs sm:text-sm text-white/75 leading-relaxed">
                   Intimate individual attention ensuring no child is left behind or forced into arbitrary paces.

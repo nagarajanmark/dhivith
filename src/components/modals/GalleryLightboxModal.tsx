@@ -227,7 +227,7 @@ export const GalleryLightboxModal: React.FC<GalleryLightboxModalProps> = ({
               </span>
               <span className="hidden sm:inline-flex items-center gap-1 text-[11px] sm:text-xs text-emerald-700 bg-[#EAF8EF] px-2.5 py-0.5 rounded-full font-semibold border border-[#159447]/20">
                 <Sparkles className="w-3.5 h-3.5 text-amber-500" />
-                {language === "ta" ? "1:6 ஆசிரியர்-மாணவர் விகிதம்" : "Small Batch (1:6 Ratio)"}
+                {language === "ta" ? "1:10 ஆசிரியர்-மாணவர் விகிதம்" : "Small Batch (1:10 Ratio)"}
               </span>
             </div>
           </div>

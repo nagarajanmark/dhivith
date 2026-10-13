@@ -219,7 +219,7 @@ export const WhoWeAreSection: React.FC<WhoWeAreSectionProps> = ({
           ref={statsRef}
           className="mt-14 sm:mt-16 pt-8 border-t border-gray-100 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6"
         >
-          {/* Card 1: 1:6 Ratio */}
+          {/* Card 1: 1:10 Ratio */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isStatsInView ? { opacity: 1, y: 0 } : {}}
