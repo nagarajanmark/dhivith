@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: "Tuitions (Grade 1-12) & Engineering Maths Coaching | Kinathukadavu, Pollachi, Palladam, Tirupur",
+  title: "Tuition Centre (Class 1-12) & Engineering Maths in Kinathukadavu",
   description:
-    "Expert coaching for LKG to Grade 12 (CBSE, ICSE & Tamil Nadu State Board) across all subjects, plus collegiate Engineering Mathematics (M1, M2, M3, M4) at DHIVITH EDU CARE, Kinathukadavu. Morning (5-7 AM) and Evening (5-9:30 PM) batches with 8 specialized staff members.",
+    "All-subject school tuitions for Classes 1-12 (CBSE, ICSE, State Board) and Engineering Mathematics coaching (M1-M4) in Kinathukadavu. Morning and evening batches.",
   keywords: [
-    "Tuition Centre Kinathukadavu",
+    "Tuition centre in Kinathukadavu",
     "Tuition Classes near Pollachi",
     "Engineering Mathematics Tuition Coimbatore",
     "Engineering Maths Coaching Pollachi",
@@ -14,18 +14,23 @@ export const metadata: Metadata = {
     "CBSE Tuitions Kinathukadavu",
     "Class 10 12 Maths Tuition Coimbatore",
     "State Board Tuition Palladam",
-    "Tuition Centre Tirupur",
-    "Mathematics Tuition Centre Pollachi",
   ],
   alternates: {
     canonical: `${siteConfig.url}/tuitions`,
   },
   openGraph: {
-    title: "Tuitions & Engineering Mathematics | DHIVITH EDU CARE Kinathukadavu",
+    title: "Tuition Centre & Engineering Maths | Dhivith Edu Care",
     description:
-      "All-subject school tuitions (CBSE/ICSE/State Board) & Engineering Mathematics Coaching serving Kinathukadavu, Pollachi, Coimbatore, Palladam & Tirupur.",
+      "All-subject school tuitions (CBSE/ICSE/State Board) & Engineering Mathematics coaching (M1-M4) in Kinathukadavu.",
     url: `${siteConfig.url}/tuitions`,
-    images: ["/school_images/sensory-ball-sorting-color-trays-coimbatore.webp"],
+    images: [`${siteConfig.url}/school_images/sensory-ball-sorting-color-trays-coimbatore.webp`],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Tuition Centre & Engineering Maths | Dhivith Edu Care",
+    description:
+      "All-subject school tuitions for Classes 1-12 (CBSE, ICSE, State Board) and Engineering Mathematics coaching in Kinathukadavu.",
+    images: [`${siteConfig.url}/school_images/sensory-ball-sorting-color-trays-coimbatore.webp`],
   },
 };
 

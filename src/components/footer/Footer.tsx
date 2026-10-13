@@ -84,8 +84,8 @@ export const Footer: React.FC<FooterProps> = ({ onOpenTourModal }) => {
               </span>
             </div>
 
-            {/* Verified Accreditation Badges */}
-            <div className="flex items-center gap-2.5 pt-1">
+            {/* Verified Accreditation Badges & Official YouTube Link */}
+            <div className="flex items-center gap-2.5 pt-1 flex-wrap">
               <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#EAF8EF] border border-[#159447]/20 text-xs font-bold text-[#159447] shadow-xs">
                 <Award className="w-3.5 h-3.5 text-[#159447]" />
                 <span>PGMTTC Certified</span>
@@ -94,6 +94,18 @@ export const Footer: React.FC<FooterProps> = ({ onOpenTourModal }) => {
                 <Shield className="w-3.5 h-3.5 text-[#0750B8]" />
                 <span>Child-Safe Campus</span>
               </div>
+              <a
+                href={SCHOOL_INFO.youtube}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-red-50 hover:bg-[#FF0000] border border-red-200 text-xs font-bold text-[#FF0000] hover:text-white transition-all shadow-xs group"
+                title="Dhivith Edu Care YouTube Channel"
+              >
+                <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                </svg>
+                <span>YouTube</span>
+              </a>
             </div>
           </div>
 
@@ -103,7 +115,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenTourModal }) => {
               <span className="w-1.5 h-4 bg-[#0750B8] rounded-full" />
               <span>{t.footer.quickLinks}</span>
             </h4>
-            <ul className="space-y-2.5 text-xs font-semibold text-[#5E6D7A]">
+            <ul className="space-y-2 text-xs font-semibold text-[#5E6D7A]">
               <li>
                 <Link href="/" className="hover:text-[#0750B8] transition-colors flex items-center gap-1.5 group">
                   <ChevronRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-[#0750B8] group-hover:translate-x-0.5 transition-all" />
@@ -113,7 +125,37 @@ export const Footer: React.FC<FooterProps> = ({ onOpenTourModal }) => {
               <li>
                 <Link href="/classes" className="hover:text-[#0750B8] transition-colors flex items-center gap-1.5 group">
                   <ChevronRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-[#0750B8] group-hover:translate-x-0.5 transition-all" />
-                  <span>{t.nav.classes}</span>
+                  <span>{language === "ta" ? "சேர்க்கை & வகுப்புகள்" : "Admissions & Classes"}</span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/programs" className="hover:text-[#0750B8] transition-colors flex items-center gap-1.5 group">
+                  <ChevronRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-[#0750B8] group-hover:translate-x-0.5 transition-all" />
+                  <span>{language === "ta" ? "மாண்டிசோரி பாடத்திட்டம்" : "Montessori Programs"}</span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/tuitions" className="hover:text-[#0750B8] transition-colors flex items-center gap-1.5 group">
+                  <ChevronRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-[#0750B8] group-hover:translate-x-0.5 transition-all" />
+                  <span>{language === "ta" ? "டியூஷன் & கணிதம்" : "Tuitions & Maths Coaching"}</span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/montessori-method" className="hover:text-[#0750B8] transition-colors flex items-center gap-1.5 group">
+                  <ChevronRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-[#0750B8] group-hover:translate-x-0.5 transition-all" />
+                  <span>{language === "ta" ? "கற்றல் அணுகுமுறை" : "Montessori Method"}</span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/teachers" className="hover:text-[#0750B8] transition-colors flex items-center gap-1.5 group">
+                  <ChevronRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-[#0750B8] group-hover:translate-x-0.5 transition-all" />
+                  <span>{language === "ta" ? "ஆசிரியர்கள் & பணியாளர்கள்" : "Teachers & Staff"}</span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/environment" className="hover:text-[#0750B8] transition-colors flex items-center gap-1.5 group">
+                  <ChevronRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-[#0750B8] group-hover:translate-x-0.5 transition-all" />
+                  <span>{language === "ta" ? "வளாகம் & வசதிகள்" : "Campus Environment"}</span>
                 </Link>
               </li>
               <li>
@@ -135,13 +177,6 @@ export const Footer: React.FC<FooterProps> = ({ onOpenTourModal }) => {
                   <span>{t.nav.about}</span>
                 </Link>
               </li>
-              <li>
-                <Link href="/about#teachers" className="hover:text-[#0750B8] transition-colors flex items-center gap-1.5 group">
-                  <ChevronRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-[#0750B8] group-hover:translate-x-0.5 transition-all" />
-                  <span>{language === "ta" ? "ஆசிரியர்கள் & பணியாளர்கள்" : "Teachers & Staff"}</span>
-                </Link>
-              </li>
-             
               <li>
                 <Link href="/contact" className="hover:text-[#0750B8] transition-colors flex items-center gap-1.5 group">
                   <ChevronRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-[#0750B8] group-hover:translate-x-0.5 transition-all" />
@@ -165,16 +200,16 @@ export const Footer: React.FC<FooterProps> = ({ onOpenTourModal }) => {
                 <ul className="space-y-1 text-[#4A5568] font-medium">
                   <li>
                     <Link href="/classes" className="hover:text-[#0750B8] transition-colors block">
-                      • {t.classes.daycare} (6 Months+)
+                      • {t.classes.daycare} (1.5 - 6 Yrs)
                     </Link>
                   </li>
                   <li>
-                    <Link href="/classes" className="hover:text-[#0750B8] transition-colors block">
+                    <Link href="/programs" className="hover:text-[#0750B8] transition-colors block">
                       • {t.classes.playgroup} & {t.classes.prekg}
                     </Link>
                   </li>
                   <li>
-                    <Link href="/classes" className="hover:text-[#0750B8] transition-colors block">
+                    <Link href="/programs" className="hover:text-[#0750B8] transition-colors block">
                       • {t.classes.lkg} & {t.classes.ukg}
                     </Link>
                   </li>
@@ -187,12 +222,12 @@ export const Footer: React.FC<FooterProps> = ({ onOpenTourModal }) => {
                 </div>
                 <ul className="space-y-1 text-[#4A5568] font-medium">
                   <li>
-                    <Link href="/classes" className="hover:text-[#159447] transition-colors block">
+                    <Link href="/tuitions" className="hover:text-[#159447] transition-colors block">
                       • LKG to Grade 12 (CBSE / ICSE / State)
                     </Link>
                   </li>
                   <li>
-                    <Link href="/classes" className="hover:text-[#159447] transition-colors block">
+                    <Link href="/tuitions" className="hover:text-[#159447] transition-colors block">
                       • Engineering Mathematics (M1, M2, M3, M4)
                     </Link>
                   </li>

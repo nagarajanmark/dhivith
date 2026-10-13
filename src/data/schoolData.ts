@@ -112,7 +112,7 @@ export const SCHOOL_INFO = {
   tuitionStaffCount: "8 Dedicated Evening Staff Members",
   tuitionHours: "Morning: 5:00 AM – 7:00 AM | Evening: 5:00 PM – 9:30 PM (8 Evening Staffs)",
   whatsapp: "917448981592",
-  youtube: "https://www.youtube.com/@DhivithEduCare",
+  youtube: "https://www.youtube.com/@dhivith46",
   ratio: "1:10 Educator Ratio",
   accreditation: "Certified Montessori & Structured Multi-Board Education",
 };

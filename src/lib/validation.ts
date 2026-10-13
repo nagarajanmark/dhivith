@@ -134,29 +134,19 @@ export function validateParentName(name: string, isTamil = false): { isValid: bo
 }
 
 /**
- * Validates Child's Name & Age / Class:
- * - Disallow adult ages (e.g. 33) when raw number is given
- * - School serves Daycare, Preschool (1.5-6 yrs) and Tuition (Grades 1-12, age up to 18)
- * - Must be meaningful string
+ * Validates Child's Age:
+ * - Age must be between 1.5 and 18 years (school serves daycare/preschool 1.5-6y and tuition up to 18)
+ * - Allows pure age numbers (e.g. 3, 3.5, 4), age with units (e.g. 3.5 yrs, 4 வயது), or grade tags
  */
 export function validateChildInfo(info: string, isTamil = false): { isValid: boolean; error?: string } {
   if (!info || typeof info !== "string" || !info.trim()) {
     return {
       isValid: false,
-      error: isTamil
-        ? "குழந்தையின் பெயர் & வயது அல்லது வகுப்பு தேவை"
-        : "Child's name & age / class is required",
+      error: isTamil ? "குழந்தையின் வயது தேவை" : "Child's age is required",
     };
   }
 
   const trimmed = info.trim();
-
-  if (trimmed.length < 2) {
-    return {
-      isValid: false,
-      error: isTamil ? "குழந்தையின் விவரங்களை தெளிவாக உள்ளிடவும்" : "Please provide valid child details",
-    };
-  }
 
   if (trimmed.length > 80) {
     return {
@@ -165,47 +155,35 @@ export function validateChildInfo(info: string, isTamil = false): { isValid: boo
     };
   }
 
-  // Check if user entered an adult age (e.g. "33", "33 yrs", "Age 33", "33 years", "33 வயது")
-  const pureAgeMatch = trimmed.match(/^(\s*(?:age|வயது)?\s*[:\-\s]*)?(\d{1,3})\s*(?:yrs|years|year|yr|வயது)?\s*$/i);
-  if (pureAgeMatch) {
-    const ageNum = parseInt(pureAgeMatch[2], 10);
-    if (ageNum > 18) {
-      return {
-        isValid: false,
-        error: isTamil
-          ? `குழந்தையின் வயது 1.5 முதல் 18 வரை மட்டுமே இருக்க வேண்டும் (உள்ளிடப்பட்டது: ${ageNum}). குழந்தையின் பெயர் மற்றும் வகுப்பை உள்ளிடவும்.`
-          : `Child age must be between 1.5 and 18 years (entered: ${ageNum}). Please provide child's name along with grade/age.`,
-      };
-    }
-    if (ageNum < 1) {
-      return {
-        isValid: false,
-        error: isTamil
-          ? "சரியான குழந்தையின் வயதை உள்ளிடவும் (எ.கா. 3 வயது)"
-          : "Please enter a valid age (e.g. 3.5 Years or Pre-KG)",
-      };
-    }
-  }
-
-  // Reject if it's purely numbers with no child name (even if <= 18, advise to include name)
-  if (/^\d+$/.test(trimmed)) {
-    const ageNum = parseInt(trimmed, 10);
-    if (ageNum >= 1 && ageNum <= 18) {
-      return {
-        isValid: false,
-        error: isTamil
-          ? `தயவுசெய்து குழந்தையின் பெயரையும் உள்ளிடவும் (எ.கா. கவின், ${ageNum} வயது)`
-          : `Please include the child's name as well (e.g. Kavin, ${ageNum} Years)`,
-      };
-    }
-  }
-
   // Disallow code or HTML tags
   if (/[<>{}]/.test(trimmed)) {
     return {
       isValid: false,
       error: isTamil ? "தவறான குறியீடுகள் தவிர்க்கப்பட வேண்டும்" : "Special code characters are not allowed",
     };
+  }
+
+  // Check numeric age patterns (e.g. "3.5", "4", "3.5 yrs", "Age 4", "4 வயது")
+  const pureAgeMatch = trimmed.match(/^(\s*(?:age|வயது)?\s*[:\-\s]*)?(\d+(?:\.\d+)?)\s*(?:yrs|years|year|yr|வயது)?\s*$/i);
+  if (pureAgeMatch) {
+    const ageNum = parseFloat(pureAgeMatch[2]);
+    if (ageNum > 18) {
+      return {
+        isValid: false,
+        error: isTamil
+          ? `குழந்தையின் வயது 1.5 முதல் 18 வரை மட்டுமே இருக்க வேண்டும் (உள்ளிடப்பட்டது: ${ageNum})`
+          : `Child age must be between 1.5 and 18 years (entered: ${ageNum})`,
+      };
+    }
+    if (ageNum < 1) {
+      return {
+        isValid: false,
+        error: isTamil
+          ? "சரியான குழந்தையின் வயதை உள்ளிடவும் (எ.கா. 3.5 வயது)"
+          : "Please enter a valid age (e.g. 3.5 years)",
+      };
+    }
+    return { isValid: true };
   }
 
   return { isValid: true };

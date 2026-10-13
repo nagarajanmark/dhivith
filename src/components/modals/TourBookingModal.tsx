@@ -383,7 +383,7 @@ export const TourBookingModal: React.FC<TourBookingModalProps> = ({
                       maxLength={80}
                       onChange={(e) => handleChildAgeChange(e.target.value)}
                       onBlur={() => markTouched("childAge")}
-                      placeholder={isTa ? "எ.கா. கவின், 3.5 வயது (Pre-KG)" : "e.g. Kavin, 3.5 Years (Pre-KG)"}
+                      placeholder={isTa ? "எ.கா. 3.5 வயது" : "e.g. 3.5 Years"}
                       className={`w-full pl-10 pr-4 py-2.5 rounded-xl border text-sm transition-all focus:outline-none focus:ring-2 ${
                         errors.childAge && touched.childAge
                           ? "border-red-400 bg-red-50/20 focus:ring-red-400"

@@ -110,19 +110,19 @@ export default function TeachersPage() {
       <Navbar onOpenTourModal={() => setIsTourModalOpen(true)} />
 
       <PageHeader
-        breadcrumb={language === "ta" ? "ஆசிரியர்கள் & பணியாளர்கள்" : "Our Teachers & Staff"}
+        breadcrumb={language === "ta" ? "ஆசிரியர்கள் & பணியாளர்கள்" : "Teachers & Staff"}
         title={
           language === "ta"
             ? "அன்பான வழிகாட்டல் & சான்றிதழ் பெற்ற ஆசிரியர்கள்"
-            : "Nurturing With Wisdom, Love & Certified Guidance"
+            : "Meet Our Certified Montessori Educators & Caring Faculty"
         }
         highlightedWord={
-          language === "ta" ? "சான்றிதழ் பெற்ற ஆசிரியர்கள்" : "Certified Guidance"
+          language === "ta" ? "சான்றிதழ் பெற்ற ஆசிரியர்கள்" : "Certified Montessori Educators"
         }
         description={
           language === "ta"
             ? "PGDNTTC சான்றிதழ் பெற்ற மாண்டிசோரி வழிகாட்டி, தகுதிவாய்ந்த மழலையர் பள்ளி ஆசிரியைகள் மற்றும் அரவணைக்கும் டே கேர் பணியாளர்கள் குழு."
-            : "Meet our PGDNTTC Montessori certified directress, qualified postgraduate and B.Ed KG educators, and tender daycare caregivers dedicated to your child's holistic growth."
+            : "Meet our PGDNTTC Montessori certified directress Mrs. S Tharani, qualified B.Ed KG educators, and loving caregivers dedicated to every child in Kinathukadavu."
         }
         bannerImage="/teachers/mrs-s-tharani-founder-dhivith-edu-care-kinathukadavu.png"
         gradientTheme="blue"

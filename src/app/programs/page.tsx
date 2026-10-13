@@ -28,13 +28,13 @@ export default function ProgramsPage() {
       <Navbar onOpenTourModal={() => handleOpenTour()} />
 
       <PageHeader
-        breadcrumb={language === "ta" ? "மழலையர் வகுப்புகள்" : "Preschool Programs"}
-        title={language === "ta" ? "டே கேர், ப்ளே குரூப், ப்ரீ-கேஜி, எல்கேஜி & யூகேஜி" : "Day Care, Play Group, Pre-KG, LKG & UKG"}
-        highlightedWord={language === "ta" ? "டே கேர், ப்ளே குரூப், ப்ரீ-கேஜி, எல்கேஜி & யூகேஜி" : "Day Care, Play Group, Pre-KG, LKG & UKG"}
+        breadcrumb={language === "ta" ? "பாடத்திட்டங்கள்" : "Programs"}
+        title={language === "ta" ? "மாண்டிசோரி மழலையர் பாடத்திட்டங்கள்" : "Montessori Programs & Early Childhood Curriculum"}
+        highlightedWord={language === "ta" ? "மாண்டிசோரி மழலையர்" : "Montessori Programs"}
         description={
           language === "ta"
-            ? "ஒவ்வொரு குழந்தை. ஒவ்வொரு வாய்ப்பு. எப்போதும். உங்கள் குழந்தையின் உடல் அசைவு, மொழி வளர்ச்சி மற்றும் பள்ளித் தயார்நிலையை உறுதி செய்யும் ஐந்து படிநிலைக் கல்வி."
-            : "Every Child. Every Opportunity. Every Time. Explore our five structured developmental stages designed to guide your child from initial sensory motor exploration to confident elementary graduation."
+            ? "ஒவ்வொரு குழந்தை. ஒவ்வொரு வாய்ப்பு. எப்போதும். உங்கள் குழந்தையின் தொடு உணர்வு, மொழி வளர்ச்சி மற்றும் கணிதத் தயார்நிலையை உறுதி செய்யும் ஐந்து படிநிலைக் கல்வி."
+            : "From sensory motor exploration to mathematical confidence: Explore our five authentic Montessori stages (Day Care, Play Group, Pre-KG, LKG & UKG) in Kinathukadavu."
         }
         bannerImage="/school_images/paper-cup-pyramid-stacking-activity-kinathukadavu.webp"
         gradientTheme="blue"

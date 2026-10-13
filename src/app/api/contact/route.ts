@@ -60,7 +60,7 @@ export async function POST(req: NextRequest) {
       }
     } else if (isTour) {
       return NextResponse.json(
-        { success: false, error: "Child's name & age / class is required" },
+        { success: false, error: "Child's age is required" },
         { status: 400 }
       );
     }

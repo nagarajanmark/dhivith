@@ -21,12 +21,12 @@ export default function MontessoriMethodPage() {
 
       <PageHeader
         breadcrumb={language === "ta" ? "மாண்டிசோரி முறை" : "Montessori Method"}
-        title={language === "ta" ? "நிரூபிக்கப்பட்ட மாண்டிசோரி கற்றல் முறை" : "The Proven Montessori Learning Method"}
-        highlightedWord={language === "ta" ? "மாண்டிசோரி கற்றல் முறை" : "Montessori Learning Method"}
+        title={language === "ta" ? "நிரூபிக்கப்பட்ட மாண்டிசோரி கற்றல் முறை" : "The Montessori Method of Education"}
+        highlightedWord={language === "ta" ? "மாண்டிசோரி கற்றல் முறை" : "The Montessori Method"}
         description={
           language === "ta"
             ? "டாக்டர் மரியா மாண்டிசோரியின் அறிவியல் பூர்வமான கற்றல் சூழல் எவ்வாறு குழந்தைகளின் ஆழ்ந்த கவனம், கணித தர்க்கம் மற்றும் தன்னம்பிக்கையை வளர்க்கிறது என்பதை அறிந்துகொள்ளுங்கள்."
-            : "Discover how Dr. Maria Montessori's scientifically prepared environments cultivate deep concentration, concrete numerical logic, and joyous independent thinkers."
+            : "Discover how authentic Montessori prepared environments cultivate deep concentration, concrete numerical logic, and joyful independent learners in Kinathukadavu."
         }
         bannerImage="/school_images/dhivith-pre-kg-montessori-curriculum-pollachi.webp"
         gradientTheme="green"

@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "DHIVITH EDU CARE",
   legalName: "DHIVITH EDU CARE",
   alternateName: "Dhivith Montessori Pre-School & Tuitions",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://dhivith.vercel.app",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://www.dhivith.in",
   ogImage: "/logo.png",
   description:
     "DHIVITH EDU CARE — Premier Montessori Pre-School & Academic Tuition Centre in Kinathukadavu, Coimbatore. Serving Kinathukadavu, Coimbatore, Pollachi, Palladam, and Tirupur with Day Care, Play Group, Pre-KG, LKG, UKG, and Tuitions (Classes 1-12 & Engineering Mathematics).",

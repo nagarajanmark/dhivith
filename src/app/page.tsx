@@ -37,6 +37,7 @@ import { WhoWeAreSection } from "@/components/about/WhoWeAreSection";
 import { CampusVideoShowcase } from "@/components/video/CampusVideoShowcase";
 import { TestimonialsMasonry } from "@/components/testimonials/TestimonialsMasonry";
 import { PolaroidMemoriesSection } from "@/components/gallery/PolaroidMemoriesSection";
+import { RegionalLocationsServed } from "@/components/seo/RegionalLocationsServed";
 import { SCHOOL_INFO, PROGRAMS, TESTIMONIALS, GALLERY_ITEMS, GalleryItem } from "@/data/schoolData";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -145,7 +146,7 @@ export default function HomePage() {
           <div className="flex flex-col sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-6">
             {/* Card 1: Montessori Pre-School (Sticky on mobile, z-10) */}
             <Link
-              href="/classes"
+              href="/programs"
               className="sticky top-20 sm:static z-10 group relative bg-white rounded-[28px] p-7 border border-gray-200/80 shadow-[0_10px_30px_rgba(0,0,0,0.06)] sm:shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-2xl hover:border-[#0750B8]/30 transition-all duration-300 hover:-translate-y-2 flex flex-col justify-between overflow-hidden"
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-[#0750B8]/10 rounded-full blur-2xl pointer-events-none group-hover:bg-[#0750B8]/20 transition-all" />
@@ -183,7 +184,7 @@ export default function HomePage() {
 
             {/* Card 2: Tuition & Coaching Hub (Sticky on mobile, z-20) */}
             <Link
-              href="/classes"
+              href="/tuitions"
               className="sticky top-24 sm:static z-20 group relative bg-white rounded-[28px] p-7 border border-gray-200/80 shadow-[0_10px_30px_rgba(0,0,0,0.06)] sm:shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-2xl hover:border-[#159447]/30 transition-all duration-300 hover:-translate-y-2 flex flex-col justify-between overflow-hidden"
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-[#159447]/10 rounded-full blur-2xl pointer-events-none group-hover:bg-[#159447]/20 transition-all" />
@@ -221,7 +222,7 @@ export default function HomePage() {
 
             {/* Card 3: The Montessori Method (Sticky on mobile, z-30) */}
             <Link
-              href="/classes"
+              href="/montessori-method"
               className="sticky top-28 sm:static z-30 group relative bg-white rounded-[28px] p-7 border border-gray-200/80 shadow-[0_10px_30px_rgba(0,0,0,0.06)] sm:shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-2xl hover:border-[#F36B12]/30 transition-all duration-300 hover:-translate-y-2 flex flex-col justify-between overflow-hidden"
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-[#F36B12]/10 rounded-full blur-2xl pointer-events-none group-hover:bg-[#F36B12]/20 transition-all" />
@@ -259,7 +260,7 @@ export default function HomePage() {
 
             {/* Card 4: Learning Environment (Sticky on mobile, z-40) */}
             <Link
-              href="/classes"
+              href="/environment"
               className="sticky top-32 sm:static z-40 group relative bg-white rounded-[28px] p-7 border border-gray-200/80 shadow-[0_10px_30px_rgba(0,0,0,0.06)] sm:shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-2xl hover:border-[#F5B900]/40 transition-all duration-300 hover:-translate-y-2 flex flex-col justify-between overflow-hidden"
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-[#F5B900]/10 rounded-full blur-2xl pointer-events-none group-hover:bg-[#F5B900]/20 transition-all" />
@@ -426,6 +427,9 @@ export default function HomePage() {
 
       {/* 6. PARENT PERSPECTIVES & RATINGS MASONRY */}
       <TestimonialsMasonry />
+
+      {/* 6.5 REGIONAL LOCATIONS SERVED & LOCAL DISCOVERY */}
+      <RegionalLocationsServed onOpenTourModal={() => setIsTourModalOpen(true)} />
 
       {/* 7. VISIT & ADMISSION CALL TO ACTION */}
       <section className="py-16 lg:py-24 bg-white">

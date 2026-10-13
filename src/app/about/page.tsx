@@ -47,14 +47,25 @@ export default function AboutPage() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(245,185,0,0.25),transparent_65%)]" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-          {/* Breadcrumb */}
+          {/* Breadcrumb with Schema.org BreadcrumbList */}
           <div className="mb-6">
-            <nav className="inline-flex items-center gap-2 text-xs font-semibold text-white/90 bg-white/15 px-3.5 py-1.5 rounded-full border border-white/20 backdrop-blur-md shadow-xs">
-              <Link href="/" className="hover:text-amber-300 transition-colors">
-                {t.nav.home}
-              </Link>
-              <ChevronRight className="w-3.5 h-3.5 text-white/60" />
-              <span className="text-amber-300 font-bold">{t.nav.about}</span>
+            <nav
+              aria-label="Breadcrumb"
+              itemScope
+              itemType="https://schema.org/BreadcrumbList"
+              className="inline-flex items-center gap-2 text-xs font-semibold text-white/90 bg-white/15 px-3.5 py-1.5 rounded-full border border-white/20 backdrop-blur-md shadow-xs"
+            >
+              <span itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem" className="inline-flex items-center">
+                <Link href="/" itemProp="item" className="hover:text-amber-300 transition-colors">
+                  <span itemProp="name">{t.nav.home}</span>
+                </Link>
+                <meta itemProp="position" content="1" />
+              </span>
+              <ChevronRight className="w-3.5 h-3.5 text-white/60" aria-hidden="true" />
+              <span itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem" className="inline-flex items-center">
+                <span itemProp="name" className="text-amber-300 font-bold">{t.nav.about}</span>
+                <meta itemProp="position" content="2" />
+              </span>
             </nav>
           </div>
 
@@ -71,7 +82,7 @@ export default function AboutPage() {
                   </>
                 ) : (
                   <>
-                    Nurturing Curious Minds in{" "}
+                    About Dhivith Edu Care: Montessori Excellence in{" "}
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-yellow-200 to-amber-400">
                       Kinathukadavu
                     </span>

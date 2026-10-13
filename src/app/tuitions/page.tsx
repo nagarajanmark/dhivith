@@ -33,12 +33,12 @@ export default function TuitionsPage() {
 
       <PageHeader
         breadcrumb={language === "ta" ? "டியூஷன் & பயிற்சி" : "Tuition & Coaching"}
-        title={language === "ta" ? "அனைத்துப் பாட டியூஷன் & பொறியியல் கணிதம்" : "Comprehensive Tuition Classes & Engineering Maths"}
-        highlightedWord={language === "ta" ? "டியூஷன் & பொறியியல் கணிதம்" : "Tuition Classes & Engineering Maths"}
+        title={language === "ta" ? "அனைத்துப் பாட டியூஷன் மையம் & பொறியியல் கணிதம்" : "School Tuition Centre & Engineering Mathematics in Kinathukadavu"}
+        highlightedWord={language === "ta" ? "டியூஷன் மையம் & பொறியியல் கணிதம்" : "Tuition Centre & Engineering Mathematics"}
         description={
           language === "ta"
             ? "சிறந்த கற்றல். சிறந்த எதிர்காலம். LKG முதல் 12-ஆம் வகுப்பு வரை (CBSE, ICSE, Matric & State Board) அனைத்துப் பாடங்கள் மற்றும் பொறியியல் கணிதப் பயிற்சி (M1, M2, M3, M4)."
-            : "Better Learning. Better Tomorrow. Brighter Future. Expert coaching for LKG to Grade 12 across ICSE, CBSE, and State Board syllabi, along with collegiate Engineering Mathematics."
+            : "Better Learning. Better Tomorrow. Brighter Future. Expert coaching for Classes 1 to 12 across CBSE, ICSE, and State Board syllabi, along with collegiate Engineering Mathematics in Kinathukadavu."
         }
         bannerImage="/school_images/sensory-ball-sorting-color-trays-coimbatore.webp"
         gradientTheme="blue"

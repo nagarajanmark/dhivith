@@ -106,7 +106,7 @@ export const GlyphHeroSection: React.FC<GlyphHeroSectionProps> = ({ onOpenTourMo
 
           {/* Massive Solid White DHIVITH Typography with Scroll Zoom */}
           <div className="w-full flex items-center justify-center select-none overflow-visible py-0.5">
-            <motion.h1
+            <motion.div
               style={{
                 scale: textScale,
                 opacity: textOpacity,
@@ -115,18 +115,19 @@ export const GlyphHeroSection: React.FC<GlyphHeroSectionProps> = ({ onOpenTourMo
               className="font-display font-black text-4xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-7xl 2xl:text-[120px] tracking-wider text-white drop-shadow-[0_15px_40px_rgba(0,0,0,0.9)] leading-none uppercase text-center"
             >
               DHIVITH
-              <span className="sr-only"> EDU CARE – Montessori Pre-School, Day Care & Tuitions in Kinathukadavu, Coimbatore</span>
-            </motion.h1>
+            </motion.div>
           </div>
 
-          {/* Narrative & Headline */}
+          {/* Narrative & Semantic H1 Headline */}
           <motion.div
             style={{ opacity: uiOpacity, y: uiY }}
-            className="space-y-1.5 sm:space-y-2 max-w-2xl mx-auto px-3"
+            className="space-y-1.5 sm:space-y-2 max-w-3xl mx-auto px-3"
           >
-            <h2 className="font-display font-extrabold text-base sm:text-xl md:text-xl lg:text-2xl xl:text-2xl 2xl:text-3xl text-white tracking-tight leading-tight drop-shadow-lg">
-              {language === "ta" ? "மகிழ்ச்சியான கற்றல் தொடங்கும் இடம்" : "Where Joyful Learning Begins"}
-            </h2>
+            <h1 className="font-display font-extrabold text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-3xl 2xl:text-4xl text-white tracking-tight leading-tight drop-shadow-lg">
+              {language === "ta"
+                ? "கிணத்துக்கடவில் மாண்டிசோரி மழலையர் பள்ளி, டே கேர் & ஆரம்பக் கல்வி"
+                : "Montessori Preschool, Daycare & Early Learning in Kinathukadavu"}
+            </h1>
             <p className="text-xs sm:text-xs md:text-sm lg:text-sm xl:text-base text-white/90 leading-relaxed drop-shadow-md max-w-xl mx-auto">
               {t.hero.description}
             </p>

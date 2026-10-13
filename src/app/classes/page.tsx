@@ -21,10 +21,13 @@ import {
   BookOpen,
   Calculator,
   Baby,
-  GraduationCap,
   Star,
+  ChevronDown,
+  FileText,
+  Phone,
   Check,
 } from "lucide-react";
+import { siteConfig } from "@/config/site";
 
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -115,10 +118,14 @@ export default function ClassesPage() {
       <Navbar onOpenTourModal={() => handleOpenTour()} />
 
       <PageHeader
-        breadcrumb={language === "ta" ? "அனைத்து வகுப்புகள் & பாடத்திட்டங்கள்" : "All Classes & Courses"}
-        title={language === "ta" ? "மழலையர் பள்ளி வகுப்புகள் & அனைத்துப் பாட டியூஷன்" : "Pre-School Programs & All Subject Tuitions"}
-        highlightedWord={language === "ta" ? "மழலையர் பள்ளி வகுப்புகள்" : "Pre-School Programs"}
-        description={t.classes.desc}
+        breadcrumb={language === "ta" ? "சேர்க்கை & வகுப்புகள்" : "Admissions & Classes"}
+        title={language === "ta" ? "மழலையர் பள்ளி சேர்க்கை & வகுப்புகள்" : "Montessori Preschool & Daycare Admissions"}
+        highlightedWord={language === "ta" ? "மழலையர் பள்ளி சேர்க்கை" : "Preschool & Daycare Admissions"}
+        description={
+          language === "ta"
+            ? "கிணத்துக்கடவில் உள்ள திவித் எடு கேர் வளாகத்தில் டே கேர், ப்ளே குரூப், பிரீ-கேஜி, எல்.கே.ஜி மற்றும் யு.கே.ஜி சேர்க்கை நடைபெறுகிறது."
+            : "Admissions open for Daycare, Play Group, Pre-KG, LKG and UKG in Kinathukadavu. Authentic Montessori classrooms, caring certified educators, and child-safe prepared spaces."
+        }
         bannerImage="/school_images/montessori-child-activity-workspace-coimbatore.webp"
         gradientTheme="blue"
       />
@@ -311,6 +318,192 @@ export default function ClassesPage() {
           </div>
         </section>
       )}
+
+      {/* 3. ADMISSION PROCESS & REQUIRED DOCUMENTS */}
+      <section className="py-16 lg:py-20 bg-gray-50 border-t border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-14">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#0750B8] bg-[#EBF3FF] px-4 py-1.5 rounded-full border border-[#0750B8]/20">
+              {language === "ta" ? "சேர்க்கை வழிமுறை" : "Enrollment Roadmap"}
+            </span>
+            <h2 className="font-display font-extrabold text-2xl sm:text-3xl lg:text-4xl text-[#121D28] mt-3">
+              {language === "ta" ? "எளிய சேர்க்கை நடைமுறைகள்" : "Admission Process & Required Documents"}
+            </h2>
+            <p className="text-xs sm:text-sm md:text-base text-[#5E6D7A] mt-2">
+              {language === "ta"
+                ? "உங்கள் குழந்தையை திவித் எடு கேரில் சேர்க்க 4 எளிய படிகள்."
+                : "4 transparent steps to welcome your child into our caring Montessori family in Kinathukadavu."}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            {[
+              {
+                step: "01",
+                title: language === "ta" ? "பள்ளி வளாக பார்வை" : "1. Campus Walkthrough",
+                desc: language === "ta" ? "வடகாளூர் வளாகத்திற்கு வருகை தந்து வகுப்பறைகள் மற்றும் கல்வி இயக்குநரை சந்தித்தல்." : "Visit our Vadapudur campus, explore the sunlit prepared environment, and meet Founder Mrs. S Tharani.",
+              },
+              {
+                step: "02",
+                title: language === "ta" ? "வயது தகுதி அறிதல்" : "2. Age Readiness",
+                desc: language === "ta" ? "குழந்தையின் வயதுக்கேற்ப டே கேர், ப்ளே குரூப், Pre-KG, LKG அல்லது UKG வகுப்பை தேர்வு செய்தல்." : "Select the developmentally appropriate stage (Daycare: 1.5-6y, Playgroup: 2-3y, Pre-KG: 3-4y, LKG: 4-5y, UKG: 5-6y).",
+              },
+              {
+                step: "03",
+                title: language === "ta" ? "ஆவணங்கள் சமர்ப்பித்தல்" : "3. Document Submission",
+                desc: language === "ta" ? "பிறப்புச் சான்றிதழ் நகல், 4 பாஸ்போர்ட் அளவிலான புகைப்படங்கள் மற்றும் பெற்றோர் ஆதார் நகல்." : "Submit application along with birth certificate copy, 4 passport photos, and parents' Aadhaar ID proof.",
+              },
+              {
+                step: "04",
+                title: language === "ta" ? "வகுப்பு தொடக்கம்" : "4. Welcome & Orientation",
+                desc: language === "ta" ? "சேர்க்கை உறுதி செய்யப்பட்டு குழந்தையின் மகிழ்ச்சியான மாண்டிசோரி கற்றல் தொடக்கம்." : "Receive our daily rhythm guide, welcome kit, and begin joyful hands-on learning with caring certified educators.",
+              },
+            ].map((item, idx) => (
+              <div key={idx} className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm relative">
+                <span className="text-3xl font-black text-[#0750B8]/20 font-mono block mb-2">{item.step}</span>
+                <h3 className="font-bold text-base text-[#121D28] mb-2">{item.title}</h3>
+                <p className="text-xs text-[#5E6D7A] leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Required Documents Card */}
+          <div className="bg-white rounded-2xl p-6 sm:p-8 border border-gray-200 max-w-4xl mx-auto shadow-sm">
+            <h3 className="font-bold text-lg text-[#121D28] mb-4 flex items-center gap-2">
+              <FileText className="w-5 h-5 text-[#0750B8]" />
+              <span>{language === "ta" ? "சேர்க்கைக்கு தேவையான ஆவணங்கள்" : "Required Admission Documents Checklist"}</span>
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm text-[#2A343D]">
+              <div className="flex items-center gap-2">
+                <Check className="w-4 h-4 text-emerald-600 shrink-0" />
+                <span>{language === "ta" ? "குழந்தையின் பிறப்புச் சான்றிதழ் நகல்" : "Copy of Child's Birth Certificate"}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Check className="w-4 h-4 text-emerald-600 shrink-0" />
+                <span>{language === "ta" ? "4 பாஸ்போர்ட் அளவு புகைப்படங்கள்" : "4 Recent Passport Size Photographs of Child"}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Check className="w-4 h-4 text-emerald-600 shrink-0" />
+                <span>{language === "ta" ? "தாய் மற்றும் தந்தை ஆதார் அட்டை நகல்" : "Parents' Aadhaar Card / ID Proof Copies"}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Check className="w-4 h-4 text-emerald-600 shrink-0" />
+                <span>{language === "ta" ? "தடுப்பூசி அட்டவணை நகல் (Immunization Record)" : "Child Immunization / Health Record Copy"}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. ADMISSION FREQUENTLY ASKED QUESTIONS */}
+      <section className="py-16 lg:py-24 bg-white border-t border-gray-200">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#159447] bg-[#EAF8EF] px-4 py-1.5 rounded-full border border-[#159447]/20">
+              {language === "ta" ? "பொதுவான கேள்விகள்" : "Parents Frequently Asked Questions"}
+            </span>
+            <h2 className="font-display font-extrabold text-2xl sm:text-3xl lg:text-4xl text-[#121D28] mt-3">
+              {language === "ta" ? "சேர்க்கை பற்றிய சந்தேகங்கள்" : "Admission & Program FAQs"}
+            </h2>
+            <p className="text-xs sm:text-sm md:text-base text-[#5E6D7A] mt-2">
+              {language === "ta"
+                ? "கிணத்துக்கடவு பெற்றோர்களின் முக்கிய கேள்விகளுக்கான தெளிவான பதில்கள்."
+                : "Answers to common questions regarding admissions, age eligibility, timings, and daycare facilities."}
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            {[
+              {
+                q: "What is the age eligibility for Pre-KG, LKG, and UKG admissions?",
+                a: "For Playgroup: 2 to 3 years. For Pre-KG: 3 to 4 years. For LKG Montessori: 4 to 5 years. For UKG preparatory: 5 to 6 years. For Day Care, children from 1.5 to 6 years are lovingly accommodated.",
+              },
+              {
+                q: "What are the school and daycare timings in Kinathukadavu?",
+                a: "Montessori Preschool operates Monday to Saturday from 8:30 AM to 1:30 PM. Extended Day Care is available until 6:00 PM with supervised meals and tranquil rest pods. Tuitions operate in early morning (5:00 AM – 7:00 AM) and evening batches (5:00 PM – 9:30 PM).",
+              },
+              {
+                q: "Are admissions open throughout the year?",
+                a: "Yes, admissions for Day Care, Play Group, and tuition batches are accepted year-round based on seat availability. Formal Pre-KG, LKG, and UKG academic batches begin every academic term, with mid-term admissions welcomed for families relocating to Kinathukadavu, Coimbatore, or Pollachi.",
+              },
+              {
+                q: "What educator-to-child ratio is maintained at Dhivith Edu Care?",
+                a: "We maintain an intimate 1:4 ratio for Day Care and 1:10 for Montessori classes, ensuring every child receives individualized pedagogical guidance and personalized care.",
+              },
+              {
+                q: "How can parents from Pollachi, Palladam, and Coimbatore apply?",
+                a: "Parents can book a campus walkthrough by calling +91 74489 81592, sending an online enquiry, or visiting our campus at S.F.Nos. 382/35, 382/36, S.K.Garden, Site Nos. 16,17, Vadapudur, Kinathukadavu.",
+              },
+            ].map((faq, idx) => (
+              <details
+                key={idx}
+                className="group bg-gray-50 rounded-2xl border border-gray-200 p-5 sm:p-6 [&_summary::-webkit-details-marker]:hidden"
+              >
+                <summary className="flex items-center justify-between cursor-pointer list-none">
+                  <h3 className="font-bold text-sm sm:text-base text-[#121D28] pr-4">{faq.q}</h3>
+                  <ChevronDown className="w-5 h-5 text-gray-500 transition-transform duration-300 group-open:rotate-180 shrink-0" />
+                </summary>
+                <p className="mt-4 text-xs sm:text-sm text-[#5E6D7A] leading-relaxed border-t border-gray-200/80 pt-4">
+                  {faq.a}
+                </p>
+              </details>
+            ))}
+          </div>
+
+          {/* Structured Data script for Admission FAQs */}
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                mainEntity: [
+                  {
+                    "@type": "Question",
+                    name: "What is the age eligibility for Pre-KG, LKG, and UKG admissions?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: "For Playgroup: 2 to 3 years. For Pre-KG: 3 to 4 years. For LKG Montessori: 4 to 5 years. For UKG preparatory: 5 to 6 years. For Day Care, children from 1.5 to 6 years are lovingly accommodated.",
+                    },
+                  },
+                  {
+                    "@type": "Question",
+                    name: "What are the school and daycare timings in Kinathukadavu?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: "Montessori Preschool operates Monday to Saturday from 8:30 AM to 1:30 PM. Extended Day Care is available until 6:00 PM with supervised meals and tranquil rest pods. Tuitions operate in early morning (5:00 AM – 7:00 AM) and evening batches (5:00 PM – 9:30 PM).",
+                    },
+                  },
+                  {
+                    "@type": "Question",
+                    name: "Are admissions open throughout the year?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: "Yes, admissions for Day Care, Play Group, and tuition batches are accepted year-round based on seat availability. Formal Pre-KG, LKG, and UKG academic batches begin every academic term.",
+                    },
+                  },
+                  {
+                    "@type": "Question",
+                    name: "What educator-to-child ratio is maintained at Dhivith Edu Care?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: "We maintain an intimate 1:4 ratio for Day Care and 1:10 for Montessori classes, ensuring every child receives individualized pedagogical guidance and personalized care.",
+                    },
+                  },
+                  {
+                    "@type": "Question",
+                    name: "How can parents from Pollachi, Palladam, and Coimbatore apply?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: "Parents can book a campus walkthrough by calling +91 74489 81592, sending an online enquiry, or visiting our campus at S.F.Nos. 382/35, 382/36, S.K.Garden, Site Nos. 16,17, Vadapudur, Kinathukadavu.",
+                    },
+                  },
+                ],
+              }),
+            }}
+          />
+        </div>
+      </section>
 
       {/* School Visit CTA */}
       <SchoolVisitCTA onOpenTourModal={() => handleOpenTour()} />

@@ -20,11 +20,15 @@ export default function EnvironmentPage() {
       <Navbar onOpenTourModal={() => setIsTourModalOpen(true)} />
 
       <PageHeader
-        breadcrumb={language === "ta" ? "கற்றல் சூழல் & வளாகம்" : "Our Prepared Environment"}
-        title={language === "ta" ? "சுதந்திர சிந்தனை & அமைதியான கற்றல் சோலை" : "Prepared for Peaceful Autonomy & Wonder"}
-        highlightedWord={language === "ta" ? "அமைதியான கற்றல் சோலை" : "Prepared for Peaceful Autonomy"}
-        description={language === "ta" ? "இயற்கை வெளிச்சம், பாதுகாப்பான மரத்தாலான தளபாடங்கள், குறைந்த உயர அலமாரிகள் மற்றும் பசுமையான தோட்டம் கொண்ட கிணத்துக்கடவு வளாகம்." : "Step inside our Kinathukadavu learning environment where natural daylight, non-toxic Scandinavian blonde wood, low open shelves, and organic garden terraces inspire joyful focus."}
-        bannerImage="/school_images/evening-tuition-batches-grade-1-to-12-pollachi.webp"
+        breadcrumb={language === "ta" ? "வளாகம் & வசதிகள்" : "Campus Environment"}
+        title={language === "ta" ? "பாதுகாப்பான வளாகம் & மாண்டிசோரி கற்றல் சூழல்" : "Child-Safe Campus & Prepared Montessori Environment"}
+        highlightedWord={language === "ta" ? "பாதுகாப்பான வளாகம்" : "Child-Safe Campus"}
+        description={
+          language === "ta"
+            ? "இயற்கை வெளிச்சம், பாதுகாப்பான மரத்தாலான தளபாடங்கள், குறைந்த உயர அலமாரிகள் மற்றும் பசுமையான தோட்டம் கொண்ட கிணத்துக்கடவு வளாகம்."
+            : "Step inside our Kinathukadavu campus where natural daylight, non-toxic wood furniture, low open shelves, and CCTV security ensure child wellness and safety."
+        }
+        bannerImage="/school_images/sunlit-prepared-montessori-classroom-kinathukadavu.webp"
         gradientTheme="green"
       />
 

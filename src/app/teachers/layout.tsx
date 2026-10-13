@@ -2,30 +2,33 @@ import type { Metadata } from "next";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: "Certified Teachers & Staff | Mrs. S Tharani, Mrs. D Ramyadevi, Mrs. K Vinothini, Mrs. K Eswari | DHIVITH EDU CARE",
+  title: "Certified Montessori Teachers & Caring Faculty in Kinathukadavu",
   description:
-    "Meet our qualified educators and dedicated staff at DHIVITH EDU CARE in Kinathukadavu, Coimbatore: Mrs. S Tharani (Founder & Educational Director, M.Sc., PGDPM, PGDNTTC), Mrs. D Ramyadevi (KG Teacher, M.Sc., B.Ed.), Mrs. K Vinothini (KG Teacher, B.Sc., B.Ed.), Mrs. K Eswari (Care Taker / Day Care Staff), and Mrs. S Rajamanickam (Care Taker).",
+    "Meet our qualified educators and caring staff at Dhivith Edu Care in Kinathukadavu, led by Mrs. S Tharani with certified KG teachers and loving caretakers.",
   keywords: [
-    "Mrs S Tharani Founder Educational Director",
-    "Mrs D Ramyadevi KG Teacher Kinathukadavu",
-    "Mrs K Vinothini KG Teacher Coimbatore",
-    "Mrs K Eswari Care Taker Day Care Staff",
-    "Mrs S Rajamanickam Care Taker Vadapudur",
     "Montessori Teachers Kinathukadavu",
+    "Mrs S Tharani Founder Educational Director",
     "PGDNTTC Certified Teachers Coimbatore",
     "Play School Faculty Pollachi",
-    "Preschool Teachers Palladam Tirupur",
+    "Preschool Teachers Kinathukadavu",
     "Dhivith Edu Care Teaching Staff",
   ],
   alternates: {
     canonical: `${siteConfig.url}/teachers`,
   },
   openGraph: {
-    title: "Faculty & Certified Teachers | DHIVITH EDU CARE Kinathukadavu, Coimbatore",
+    title: "Certified Montessori Teachers & Caring Faculty | Dhivith Edu Care",
     description:
-      "Trained, compassionate mentors guiding every child's intellectual, emotional, and social development across Kinathukadavu, Coimbatore, Pollachi, Palladam, and Tirupur.",
+      "Trained, compassionate mentors guiding every child's intellectual, emotional, and social development at Dhivith Edu Care in Kinathukadavu.",
     url: `${siteConfig.url}/teachers`,
-    images: ["/teachers/mrs-s-tharani-founder-dhivith-edu-care-kinathukadavu.png"],
+    images: [`${siteConfig.url}/teachers/mrs-s-tharani-founder-dhivith-edu-care-kinathukadavu.png`],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Certified Montessori Teachers & Caring Faculty | Dhivith Edu Care",
+    description:
+      "Meet our qualified educators and caring staff at Dhivith Edu Care in Kinathukadavu.",
+    images: [`${siteConfig.url}/teachers/mrs-s-tharani-founder-dhivith-edu-care-kinathukadavu.png`],
   },
 };
 

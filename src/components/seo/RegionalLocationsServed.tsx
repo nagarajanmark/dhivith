@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { MapPin, Navigation, Compass, CheckCircle2, Phone, Calendar, ArrowRight } from "lucide-react";
+import { MapPin, Navigation, Compass, CheckCircle2, Phone, ArrowRight } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { SCHOOL_INFO } from "@/data/schoolData";
 
@@ -272,41 +272,6 @@ export const RegionalLocationsServed: React.FC<{ onOpenTourModal?: () => void }>
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Global CTA Strip */}
-        <div className="mt-10 p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-[#0750B8] via-[#0962dc] to-[#159447] text-white shadow-xl flex flex-col sm:flex-row items-center justify-between gap-6">
-          <div className="space-y-1 text-center sm:text-left">
-            <h3 className="font-display font-extrabold text-lg sm:text-xl">
-              {isTamil
-                ? "உங்கள் குழந்தையை இன்று டிவித் எடு கேரில் சேர்க்க விரும்புகிறீர்களா?"
-                : "Looking for Admissions in Kinathukadavu, Coimbatore, Pollachi, Palladam or Tirupur?"}
-            </h3>
-            <p className="text-xs sm:text-sm text-white/90">
-              {isTamil
-                ? "வளாகப் பார்வைக்கான நேரத்தை இப்போதே பதிவு செய்யுங்கள் அல்லது எங்களை நேரடியாகத் தொடர்பு கொள்ளுங்கள்."
-                : "Schedule a personalized campus walk-through or speak directly with Educational Director Mrs. S Tharani."}
-            </p>
-          </div>
-
-          <div className="flex flex-wrap items-center justify-center gap-3 flex-shrink-0">
-            {onOpenTourModal && (
-              <button
-                onClick={onOpenTourModal}
-                className="px-5 py-3 rounded-2xl bg-white text-[#0750B8] hover:bg-gray-100 font-bold text-xs sm:text-sm shadow-md transition-transform hover:scale-105 cursor-pointer flex items-center gap-2"
-              >
-                <Calendar className="w-4 h-4 text-[#0750B8]" />
-                <span>{isTamil ? "வளாகப் பார்வை முன்பதிவு" : "Schedule Campus Tour"}</span>
-              </button>
-            )}
-            <a
-              href={`tel:${SCHOOL_INFO.phoneRaw}`}
-              className="px-5 py-3 rounded-2xl bg-[#121D28]/40 hover:bg-[#121D28]/60 text-white border border-white/20 font-bold text-xs sm:text-sm backdrop-blur-md transition-all flex items-center gap-2"
-            >
-              <Phone className="w-4 h-4 text-emerald-300" />
-              <span>{SCHOOL_INFO.phoneFormatted}</span>
-            </a>
-          </div>
         </div>
       </div>
     </section>

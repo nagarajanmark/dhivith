@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: "About Us | Founder Mrs. S Tharani | DHIVITH EDU CARE Kinathukadavu, Coimbatore",
+  title: "About Us & Founder Mrs. S Tharani in Kinathukadavu",
   description:
-    "Learn about DHIVITH EDU CARE in Kinathukadavu, Coimbatore. Founded by Mrs. S Tharani (M.Sc., PGDM, PGMTTC) dedicated to nurturing every child through authentic Montessori principles, holistic development, and quality academic coaching.",
+    "Learn about Dhivith Edu Care in Kinathukadavu, founded by Mrs. S Tharani (M.Sc., PGDPM, PGDNTTC). Dedicated to authentic Montessori values and holistic student care.",
   keywords: [
     "About Dhivith Edu Care",
     "Mrs S Tharani Montessori Director",
@@ -17,11 +17,18 @@ export const metadata: Metadata = {
     canonical: `${siteConfig.url}/about`,
   },
   openGraph: {
-    title: "About DHIVITH EDU CARE | Montessori Pre-School Kinathukadavu",
+    title: "About Us & Founder Mrs. S Tharani | Dhivith Edu Care",
     description:
-      "Every Child. Every Opportunity. Every Time. Founded by Mrs. S Tharani, M.Sc., PGDM, PGMTTC in Vadapudur, Kinathukadavu.",
+      "Every Child. Every Opportunity. Every Time. Founded by Mrs. S Tharani, M.Sc., PGDPM, PGDNTTC in Vadapudur, Kinathukadavu.",
     url: `${siteConfig.url}/about`,
-    images: ["/teachers/mrs-s-tharani-founder-dhivith-edu-care-kinathukadavu.png"],
+    images: [`${siteConfig.url}/teachers/mrs-s-tharani-founder-dhivith-edu-care-kinathukadavu.png`],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About Us & Founder Mrs. S Tharani | Dhivith Edu Care",
+    description:
+      "Learn about Dhivith Edu Care in Kinathukadavu, founded by Mrs. S Tharani.",
+    images: [`${siteConfig.url}/teachers/mrs-s-tharani-founder-dhivith-edu-care-kinathukadavu.png`],
   },
 };
 
