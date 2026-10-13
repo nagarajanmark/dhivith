@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     "Mrs S Tharani Montessori",
     "Vadapudur Pre-School",
   ],
-  authors: [{ name: "Mrs. S Tharani, M.Sc., PGDPM, PGDNTTC" }],
+  authors: [{ name: "Mrs. S Tharani, M.Sc., PGDM, PGMTTC" }],
   creator: "DHIVITH EDU CARE",
   publisher: "DHIVITH EDU CARE",
   alternates: {
@@ -140,7 +140,7 @@ const jsonLd = {
         "@type": "Person",
         name: "Mrs. S Tharani",
         jobTitle: "Founder & Educational Director",
-        hasCredential: "M.Sc., PGDPM, PGDNTTC",
+        hasCredential: "M.Sc., PGDM, PGMTTC",
       },
       foundingDate: "2024-07-02",
       address: {

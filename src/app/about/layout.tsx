@@ -4,7 +4,7 @@ import { siteConfig } from "@/config/site";
 export const metadata: Metadata = {
   title: "About Us & Founder Mrs. S Tharani in Kinathukadavu",
   description:
-    "Learn about Dhivith Edu Care in Kinathukadavu, founded by Mrs. S Tharani (M.Sc., PGDPM, PGDNTTC). Dedicated to authentic Montessori values and holistic student care.",
+    "Learn about Dhivith Edu Care in Kinathukadavu, founded by Mrs. S Tharani (M.Sc., PGDM, PGMTTC). Dedicated to authentic Montessori values and holistic student care.",
   keywords: [
     "About Dhivith Edu Care",
     "Mrs S Tharani Montessori Director",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "About Us & Founder Mrs. S Tharani | Dhivith Edu Care",
     description:
-      "Every Child. Every Opportunity. Every Time. Founded by Mrs. S Tharani, M.Sc., PGDPM, PGDNTTC in Vadapudur, Kinathukadavu.",
+      "Every Child. Every Opportunity. Every Time. Founded by Mrs. S Tharani, M.Sc., PGDM, PGMTTC in Vadapudur, Kinathukadavu.",
     url: `${siteConfig.url}/about`,
     images: [`${siteConfig.url}/teachers/mrs-s-tharani-founder-dhivith-edu-care-kinathukadavu.png`],
   },

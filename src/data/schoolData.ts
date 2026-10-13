@@ -95,7 +95,7 @@ export const SCHOOL_INFO = {
   heroSupport:
     "Nurturing curiosity, independence, creativity, and a lifelong love for learning through the authentic Montessori approach and holistic student-centred coaching.",
   founder: "Mrs. S Tharani",
-  qualifications: "M.Sc., PGDPM, PGDNTTC",
+  qualifications: "M.Sc., PGDM, PGMTTC",
   founderRole: "Founder & Educational Director",
   establishedDate: "July 2, 2024",
   phone: "744 898 1592",
@@ -914,7 +914,7 @@ export const STAFF_MEMBERS: StaffMember[] = [
     id: "s-tharani",
     name: "Mrs. S. Tharani",
     nameTa: "திருமதி. S. தாரணி",
-    qualification: "M.Sc., PGDPM, PGDNTTC",
+    qualification: "M.Sc., PGDM, PGMTTC",
     role: "Founder & Educational Director | Montessori Kinathukadavu",
     roleTa: "நிறுவனர் & கல்வி இயக்குநர் | மாண்டிசோரி கிணத்துக்கடவு",
     category: "Leadership",
@@ -1018,7 +1018,7 @@ export const STAFF_MEMBERS: StaffMember[] = [
     categoryTa: "வளாகப் பராமரிப்பு",
     bioEn: "Loving and vigilant caretaker dedicated to child safety, campus cleanliness, healthy nurturing, and a warm, mother-like comforting environment for all young children at our Vadapudur campus in Kinathukadavu.",
     bioTa: "கிணத்துக்கடவு வடபுதூர் பள்ளி வளாகத்தில் குழந்தைகளுக்கு பாசமான தாய்மடி அரவணைப்பு, பாதுகாப்பு, வளாக தூய்மை மற்றும் அன்றாட நல்வாழ்வை அன்புடன் கவனித்துக் கொள்கிறார்.",
-    image: "/teachers/mrs-s-rajamanickam-care-taker-vadapudur.jpg",
+    image: "/teachers/mrs-s-rajamanickam-care-taker-vadapudur.png",
     highlightsEn: [
       "Motherly Care & Child Safety",
       "Clean & Caring Learning Environment",
