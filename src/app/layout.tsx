@@ -5,6 +5,7 @@ import { SCHOOL_INFO } from "@/data/schoolData";
 import { siteConfig } from "@/config/site";
 import { QuickSupportDesk } from "@/components/ui/QuickSupportDesk";
 import { CustomCursor } from "@/components/ui/CustomCursor";
+import { VidyarambhamAdmissionModal } from "@/components/modals/VidyarambhamAdmissionModal";
 
 const plusJakarta = Plus_Jakarta_Sans({
   variable: "--font-sans",
@@ -286,6 +287,9 @@ export default function RootLayout({
         <LanguageProvider>
           {/* Global Interactive Custom Mouse Cursor */}
           <CustomCursor />
+
+          {/* Vijayadashami Vidyarambham Admission Popup (Active until Oct 21, 2026) */}
+          <VidyarambhamAdmissionModal />
 
           {children}
 
