@@ -94,8 +94,13 @@ export const metadata: Metadata = {
     images: ["/logo.png"],
   },
   icons: {
-    icon: "/logo.png",
-    apple: "/logo.png",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png", sizes: "32x32" },
+      { url: "/logo.png", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/apple-icon.png",
   },
 };
 
@@ -128,6 +133,7 @@ const jsonLd = {
       url: siteConfig.url,
       sameAs: [
         "https://www.youtube.com/@dhivith46",
+        "https://instagram.com/dhivith_edu_care?psln=MTRmNGRtd2EzMGlydg%3D%3D",
       ],
       logo: `${siteConfig.url}/logo.png`,
       image: [

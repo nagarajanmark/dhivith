@@ -68,21 +68,39 @@ export function PolaroidMemoriesSection() {
       youtubeUrl,
     },
     {
-      image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1800&auto=format&fit=crop",
-      title: isTamil ? "ஆர்வத்துடன் வாசித்தல்" : "Storytime & Curiosity",
+      image: "/school_images/happy-montessori-children-uniform-steps-kinathukadavu.webp",
+      title: isTamil ? "சீருடையில் பள்ளி தோழர்கள்" : "Happy Learner Cohort",
       caption: isTamil
-        ? "வார்த்தைகளை நேசிக்கவும், கதைகளைக் கேட்டு ரசிக்கவும் பழகுதல்"
-        : "Early language immersion with vibrant picture books.",
-      alt: "Storytelling and Early Literature Nook at Dhivith Edu Care",
+        ? "மகிழ்ச்சியான சூழலில் ஒன்றாகக் கூடிப் புன்னகைக்கும் மழலையர் செல்வங்கள்"
+        : "Vibrant smiling students gathered together on our joyful campus steps.",
+      alt: "Happy Montessori Preschool Children in Uniform at Dhivith Edu Care Kinathukadavu",
       youtubeUrl,
     },
     {
-      image: "https://images.unsplash.com/photo-1587654780291-39c9404d746b?q=80&w=1800&auto=format&fit=crop",
-      title: isTamil ? "கட்டமைக்கும் ஆக்கப்பூர்வ விளையாட்டு" : "Constructive Play",
+      image: "/school_images/morning-assembly-activity-outdoor-turf-coimbatore.webp",
+      title: isTamil ? "காலை உடலியக்கப் பயிற்சி" : "Morning Activity & Assembly",
       caption: isTamil
-        ? "வடிவியல் அறிவும் கற்பனையும் கூடும் விளையாட்டு நேரம்"
-        : "Developing architecture skills and hand-eye coordination.",
-      alt: "Constructive Early Architecture and Block Play at Dhivith Edu Care",
+        ? "பசுமைப் புல்வெளியில் குழந்தைகள் வரிசையாக நின்று காலைப் பயிற்சிகள் செய்தல்"
+        : "Energizing morning coordination and peer assembly on safe play turf.",
+      alt: "Morning Assembly and Outdoor Turf Activity at Dhivith Edu Care Coimbatore",
+      youtubeUrl,
+    },
+    {
+      image: "/school_images/joyful-circle-time-celebration-preschool-pollachi.webp",
+      title: isTamil ? "விழாக் கொண்டாட்டம் & வட்டம்" : "Joyful Circle Celebration",
+      caption: isTamil
+        ? "பண்டிகை ஆடை அணிந்து வண்ண நாற்காலிகளில் விழாக் கொண்டாடும் குழந்தைகள்"
+        : "Children in festive attire celebrating togetherness in an outdoor circle.",
+      alt: "Festival Celebration and Circle Time Activity at Dhivith Edu Care Kinathukadavu",
+      youtubeUrl,
+    },
+    {
+      image: "/school_images/cheerful-preschool-students-group-lawn-dhivith.webp",
+      title: isTamil ? "புல்வெளியில் தோழமை" : "Play Turf Bonding",
+      caption: isTamil
+        ? "பாதுகாப்பான மென் புல்வெளியில் அமர்ந்து உற்சாகமாகப் பேசிப் பழகும் மாணவர்கள்"
+        : "Students sitting happily together on child-safe artificial grass lawn.",
+      alt: "Preschool Students Group Bonding on Green Turf at Dhivith Edu Care",
       youtubeUrl,
     },
   ];

@@ -112,6 +112,7 @@ export const SCHOOL_INFO = {
   tuitionStaffCount: "8 Dedicated Evening Staff Members",
   tuitionHours: "Morning: 5:00 AM – 7:00 AM | Evening: 5:00 PM – 9:30 PM (8 Evening Staffs)",
   whatsapp: "917448981592",
+  instagram: "https://instagram.com/dhivith_edu_care?psln=MTRmNGRtd2EzMGlydg%3D%3D",
   youtube: "https://www.youtube.com/@dhivith46",
   ratio: "1:10 Educator Ratio",
   accreditation: "Certified Montessori & Structured Multi-Board Education",
@@ -613,6 +614,42 @@ export const ENVIRONMENT_HOTSPOTS: EnvironmentHotspot[] = [
 ];
 
 export const GALLERY_ITEMS: GalleryItem[] = [
+  {
+    id: "g-new-1",
+    title: "Happy Montessori Students on Campus Steps",
+    titleTa: "பள்ளி சீருடையில் புன்னகைக்கும் மழலையர் செல்வங்கள்",
+    category: "Outdoor",
+    image: "/school_images/happy-montessori-children-uniform-steps-kinathukadavu.webp",
+    caption: "Our cheerful young learners gathered together in bright uniforms on the vibrant campus steps.",
+    captionTa: "மகிழ்ச்சியான சூழலில் பள்ளி சீருடை அணிந்து ஒன்றாகக் கூடிப் புன்னகைக்கும் மழலையர் மாணவர்கள்.",
+  },
+  {
+    id: "g-new-2",
+    title: "Morning Assembly & Activity on Play Turf",
+    titleTa: "காலை நேர இறைவணக்கம் & புல்வெளி உடலியக்கப் பயிற்சி",
+    category: "Outdoor",
+    image: "/school_images/morning-assembly-activity-outdoor-turf-coimbatore.webp",
+    caption: "Children actively participating in energetic morning routines and peer coordination exercises on safe play turf.",
+    captionTa: "சுத்தமான பசுமை புல்வெளியில் குழந்தைகள் வரிசையாக நின்று காலை நேர உடலியக்கம் மற்றும் கூட்டுப் பயிற்சிகளில் ஈடுபடுதல்.",
+  },
+  {
+    id: "g-new-3",
+    title: "Joyful Celebration & Circle Time Gathering",
+    titleTa: "மழலையர் விழா கொண்டாட்டம் & வட்ட அமர்வு விளையாட்டு",
+    category: "Creative",
+    image: "/school_images/joyful-circle-time-celebration-preschool-pollachi.webp",
+    caption: "Young learners dressed in festive attire gathered in a joyous outdoor activity circle on colorful chairs.",
+    captionTa: "பண்டிகை ஆடை அணிந்து வண்ண நாற்காலிகளில் அமர்ந்து விழாக் கொண்டாட்டத்தில் குதூகலிக்கும் குழந்தைகள்.",
+  },
+  {
+    id: "g-new-4",
+    title: "Delightful Student Cohort on Green Lawn",
+    titleTa: "பசுமைப் புல்வெளியில் சிரித்து மகிழும் மழலையர் குழு",
+    category: "Outdoor",
+    image: "/school_images/cheerful-preschool-students-group-lawn-dhivith.webp",
+    caption: "A joyful group of students sitting comfortably cross-legged together on our child-safe artificial grass lawn.",
+    captionTa: "பாதுகாப்பான மென் புல்வெளியில் அமர்ந்து உற்சாகமாகப் புன்னகைக்கும் மழலையர் மாணவர்கள்.",
+  },
   {
     id: "g1",
     title: "Paper Cup Pyramid Stacking Activity",

@@ -7,6 +7,10 @@ import React, {
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 
 const IMAGES = [
+  "/school_images/happy-montessori-children-uniform-steps-kinathukadavu.webp",
+  "/school_images/morning-assembly-activity-outdoor-turf-coimbatore.webp",
+  "/school_images/joyful-circle-time-celebration-preschool-pollachi.webp",
+  "/school_images/cheerful-preschool-students-group-lawn-dhivith.webp",
   "/school_images/paper-cup-pyramid-stacking-activity-kinathukadavu.webp",
   "/school_images/sensory-ball-sorting-color-trays-coimbatore.webp",
   "/school_images/practical-life-fine-motor-coordination-tirupur.webp",

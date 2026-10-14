@@ -38,6 +38,7 @@ import { CampusVideoShowcase } from "@/components/video/CampusVideoShowcase";
 import { TestimonialsMasonry } from "@/components/testimonials/TestimonialsMasonry";
 import { PolaroidMemoriesSection } from "@/components/gallery/PolaroidMemoriesSection";
 import { RegionalLocationsServed } from "@/components/seo/RegionalLocationsServed";
+import { InstagramShowcaseSection } from "@/components/social/InstagramShowcaseSection";
 import { SCHOOL_INFO, PROGRAMS, TESTIMONIALS, GALLERY_ITEMS, GalleryItem } from "@/data/schoolData";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -424,6 +425,9 @@ export default function HomePage() {
       <ContinuousMarqueeGallery
         onOpenTourModal={() => setIsTourModalOpen(true)}
       />
+
+      {/* 5.8 DEDICATED INSTAGRAM SOCIAL WALL SHOWCASE */}
+      <InstagramShowcaseSection />
 
       {/* 6. PARENT PERSPECTIVES & RATINGS MASONRY */}
       <TestimonialsMasonry />
